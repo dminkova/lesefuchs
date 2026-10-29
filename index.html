@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lesefuchs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
+<style>
+/* One narrow column like a school exercise book; the reading text sits on a ruled "Heft" page with a red margin line. */
+:root{
+  --paper:#F4F7FC; --card:#FFFFFF; --ink:#1B2440; --muted:#5A6482; --line:#D5DDEC;
+  --blue:#2350C8; --blue-ink:#FFFFFF; --blue-soft:#E2E9FA;
+  --red:#C3322D; --red-soft:#FBE3E1; --amber:#A86A12; --amber-soft:#FCEFD3;
+  --green:#257A4A; --green-soft:#DDF1E5; --hl:#FFE680; --margin:#F2B7B3;
+  --display:"Bricolage Grotesque", ui-rounded, system-ui, sans-serif;
+  --read:"Andika", "Comic Neue", ui-rounded, system-ui, sans-serif;
+  --ui:system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --lh:2.5rem; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --paper:#0E1322; --card:#161D31; --ink:#E5EAF6; --muted:#98A2BF; --line:#2A3350;
+  --blue:#86A6FF; --blue-ink:#0E1322; --blue-soft:#1E2A4E;
+  --red:#FF8F86; --red-soft:#3D1F25; --amber:#F2BC62; --amber-soft:#3A2D16;
+  --green:#72D49C; --green-soft:#16321F; --hl:#5E4E0E; --margin:#5A2A31; color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--ui);padding:20px 16px 48px}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:1.9rem;font-weight:800} h2{font-size:1.3rem;font-weight:700} h3{font-size:1.02rem;font-weight:700}
+p{margin:0}
+.muted{color:var(--muted)} .small{font-size:.86rem}
+.label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.brand .tag{font-size:.9rem;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.spread{justify-content:space-between}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,textarea:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.btn{border:0;border-radius:999px;padding:11px 20px;font-weight:650;background:var(--blue);color:var(--blue-ink);font-size:1rem;min-height:44px}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.ghost{background:transparent;color:var(--blue);box-shadow:inset 0 0 0 1.5px var(--blue)}
+.btn.big{font-size:1.15rem;padding:14px 28px}
+.btn.stop{background:var(--red);color:var(--card)}
+.icon-btn{border:0;background:var(--blue-soft);color:var(--blue);border-radius:999px;padding:8px 14px;display:inline-flex;gap:6px;align-items:center;font-weight:600;font-size:.9rem;min-height:40px;align-self:flex-start}
+.icon-btn svg{width:18px;height:18px}
+.icon-btn.live{background:var(--red);color:var(--card)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.textcard{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.textcard:hover{border-color:var(--blue)}
+.tc-title{font-family:var(--read);font-size:1.2rem;font-weight:700}
+.tc-meta{font-size:.84rem;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 13px;font-size:.92rem;min-height:38px}
+.chip[aria-pressed="true"]{background:var(--blue);color:var(--blue-ink);border-color:var(--blue)}
+input[type=text],input[type=password],textarea,select{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 180px}
+.note{font-size:.88rem;color:var(--muted)}
+.err-note{font-size:.9rem;color:var(--red)}
+.ok-note{font-size:.9rem;color:var(--green)}
+details summary{cursor:pointer;color:var(--blue);font-weight:600}
+a{color:var(--blue)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.back{border:0;background:none;color:var(--blue);font-weight:600;padding:6px 0}
+.sheet{position:relative;background-color:var(--card);border:1px solid var(--line);border-radius:6px 14px 14px 6px;
+  padding:var(--lh) 18px var(--lh) 44px;font-family:var(--read);font-size:1.45rem;line-height:var(--lh);
+  background-image:repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--lh) - 1px), var(--line) calc(var(--lh) - 1px), var(--line) var(--lh));
+  background-position:0 calc(var(--lh) - 6px)}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:30px;width:2px;background:var(--margin)}
+.sheet p{margin:0 0 var(--lh)} .sheet p:last-child{margin:0}
+.sheet p.title{font-weight:700;font-size:1.6rem}
+.w{border-radius:5px;padding:0 .06em;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s}
+.w.ok{box-shadow:inset 0 -3px 0 var(--green-soft)}
+.w.close{background:var(--amber-soft);color:var(--amber);box-shadow:inset 0 -3px 0 var(--amber)}
+.w.wrong{background:var(--red-soft);color:var(--red);box-shadow:inset 0 -3px 0 var(--red)}
+.w.skip{color:var(--red);text-decoration:line-through;text-decoration-thickness:2px}
+.w.cur{background:var(--blue-soft);box-shadow:inset 0 -3px 0 var(--blue)}
+.w.pace{background:var(--hl)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.84rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+.controls{position:sticky;bottom:0;background:var(--paper);padding:12px 0;display:flex;gap:12px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);z-index:5}
+.clock{font:700 1.6rem/1 var(--display);font-variant-numeric:tabular-nums;min-width:4.2ch}
+.listen{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted)}
+.mic{width:12px;height:12px;border-radius:50%;background:var(--line)}
+.mic.on{background:var(--red);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.heard{font-size:.85rem;color:var(--muted);font-style:italic;min-height:1.3em;overflow-wrap:anywhere}
+.pacer{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted);flex-wrap:wrap}
+.pacer input[type=range]{width:110px;accent-color:var(--blue)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stat{display:flex;flex-direction:column;gap:2px}
+.stat b{font:800 2rem/1.1 var(--display);font-variant-numeric:tabular-nums}
+.stat.main b{color:var(--blue)}
+.attempts{display:flex;flex-direction:column;gap:4px;font-variant-numeric:tabular-nums}
+.up{color:var(--green);font-weight:700}
+.wordchips{display:flex;gap:8px;flex-wrap:wrap}
+.wordchip{font-family:var(--read);font-size:1.1rem;border:0;border-radius:8px;padding:6px 12px;background:var(--red-soft);color:var(--red);text-align:left}
+.wordchip small{display:block;font-family:var(--ui);font-size:.72rem;opacity:.85}
+.wordchip.close{background:var(--amber-soft);color:var(--amber)}
+.dots{display:flex;gap:6px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.dot.done{background:var(--blue)} .dot.now{box-shadow:0 0 0 3px var(--blue-soft);background:var(--blue)}
+.skill{align-self:flex-start;font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--blue-soft);color:var(--blue)}
+.qtext{font-family:var(--read);font-size:1.5rem;line-height:1.4;font-weight:700}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{font-family:var(--read);font-size:1.25rem;text-align:left;background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:12px 16px;display:flex;gap:12px;align-items:center}
+.opt .ltr{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1.5px solid var(--line);font-weight:700;font-size:1rem}
+.opt[aria-pressed="true"]{border-color:var(--blue);background:var(--blue-soft)}
+.opt[aria-pressed="true"] .ltr{background:var(--blue);color:var(--blue-ink);border-color:var(--blue)}
+textarea.answer{font-family:var(--read);font-size:1.25rem;min-height:110px;resize:vertical}
+details.peek{border-top:1px dashed var(--line);padding-top:10px}
+.peektext{font-family:var(--read);font-size:1.1rem;line-height:1.6;margin-top:10px;white-space:pre-wrap}
+.score{font:800 2.6rem/1 var(--display);font-variant-numeric:tabular-nums}
+.kidsay{font-family:var(--read);font-size:1.25rem;line-height:1.45;background:var(--blue-soft);border-radius:14px;padding:14px 16px}
+.res{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-top:1px solid var(--line)}
+.res:first-child{border-top:0;padding-top:0}
+.pill{align-self:flex-start;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:999px}
+.pill.ok{background:var(--green-soft);color:var(--green)}
+.pill.half{background:var(--amber-soft);color:var(--amber)}
+.pill.no{background:var(--red-soft);color:var(--red)}
+.pill.wait{background:var(--line);color:var(--muted)}
+.res .q{font-family:var(--read);font-weight:700;font-size:1.1rem}
+.res .a{font-family:var(--read);font-size:1.05rem}
+.res .fb{font-family:var(--read);font-size:1.05rem;color:var(--muted)}
+.judge{display:flex;gap:8px;flex-wrap:wrap}
+.judge button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:.9rem;min-height:36px}
+.parent p+p{margin-top:8px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--blue);border-radius:50%;animation:sp 1s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.chart{width:100%;overflow-x:auto}
+.chart svg{display:block;width:100%;height:auto;min-width:300px}
+.hist{display:flex;flex-direction:column;gap:6px;font-size:.9rem;font-variant-numeric:tabular-nums}
+.hist div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.hist span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.banner{border-radius:12px;padding:12px 14px;font-size:.92rem;background:var(--amber-soft);color:var(--ink)}
+@media (max-width:480px){.sheet{font-size:1.3rem;padding-left:38px}.sheet::before{left:24px}.stat b{font-size:1.6rem}.qtext{font-size:1.3rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- PICK -->
+<section id="pick">
+  <div class="brand"><h1>Lesefuchs</h1><span class="tag">German reading coach · Zyklus 3</span></div>
+  <p class="muted">He reads out loud and Lesefuchs listens, following word by word. It times him, marks skipped and wrong words, then asks test-style questions he can answer by speaking.</p>
+  <p class="banner" id="srBanner" hidden>This browser can't do speech recognition, so listening is off and you tap misread words yourself. Open this file in <b>Google Chrome</b> for automatic listening.</p>
+
+  <h2>Choose a text</h2>
+  <div class="cards" id="cards"></div>
+
+  <div class="panel" id="gen">
+    <h3>Make a new text</h3>
+    <div class="row">
+      <div class="field"><span class="label">Level</span>
+        <select id="level">
+          <option value="leicht">Leicht · ~90 words</option>
+          <option value="mittel" selected>Mittel · ~130 words (Zyklus 3.1)</option>
+          <option value="schwer">Schwer · ~170 words</option>
+        </select></div>
+      <div class="field"><span class="label">Text type</span>
+        <select id="ttype"><option value="Geschichte">Geschichte (story)</option><option value="Sachtext">Sachtext (non-fiction)</option></select></div>
+    </div>
+    <div class="field"><span class="label">Topic</span>
+      <div class="chips" id="topics"></div>
+      <input type="text" id="topic" placeholder="…or type his own idea, e.g. Fußball, Dinosaurier">
+    </div>
+    <div class="row"><button class="btn" id="genBtn">Write a new text</button><button class="btn ghost" id="genStop" hidden>Cancel</button></div>
+    <p class="note" id="genNote">Needs your Claude API key (Settings below). Takes about 15–30 seconds.</p>
+  </div>
+
+  <h2>Progress</h2>
+  <div class="panel" id="progress"></div>
+
+  <details class="panel" id="settings">
+    <summary>Settings · Claude API key</summary>
+    <p class="small muted">The key lets Lesefuchs write new texts and check open answers. Without it, the two built-in texts, listening and multiple-choice checking still work. Get a key at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a> (you need a little prepaid credit). The key is saved only in this browser on this computer and is sent only to Anthropic.</p>
+    <div class="field"><span class="label">API key</span><input type="password" id="apiKey" placeholder="sk-ant-…" autocomplete="off"></div>
+    <div class="row"><button class="btn" id="saveKey">Save key</button><button class="btn ghost" id="testKey">Test key</button><button class="btn ghost" id="clearKey">Remove key</button></div>
+    <p class="note" id="keyNote"></p>
+    <p class="small muted">Privacy: Chrome's speech recognition sends the microphone audio to Google to turn it into text. Nothing is recorded or stored by this page.</p>
+  </details>
+</section>
+
+<!-- READ -->
+<section id="read" hidden>
+  <div class="topbar"><button class="back" data-go="pick">← All texts</button><span class="label" id="attemptLbl">1. Lesen</span></div>
+  <p class="small muted" id="readHint"></p>
+  <div class="legend"><span><i style="background:var(--blue)"></i>jetzt</span><span><i style="background:var(--green)"></i>gelesen</span><span><i style="background:var(--red)"></i>falsch / ausgelassen</span><span><i style="background:var(--amber)"></i>prüfen</span></div>
+  <article class="sheet" id="sheet"></article>
+  <p class="heard" id="heard"></p>
+
+  <div class="panel" id="result" hidden></div>
+
+  <div class="controls" id="controls">
+    <button class="btn big" id="startBtn">Start</button>
+    <span class="clock" id="clock">0:00</span>
+    <span class="listen" id="listenState"><span class="mic" id="micDot"></span><span id="listenTxt">bereit</span></span>
+    <label class="pacer"><input type="checkbox" id="paceOn"> Tempo-Hilfe <input type="range" id="paceWpm" min="30" max="150" step="5" value="70"> <b id="paceVal">70</b> W/min</label>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" hidden>
+  <div class="topbar"><button class="back" data-go="read">← Zum Text</button><div class="dots" id="dots"></div></div>
+  <div class="panel" id="qpanel"></div>
+  <div class="row spread"><button class="btn ghost" id="qPrev">Zurück</button><button class="btn" id="qNext">Weiter</button></div>
+</section>
+
+<!-- REPORT -->
+<section id="report" hidden>
+  <div class="topbar"><button class="back" data-go="pick">← All texts</button></div>
+  <div class="panel" id="repTop"></div>
+  <div class="panel" id="repList"></div>
+  <div class="panel parent" id="repParent"></div>
+  <div class="row"><button class="btn" id="againBtn">Read this text again</button><button class="btn ghost" data-go="pick">New text</button></div>
+</section>
+</div>
+
+<script>
+const MODEL = "claude-sonnet-5-5";
+const BUILTIN = [
+{id:"igel",title:"Der Igel im Herbst",type:"Sachtext",level:"Mittel",
+text:`Im Herbst werden die Tage kürzer und die Nächte kälter. Für den Igel beginnt jetzt eine wichtige Zeit. Er muss viel fressen, denn bald hält er seinen Winterschlaf. Igel fressen am liebsten Käfer, Würmer und Schnecken. Sie suchen ihr Futter in der Nacht. Am Tag schlafen sie in einem Versteck.
+
+Für den Winter baut sich der Igel ein Nest. Er sammelt dafür trockenes Laub und Gras. Oft liegt das Nest unter einer Hecke oder in einem Laubhaufen. Im November rollt sich der Igel in seinem Nest zusammen. Sein Herz schlägt dann ganz langsam, und er atmet nur noch selten. So spart er Energie. Erst im März oder April wacht er wieder auf.
+
+Wenn du im Garten einen Laubhaufen liegen lässt, hilfst du dem Igel.`,
+questions:[
+{kind:"mc",skill:"Finden",q:"Was fressen Igel am liebsten?",options:["Äpfel und Birnen","Käfer, Würmer und Schnecken","Brot und Milch","Gras und Laub"],answer:1},
+{kind:"mc",skill:"Finden",q:"Wann sucht der Igel sein Futter?",options:["In der Nacht","Am Morgen","Am Mittag","Nur im Winter"],answer:0},
+{kind:"open",skill:"Finden",q:"Woraus baut der Igel sein Nest?",answer:"Aus trockenem Laub und Gras."},
+{kind:"mc",skill:"Wortschatz",q:"Im Text steht: „So spart er Energie.“ Was bedeutet das?",options:["Er kauft sich Futter.","Er braucht nur wenig Kraft.","Er rennt ganz schnell.","Er wacht auf."],answer:1},
+{kind:"mc",skill:"Reihenfolge",q:"Was passiert zuerst?",options:["Der Igel wacht im Frühling auf.","Der Igel rollt sich im Nest zusammen.","Der Igel frisst viel im Herbst.","Das Herz des Igels schlägt langsam."],answer:2},
+{kind:"open",skill:"Schließen",q:"Warum hilft ein Laubhaufen im Garten dem Igel?",answer:"Weil er dort sein Nest bauen und den Winterschlaf halten kann."}]},
+{id:"vianden",title:"Ausflug zur Burg Vianden",type:"Geschichte",level:"Mittel",
+text:`Am Samstag fährt Tom mit seiner Oma nach Vianden. Schon vom Bus aus sieht er die Burg. Sie steht hoch oben auf einem Berg. „Dort haben früher Ritter gewohnt“, sagt Oma.
+
+Der Weg nach oben ist steil. Tom läuft voraus, aber bald muss er eine Pause machen. Er schnauft und setzt sich auf eine Bank. Oma lacht und gibt ihm einen Apfel.
+
+In der Burg ist es kühl und ein bisschen dunkel. Tom sieht alte Rüstungen und lange Schwerter. In einem großen Saal steht ein Tisch, an dem zwanzig Menschen sitzen können. Tom stellt sich vor, wie die Ritter hier gegessen haben.
+
+Zum Schluss steigen sie auf einen Turm. Von oben sieht Tom den Fluss und die kleinen Häuser der Stadt. „Das ist der schönste Ausflug des Jahres!“, ruft er. Auf dem Heimweg schläft er im Bus sofort ein.`,
+questions:[
+{kind:"mc",skill:"Finden",q:"Mit wem fährt Tom nach Vianden?",options:["Mit seiner Mama","Mit seiner Klasse","Mit seiner Oma","Mit seinem Freund"],answer:2},
+{kind:"mc",skill:"Finden",q:"Wo steht die Burg?",options:["Am Meer","Hoch oben auf einem Berg","Mitten im Wald","Neben dem Bahnhof"],answer:1},
+{kind:"open",skill:"Schließen",q:"Warum muss Tom auf dem Weg eine Pause machen?",answer:"Weil der Weg steil ist und er zu schnell gelaufen ist. Er ist müde."},
+{kind:"mc",skill:"Reihenfolge",q:"Was macht Tom ganz zum Schluss in der Burg?",options:["Er isst einen Apfel.","Er steigt auf einen Turm.","Er sieht Schwerter.","Er setzt sich auf eine Bank."],answer:1},
+{kind:"mc",skill:"Wortschatz",q:"„Er schnauft.“ Was bedeutet das?",options:["Er atmet laut, weil er müde ist.","Er singt ein Lied.","Er weint.","Er schläft."],answer:0},
+{kind:"open",skill:"Schließen",q:"Warum schläft Tom im Bus sofort ein?",answer:"Weil er von dem langen Ausflug müde ist."}]},
+{id:"flix",title:"Flix will fliegen",type:"Geschichte",level:"Leicht",
+text:`Flix ist ein kleiner Drache. Er hat grüne Flügel und einen langen Schwanz. Alle Drachen in seiner Familie können fliegen. Nur Flix kann es noch nicht.
+
+Jeden Morgen klettert Flix auf einen Stein. Er schlägt mit den Flügeln und springt. Aber er fällt immer ins Gras. „Ich schaffe es nie!“, ruft er traurig.
+
+Da kommt seine Schwester Mira. „Du musst nicht so hoch springen“, sagt sie. „Lauf zuerst schnell und mach dann die Flügel auf.“
+
+Flix läuft über die Wiese. Er läuft schneller und schneller. Dann öffnet er seine Flügel. Plötzlich sind seine Füße nicht mehr auf dem Boden. Flix fliegt! Er lacht und fliegt eine große Runde über den See.`,
+questions:[
+{kind:"mc",skill:"Finden",q:"Welche Farbe haben die Flügel von Flix?",options:["Rot","Grün","Blau","Gelb"],answer:1},
+{kind:"mc",skill:"Finden",q:"Was passiert, wenn Flix vom Stein springt?",options:["Er fliegt hoch.","Er fällt ins Gras.","Er landet im See.","Er schläft ein."],answer:1},
+{kind:"open",skill:"Schließen",q:"Wie fühlt sich Flix, als er ruft: „Ich schaffe es nie!“?",answer:"Er ist traurig, weil er noch nicht fliegen kann."},
+{kind:"mc",skill:"Wortschatz",q:"„Plötzlich sind seine Füße nicht mehr auf dem Boden.“ Was bedeutet „plötzlich“?",options:["Ganz langsam","Auf einmal","Am Abend","Nie"],answer:1},
+{kind:"mc",skill:"Reihenfolge",q:"Was macht Flix, bevor er die Flügel öffnet?",options:["Er springt vom Stein.","Er läuft schnell über die Wiese.","Er fliegt über den See.","Er schläft im Gras."],answer:1},
+{kind:"open",skill:"Schließen",q:"Warum klappt das Fliegen am Ende?",answer:"Weil er zuerst schnell läuft und dann die Flügel öffnet, so wie Mira es gesagt hat."}]},
+{id:"zug",title:"Mit dem Zug in die Stadt",type:"Geschichte",level:"Leicht",
+text:`Sami fährt mit Papa mit dem Zug in die Stadt. Am Bahnhof ist viel los. Viele Menschen warten. Sami schaut auf die große Uhr. Der Zug kommt um zehn Uhr.
+
+„Müssen wir eine Fahrkarte kaufen?“, fragt Sami. „Nein“, sagt Papa. „In Luxemburg sind Bus und Zug gratis.“
+
+Dann kommt der Zug. Sami setzt sich ans Fenster. Er sieht Felder, Kühe und einen Fluss. Nach zwanzig Minuten sind sie in der Stadt.
+
+Zuerst gehen sie in ein Museum. Dort sieht Sami das Skelett von einem Dinosaurier. Es ist so lang wie ein Bus! Danach essen sie ein Eis. „Das war ein toller Tag“, sagt Sami.`,
+questions:[
+{kind:"mc",skill:"Finden",q:"Mit wem fährt Sami in die Stadt?",options:["Mit Mama","Mit Papa","Mit Oma","Mit seiner Klasse"],answer:1},
+{kind:"mc",skill:"Finden",q:"Wann kommt der Zug?",options:["Um acht Uhr","Um neun Uhr","Um zehn Uhr","Um zwölf Uhr"],answer:2},
+{kind:"open",skill:"Finden",q:"Warum müssen sie keine Fahrkarte kaufen?",answer:"Weil Bus und Zug in Luxemburg gratis sind."},
+{kind:"mc",skill:"Wortschatz",q:"Was bedeutet „gratis“?",options:["Sehr schnell","Man muss nichts bezahlen.","Sehr teuer","Nur am Sonntag"],answer:1},
+{kind:"mc",skill:"Reihenfolge",q:"Was machen sie in der Stadt zuerst?",options:["Sie essen ein Eis.","Sie gehen in ein Museum.","Sie fahren nach Hause.","Sie kaufen eine Fahrkarte."],answer:1},
+{kind:"open",skill:"Schließen",q:"Wie findet Sami den Ausflug? Woran merkst du das?",answer:"Er findet ihn toll. Er sagt: „Das war ein toller Tag.“"}]},
+{id:"kleeschen",title:"Der Kleeschen kommt",type:"Geschichte",level:"Mittel",
+text:`Heute ist der fünfte Dezember. Am Abend stellt Lina ihre Hausschuhe vor die Tür. Ihr kleiner Bruder Ben stellt seine Schuhe daneben. „Glaubst du, der Kleeschen kommt auch zu uns?“, fragt Ben leise. „Natürlich“, sagt Lina. „Aber nur, wenn wir jetzt schlafen.“
+
+In der Nacht hört Lina ein Geräusch. Sie bleibt ganz still im Bett liegen. Ist das der Kleeschen? Oder nur der Wind? Nach einer Weile schläft sie wieder ein.
+
+Am Morgen springt Ben aus dem Bett und rennt zur Tür. In den Schuhen liegen Mandarinen, Nüsse und ein Kleeschen aus Schokolade. Neben Linas Hausschuhen liegt sogar ein neues Buch. Ben hält seine Schokolade hoch und strahlt. „Ich habe es gewusst!“, ruft er. Lina lacht und öffnet sofort ihr Buch.`,
+questions:[
+{kind:"mc",skill:"Finden",q:"Was stellt Lina am Abend vor die Tür?",options:["Ihre Hausschuhe","Einen Teller","Ihre Schultasche","Einen Brief"],answer:0},
+{kind:"mc",skill:"Finden",q:"Was liegt am Morgen in den Schuhen?",options:["Äpfel und Brot","Mandarinen, Nüsse und Schokolade","Spielzeugautos","Blumen"],answer:1},
+{kind:"open",skill:"Schließen",q:"Warum bleibt Lina in der Nacht ganz still im Bett liegen?",answer:"Weil sie ein Geräusch hört und nicht weiß, ob es der Kleeschen oder der Wind ist."},
+{kind:"mc",skill:"Wortschatz",q:"„Ben strahlt.“ Was bedeutet das?",options:["Er weint.","Er ist sehr froh und lacht.","Er ist müde.","Er ist wütend."],answer:1},
+{kind:"mc",skill:"Reihenfolge",q:"Was passiert zuerst?",options:["Ben rennt zur Tür.","Lina hört ein Geräusch.","Lina öffnet ihr Buch.","Ben hält seine Schokolade hoch."],answer:1},
+{kind:"open",skill:"Schließen",q:"Warum ruft Ben: „Ich habe es gewusst!“?",answer:"Weil er geglaubt hat, dass der Kleeschen kommt, und jetzt liegen wirklich Geschenke in den Schuhen."}]},
+{id:"luca",title:"Der neue Junge",type:"Geschichte",level:"Mittel",
+text:`Am Montag steht ein neuer Junge vor der Klasse. Er heißt Luca und kommt aus Portugal. Er spricht noch nicht gut Deutsch. Als die Lehrerin ihn vorstellt, schaut er auf seine Schuhe.
+
+In der Pause steht Luca allein an der Wand. Noah sieht ihn und überlegt. Soll er zu ihm gehen? Er kennt ihn ja gar nicht. Dann holt er tief Luft und geht los. „Willst du mit uns Fußball spielen?“, fragt er. Luca versteht nicht alles. Aber er sieht den Ball und nickt schnell.
+
+Luca spielt sehr gut. Er schießt sogar ein Tor, und alle Kinder jubeln. Nach der Pause setzt sich Luca neben Noah. Er zeigt auf ein Bild im Buch und fragt: „Wie heißt das auf Deutsch?“ Noah erklärt es ihm. Dann bringt Luca ihm ein Wort auf Portugiesisch bei.`,
+questions:[
+{kind:"mc",skill:"Finden",q:"Woher kommt Luca?",options:["Aus Spanien","Aus Portugal","Aus Italien","Aus Frankreich"],answer:1},
+{kind:"open",skill:"Schließen",q:"Wie fühlt sich Luca am Anfang, als er auf seine Schuhe schaut?",answer:"Er ist schüchtern oder unsicher, weil er neu ist und noch niemanden kennt."},
+{kind:"mc",skill:"Schließen",q:"Warum überlegt Noah zuerst, ob er zu Luca gehen soll?",options:["Weil er Luca nicht mag.","Weil er ihn noch gar nicht kennt.","Weil die Pause vorbei ist.","Weil er müde ist."],answer:1},
+{kind:"mc",skill:"Wortschatz",q:"„Er holt tief Luft.“ Was bedeutet das hier?",options:["Er hat Angst vor dem Wind.","Er macht sich Mut.","Er ist krank.","Er schläft ein."],answer:1},
+{kind:"mc",skill:"Reihenfolge",q:"Was passiert nach dem Fußballspiel?",options:["Noah fragt Luca, ob er mitspielt.","Luca setzt sich neben Noah.","Die Lehrerin stellt Luca vor.","Luca steht allein an der Wand."],answer:1},
+{kind:"open",skill:"Schließen",q:"Warum nickt Luca schnell, obwohl er nicht alles versteht?",answer:"Weil er den Ball sieht und versteht, dass er mitspielen darf. Er will gern mitspielen."}]},
+{id:"sonne",title:"Die Sonne",type:"Sachtext",level:"Mittel",
+text:`Die Sonne ist ein Stern. Sie sieht klein aus, weil sie sehr weit weg ist. In Wirklichkeit ist sie riesig. Mehr als eine Million Erden würden in die Sonne passen.
+
+Die Sonne ist eine heiße Kugel aus Gas. Sie gibt uns Licht und Wärme. Ohne die Sonne könnten keine Pflanzen wachsen. Dann gäbe es auch keine Tiere und keine Menschen auf der Erde.
+
+Die Erde dreht sich um die Sonne. Für eine Runde braucht sie ein ganzes Jahr. Gleichzeitig dreht sich die Erde auch um sich selbst. Deshalb gibt es Tag und Nacht. Die Seite der Erde, die zur Sonne zeigt, hat Tag. Auf der anderen Seite ist Nacht.
+
+Wichtig: Schau nie direkt in die Sonne! Ihr Licht ist so stark, dass es deinen Augen schadet.`,
+questions:[
+{kind:"mc",skill:"Finden",q:"Was ist die Sonne?",options:["Ein Planet","Ein Stern","Ein Mond","Eine Wolke"],answer:1},
+{kind:"mc",skill:"Finden",q:"Warum sieht die Sonne so klein aus?",options:["Weil sie klein ist.","Weil sie sehr weit weg ist.","Weil sie kalt ist.","Weil es Nacht ist."],answer:1},
+{kind:"open",skill:"Finden",q:"Wie lange braucht die Erde für eine Runde um die Sonne?",answer:"Ein ganzes Jahr."},
+{kind:"mc",skill:"Wortschatz",q:"„In Wirklichkeit ist sie riesig.“ Was bedeutet „riesig“?",options:["Sehr klein","Sehr groß","Sehr kalt","Sehr leise"],answer:1},
+{kind:"open",skill:"Schließen",q:"Warum gäbe es ohne die Sonne keine Tiere?",answer:"Weil ohne Sonne keine Pflanzen wachsen, und dann hätten die Tiere nichts zu fressen."},
+{kind:"mc",skill:"Schließen",q:"In Luxemburg ist gerade Tag. Was stimmt dann?",options:["Unsere Seite der Erde zeigt zur Sonne.","Die Erde steht still.","Die Sonne dreht sich um uns.","Es ist immer Winter."],answer:0}]},
+{id:"bienen",title:"Wie Bienen Honig machen",type:"Sachtext",level:"Schwer",
+text:`In einem Bienenstock leben im Sommer bis zu fünfzigtausend Bienen. Fast alle sind Arbeiterinnen. Es gibt nur eine Königin. Sie legt jeden Tag viele Eier.
+
+Die Arbeiterinnen haben viele Aufgaben. Die jungen Bienen putzen den Stock und füttern die Larven. Die älteren Bienen fliegen hinaus und sammeln Nektar. Das ist ein süßer Saft in den Blüten. Mit ihrem langen Rüssel saugen sie den Nektar auf und bringen ihn in den Bienenstock.
+
+Dort geben die Bienen den Nektar von Biene zu Biene weiter. Dabei wird er immer dicker. Dann füllen sie ihn in kleine Waben aus Wachs. Mit ihren Flügeln fächeln sie Luft darüber, bis der Honig fertig ist. Zum Schluss verschließen sie die Waben mit einem Deckel aus Wachs.
+
+Für ein einziges Glas Honig müssen die Bienen viele Millionen Blüten besuchen. Deshalb ist jedes Glas Honig etwas ganz Besonderes.`,
+questions:[
+{kind:"mc",skill:"Finden",q:"Wie viele Königinnen gibt es in einem Bienenstock?",options:["Keine","Eine","Zehn","Fünfzigtausend"],answer:1},
+{kind:"mc",skill:"Wortschatz",q:"Was ist Nektar?",options:["Ein Teil vom Bienenstock","Ein süßer Saft in den Blüten","Eine junge Biene","Ein Deckel aus Wachs"],answer:1},
+{kind:"open",skill:"Finden",q:"Welche Aufgaben haben die jungen Bienen?",answer:"Sie putzen den Stock und füttern die Larven."},
+{kind:"mc",skill:"Reihenfolge",q:"Was machen die Bienen ganz zum Schluss?",options:["Sie saugen Nektar auf.","Sie fächeln Luft über den Honig.","Sie verschließen die Waben mit Wachs.","Sie geben den Nektar weiter."],answer:2},
+{kind:"mc",skill:"Schließen",q:"Warum ist jedes Glas Honig „etwas ganz Besonderes“?",options:["Weil Honig teuer ist.","Weil die Bienen sehr viel Arbeit dafür machen.","Weil Honig blau ist.","Weil nur die Königin Honig macht."],answer:1},
+{kind:"open",skill:"Finden",q:"Wozu brauchen die Bienen ihre Flügel im Bienenstock?",answer:"Sie fächeln damit Luft über den Honig, bis er fertig ist."}]}
+];
+const SKILL = {Finden:"Informationen finden",Schließen:"Mitdenken",Wortschatz:"Wörter verstehen",Reihenfolge:"Reihenfolge"};
+const TOPICS = ["Tiere","Natur","Schule","Abenteuer","Sport","Weltraum","Familie","Luxemburg"];
+const LEVELS = {leicht:{d:"easy (end of cycle 2): very short sentences, common words",w:"80–100"},mittel:{d:"middle (start of cycle 3.1)",w:"120–150"},schwer:{d:"harder (cycle 3.2): some longer sentences and compound words",w:"160–190"}};
+
+const $ = id => document.getElementById(id);
+const store = {get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+const canSpeak = "speechSynthesis" in window;
+const SPK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+const MIC = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
+function say(t){try{if(!canSpeak)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="de-DE";u.rate=.9;const v=speechSynthesis.getVoices().find(v=>/^de/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+const fmtNum = n => String(n).replace(".",",");
+const clean = w => w.replace(/^[^\p{L}\d]+|[^\p{L}\d]+$/gu,"");
+const el = (tag,cls,txt) => {const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e};
+const escapeHtml = s => s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+const countWords = t => t.split(/\s+/).filter(w=>/\p{L}/u.test(w)).length;
+
+/* ---------- Claude API ---------- */
+const getKey = () => store.get("lf_key","");
+async function callClaude(prompt,signal,maxTokens=3000){
+  const key=getKey(); if(!key) throw {code:"nokey"};
+  let r;
+  try{
+    r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",signal,headers:{"content-type":"application/json","x-api-key":key,"anthropic-version":"2023-06-01","anthropic-dangerous-direct-browser-access":"true"},
+      body:JSON.stringify({model:MODEL,max_tokens:maxTokens,messages:[{role:"user",content:prompt}]})});
+  }catch(e){ if(e&&e.name==="AbortError") throw {code:"cancelled"}; throw {code:"network"} }
+  if(!r.ok){let msg="";try{msg=(await r.json()).error?.message||""}catch(e){} throw {code:"http"+r.status,message:msg}}
+  const j=await r.json();
+  const text=(j.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("");
+  const a=text.indexOf("{"),b=text.lastIndexOf("}");
+  if(a<0||b<a) throw {code:"invalid_json"};
+  try{return JSON.parse(text.slice(a,b+1))}catch(e){throw {code:"invalid_json"}}
+}
+function errCopy(e){
+  const c=e&&e.code;
+  if(c==="nokey")return "Add your Claude API key in Settings first.";
+  if(c==="network")return "Couldn't reach Claude. Check the internet connection.";
+  if(c==="http401")return "The API key wasn't accepted. Check it in Settings.";
+  if(c==="http429")return "Too many requests. Wait a minute and try again.";
+  if(c==="invalid_json")return "Claude's answer came back incomplete. Try again.";
+  if(c&&c.startsWith("http"))return "Claude returned an error"+(e.message?": "+e.message:".");
+  return "Something went wrong. Try again.";
+}
+
+/* ---------- settings ---------- */
+$("apiKey").value=getKey();
+$("saveKey").onclick=()=>{const k=$("apiKey").value.trim();if(!k){$("keyNote").textContent="Paste a key first.";return}store.set("lf_key",k);$("keyNote").className="ok-note";$("keyNote").textContent="Saved.";updateGenNote()};
+$("clearKey").onclick=()=>{store.del("lf_key");$("apiKey").value="";$("keyNote").className="note";$("keyNote").textContent="Key removed.";updateGenNote()};
+$("testKey").onclick=async()=>{
+  const k=$("apiKey").value.trim();if(k)store.set("lf_key",k);
+  $("keyNote").className="note";$("keyNote").innerHTML='<span class="spin"></span>Testing…';
+  try{await callClaude('Reply with only this JSON: {"ok":true}',undefined,50);$("keyNote").className="ok-note";$("keyNote").textContent="Works. Claude is connected.";}
+  catch(e){$("keyNote").className="err-note";$("keyNote").textContent=errCopy(e)}
+  updateGenNote();
+};
+function updateGenNote(){$("genNote").textContent=getKey()?"Takes about 15–30 seconds. Each text comes with 6 questions.":"Needs your Claude API key (Settings below). Takes about 15–30 seconds."}
+
+const LV={Leicht:0,Mittel:1,Schwer:2};BUILTIN.sort((a,b)=>(LV[a.level]??1)-(LV[b.level]??1));
+const S = {texts:[...store.get("lf_texts",[]),...BUILTIN],cur:null,words:[],tIdx:[],tNorm:[],auto:{},over:{},heardAt:{},running:false,t0:0,tFirst:0,tLast:0,lastJ:-1,elapsed:0,attempts:[],answers:[],qi:0,topic:"Tiere",finals:[],interim:""};
+let tickT=null,paceT=null,wake=null,rec=null,endT=null;
+const listening = !!SR;
+if(!listening)$("srBanner").hidden=false;
+
+function show(id){for(const s of ["pick","read","quiz","report"])$(s).hidden=s!==id;window.scrollTo(0,0);if(id==="pick")renderPick()}
+document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(!g)return;if(S.running)stopReading();stopAnswerMic();show(g.dataset.go)});
+
+/* ---------- pick ---------- */
+function renderPick(){
+  const c=$("cards");c.innerHTML="";
+  for(const t of S.texts){
+    const b=el("button","textcard");
+    b.append(el("span","label",t.type),el("span","tc-title",t.title),el("span","tc-meta",`${countWords(t.title+" "+t.text)} Wörter · ${t.questions.length} Fragen · ${t.level||""}`));
+    b.onclick=()=>openText(t);c.append(b);
+  }
+  renderProgress();
+}
+function renderTopics(){
+  const c=$("topics");c.innerHTML="";
+  for(const t of TOPICS){const b=el("button","chip",t);b.setAttribute("aria-pressed",String(S.topic===t&&!$("topic").value.trim()));b.onclick=()=>{S.topic=t;$("topic").value="";renderTopics()};c.append(b)}
+}
+$("topic").addEventListener("input",renderTopics);
+
+let genCtl=null;
+$("genBtn").onclick=async()=>{
+  if(!getKey()){$("genNote").textContent=errCopy({code:"nokey"});$("settings").open=true;return}
+  const lv=LEVELS[$("level").value],type=$("ttype").value,topic=$("topic").value.trim()||S.topic;
+  genCtl=new AbortController();
+  $("genBtn").disabled=true;$("genStop").hidden=false;$("genNote").innerHTML='<span class="spin"></span>Writing a text about “'+escapeHtml(topic)+'”…';
+  const prompt=`Write a German reading-comprehension exercise for an 8-year-old pupil in Luxembourg (fundamental school, cycle 3; German is the school reading language and often not the child's home language).
+Level: ${lv.d}. Length: ${lv.w} words. Topic: ${topic}. Text type: ${type==="Sachtext"?"Sachtext (simple non-fiction)":"Geschichte (short story)"}.
+Text rules: natural, correct German; short clear sentences; everyday vocabulary plus one or two new words whose meaning the context explains; write numbers as words; 2–4 paragraphs separated by a blank line; a fitting short title; no real people's names; age-appropriate.
+Then write 6 questions in German in the style of the Luxembourg standardized tests (ÉpStan): 4 multiple-choice questions with exactly 4 short options (one clearly correct, the others plausible, using words from the text; vary the position of the correct option) and 2 open questions answerable in one short sentence. Each question has one skill: "Finden" (find stated information), "Schließen" (infer: why, how someone feels), "Wortschatz" (meaning of a word or phrase in context, quote it), "Reihenfolge" (order of events). Use at least 2 Finden, at least 2 Schließen, 1 Wortschatz, 1 Reihenfolge.
+Reply with only JSON, no other text:
+{"title":"…","type":"${type}","text":"paragraph\\n\\nparagraph","questions":[{"kind":"mc","skill":"Finden","q":"…","options":["…","…","…","…"],"answer":2},{"kind":"open","skill":"Schließen","q":"…","answer":"model answer"}]}`;
+  try{
+    const t=validate(await callClaude(prompt,genCtl.signal));
+    if(!t)throw {code:"invalid_json"};
+    t.id="g"+Date.now();t.level={leicht:"Leicht",mittel:"Mittel",schwer:"Schwer"}[$("level").value];
+    const saved=[t,...store.get("lf_texts",[])].slice(0,12);store.set("lf_texts",saved);
+    S.texts=[...saved,...BUILTIN];
+    $("genNote").textContent="Done. Your new text is first in the list.";
+    renderPick();openText(t);
+  }catch(e){$("genNote").textContent=e&&e.code==="cancelled"?"Cancelled.":errCopy(e)}
+  finally{$("genBtn").disabled=false;$("genStop").hidden=true;genCtl=null}
+};
+$("genStop").onclick=()=>genCtl&&genCtl.abort();
+function validate(r){
+  if(!r||typeof r.text!=="string"||!Array.isArray(r.questions))return null;
+  const qs=r.questions.filter(q=>q&&typeof q.q==="string").map(q=>{
+    if(q.kind==="mc"&&Array.isArray(q.options)&&q.options.length>=2){const a=Number(q.answer);return {kind:"mc",skill:SKILL[q.skill]?q.skill:"Finden",q:q.q,options:q.options.map(String),answer:(a>=0&&a<q.options.length)?a:0}}
+    return {kind:"open",skill:SKILL[q.skill]?q.skill:"Schließen",q:q.q,answer:String(q.answer||"")};
+  });
+  if(qs.length<3)return null;
+  return {title:String(r.title||"Neuer Text"),type:r.type==="Sachtext"?"Sachtext":"Geschichte",text:r.text.trim(),questions:qs};
+}
+
+/* ---------- word matching ---------- */
+const NUM={"0":"null","1":"eins","2":"zwei","3":"drei","4":"vier","5":"fünf","6":"sechs","7":"sieben","8":"acht","9":"neun","10":"zehn","11":"elf","12":"zwölf","15":"fünfzehn","20":"zwanzig","30":"dreißig","50":"fünfzig","100":"hundert"};
+function norm(w){w=w.toLowerCase().replace(/[^\p{L}\d]/gu,"");if(NUM[w])w=NUM[w];return w.replace(/ß/g,"ss")}
+function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
+function wcost(h,t){
+  if(h===t)return 0;
+  if(h==="eins"&&/^ein/.test(t))return 0;
+  const s=1-lev(h,t)/Math.max(h.length,t.length);
+  if(s>=(t.length>=5?.7:.6))return .35;
+  return 1;
+}
+/* Align what was heard to the start of the text. Words after the last aligned one are "not read yet". */
+function align(H,T){
+  const m=H.length,n=T.length,D=[],B=[];
+  for(let i=0;i<=m;i++){D.push(new Float64Array(n+1));B.push(new Int8Array(n+1))}
+  const ins=i=>(i>=2&&H[i-1]===H[i-2])?.3:.7;
+  for(let j=1;j<=n;j++){D[0][j]=j;B[0][j]=2}
+  for(let i=1;i<=m;i++){D[i][0]=D[i-1][0]+ins(i);B[i][0]=3}
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++){
+    let best=D[i-1][j-1]+wcost(H[i-1],T[j-1]),bb=1;
+    const d=D[i][j-1]+1; if(d<best){best=d;bb=2}
+    const c=D[i-1][j]+ins(i); if(c<best){best=c;bb=3}
+    if(i>=2){const mc=wcost(H[i-2]+H[i-1],T[j-1]);if(mc<1){const v=D[i-2][j-1]+mc;if(v<best){best=v;bb=4}}}
+    D[i][j]=best;B[i][j]=bb;
+  }
+  let J=0,bv=D[m][0];for(let j=1;j<=n;j++)if(D[m][j]<=bv){bv=D[m][j];J=j}
+  const st=new Array(n).fill(null),heard=new Array(n).fill(null);
+  let i=m,j=J;
+  while(i>0||j>0){
+    const b=(i===0)?2:(j===0)?3:B[i][j];
+    if(b===1){const c=wcost(H[i-1],T[j-1]);st[j-1]=c===0?"ok":c<1?"close":"wrong";heard[j-1]=H[i-1];i--;j--}
+    else if(b===4){const w=H[i-2]+H[i-1];const c=wcost(w,T[j-1]);st[j-1]=c===0?"ok":"close";heard[j-1]=w;i-=2;j--}
+    else if(b===2){st[j-1]="skip";j--}
+    else i--;
+  }
+  return {st,heard,last:J-1};
+}
+
+/* ---------- read ---------- */
+function openText(t){S.cur=t;S.attempts=[];resetReading();show("read")}
+function resetReading(){
+  stopTimers();stopRec();
+  Object.assign(S,{auto:{},over:{},heardAt:{},running:false,elapsed:0,tFirst:0,tLast:0,lastJ:-1,finals:[],interim:""});
+  $("clock").textContent="0:00";$("startBtn").textContent="Start";$("startBtn").classList.remove("stop");
+  $("result").hidden=true;$("controls").hidden=false;$("readHint").hidden=false;$("heard").textContent="";
+  setListen(false,"bereit");
+  $("readHint").innerHTML=listening
+    ?"Press <b>Start</b> and allow the microphone. He starts with the title. The clock starts at his first word and stops by itself after the last one. Wrong marks can happen: tap a word to correct it (✓ → falsch → prüfen)."
+    :"Press <b>Start</b> when he begins and <b>Fertig</b> when he reads the last word. Tap a word once if he misreads it, twice if he corrects himself, three times to clear.";
+  $("attemptLbl").textContent=(S.attempts.length+1)+". Lesen";
+  const last=S.attempts.at(-1);if(last){const v=Math.max(30,Math.min(150,Math.round((last.wcpm+10)/5)*5));$("paceWpm").value=v;$("paceVal").textContent=v}
+  renderSheet();
+}
+function renderSheet(){
+  const sh=$("sheet");sh.innerHTML="";S.words=[];S.tIdx=[];S.tNorm=[];
+  let i=0;
+  const paras=[S.cur.title,...S.cur.text.split(/\n\s*\n/)];
+  paras.forEach((para,pi)=>{
+    const p=el("p",pi===0?"title":null);
+    for(const tok of para.trim().split(/\s+/)){
+      const sp=el("span","w",tok);sp.dataset.i=i;
+      const isWord=/\p{L}|\d/u.test(tok);S.words.push({tok,isWord,el:sp});
+      if(isWord){S.tIdx.push(i);S.tNorm.push(norm(tok))}
+      p.append(sp," ");i++;
+    }
+    sh.append(p);
+  });
+}
+const statusOf = k => S.over[k] ?? S.auto[k] ?? null;
+function paint(){
+  const curK = (listening&&S.running&&S.lastJ+1<S.tIdx.length)?S.tIdx[S.lastJ+1]:-1;
+  S.words.forEach((w,k)=>{const s=statusOf(k);w.el.className="w"+(s?" "+s:"")+(k===curK?" cur":"")+(w.el.classList.contains("pace")?" pace":"");
+    w.el.title=(s==="wrong"||s==="close")&&S.heardAt[k]?"gehört: "+S.heardAt[k]:""});
+  if(curK>=0){const r=S.words[curK].el.getBoundingClientRect();if(r.bottom>innerHeight-140)S.words[curK].el.scrollIntoView({block:"center",behavior:"smooth"})}
+}
+$("sheet").addEventListener("click",e=>{
+  const w=e.target.closest(".w");if(!w)return;
+  const k=+w.dataset.i;if(!S.words[k].isWord)return;
+  const cycle=listening&&(S.running||S.attempts.length||S.auto[k])?["ok","wrong","close"]:[null,"wrong","close"];
+  const cur=statusOf(k);const ix=cycle.indexOf(cur);S.over[k]=cycle[(ix+1)%cycle.length];
+  if(S.over[k]===null)delete S.over[k];
+  paint();if(!$("result").hidden)renderResult();
+});
+function setListen(on,txt){$("micDot").classList.toggle("on",on);$("listenTxt").textContent=txt;$("listenState").hidden=!listening}
+$("startBtn").onclick=()=>S.running?stopReading():startReading();
+function startReading(){
+  S.running=true;S.t0=performance.now();
+  $("startBtn").textContent="Fertig";$("startBtn").classList.add("stop");$("result").hidden=true;
+  tickT=setInterval(tick,250);
+  if($("paceOn").checked)startPacer();
+  try{navigator.wakeLock&&navigator.wakeLock.request("screen").then(w=>wake=w).catch(()=>{})}catch(e){}
+  if(listening)startRec();
+}
+function tick(){
+  if(!S.running)return;
+  const base=listening?(S.tFirst||0):S.t0;
+  const s=base?(performance.now()-base)/1000:0;
+  $("clock").textContent=Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
+}
+function startRec(){
+  rec=new SR();rec.lang="de-DE";rec.continuous=true;rec.interimResults=true;rec.maxAlternatives=1;
+  rec.onstart=()=>setListen(true,S.tFirst?"Ich höre zu…":"Ich höre zu… fang an!");
+  rec.onresult=e=>{
+    let interim="";
+    for(let k=e.resultIndex;k<e.results.length;k++){const r=e.results[k];if(r.isFinal)pushFinal(r[0].transcript);else interim+=r[0].transcript+" "}
+    S.interim=interim;
+    if(!S.tFirst&&(S.finals.join(" ")+interim).trim())S.tFirst=performance.now();
+    update();
+  };
+  rec.onerror=e=>{
+    if(e.error==="not-allowed"||e.error==="service-not-allowed"){stopReading(true);setListen(false,"Mikrofon blockiert");showProblem(location.protocol==="https:"
+        ?"The microphone is blocked. Tap the icon left of the address, allow the microphone, then press Start again."
+        :"Chrome blocks the microphone when the page is opened from Downloads. Open it from a web address (https://…) instead, then press Start again.")}
+    else if(e.error==="network"){stopReading(true);setListen(false,"keine Verbindung");showProblem("Speech recognition needs the internet. Check the connection and press Start again.")}
+  };
+  rec.onend=()=>{if(S.running&&rec){try{rec.start()}catch(e){}}else setListen(false,"bereit")};
+  try{rec.start()}catch(e){}
+}
+/* Chrome on Android sometimes repeats earlier text inside each new result; keep only the newest version. */
+function pushFinal(t){
+  const n=x=>x.toLowerCase().replace(/\s+/g," ").trim();
+  const prev=S.finals.at(-1);
+  if(prev&&n(t).startsWith(n(prev)))S.finals[S.finals.length-1]=t;
+  else if(prev&&n(prev).endsWith(n(t)))return;
+  else S.finals.push(t);
+}
+function showProblem(msg){const R=$("result");R.hidden=false;R.innerHTML="";R.append(el("p","err-note",msg));R.scrollIntoView({behavior:"smooth",block:"center"})}
+function stopRec(){if(rec){const r=rec;rec=null;try{r.onend=null;r.stop()}catch(e){}}clearTimeout(endT)}
+function heardWords(){return (S.finals.join(" ")+" "+S.interim).split(/\s+/).map(norm).filter(Boolean)}
+function update(){
+  const H=heardWords();
+  const a=align(H,S.tNorm);
+  S.auto={};S.heardAt={};
+  a.st.forEach((s,j)=>{if(s){const k=S.tIdx[j];S.auto[k]=s;if(a.heard[j])S.heardAt[k]=a.heard[j]}});
+  if(a.last>S.lastJ)S.tLast=performance.now();
+  S.lastJ=a.last;
+  $("heard").textContent=H.length?"Gehört: …"+(S.finals.join(" ")+" "+S.interim).trim().split(/\s+/).slice(-12).join(" "):"";
+  paint();
+  clearTimeout(endT);
+  if(S.lastJ>=S.tIdx.length-1&&S.tIdx.length)endT=setTimeout(()=>{if(S.running)stopReading()},1800);
+}
+function stopTimers(){clearInterval(tickT);clearInterval(paceT);tickT=paceT=null;S.words.forEach(w=>w.el.classList.remove("pace"));try{wake&&wake.release();wake=null}catch(e){}}
+function stopReading(silent){
+  const now=performance.now();
+  S.running=false;stopTimers();stopRec();setListen(false,"bereit");
+  $("startBtn").textContent="Start";$("startBtn").classList.remove("stop");
+  if(silent)return;
+  if(listening){
+    if(!S.tFirst){$("result").hidden=false;$("result").innerHTML='<p class="err-note">I didn\'t hear any reading. Check that the microphone is allowed and close enough, then press Start again.</p>';return}
+    S.elapsed=Math.max(1000,(S.tLast||now)-S.tFirst+400);
+    // anything not reached when stopping early is not counted
+  } else S.elapsed=now-S.t0;
+  paint();
+  const r=calc();
+  if(r.secs<5||r.words<3){$("result").hidden=false;$("result").innerHTML='<p class="err-note">That was too short to measure. Press Start and let him read at least a few sentences.</p>';return}
+  S.attempts.push(r);
+  const h=store.get("lf_hist",[]);h.push({d:Date.now(),title:S.cur.title,kind:"read",wcpm:r.wcpm,acc:r.acc});store.set("lf_hist",h.slice(-200));
+  $("controls").hidden=true;$("readHint").hidden=true;renderResult();
+  $("result").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function calc(){
+  // words counted = words up to the last one he reached (listening) or the whole text (tap mode)
+  const reach=listening?Math.max(S.lastJ,...S.tIdx.map((k,j)=>S.over[k]?j:-1))+1:S.tIdx.length;
+  const ks=S.tIdx.slice(0,reach);
+  const errs=ks.filter(k=>{const s=statusOf(k);return s==="wrong"||s==="skip"}).length;
+  const secs=S.elapsed/1000,words=ks.length;
+  return {words,errs,secs,total:S.tIdx.length,wcpm:Math.round((words-errs)/(secs/60)),acc:words?Math.round((words-errs)/words*100):0};
+}
+function listWords(kind){return S.tIdx.filter(k=>statusOf(k)===kind).map(k=>({w:clean(S.words[k].tok),h:S.heardAt[k]||""})).filter(x=>x.w)}
+function renderResult(){
+  const r=S.attempts.at(-1);if(!r)return;
+  const live=calc();Object.assign(r,{errs:live.errs,words:live.words,acc:live.acc,wcpm:Math.round((live.words-live.errs)/(r.secs/60))});
+  const R=$("result");R.hidden=false;R.innerHTML="";
+  R.append(el("h3",null,"Gelesen!"));
+  const st=el("div","stats");
+  const stat=(v,l,cls)=>{const d=el("div","stat"+(cls?" "+cls:""));d.append(el("b",null,v),el("span","small muted",l));return d};
+  st.append(stat(r.wcpm,"Wörter pro Minute","main"),stat(r.acc+" %","richtig gelesen"),stat(Math.floor(r.secs/60)+":"+String(Math.round(r.secs%60)).padStart(2,"0"),r.words+(r.words<r.total?" von "+r.total:"")+" Wörter"));
+  R.append(st);
+  if(S.attempts.length>1){
+    const a=el("div","attempts small");
+    S.attempts.forEach((x,i)=>{const d=el("div");d.textContent=`${i+1}. Lesen: ${x.wcpm} W/min · ${x.errs} Fehler `;if(i>0){const diff=x.wcpm-S.attempts[i-1].wcpm;d.append(el("span",diff>0?"up":"",diff>0?`+${diff}`:String(diff)))}a.append(d)});
+    R.append(a);
+  }
+  const wrong=listWords("wrong"),skip=listWords("skip"),close=listWords("close");
+  if(wrong.length||skip.length||close.length){
+    R.append(el("span","label","Übungswörter"+(canSpeak?" · tap to hear":"")));
+    const wc=el("div","wordchips");
+    const chip=(x,cls,sub)=>{const b=el("button","wordchip"+(cls?" "+cls:""));b.append(document.createTextNode(x.w));if(sub)b.append(el("small",null,sub));b.onclick=()=>say(x.w);wc.append(b)};
+    wrong.forEach(x=>chip(x,"",x.h?"gehört: "+x.h:"falsch"));
+    skip.forEach(x=>chip(x,"","ausgelassen"));
+    close.forEach(x=>chip(x,"close",x.h?"gehört: "+x.h:"prüfen"));
+    R.append(wc,el("p","small muted","Amber words sounded slightly different and may just be the microphone. Let him read the red words 3 times each, then read the text again. Re-reading the same text is the fastest way to build speed."));
+  } else R.append(el("p","small muted","No mistakes found. Next time, try the Tempo-Hilfe a little faster than today."));
+  const row=el("div","row");
+  const again=el("button","btn ghost","Nochmal lesen, schneller!");again.onclick=resetReading;
+  const go=el("button","btn","Zu den Fragen →");go.onclick=startQuiz;
+  row.append(again,go);R.append(row);
+}
+$("paceWpm").oninput=()=>{$("paceVal").textContent=$("paceWpm").value;if(paceT){clearInterval(paceT);startPacer(true)}};
+$("paceOn").onchange=()=>{if(S.running){if($("paceOn").checked)startPacer();else{clearInterval(paceT);paceT=null;S.words.forEach(w=>w.el.classList.remove("pace"))}}};
+let paceI=0;
+function startPacer(keep){
+  if(!keep)paceI=0;
+  const spans=S.words.map(w=>w.el);
+  const step=()=>{spans.forEach(s=>s.classList.remove("pace"));if(paceI>=spans.length){clearInterval(paceT);paceT=null;return}const s=spans[paceI++];s.classList.add("pace");if(!listening){const r=s.getBoundingClientRect();if(r.bottom>innerHeight-140||r.top<0)s.scrollIntoView({block:"center",behavior:"smooth"})}};
+  step();paceT=setInterval(step,60000/(+$("paceWpm").value));
+}
+
+/* ---------- quiz ---------- */
+let arec=null;
+function stopAnswerMic(){if(arec){const r=arec;arec=null;try{r.onend=null;r.stop()}catch(e){}}}
+function startQuiz(){S.answers=S.cur.questions.map(()=>null);S.qi=0;show("quiz");renderQ()}
+function renderQ(){
+  stopAnswerMic();
+  const qs=S.cur.questions,q=qs[S.qi],P=$("qpanel");P.innerHTML="";
+  const dots=$("dots");dots.innerHTML="";qs.forEach((_,i)=>dots.append(el("span","dot"+(i===S.qi?" now":(S.answers[i]!=null&&S.answers[i]!==""?" done":"")))));
+  const top=el("div","row spread");top.append(el("span","label",`Frage ${S.qi+1} von ${qs.length}`),el("span","skill",SKILL[q.skill]||q.skill));P.append(top);
+  P.append(el("p","qtext",q.q));
+  if(canSpeak){const b=el("button","icon-btn");b.innerHTML=SPK+"Vorlesen";b.onclick=()=>say(q.q+(q.kind==="mc"?" "+q.options.map((o,i)=>"ABCD"[i]+": "+o).join(". "):""));P.append(b)}
+  if(q.kind==="mc"){
+    const o=el("div","opts");
+    q.options.forEach((t,i)=>{const b=el("button","opt");b.setAttribute("aria-pressed",String(S.answers[S.qi]===i));b.append(el("span","ltr","ABCD"[i]||i+1),el("span",null,t));b.onclick=()=>{S.answers[S.qi]=i;renderQ()};o.append(b)});
+    P.append(o);
+  }else{
+    const ta=el("textarea","answer");ta.id="ans"+S.qi;ta.placeholder="Sag oder schreib deine Antwort…";ta.value=S.answers[S.qi]||"";ta.oninput=()=>{S.answers[S.qi]=ta.value};
+    if(listening){
+      const mb=el("button","icon-btn");mb.innerHTML=MIC+"<span>Antwort sprechen</span>";
+      mb.onclick=()=>{
+        if(arec){stopAnswerMic();mb.classList.remove("live");mb.lastChild.textContent="Antwort sprechen";return}
+        try{speechSynthesis&&speechSynthesis.cancel()}catch(e){}
+        const before=ta.value.trim();
+        arec=new SR();arec.lang="de-DE";arec.interimResults=true;arec.continuous=false;
+        arec.onresult=e=>{let t="";for(let k=0;k<e.results.length;k++)t+=e.results[k][0].transcript;ta.value=(before?before+" ":"")+t;S.answers[S.qi]=ta.value};
+        arec.onend=()=>{arec=null;mb.classList.remove("live");mb.lastChild.textContent="Antwort sprechen"};
+        arec.onerror=()=>{};
+        mb.classList.add("live");mb.lastChild.textContent="Ich höre zu… (tippen zum Stoppen)";
+        try{arec.start()}catch(e){arec=null}
+      };
+      P.append(mb);
+    }
+    P.append(ta);
+  }
+  const d=el("details","peek");d.append(el("summary",null,"Text anzeigen"),el("div","peektext",S.cur.text));P.append(d);
+  $("qPrev").disabled=S.qi===0;
+  $("qNext").textContent=S.qi===qs.length-1?"Fertig, Antworten prüfen":"Weiter";
+}
+$("qPrev").onclick=()=>{if(S.qi>0){S.qi--;renderQ()}};
+$("qNext").onclick=()=>{if(S.qi<S.cur.questions.length-1){S.qi++;renderQ()}else finishQuiz()};
+
+/* ---------- report ---------- */
+let REP=null;
+function finishQuiz(){
+  stopAnswerMic();
+  const qs=S.cur.questions;
+  REP={res:qs.map((q,i)=>{
+    if(q.kind==="mc")return {v:S.answers[i]===q.answer?"richtig":"falsch",fb:""};
+    return {v:(S.answers[i]||"").trim()?"wait":"falsch",fb:""};
+  }),kid:"",parent:"",ai:"pending",saved:false};
+  show("report");renderReport();analyze();
+}
+async function analyze(){
+  if(!getKey()){REP.ai="off";REP.res.forEach(r=>{if(r.v==="wait")r.v="judge"});renderReport();return}
+  const qs=S.cur.questions,r=S.attempts.at(-1);
+  const list=qs.map((q,i)=>{
+    const a=S.answers[i];const child=q.kind==="mc"?(a==null?"(no answer)":q.options[a]):((a||"").trim()||"(no answer)");
+    return `${i+1}. [${q.skill}, ${q.kind==="mc"?"multiple choice":"open"}] ${q.q}\nCorrect answer: ${q.kind==="mc"?q.options[q.answer]:q.answer}\nChild's answer: ${child}`;
+  }).join("\n\n");
+  const fmt=a=>a.map(x=>x.h?`${x.w} (heard "${x.h}")`:x.w).join(", ")||"none";
+  const reading=r?`Reading aloud: ${r.wcpm} words correct per minute, ${r.acc}% accuracy, ${r.words} words, attempt ${S.attempts.length}. Wrong words: ${fmt(listWords("wrong"))}. Skipped: ${fmt(listWords("skip"))}. Unclear (may be microphone noise): ${fmt(listWords("close"))}. Note: errors were detected by automatic speech recognition, which is imperfect.`:"Reading aloud: not timed.";
+  const prompt=`You are a warm, encouraging German reading teacher checking the answers of an 8-year-old in Luxembourg (cycle 3; German is often his second language). Open answers may come from speech recognition, so ignore spelling, missing punctuation and odd word splits. Judge understanding: a short answer that shows he understood is "richtig"; partly right is "teilweise"; wrong or empty is "falsch". Multiple-choice answers are right only if they match the correct answer.
+
+TEXT:
+${S.cur.title}
+${S.cur.text}
+
+QUESTIONS:
+${list}
+
+${reading}
+
+Reply with only JSON:
+{"results":[{"verdict":"richtig|teilweise|falsch","feedback":"one short warm sentence in simple German for the child; if not fully right, give the right answer from the text"}],"kid_summary":"1–2 encouraging sentences in simple German for the child","parent_report":"For the parent, in English, 4–6 sentences: how he did by skill (finding information, inferring, vocabulary, order of events); what the wrong or skipped words have in common if any (e.g. long compound words, ei/ie, sch/ch/st/sp, umlauts, word endings); and 2 concrete things to practise this week."}
+"results" must have exactly ${qs.length} entries, in question order.`;
+  try{
+    const j=await callClaude(prompt);
+    (j.results||[]).forEach((x,i)=>{const rr=REP.res[i];if(!rr||!x)return;if(qs[i].kind==="open"&&["richtig","teilweise","falsch"].includes(x.verdict))rr.v=x.verdict;rr.fb=String(x.feedback||"")});
+    REP.res.forEach(rr=>{if(rr.v==="wait")rr.v="judge"});
+    REP.kid=String(j.kid_summary||"");REP.parent=String(j.parent_report||"");REP.ai="done";
+  }catch(e){REP.ai="err";REP.err=errCopy(e);REP.res.forEach(rr=>{if(rr.v==="wait")rr.v="judge"})}
+  renderReport();
+}
+function score(){return REP.res.reduce((a,r)=>a+(r.v==="richtig"?1:r.v==="teilweise"?.5:0),0)}
+function renderReport(){
+  const qs=S.cur.questions,pending=REP.res.some(r=>r.v==="wait"||r.v==="judge");
+  const T=$("repTop");T.innerHTML="";
+  T.append(el("span","label",S.cur.title));
+  const row=el("div","row");row.append(el("span","score",`${fmtNum(score())} / ${qs.length}`),el("span","muted",pending?"Punkte (noch nicht fertig)":"Punkte"));T.append(row);
+  if(REP.kid){T.append(el("p","kidsay",REP.kid));if(canSpeak){const b=el("button","icon-btn");b.innerHTML=SPK+"Vorlesen";b.onclick=()=>say(REP.kid);T.append(b)}}
+  const L=$("repList");L.innerHTML="";
+  const map={richtig:["ok","Richtig"],teilweise:["half","Teilweise"],falsch:["no","Falsch"],wait:["wait","Wird geprüft…"],judge:["wait","You decide"]};
+  qs.forEach((q,i)=>{
+    const r=REP.res[i],d=el("div","res");
+    d.append(el("span","pill "+map[r.v][0],map[r.v][1]),el("p","q",`${i+1}. ${q.q}`));
+    const a=S.answers[i];d.append(el("p","a","Antwort: "+(q.kind==="mc"?(a==null?"—":q.options[a]):((a||"").trim()||"—"))));
+    if(r.v!=="richtig"&&r.v!=="wait")d.append(el("p","fb","Richtig wäre: "+(q.kind==="mc"?q.options[q.answer]:q.answer)));
+    if(r.fb)d.append(el("p","fb",r.fb));
+    if(r.v==="judge"){const j=el("div","judge");for(const [v,l] of [["richtig","Richtig"],["teilweise","Teilweise"],["falsch","Falsch"]]){const b=el("button",null,l);b.onclick=()=>{r.v=v;renderReport()};j.append(b)}d.append(j)}
+    L.append(d);
+  });
+  const P=$("repParent");P.innerHTML="";P.append(el("h3",null,"For you"));
+  const rr=S.attempts.at(-1);
+  if(rr)P.append(el("p",null,`Reading: ${rr.wcpm} words per minute with ${rr.acc}% accuracy (${S.attempts.length} reading${S.attempts.length>1?"s":""} of this text).`));
+  if(REP.ai==="pending")P.insertAdjacentHTML("beforeend",'<p class="muted"><span class="spin"></span>Claude is checking his answers…</p>');
+  else if(REP.ai==="done")REP.parent.split(/\n+/).filter(Boolean).forEach(t=>P.append(el("p",null,t)));
+  else if(REP.ai==="err")P.append(el("p","err-note",REP.err+" Mark the open answers yourself using the model answers above."));
+  else P.append(el("p","muted","Add a Claude API key in Settings to get answer checking and a written report. For now, mark the open answers yourself using the model answers above."));
+  if(!pending&&!REP.saved){REP.saved=true;const h=store.get("lf_hist",[]);h.push({d:Date.now(),title:S.cur.title,kind:"quiz",score:score(),of:qs.length});store.set("lf_hist",h.slice(-200))}
+}
+$("againBtn").onclick=()=>{resetReading();show("read")};
+
+/* ---------- progress ---------- */
+function renderProgress(){
+  const P=$("progress");P.innerHTML="";
+  const h=store.get("lf_hist",[]),reads=h.filter(x=>x.kind==="read").slice(-15);
+  if(!h.length){P.append(el("p","muted","No readings yet. Pick a text and press Start. His words per minute and quiz scores will appear here after each session."));return}
+  if(reads.length){
+    P.append(el("span","label","Wörter pro Minute, last "+reads.length+" readings"));
+    const W=600,H=200,pl=36,pr=12,pt=14,pb=26,max=Math.max(100,Math.ceil(Math.max(...reads.map(r=>r.wcpm))/20)*20);
+    const x=i=>reads.length===1?pl+(W-pl-pr)/2:pl+i*(W-pl-pr)/(reads.length-1),y=v=>pt+(H-pt-pb)*(1-v/max);
+    let g="";for(let v=0;v<=max;v+=20)g+=`<line x1="${pl}" x2="${W-pr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${pl-6}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="var(--muted)">${v}</text>`;
+    const pts=reads.map((r,i)=>`${x(i)},${y(r.wcpm)}`).join(" ");
+    const area=`${x(0)},${y(0)} ${pts} ${x(reads.length-1)},${y(0)}`;
+    const last=reads.at(-1);
+    const c=el("div","chart");
+    c.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Words per minute over the last readings">${g}<polygon points="${area}" fill="var(--blue-soft)"/><polyline points="${pts}" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linejoin="round"/>${reads.map((r,i)=>`<circle cx="${x(i)}" cy="${y(r.wcpm)}" r="${i===reads.length-1?5:3}" fill="var(--blue)"/>`).join("")}<text x="${Math.min(x(reads.length-1),W-pr-4)}" y="${y(last.wcpm)-10}" text-anchor="end" font-size="13" font-weight="700" fill="var(--ink)">${last.wcpm}</text><text x="${pl}" y="${H-6}" font-size="11" fill="var(--muted)">older</text><text x="${W-pr}" y="${H-6}" text-anchor="end" font-size="11" fill="var(--muted)">latest</text></svg>`;
+    P.append(c);
+  }
+  const list=el("div","hist");
+  h.slice(-6).reverse().forEach(x=>{const d=el("div");const dt=new Date(x.d).toLocaleDateString("de-LU",{day:"numeric",month:"short"});d.append(el("span",null,`${dt} · ${x.title}`),el("span",null,x.kind==="read"?`${x.wcpm} W/min · ${x.acc} %`:`Fragen ${fmtNum(x.score)}/${x.of}`));list.append(d)});
+  P.append(list);
+}
+
+renderTopics();updateGenNote();renderPick();
+</script>
+</body>
+</html>
