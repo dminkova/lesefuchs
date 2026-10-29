@@ -100,6 +100,16 @@ a{color:var(--blue)}
 .wordchip{font-family:var(--read);font-size:1.1rem;border:0;border-radius:8px;padding:6px 12px;background:var(--red-soft);color:var(--red);text-align:left}
 .wordchip small{display:block;font-family:var(--ui);font-size:.72rem;opacity:.85}
 .wordchip.close{background:var(--amber-soft);color:var(--amber)}
+.practice{display:flex;flex-direction:column;gap:10px}
+.prow{border:1px solid var(--line);border-left:4px solid var(--red);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;background:var(--paper)}
+.prow.done{border-left-color:var(--green)}
+.ptop{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.pword{font-family:var(--read);font-size:1.6rem;font-weight:700}
+.psyl{font-family:var(--read);font-size:1.15rem;color:var(--blue);letter-spacing:.02em}
+.pheard{font-size:.85rem;color:var(--red)}
+.ptip{font-size:.85rem;color:var(--muted)}
+.pfb{font-family:var(--read);font-size:1.05rem;font-weight:700}
+.pfb.ok{color:var(--green)} .pfb.half{color:var(--amber)} .pfb.no{color:var(--red)}
 .dots{display:flex;gap:6px}
 .dot{width:10px;height:10px;border-radius:50%;background:var(--line)}
 .dot.done{background:var(--blue)} .dot.now{box-shadow:0 0 0 3px var(--blue-soft);background:var(--blue)}
@@ -348,7 +358,7 @@ const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 const canSpeak = "speechSynthesis" in window;
 const SPK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
 const MIC = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
-function say(t){try{if(!canSpeak)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="de-DE";u.rate=.9;const v=speechSynthesis.getVoices().find(v=>/^de/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+function say(t,rate=.9){try{if(!canSpeak)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="de-DE";u.rate=rate;const v=speechSynthesis.getVoices().find(v=>/^de/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
 const fmtNum = n => String(n).replace(".",",");
 const clean = w => w.replace(/^[^\p{L}\d]+|[^\p{L}\d]+$/gu,"");
 const el = (tag,cls,txt) => {const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e};
@@ -638,14 +648,14 @@ function renderResult(){
     R.append(a);
   }
   const wrong=listWords("wrong"),skip=listWords("skip"),close=listWords("close");
-  if(wrong.length||skip.length||close.length){
-    R.append(el("span","label","Übungswörter"+(canSpeak?" · tap to hear":"")));
-    const wc=el("div","wordchips");
-    const chip=(x,cls,sub)=>{const b=el("button","wordchip"+(cls?" "+cls:""));b.append(document.createTextNode(x.w));if(sub)b.append(el("small",null,sub));b.onclick=()=>say(x.w);wc.append(b)};
-    wrong.forEach(x=>chip(x,"",x.h?"gehört: "+x.h:"falsch"));
-    skip.forEach(x=>chip(x,"","ausgelassen"));
-    close.forEach(x=>chip(x,"close",x.h?"gehört: "+x.h:"prüfen"));
-    R.append(wc,el("p","small muted","Amber words sounded slightly different and may just be the microphone. Let him read the red words 3 times each, then read the text again. Re-reading the same text is the fastest way to build speed."));
+  const items=[...wrong.map(x=>({...x,kind:"wrong"})),...skip.map(x=>({...x,kind:"skip"})),...close.map(x=>({...x,kind:"close"}))]
+    .filter((x,i,a)=>a.findIndex(y=>y.w.toLowerCase()===x.w.toLowerCase())===i);
+  if(items.length){
+    R.append(el("span","label","Üben: anhören, dann nachsprechen"));
+    const box=el("div","practice");
+    items.forEach(x=>box.append(practiceRow(x)));
+    R.append(box,el("p","small muted","Amber words sounded slightly different and may just be the microphone. Practise each word until it turns green, then read the whole text again. Re-reading the same text is the fastest way to build speed."));
+    fetchSyllables(items.map(x=>x.w));
   } else R.append(el("p","small muted","No mistakes found. Next time, try the Tempo-Hilfe a little faster than today."));
   const row=el("div","row");
   const again=el("button","btn ghost","Nochmal lesen, schneller!");again.onclick=resetReading;
@@ -660,6 +670,91 @@ function startPacer(keep){
   const spans=S.words.map(w=>w.el);
   const step=()=>{spans.forEach(s=>s.classList.remove("pace"));if(paceI>=spans.length){clearInterval(paceT);paceT=null;return}const s=spans[paceI++];s.classList.add("pace");if(!listening){const r=s.getBoundingClientRect();if(r.bottom>innerHeight-140||r.top<0)s.scrollIntoView({block:"center",behavior:"smooth"})}};
   step();paceT=setInterval(step,60000/(+$("paceWpm").value));
+}
+
+/* ---------- pronunciation practice ---------- */
+S.syl=store.get("lf_syl",{});
+function tipsFor(w){
+  const l=w.toLowerCase(),t=[],noSch=l.replace(/sch/g,"");
+  if(/sch/.test(l))t.push("sch = “sh”");
+  if(/^sp/.test(l))t.push("sp at the start = “shp”");
+  if(/^st/.test(l))t.push("st at the start = “sht”");
+  if(/ei/.test(l))t.push("ei = “eye”");
+  if(/ie/.test(l))t.push("ie = long “ee”");
+  if(/eu|äu/.test(l))t.push("eu/äu = “oy”");
+  if(/[aou]ch/.test(noSch))t.push("ch after a/o/u = throaty, from the back");
+  else if(/ch/.test(noSch))t.push("ch = soft hiss, like a whispered “h”");
+  if(/ä/.test(l))t.push("ä ≈ “e” in “bed”");
+  if(/ö/.test(l))t.push("ö: say “e” with rounded lips");
+  if(/ü/.test(l))t.push("ü: say “ee” with rounded lips");
+  if(/z/.test(l))t.push("z = “ts”");
+  if(/w/.test(l))t.push("w = “v”");
+  if(/^v/.test(l))t.push("v usually = “f”");
+  if(/ß/.test(l))t.push("ß = “ss”");
+  if(/er$/.test(l)&&l.length>3)t.push("-er at the end ≈ “a”");
+  return t.slice(0,3);
+}
+let prec=null;
+function practiceRow(x){
+  const key=x.w.toLowerCase(),info=S.syl[key];
+  const row=el("div","prow");
+  const top=el("div","ptop");
+  top.append(el("span","pword",x.w));
+  if(info&&info.s&&info.s.includes("-"))top.append(el("span","psyl",info.s.replace(/-/g," · ")));
+  row.append(top);
+  const sub=[x.kind==="skip"?"ausgelassen":(x.h?"Er sagte: „"+x.h+"“":"")].filter(Boolean);
+  if(sub.length)row.append(el("p","pheard",sub[0]));
+  const tips=info&&info.tip?[info.tip]:tipsFor(x.w);
+  if(tips.length)row.append(el("p","ptip",tips.join(" · ")));
+  const btns=el("div","row");
+  const fb=el("span","pfb");
+  if(canSpeak){
+    const b1=el("button","icon-btn");b1.innerHTML=SPK+"Anhören";b1.onclick=()=>say(x.w,.85);
+    const b2=el("button","icon-btn");b2.innerHTML=SPK+"Langsam";b2.onclick=()=>say(info&&info.s&&info.s.includes("-")?info.s.replace(/-/g," … "):x.w,.5);
+    btns.append(b1,b2);
+  }
+  if(listening){
+    const b3=el("button","icon-btn");b3.innerHTML=MIC+"<span>Nachsprechen</span>";
+    b3.onclick=()=>{
+      if(prec){try{prec.stop()}catch(e){}return}
+      try{speechSynthesis&&speechSynthesis.cancel()}catch(e){}
+      prec=new SR();prec.lang="de-DE";prec.interimResults=false;prec.continuous=false;prec.maxAlternatives=3;
+      let got=false;
+      b3.classList.add("live");b3.lastChild.textContent="Sag das Wort…";fb.textContent="";fb.className="pfb";
+      prec.onresult=e=>{
+        got=true;
+        const alts=[...e.results[0]].map(a=>a.transcript);
+        const target=norm(x.w);
+        let best=9;
+        for(const t of alts){const H=t.split(/\s+/).map(norm).filter(Boolean);best=Math.min(best,wcost(H.join(""),target),...H.map(h=>wcost(h,target)))}
+        if(best===0){fb.textContent="Super! ✓";fb.className="pfb ok";row.classList.add("done")}
+        else if(best<1){fb.textContent="Fast! Hör noch einmal genau hin.";fb.className="pfb half"}
+        else{fb.textContent="Gehört: „"+alts[0]+"“. Nochmal!";fb.className="pfb no"}
+      };
+      prec.onerror=()=>{};
+      prec.onend=()=>{prec=null;b3.classList.remove("live");b3.lastChild.textContent="Nachsprechen";if(!got&&!fb.textContent){fb.textContent="Nichts gehört. Nochmal!";fb.className="pfb no"}};
+      try{prec.start()}catch(e){prec=null}
+    };
+    btns.append(b3);
+  }
+  btns.append(fb);row.append(btns);
+  return row;
+}
+let sylBusy=false;
+async function fetchSyllables(words){
+  const need=[...new Set(words.map(w=>w.toLowerCase()))].filter(w=>!S.syl[w]);
+  if(!need.length||!getKey()||sylBusy)return;
+  sylBusy=true;
+  try{
+    const j=await callClaude(`For each German word below, give its syllables separated by hyphens, the way German primary schools teach Silbentrennung (e.g. "Win-ter-schlaf", "Schne-cken"), and one short pronunciation tip in English for a parent who doesn't speak German (focus on the sound that is hardest for a child; max 15 words).
+Words: ${need.join(", ")}
+Reply with only JSON: {"words":[{"word":"…","syllables":"…","tip":"…"}]}`,undefined,1500);
+    for(const x of (j.words||[])){if(x&&x.word)S.syl[String(x.word).toLowerCase()]={s:String(x.syllables||""),tip:String(x.tip||"")}}
+    for(const w of need)if(!S.syl[w])S.syl[w]={s:"",tip:""};
+    store.set("lf_syl",S.syl);
+    if(!$("result").hidden)renderResult();
+  }catch(e){for(const w of need)if(!S.syl[w])S.syl[w]={s:"",tip:""}}
+  finally{sylBusy=false}
 }
 
 /* ---------- quiz ---------- */
