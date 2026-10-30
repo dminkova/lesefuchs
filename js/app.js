@@ -272,13 +272,51 @@ function paint() {
     if (w.el.classList.contains("pace")) cls += " pace";
     w.el.className = cls;
   }
+  paintSayButtons();
   if (curJ >= 0 && curJ < R.tIdx.length) {
     const e = R.words[R.tIdx[curJ]].el, r = e.getBoundingClientRect();
     if (r.bottom > innerHeight - 150) e.scrollIntoView({ block: "center", behavior: "smooth" });
   }
 }
+/* after reading: a speaker button next to every red or amber word.
+   1st tap = the word at normal speed, 2nd tap within 4 s = slowly, syllable by syllable */
+function paintSayButtons() {
+  const sh = $("sheet");
+  sh.querySelectorAll(".sayw").forEach(b => b.remove());
+  if (!R.res || R.running || !canSpeak) return;
+  for (const w of R.words) {
+    if (!w.isWord || w.j > R.res.last) continue;
+    const it = R.res.items[w.j], s = R.over[w.j] || (it ? it.s : "unsure");
+    if (s !== "wrong" && s !== "unsure") continue;
+    const word = clean(w.tok); if (!word) continue;
+    const b = el("button", "sayw");
+    b.type = "button"; b.innerHTML = ICON.spk; b.dataset.i = w.el.dataset.i;
+    b.setAttribute("aria-label", "Wort anhören: " + word); b.title = "Anhören";
+    w.el.after(b);
+  }
+}
+let sayTap = { i: -1, t: 0 };
+function sayWordAt(i, btn) {
+  const w = R.words[i]; if (!w) return;
+  const word = clean(w.tok), now = Date.now();
+  const slow = sayTap.i === i && now - sayTap.t < 4000;
+  sayTap = { i: slow ? -1 : i, t: now };
+  btn.classList.add("on");
+  const off = () => btn.classList.remove("on");
+  if (slow) {
+    // highlight the syllables one after another while the word is spoken slowly
+    const syl = SY.syllables(word);
+    const shown = w.el.querySelectorAll(".s0,.s1");
+    if (shown.length > 1) { let k = 0; const step = () => { shown.forEach(x => x.classList.remove("hl")); if (k < shown.length) { shown[k++].classList.add("hl"); setTimeout(step, 550); } }; step(); }
+    say(syl.length > 1 ? syl.join(" … ") : word, 0.55, off);
+  } else say(word, 0.85, off);
+  setTimeout(off, 4000);
+}
+
 /* parent correction: tap a word after reading (✓ → wahrscheinlich falsch → prüfen) */
 $("sheet").addEventListener("click", e => {
+  const sb = e.target.closest(".sayw");
+  if (sb) { e.stopPropagation(); sayWordAt(+sb.dataset.i, sb); return; }
   const span = e.target.closest(".w"); if (!span || R.running || R.stopping || !R.res || R.committed) return;
   const w = R.words[+span.dataset.i]; if (!w || !w.isWord || w.j > R.res.last) return;
   const cur = R.over[w.j] || (R.res.items[w.j] ? R.res.items[w.j].s : "unsure");
