@@ -1,4 +1,4 @@
-/* Built-in reading texts. level: 1 = 40–60 words … 4 = 120–150 words. */
+/* Built-in reading texts. level: 1 = 40–60 words … 4 = 120–150 words. format "doc" = recipe, instructions, poster, timetable (light markup: ## heading, - list, 1. step, a | b table row). */
 (function (root, data) {
   if (typeof module === "object" && module.exports) module.exports = data;
   else root.LF_TEXTS = data;
@@ -204,6 +204,122 @@
     "skill": "Schließen",
     "q": "Warum freuen sich Gärtner über Marienkäfer?",
     "answer": "Weil sie die Blattläuse fressen, die die Pflanzen kaputt machen."
+   }
+  ]
+ },
+ {
+  "id": "shake",
+  "title": "Bananen-Milchshake",
+  "type": "Rezept",
+  "level": 1,
+  "format": "doc",
+  "text": "## Zutaten für 2 Gläser\n- 1 Banane\n- 2 Gläser kalte Milch\n- 1 Löffel Honig\n\n## So geht es\n1. Schäle die Banane.\n2. Schneide sie in kleine Stücke.\n3. Gib die Banane, die Milch und den Honig in einen Mixer.\n4. Mixe alles eine Minute lang.\n5. Gieße den Shake in die Gläser.\n\nAchtung: Ein Erwachsener hilft dir beim Mixer!",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie viele Bananen brauchst du?",
+    "options": [
+     "Eine",
+     "Zwei",
+     "Drei",
+     "Vier"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was machst du, nachdem du die Banane geschält hast?",
+    "options": [
+     "Du mixt alles.",
+     "Du schneidest sie in kleine Stücke.",
+     "Du trinkst den Shake.",
+     "Du holst die Milch."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie lange mixt du alles?",
+    "options": [
+     "Eine Sekunde",
+     "Eine Minute",
+     "Eine Stunde",
+     "Zehn Minuten"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum soll ein Erwachsener beim Mixer helfen?",
+    "answer": "Weil der Mixer gefährlich sein kann. Er hat scharfe Messer."
+   }
+  ]
+ },
+ {
+  "id": "einladung",
+  "title": "Einladung zur Party",
+  "type": "Einladung",
+  "level": 1,
+  "format": "doc",
+  "text": "Liebe Lea,\nich werde acht Jahre alt und feiere eine Party! Kommst du?\n\n## Wann?\nSamstag, 14. November, von 15 bis 18 Uhr\n\n## Wo?\nBei mir zu Hause, Rosenstraße 5, Esch\n\n## Was machen wir?\n- Wir spielen Schatzsuche im Garten.\n- Es gibt Kuchen und Saft.\n\nBring bitte warme Schuhe mit. Wir sind viel draußen! Ruf bitte bis Mittwoch an.\n\nDein Paul",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer hat Geburtstag?",
+    "options": [
+     "Lea",
+     "Paul",
+     "Rosa",
+     "Esch"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann beginnt die Party?",
+    "options": [
+     "Um 14 Uhr",
+     "Um 15 Uhr",
+     "Um 18 Uhr",
+     "Am Mittwoch"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was macht man bei einer Schatzsuche?",
+    "options": [
+     "Man sucht etwas Verstecktes.",
+     "Man backt einen Kuchen.",
+     "Man schläft im Garten.",
+     "Man malt ein Bild."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum soll Lea warme Schuhe mitbringen?",
+    "options": [
+     "Weil sie tanzen.",
+     "Weil sie viel draußen sind.",
+     "Weil es ein Geschenk ist.",
+     "Weil Paul das so mag."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Bis wann soll Lea anrufen?",
+    "answer": "Bis Mittwoch."
    }
   ]
  },
@@ -444,6 +560,134 @@
     "skill": "Schließen",
     "q": "Warum nehmen die Astronauten Luft zum Atmen mit?",
     "answer": "Weil es im Weltall keine Luft zum Atmen gibt."
+   }
+  ]
+ },
+ {
+  "id": "kresse",
+  "title": "Kresse wächst auf Watte",
+  "type": "Anleitung",
+  "level": 2,
+  "format": "doc",
+  "text": "## Das brauchst du\n- einen kleinen Teller\n- Watte\n- Wasser\n- Kressesamen\n\n## So geht es\n1. Lege die Watte auf den Teller.\n2. Mach die Watte mit Wasser nass. Sie soll feucht sein, aber nicht schwimmen.\n3. Streue die Kressesamen auf die Watte.\n4. Stell den Teller an einen hellen Platz, zum Beispiel auf die Fensterbank.\n5. Gieß jeden Tag ein bisschen Wasser dazu.\n\nSchon nach zwei Tagen siehst du kleine grüne Spitzen. Nach etwa einer Woche kannst du die Kresse abschneiden und auf ein Butterbrot legen. Guten Appetit!",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Worauf legst du die Watte?",
+    "options": [
+     "Auf einen Teller",
+     "In einen Topf",
+     "Auf den Boden",
+     "In die Erde"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Die Watte soll „feucht“ sein. Was bedeutet das?",
+    "options": [
+     "Ganz trocken",
+     "Ein bisschen nass",
+     "Sehr heiß",
+     "Ganz voll mit Wasser"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was machst du, nachdem du die Watte nass gemacht hast?",
+    "options": [
+     "Du streust die Samen auf die Watte.",
+     "Du schneidest die Kresse ab.",
+     "Du legst die Watte auf den Teller.",
+     "Du isst ein Butterbrot."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum stellst du den Teller auf die Fensterbank?",
+    "answer": "Weil es dort hell ist. Die Kresse braucht Licht zum Wachsen."
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann kannst du die Kresse essen?",
+    "options": [
+     "Nach zwei Stunden",
+     "Nach zwei Tagen",
+     "Nach etwa einer Woche",
+     "Nach einem Jahr"
+    ],
+    "answer": 2
+   }
+  ]
+ },
+ {
+  "id": "flohmarkt",
+  "title": "Flohmarkt in der Schule",
+  "type": "Plakat",
+  "level": 2,
+  "format": "doc",
+  "text": "Hast du Spielzeug, Bücher oder Kleider, die du nicht mehr brauchst? Dann verkaufe sie auf unserem Kinderflohmarkt!\n\n## Wann?\nSonntag, 22. November, von 10 bis 14 Uhr\n\n## Wo?\nIm Schulhof. Bei Regen in der Turnhalle.\n\n## Wichtig\n- Nur Kinder dürfen verkaufen.\n- Ein Tisch kostet 2 Euro.\n- Melde dich bis Freitag bei Frau Weber im Sekretariat an.\n\nMit dem Geld kaufen wir neue Bälle für die Pause.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo ist der Flohmarkt, wenn es regnet?",
+    "options": [
+     "Im Schulhof",
+     "In der Turnhalle",
+     "Im Park",
+     "Im Sekretariat"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie viel kostet ein Tisch?",
+    "options": [
+     "Nichts",
+     "Einen Euro",
+     "Zwei Euro",
+     "Zehn Euro"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was macht man auf einem Flohmarkt?",
+    "options": [
+     "Man fängt Flöhe.",
+     "Man verkauft und kauft gebrauchte Sachen.",
+     "Man spielt Fußball.",
+     "Man lernt Mathe."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Toms Papa möchte auch alte Bücher verkaufen. Darf er das?",
+    "options": [
+     "Ja, wenn er zwei Euro bezahlt.",
+     "Nein, nur Kinder dürfen verkaufen.",
+     "Ja, aber nur im Schulhof.",
+     "Ja, wenn er sich bis Freitag anmeldet."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Bei wem meldest du dich an?",
+    "answer": "Bei Frau Weber im Sekretariat."
    }
   ]
  },
@@ -720,6 +964,86 @@
     "skill": "Schließen",
     "q": "Warum ruft Ben: „Ich habe es gewusst!“?",
     "answer": "Weil er geglaubt hat, dass der Kleeschen kommt, und jetzt liegen wirklich Geschenke in den Schuhen."
+   }
+  ]
+ },
+ {
+  "id": "busplan",
+  "title": "Mit dem Bus ins Schwimmbad",
+  "type": "Fahrplan",
+  "level": 3,
+  "format": "doc",
+  "modes": [
+   "woerter",
+   "verstehen"
+  ],
+  "text": "Mia und ihr Bruder Jan wollen am Mittwochnachmittag ins Schwimmbad. Sie wohnen in der Nähe der Haltestelle „Kirche“. Das Schwimmbad öffnet um 14 Uhr. Eine Fahrkarte brauchen sie nicht, denn in Luxemburg ist der Bus gratis.\n\n## Buslinie 7: Kirche → Schwimmbad\nHaltestelle | Bus 1 | Bus 2 | Bus 3\nKirche | 13:20 | 13:50 | 14:20\nRathaus | 13:24 | 13:54 | 14:24\nBahnhof | 13:30 | 14:00 | 14:30\nSchwimmbad | 13:38 | 14:08 | 14:38\n\nAchtung: Am Sonntag fährt kein Bus.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann fährt der erste Bus an der Haltestelle „Kirche“ ab?",
+    "options": [
+     "13:20",
+     "13:24",
+     "13:50",
+     "14:20"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Welche Haltestelle kommt nach dem Rathaus?",
+    "options": [
+     "Kirche",
+     "Bahnhof",
+     "Schwimmbad",
+     "Schule"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Mia und Jan verpassen den Bus um 13:50 an der Kirche. Wann kommen sie mit dem nächsten Bus am Schwimmbad an?",
+    "options": [
+     "13:38",
+     "14:08",
+     "14:20",
+     "14:38"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Wie lange fährt der Bus von der Kirche bis zum Schwimmbad?",
+    "options": [
+     "8 Minuten",
+     "18 Minuten",
+     "30 Minuten",
+     "Eine Stunde"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Warum brauchen Mia und Jan keine Fahrkarte?",
+    "answer": "Weil der Bus in Luxemburg gratis ist."
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Können Mia und Jan am Sonntag mit diesem Bus fahren?",
+    "options": [
+     "Ja, um 13:20.",
+     "Nein, am Sonntag fährt kein Bus.",
+     "Ja, aber nur mit Bus 3.",
+     "Ja, jeden Tag."
+    ],
+    "answer": 1
    }
   ]
  },
