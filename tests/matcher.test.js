@@ -17,7 +17,11 @@ test("normalizes umlauts, ß, punctuation and numbers", () => {
   assert.equal(M.norm("Kälter."), "kälter");
   assert.equal(M.norm("„Draußen“"), "draussen");
   assert.equal(M.norm("20"), "zwanzig");
-  assert.equal(M.norm("112"), "einseinszwei");
+  assert.equal(M.norm("112"), "hundertzwölf");
+  assert.equal(M.norm("21"), "einundzwanzig");
+  assert.equal(M.norm("200"), "zweihundert");
+  assert.equal(M.norm("13:20"), "dreizehnuhrzwanzig");
+  assert.equal(M.norm("15"), "fünfzehn");
   assert.equal(M.norm("eins-eins-zwei"), "einseinszwei");
 });
 
@@ -222,4 +226,24 @@ test("a long realistic slow reading: no false 'wrong' marks", () => {
 test("syllable pieces that look like interjections (Oh-ren) are kept", () => {
   const { s } = run("Er hat lange Ohren", sess("er hat lan ge Oh ren"));
   assert.deepEqual(s, ["ok", "ok", "ok", "ok"]);
+});
+
+test("'1 Banane' read as 'eine Banane' is correct", () => {
+  const { s } = run("1 Banane und 2 Gläser Milch", sess("eine Banane und zwei Gläser Milch"));
+  assert.deepEqual(s, ["ok", "ok", "ok", "ok", "ok", "ok"]);
+});
+
+test("clock times match whether heard as digits or words", () => {
+  assert.deepEqual(run("um 13:20 Uhr", sess("um 13:20 Uhr")).s, ["ok", "ok", "ok"]);
+  assert.deepEqual(run("Abfahrt 13:20", sess("Abfahrt dreizehn Uhr zwanzig")).s, ["ok", "ok"]);
+});
+
+test("a date read as an ordinal is correct (14. -> vierzehnten)", () => {
+  const { s } = run("Samstag, 14. November", sess("Samstag vierzehnten November"));
+  assert.deepEqual(s, ["ok", "ok", "ok"]);
+});
+
+test("a number written as digits matches the spoken number word", () => {
+  assert.deepEqual(run("Ein Tisch kostet 2 Euro", sess("ein Tisch kostet zwei Euro")).s, ["ok", "ok", "ok", "ok", "ok"]);
+  assert.deepEqual(run("bis 18 Uhr", sess("bis achtzehn Uhr")).s, ["ok", "ok", "ok"]);
 });

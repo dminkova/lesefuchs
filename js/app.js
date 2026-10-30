@@ -53,7 +53,7 @@ function allTexts() {
   const gen = store.get("lf_texts", []).map(t => Object.assign({}, t, { level: typeof t.level === "number" ? t.level : (LV_OLD[t.level] || 3), generated: true }));
   return [...gen, ...window.LF_TEXTS];
 }
-const countWords = t => t.split(/\s+/).filter(w => /\p{L}|\d/u.test(w)).length;
+const countWords = t => t.replace(/^\d+\.\s/gm, "").split(/\s+/).filter(w => /\p{L}|\d/u.test(w)).length;
 
 /* ---------------- speech ---------------- */
 function germanVoice() { try { return speechSynthesis.getVoices().find(v => /^de/i.test(v.lang)); } catch (e) { return null; } }
@@ -137,7 +137,8 @@ function renderHome() {
   const nu = $("nextUp"); nu.innerHTML = "";
   if (next) {
     nu.hidden = false;
-    nu.append(el("span", "label", "Heute üben"), el("p", "hint", "„" + next.title + "“: zuerst genau lesen, dann schwere Wörter üben, dann Fragen."));
+    const steps = next.modes && !next.modes.includes("genau") ? "zuerst schwere Wörter üben, dann lesen und Fragen beantworten." : "zuerst genau lesen, dann schwere Wörter üben, dann Fragen.";
+    nu.append(el("span", "label", "Heute üben"), el("p", "hint", "„" + next.title + "“: " + steps));
     const b = el("button", "btn", "Los geht's"); b.onclick = () => openMenu(next); nu.append(b);
   } else nu.hidden = true;
   renderProgress();
@@ -148,6 +149,10 @@ function openMenu(t) {
   CUR = t;
   $("menuTitle").textContent = t.title;
   $("menuMeta").textContent = t.type + " · " + countWords(t.title + " " + t.text) + " Wörter · Stufe " + t.level;
+  // recipes, posters and timetables are not read as a flowing passage; a timetable is not read aloud at all
+  const modes = t.modes || (t.format === "doc" ? ["genau", "woerter", "verstehen"] : ["genau", "woerter", "fluessig", "verstehen"]);
+  let n = 0;
+  document.querySelectorAll(".mode").forEach(b => { const on = modes.includes(b.dataset.mode); b.hidden = !on; if (on) b.querySelector(".step").textContent = String(++n); });
   show("menu");
 }
 document.querySelectorAll(".mode").forEach(b => b.addEventListener("click", () => {
@@ -200,23 +205,50 @@ function setupAttempt() {
   if (last && last.wpm) { const v = Math.max(10, Math.min(80, Math.round(last.wpm + 2))); $("paceWpm").value = v; $("paceVal").textContent = v; }
   renderSheet();
 }
+/**
+ * Render a text. Stories are plain paragraphs. Recipes, posters, timetables use light markup:
+ * "## " subheading, "- " list item, "1. " numbered step, "a | b | c" table row (first row = header).
+ */
+function buildDoc(root, title, text, tokenFn) {
+  const addTokens = (parent, str) => { for (const tok of str.trim().split(/\s+/)) if (tok) parent.append(tokenFn(tok), " "); };
+  if (title) { const p = el("p", "title"); addTokens(p, title); root.append(p); }
+  for (const block of text.split(/\n\s*\n/)) {
+    const lines = block.split("\n").map(x => x.trim()).filter(Boolean);
+    if (!lines.length) continue;
+    const marked = l => /^## |^- |^\d+\.\s|\s\|\s/.test(l);
+    if (!lines.some(marked)) { const p = el("p"); addTokens(p, lines.join(" ")); root.append(p); continue; }
+    const box = el("div", "blk"); let table = null;
+    for (const line of lines) {
+      if (/\s\|\s/.test(line)) {
+        if (!table) { const wrap = el("div", "tbl"); table = el("table"); wrap.append(table); box.append(wrap); }
+        const tr = el("tr"), head = !table.rows.length;
+        line.split(/\s*\|\s*/).forEach(c => { const td = el(head ? "th" : "td"); addTokens(td, c); tr.append(td); });
+        table.append(tr); continue;
+      }
+      table = null;
+      let m, d;
+      if (line.startsWith("## ")) { d = el("div", "sub"); addTokens(d, line.slice(3)); }
+      else if (line.startsWith("- ")) { d = el("div", "li"); addTokens(d, line.slice(2)); }
+      else if ((m = line.match(/^(\d+)\.\s+(.*)$/))) { d = el("div", "stp"); d.append(el("span", "num", m[1] + ".")); addTokens(d, m[2]); }
+      else { d = el("div"); addTokens(d, line); }
+      box.append(d);
+    }
+    root.append(box);
+  }
+}
 function renderSheet() {
   const sh = $("sheet"); sh.innerHTML = ""; R.words = []; R.tIdx = []; R.tNorm = [];
   const syl = $("sylOn").checked;
   let i = 0;
-  const paras = (R.passage.title ? [R.passage.title] : []).concat(R.passage.text.split(/\n\s*\n/));
-  paras.forEach((para, pi) => {
-    const p = el("p", pi === 0 && R.passage.title ? "title" : null);
-    for (const tok of para.trim().split(/\s+/)) {
-      const sp = el("span", "w"); sp.dataset.i = i;
-      if (syl && /\p{L}/u.test(tok)) SY.syllables(tok).forEach((s, k) => sp.append(el("span", "s" + (k % 2), s)));
-      else sp.textContent = tok;
-      const isWord = /\p{L}|\d/u.test(tok);
-      R.words.push({ tok, isWord, el: sp, j: isWord ? R.tIdx.length : -1 });
-      if (isWord) { R.tIdx.push(i); R.tNorm.push(M.norm(tok)); }
-      p.append(sp, " "); i++;
-    }
-    sh.append(p);
+  buildDoc(sh, R.passage.title, R.passage.text, tok => {
+    const sp = el("span", "w"); sp.dataset.i = i;
+    if (syl && /\p{L}/u.test(tok)) SY.syllables(tok).forEach((s, k) => sp.append(el("span", "s" + (k % 2), s)));
+    else sp.textContent = tok;
+    const isWord = /\p{L}|\d/u.test(tok);
+    R.words.push({ tok, isWord, el: sp, j: isWord ? R.tIdx.length : -1 });
+    if (isWord) { R.tIdx.push(i); R.tNorm.push(M.norm(tok)); }
+    i++;
+    return sp;
   });
   paint();
 }
@@ -656,7 +688,8 @@ function renderQ() {
     }
     P.append(ta);
   }
-  const d = el("details", "peek"); d.append(el("summary", null, "Text anzeigen"), el("div", "peektext", CUR.text)); P.append(d);
+  const pt = el("div", "peektext"); buildDoc(pt, "", CUR.text, tok => document.createTextNode(tok));
+  const d = el("details", "peek"); d.append(el("summary", null, "Text anzeigen"), pt); P.append(d);
   $("qPrev").disabled = Q.qi === 0;
   $("qNext").textContent = Q.qi === qs.length - 1 ? "Fertig, Antworten prüfen" : "Weiter";
 }

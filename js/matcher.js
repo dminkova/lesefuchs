@@ -17,16 +17,28 @@
 })(typeof self !== "undefined" ? self : this, function () {
   "use strict";
 
-  const NUM = {"0":"null","1":"eins","2":"zwei","3":"drei","4":"vier","5":"fünf","6":"sechs","7":"sieben","8":"acht","9":"neun","10":"zehn","11":"elf","12":"zwölf","13":"dreizehn","14":"vierzehn","15":"fünfzehn","16":"sechzehn","17":"siebzehn","18":"achtzehn","19":"neunzehn","20":"zwanzig","30":"dreißig","40":"vierzig","50":"fünfzig","100":"hundert","1000":"tausend"};
-  const DIGIT = ["null","eins","zwei","drei","vier","fünf","sechs","sieben","acht","neun"];
+  const ONES = ["null","eins","zwei","drei","vier","fünf","sechs","sieben","acht","neun","zehn","elf","zwölf","dreizehn","vierzehn","fünfzehn","sechzehn","siebzehn","achtzehn","neunzehn"];
+  const TENS = ["","","zwanzig","dreißig","vierzig","fünfzig","sechzig","siebzig","achtzig","neunzig"];
+  const DIGIT = ONES.slice(0, 10);
+  /** German number words as spoken by a child: 7 -> sieben, 21 -> einundzwanzig, 200 -> zweihundert, 100 -> hundert */
+  function deNum(n) {
+    if (n < 20) return ONES[n];
+    if (n < 100) { const o = n % 10; return (o ? (o === 1 ? "ein" : ONES[o]) + "und" : "") + TENS[Math.floor(n / 10)]; }
+    if (n < 1000) { const h = Math.floor(n / 100), r = n % 100; return (h === 1 ? "" : ONES[h]) + "hundert" + (r ? deNum(r) : ""); }
+    const t = Math.floor(n / 1000), r = n % 1000; return (t === 1 ? "" : deNum(t)) + "tausend" + (r ? deNum(r) : "");
+  }
+  const NUMWORD = /^(null|eins|zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf)$|zehn$|zig$|hundert|tausend/;
   // only clear hesitation sounds; "oh", "ah", "em" can be syllables (Oh-ren, Em-ma)
   const FILLERS = new Set(["äh","ähm","äm","öh","öhm","hm","hmm","mhm","ehm"]);
 
   /** Normalize one token: lower case, letters and digits only, numbers spelled out, ß→ss. */
   function norm(w) {
-    w = String(w || "").toLowerCase().replace(/[^\p{L}\d]/gu, "");
+    w = String(w || "").toLowerCase();
+    const tm = w.match(/^[^\d]*(\d{1,2})[:.](\d{2})[^\d]*$/); // a clock time: 13:20 -> dreizehn uhr zwanzig
+    if (tm) w = deNum(+tm[1]) + "uhr" + (+tm[2] ? deNum(+tm[2]) : "");
+    w = w.replace(/[^\p{L}\d]/gu, "");
     if (!w) return "";
-    if (/^\d+$/.test(w)) w = NUM[w] || w.split("").map(d => DIGIT[+d]).join("");
+    if (/^\d+$/.test(w)) w = w.length > 4 ? w.split("").map(d => DIGIT[+d]).join("") : deNum(+w);
     return w.replace(/ß/g, "ss");
   }
   const words = text => String(text || "").split(/[\s\-–—\/]+/).filter(Boolean);
@@ -132,7 +144,12 @@
           const n = norm(w);
           if (!n) continue;
           if (FILLERS.has(n) && !(targetSet && targetSet.has(n))) continue;
-          toks.push({ w: n, raw: w, final: !!r.final, conf: +r.conf || 0, alts, sess: si });
+          let a = alts;
+          const digits = w.replace(/[^\d]/g, "");
+          if (digits && digits.length > 1 && /^\d+[.,!?]?$/.test(w)) { // "112" may also be read digit by digit
+            a = new Set(alts); a.add(digits.split("").map(d => DIGIT[+d]).join("").replace(/ß/g, "ss"));
+          }
+          toks.push({ w: n, raw: w, final: !!r.final, conf: +r.conf || 0, alts: a, sess: si });
         }
       }
       const all = rs.map(r => normText(r.text)).join(" ").trim();
@@ -146,6 +163,8 @@
     if (h.w === t) return { c: 0, k: "exact" };
     if (h.alts && h.alts.has(t)) return { c: 0.1, k: "alt" };
     if (t.startsWith("ein") && h.w === "eins") return { c: 0, k: "exact" };
+    if (t === "eins" && /^ein(e|en|er|em|es|s)?$/.test(h.w)) return { c: 0, k: "exact" }; // "1 Banane" read as "eine Banane"
+    if (NUMWORD.test(t) && h.w.startsWith(t) && /^(te|ten|ter|tes|tem)$/.test(h.w.slice(t.length))) return { c: 0.05, k: "exact" }; // 14. -> vierzehnten
     const ls = simAtLeast(h.w, t, 0.7), ss = sameSound(h.w, t);
     if (ss || ls >= 0.7) return { c: 0.35, k: ss ? "sound" : "similar" };
     if (h.w.length >= 2 && t.startsWith(h.w)) return { c: 0.7, k: "partial" };
