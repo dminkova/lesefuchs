@@ -34,7 +34,10 @@ const hist = () => store.get("lf_hist", []).filter(h => h && h.v === 2);
 const addHist = e => { const h = store.get("lf_hist", []); h.push(Object.assign({ v: 2, d: Date.now() }, e)); store.set("lf_hist", h.slice(-400)); };
 const trusted = () => new Set(store.get("lf_trusted", []));
 const setTrusted = s => store.set("lf_trusted", [...s].slice(-300));
-const getKey = () => store.get("lf_key", "");
+/* Public version: AI features (Claude text generation and answer checking) are off, so the app has no running costs.
+   Turn on only for private use with your own API key. */
+const AI_FEATURES = false;
+const getKey = () => AI_FEATURES ? store.get("lf_key", "") : "";
 function addStars(n, why) {
   if (!n) return;
   store.set("lf_stars", (store.get("lf_stars", 0) || 0) + n);
@@ -778,7 +781,7 @@ function renderReport() {
   if (rep.ai === "pending") { const p = el("p", "muted"); p.append(el("span", "spin"), document.createTextNode("Claude is checking his answers…")); P.append(p); }
   else if (rep.ai === "done") rep.parent.split(/\n+/).filter(Boolean).forEach(t => P.append(el("p", null, t)));
   else if (rep.ai === "err") P.append(el("p", "err-note", rep.err + " Mark the open answers yourself using the model answers above."));
-  else P.append(el("p", "muted", "Mark the open answers yourself using the model answers above. (With a Claude API key in the parent area, answers are checked automatically.)"));
+  else P.append(el("p", "muted", "Please mark the open answers using the model answers above (Richtig / Teilweise / Falsch)."));
   if (!pending && !rep.saved) {
     rep.saved = true;
     const sc = quizScore();
@@ -922,6 +925,7 @@ $("gateGo").addEventListener("click", () => {
   $("gate").hidden = true; $("parentArea").hidden = false; fillParent();
 });
 function fillParent() {
+  document.querySelectorAll(".ai-only").forEach(e => (e.hidden = !AI_FEATURES));
   const st = settings();
   $("setSlow").checked = st.slow; $("setAuto").checked = st.autoLevel; $("setLevel").value = String(st.level);
   $("apiKey").value = getKey(); $("keyNote").textContent = "";

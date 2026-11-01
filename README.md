@@ -8,7 +8,7 @@ German read-aloud coach (formerly "Lesefuchs") for primary school (Luxembourg, Z
 - **Genau lesen** – careful reading without a clock. Chrome listens; each word ends up *confirmed*, *please check* or *likely wrong*. Parents can correct any word.
 - **Schwere Wörter üben** – long or tricky words split into reading syllables in alternating colours, read aloud normally or slowly, then repeated by the child.
 - **Flüssig lesen** – a short passage read three times; speed and accuracy compared across attempts.
-- **Verstehen** – ÉpStan-style questions; open answers checked by Claude if an API key is set, otherwise by the parent.
+- **Verstehen** – ÉpStan-style questions; multiple choice checked automatically, open answers marked by the parent. AI features are switched off in the public version (no running costs).
 - Progress by day and week (speed, accuracy and comprehension kept separate), stars for effort and improvement, automatic level steps (1–4, from 40–60 words up).
 
 ## Files
