@@ -60,6 +60,7 @@ details summary{cursor:pointer;color:var(--blue);font-weight:600}
 
 /* header */
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.intro{font-size:.95rem;color:var(--muted);max-width:65ch}
 .tagline{font-family:var(--read);color:var(--muted);font-size:1.05rem;margin-top:2px}
 label.btn{display:inline-flex;align-items:center;cursor:pointer}
 .vh{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /tests/
+Disallow: /src/
+
+Sitemap: https://leseflitzi.eu/sitemap.xml
