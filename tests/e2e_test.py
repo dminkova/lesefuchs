@@ -226,6 +226,21 @@ def main():
         check(not overflow, "timetable does not cause sideways scrolling on a phone")
         if SHOTS: page.screenshot(path=f"{SHOTS}/timetable_phone.png", full_page=True)
 
+        print("Info page (legal notice, privacy, licences)")
+        page.goto(url)
+        page.wait_for_selector("#cardsLevel .textcard")
+        page.click("text=Impressum · Datenschutz · Lizenzen")
+        page.wait_for_selector("#de h1", state="attached")
+        check(page.locator("#en").is_visible(), "opens in the browser language (English here)")
+        visible = page.evaluate("['de','fr','en'].filter(l=>!document.getElementById(l).hidden)")
+        check(len(visible) == 1, f"info page shows one language ({visible})")
+        page.click("[data-lang=fr]")
+        check(page.locator("#fr").is_visible() and page.locator("#de").is_hidden(), "language switch to French works")
+        check("minkova.desislava@aol.com" in page.locator("#fr").inner_text(), "contact email shown")
+        overflow = page.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1")
+        check(not overflow, "info page fits on a phone")
+        if SHOTS: page.screenshot(path=f"{SHOTS}/info_phone.png", full_page=True)
+
         real_errors = [e for e in errors if "favicon" not in e]
         check(not real_errors, "no console errors or CSP violations" + (": " + " | ".join(real_errors[:3]) if real_errors else ""))
         b.close()
