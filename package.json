@@ -3,7 +3,7 @@
   "private": true,
   "description": "German read-aloud coach for primary school (GitHub Pages, no server).",
   "scripts": {
-    "build": "esbuild src/syllables.src.js --bundle --minify --format=iife --global-name=LFSyl --footer:js=\"if(typeof module!=='undefined')module.exports=LFSyl;\" --outfile=js/syllables.js",
+    "build": "esbuild src/syllables.src.js --bundle --minify --format=iife --global-name=LFSyl --footer:js=\"if(typeof module!=='undefined')module.exports=LFSyl;\" --banner:js=\"/*! Leseflitzi syllables. Bundles German hyphenation patterns (MIT) and the hyphen package (ISC). Licences: THIRD-PARTY-NOTICES.txt */\" --outfile=js/syllables.js",
     "test": "node --test tests/*.test.js"
   },
   "devDependencies": {

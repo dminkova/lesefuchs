@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src https://api.anthropic.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="Leseflitzi – kostenlose Lese-App für Kinder in Luxemburg (Zyklus 3): laut vorlesen, Silben üben, Fragen beantworten. Läuft im Browser, ohne Anmeldung, ohne Werbung.">
 <link rel="canonical" href="https://leseflitzi.eu/">
@@ -112,8 +112,14 @@
   <div id="parentArea" hidden>
     <div class="panel">
       <h3>Reading settings</h3>
-      <label class="toggle"><input type="checkbox" id="setMic"> Use the microphone (Chrome sends the voice to Google for speech recognition)</label>
-      <p class="note">Off: you tap the misread words yourself after each reading. You can change this at any time.</p>
+      <label class="field"><span class="label">Speech recognition (microphone)</span>
+        <select id="setSpeech">
+          <option value="device">On this device only – the voice does not leave the device</option>
+          <option value="cloud">Online – the browser sends the voice to its provider</option>
+          <option value="off">Off – I tap misread words myself</option>
+          <option value="ask">Ask me again</option>
+        </select></label>
+      <p class="note" id="speechNote"></p>
       <label class="toggle"><input type="checkbox" id="setSlow"> Slow-reader mode (recommended under ~50 words per minute)</label>
       <p class="note">Waits longer before finishing, accepts up to five syllable pieces per word, and treats one to two unheard words as "please check" instead of "skipped".</p>
       <label class="toggle"><input type="checkbox" id="setAuto"> Adjust the level automatically</label>
@@ -170,12 +176,17 @@
 <div class="overlay" id="consent" hidden>
   <div class="panel dialog" role="dialog" aria-modal="true" aria-labelledby="consentTitle">
     <h2 id="consentTitle">Für Eltern · Pour les parents · For parents</h2>
-    <p><b>DE</b> Damit Leseflitzi beim Vorlesen zuhören kann, nutzt Google Chrome seine Spracherkennung. Dabei wird die Stimme Ihres Kindes an Google gesendet und in Text umgewandelt. Leseflitzi selbst erhält und speichert keine Aufnahmen. Ohne Mikrofon tippen Sie falsch gelesene Wörter selbst an.</p>
-    <p><b>FR</b> Pour que Leseflitzi puisse écouter la lecture, Google Chrome utilise sa reconnaissance vocale. La voix de votre enfant est alors envoyée à Google et transformée en texte. Leseflitzi ne reçoit et n’enregistre aucun enregistrement. Sans micro, vous touchez vous-même les mots mal lus.</p>
-    <p><b>EN</b> To listen while your child reads, Leseflitzi uses Google Chrome’s speech recognition. Your child’s voice is sent to Google and turned into text. Leseflitzi itself never receives or stores recordings. Without the microphone, you tap the misread words yourself.</p>
+    <p><b>DE</b> Leseflitzi kann beim Vorlesen zuhören. Bevor Sie zustimmen, wird das Mikrofon nicht benutzt und nichts gesendet. <span class="c-local">Auf diesem Gerät kann die Sprache <b>direkt auf dem Gerät</b> erkannt werden: Die Stimme verlässt das Gerät nicht.</span> Bei der <b>Online-Erkennung</b> sendet der Browser die Stimme Ihres Kindes an <b class="prov">Google</b>. Leseflitzi selbst erhält und speichert keine Aufnahmen. Ohne Mikrofon tippen Sie falsch gelesene Wörter selbst an.</p>
+    <p><b>FR</b> Leseflitzi peut écouter la lecture. Avant votre accord, le micro n’est pas utilisé et rien n’est envoyé. <span class="c-local">Sur cet appareil, la voix peut être reconnue <b>directement sur l’appareil</b> : elle ne quitte pas l’appareil.</span> Avec la <b>reconnaissance en ligne</b>, le navigateur envoie la voix de votre enfant à <b class="prov">Google</b>. Leseflitzi ne reçoit et n’enregistre aucun enregistrement. Sans micro, vous touchez vous-même les mots mal lus.</p>
+    <p><b>EN</b> Leseflitzi can listen while your child reads. Until you agree, the microphone is not used and nothing is sent. <span class="c-local">On this device, speech can be recognised <b>on the device itself</b>: the voice never leaves it.</span> With <b>online recognition</b>, the browser sends your child’s voice to <b class="prov">Google</b>. Leseflitzi itself never receives or stores recordings. Without the microphone, you tap the misread words yourself.</p>
     <p class="small"><a href="info.html" target="_blank" rel="noopener">Datenschutz · Protection des données · Privacy</a></p>
     <label class="field"><span id="consentQ"></span><input type="number" id="consentA" inputmode="numeric"></label>
-    <div class="row"><button class="btn" id="consentYes">Einverstanden · J’accepte · I agree</button><button class="btn ghost" id="consentNo">Ohne Mikrofon · Sans micro · No microphone</button></div>
+    <div class="row">
+      <button class="btn c-local" id="consentLocal">Auf dem Gerät · Sur l’appareil · On this device</button>
+      <button class="btn" id="consentYes">Online (<span class="prov">Google</span>)</button>
+      <button class="btn ghost" id="consentNo">Ohne Mikrofon · Sans micro · No microphone</button>
+    </div>
+    <p class="note" id="consentStatus"></p>
     <p class="err-note" id="consentErr"></p>
   </div>
 </div>

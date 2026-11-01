@@ -12,10 +12,27 @@ const store = {
 };
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 const canListen = !!SR, canSpeak = "speechSynthesis" in window;
-/* The microphone is only used after a parent agrees: Chrome sends the voice to Google for speech recognition.
-   consent(): true = agreed, false = declined (parent marks words by hand), null = not asked yet. */
-const consent = () => { const c = store.get("lf_consent", null); return c && c.v === 1 ? !!c.mic : null; };
+/* The microphone is only used after a parent chooses how:
+   "device" = recognised on this device (newer Chrome; the voice never leaves the device),
+   "cloud"  = the browser's online service (Google in Chrome, Apple on iPhone/iPad/Safari, Microsoft in Edge),
+   "off"    = no microphone, the parent taps misread words.  null = not asked yet. */
+const speechMode = () => { const c = store.get("lf_consent", null); if (!c) return null; if (c.v === 2) return c.mode || null; if (c.v === 1) return c.mic ? "cloud" : "off"; return null; };
+const consent = () => { const m = speechMode(); return m === null ? null : m !== "off"; };
 const useMic = () => canListen && consent() === true;
+const setSpeechMode = mode => store.set("lf_consent", { v: 2, mode, d: Date.now() });
+const PROVIDER = (() => {
+  const ua = navigator.userAgent || "";
+  if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return "Apple";
+  if (/Edg\//.test(ua)) return "Microsoft";
+  if (/Safari\//.test(ua) && !/Chrome|Chromium|CriOS|SamsungBrowser/.test(ua)) return "Apple";
+  return "Google";
+})();
+const canLocal = !!SR && typeof SR.available === "function";
+const LOCAL_OPTS = { langs: ["de-DE"], processLocally: true };
+async function localStatus() { if (!canLocal) return "unavailable"; try { return await SR.available(LOCAL_OPTS); } catch (e) { return "unavailable"; } }
+async function installLocal() { try { return !!(await SR.install(LOCAL_OPTS)); } catch (e) { return false; } }
+/* ask the recogniser to stay on the device; never silently fall back to the online service */
+function applySpeechMode(r) { if (speechMode() === "device") { if (!("processLocally" in r)) throw new Error("local-unsupported"); r.processLocally = true; } }
 const ICON = {
   spk: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
   mic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>',
@@ -42,6 +59,7 @@ const setTrusted = s => store.set("lf_trusted", [...s].slice(-300));
    Turn on only for private use with your own API key. */
 const AI_FEATURES = false;
 const getKey = () => AI_FEATURES ? store.get("lf_key", "") : "";
+if (!AI_FEATURES) store.del("lf_key"); // remove any key saved by an earlier version
 function addStars(n, why) {
   if (!n) return;
   store.set("lf_stars", (store.get("lf_stars", 0) || 0) + n);
@@ -351,6 +369,7 @@ function setListen(on, txt) { $("micDot").classList.toggle("on", on); $("listenT
 function newSession() {
   const r = new SR();
   r.lang = "de-DE"; r.continuous = true; r.interimResults = true; r.maxAlternatives = 3;
+  applySpeechMode(r);
   const idx = L.sessions.length; L.sessions.push([]);
   r.onstart = () => setListen(true, L.tFirst ? "Ich höre zu…" : "Ich höre zu. Fang an!");
   r.onresult = e => {
@@ -370,6 +389,10 @@ function newSession() {
       R.running = false; stopTimers();
       setListen(false, "Mikrofon blockiert");
       problem(location.protocol === "https:" ? "The microphone is blocked. Tap the icon left of the web address, allow the microphone, then press Start again." : "Chrome blocks the microphone when the page is opened from a file. Open Leseflitzi from its https:// address.");
+      $("startBtn").textContent = "Start"; $("startBtn").classList.remove("stop");
+    } else if (e.error === "language-not-supported" && speechMode() === "device") {
+      R.running = false; stopTimers(); setListen(false, "nicht installiert");
+      problem("German speech recognition is not installed on this device yet. Parents: in the parent area choose “On this device” again to install it, or choose another option.");
       $("startBtn").textContent = "Start"; $("startBtn").classList.remove("stop");
     } else if (e.error === "network") { setListen(false, "keine Verbindung"); $("heard").textContent = "Die Spracherkennung braucht Internet."; }
   };
@@ -430,7 +453,7 @@ function startReading() {
   tickT = setInterval(tick, 250);
   if (R.mode === "fluessig" && $("paceOn").checked) startPacer();
   try { navigator.wakeLock && navigator.wakeLock.request("screen").then(w => (wake = w)).catch(() => {}); } catch (e) {}
-  if (useMic()) { try { rec = newSession(); } catch (e) { problem("Speech recognition could not start. Reload the page and try again."); } }
+  if (useMic()) { try { rec = newSession(); } catch (e) { R.running = false; stopTimers(); $("startBtn").textContent = "Start"; $("startBtn").classList.remove("stop"); problem(e && e.message === "local-unsupported" ? "This browser cannot recognise speech on the device. Parents: choose another option in the parent area." : "Speech recognition could not start. Reload the page and try again."); } }
   else { L.tFirst = performance.now(); setListen(false, "ohne Mikrofon"); }
 }
 function stopListening(silent) {
@@ -568,7 +591,7 @@ function commitResult() {
   const st = currentStats();
   const wrongWords = [];
   for (let j = 0; j <= R.res.last; j++) { const s = R.over[j] || (R.res.items[j] ? R.res.items[j].s : "unsure"); if (s === "wrong") wrongWords.push(clean(R.words[R.tIdx[j]].tok)); }
-  addHist({ kind: "read", mode: R.mode, tid: CUR.id, title: CUR.title, level: CUR.level, words: st.reached, secs: Math.round(st.secs), wpm: Math.round(st.wpm * 10) / 10, acc: st.accuracy, unsure: st.unsure, unsureRate: st.unsureRate, wrong: st.wrong, selfcorr: st.selfcorr, attempt: R.attempts.length + 1 });
+  addHist({ kind: "read", mode: R.mode, tid: CUR.id, title: CUR.title, level: CUR.level, words: st.reached, secs: Math.round(st.secs), wpm: Math.round(st.wpm * 10) / 10, acc: st.accuracy, unsure: st.unsure, unsureRate: st.unsureRate, wrong: st.wrong, selfcorr: st.selfcorr, attempt: R.attempts.length + 1, manual: !!R.res.manual });
   const bank = store.get("lf_bank", {});
   for (const w of wrongWords) { const k = w.toLowerCase(); bank[k] = bank[k] || { w, errors: 0, mastered: 0 }; bank[k].errors++; bank[k].last = Date.now(); }
   store.set("lf_bank", bank);
@@ -706,6 +729,7 @@ function markMastered(word, card) {
 function listenOnce(onAlts, onEnd) {
   try {
     const r = new SR(); r.lang = "de-DE"; r.interimResults = false; r.continuous = false; r.maxAlternatives = 5;
+    applySpeechMode(r);
     let got = false;
     r.onresult = e => { got = true; const res = e.results[0]; const alts = []; for (let a = 0; a < res.length; a++) alts.push(res[a].transcript); onAlts(alts); };
     r.onerror = () => {};
@@ -813,12 +837,15 @@ function renderReport() {
 function evaluateLevel() {
   const st = settings(); if (!st.autoLevel) return;
   const ev = hist().filter(h => h.d > (st.levelSince || 0) && h.level === st.level);
-  const reads = ev.filter(h => h.kind === "read" && h.mode === "genau" && h.acc != null && h.unsureRate < 0.35 && h.words >= 20).slice(-2);
+  // only readings the app is fairly sure about: parent-marked, or few uncertain words. Speech-recognition doubts never count as mistakes.
+  const reads = ev.filter(h => h.kind === "read" && h.mode === "genau" && h.acc != null && h.words >= 20 && (h.manual || h.unsureRate < 0.2));
   const quizzes = ev.filter(h => h.kind === "quiz").slice(-2);
   const lastQ = quizzes[quizzes.length - 1];
   let to = st.level;
-  if (st.level < 4 && reads.length >= 2 && reads.every(r => r.acc >= 0.95) && lastQ && lastQ.score / lastQ.of >= 0.75) to = st.level + 1;
-  else if (st.level > 1 && ((reads.length >= 2 && reads.every(r => r.acc < 0.85)) || (quizzes.length >= 2 && quizzes.every(q => q.score / q.of < 0.5)))) to = st.level - 1;
+  const up = reads.slice(-2), down = reads.slice(-3);
+  if (st.level < 4 && up.length >= 2 && up.every(r => r.acc >= 0.95) && lastQ && lastQ.score / lastQ.of >= 0.75) to = st.level + 1;
+  // going down needs clearer evidence: three careful readings below 80 %, or two quizzes below 50 %
+  else if (st.level > 1 && ((down.length >= 3 && down.every(r => r.acc < 0.8)) || (quizzes.length >= 2 && quizzes.every(q => q.score / q.of < 0.5)))) to = st.level - 1;
   if (to === st.level) return;
   const from = st.level;
   st.level = to; st.levelSince = Date.now(); saveSettings(st);
@@ -945,7 +972,7 @@ $("gateGo").addEventListener("click", () => {
 function fillParent() {
   document.querySelectorAll(".ai-only").forEach(e => (e.hidden = !AI_FEATURES));
   const st = settings();
-  $("setMic").checked = consent() === true; $("setMic").disabled = !canListen;
+  fillSpeechSetting();
   $("setSlow").checked = st.slow; $("setAuto").checked = st.autoLevel; $("setLevel").value = String(st.level);
   $("apiKey").value = getKey(); $("keyNote").textContent = "";
   $("genNote").textContent = getKey() ? "Level " + st.level + " (" + LEVELS[st.level].w + " words). Takes about 15–30 seconds." : "Needs a Claude API key (below).";
@@ -967,27 +994,58 @@ $("testKey").addEventListener("click", async () => {
   catch (e) { $("keyNote").className = "err-note"; $("keyNote").textContent = errCopy(e); }
 });
 /* parent consent for the microphone */
-let consentThen = null, consentAns = 0;
-function askConsent(then) {
+let consentThen = null, consentAns = 0, consentLocal = "unavailable";
+document.querySelectorAll(".prov").forEach(e => (e.textContent = PROVIDER));
+async function askConsent(then) {
   consentThen = then;
   const a = 6 + Math.floor(Math.random() * 4), b = 6 + Math.floor(Math.random() * 4);
   consentAns = a * b;
   $("consentQ").textContent = "Erwachsene · Adultes · Adults: " + a + " × " + b + " = ?";
-  $("consentA").value = ""; $("consentErr").textContent = "";
+  $("consentA").value = ""; $("consentErr").textContent = ""; $("consentStatus").textContent = "";
+  consentLocal = await localStatus();
+  document.querySelectorAll("#consent .c-local").forEach(e => (e.hidden = consentLocal === "unavailable"));
+  if (consentLocal === "downloadable") $("consentStatus").textContent = "„Auf dem Gerät“ lädt einmalig die deutsche Spracherkennung herunter. · Télécharge une fois la reconnaissance allemande. · Downloads German recognition once.";
   $("consent").hidden = false;
 }
-function closeConsent(mic) {
-  store.set("lf_consent", { v: 1, mic, d: Date.now() });
+function adultOK() {
+  if (+$("consentA").value === consentAns) return true;
+  $("consentErr").textContent = "Bitte die Rechenaufgabe lösen. · Merci de faire le calcul. · Please solve the sum.";
+  return false;
+}
+function closeConsent(mode) {
+  setSpeechMode(mode);
   $("consent").hidden = true;
   const f = consentThen; consentThen = null;
   if (f) f();
 }
-$("consentYes").addEventListener("click", () => {
-  if (+$("consentA").value !== consentAns) { $("consentErr").textContent = "Bitte die Rechenaufgabe lösen. · Merci de faire le calcul. · Please solve the sum."; return; }
-  closeConsent(true);
+$("consentLocal").addEventListener("click", async () => {
+  if (!adultOK()) return;
+  if (consentLocal !== "available") {
+    $("consentStatus").textContent = "Wird installiert… · Installation… · Installing…";
+    const ok = await installLocal();
+    if (!ok || (await localStatus()) !== "available") { $("consentErr").textContent = "Die Installation hat nicht geklappt. Bitte „Online“ oder „Ohne Mikrofon“ wählen. · L’installation a échoué. · Installation failed: please choose Online or No microphone."; $("consentStatus").textContent = ""; return; }
+  }
+  closeConsent("device");
 });
-$("consentNo").addEventListener("click", () => closeConsent(false));
-$("setMic").addEventListener("change", () => store.set("lf_consent", { v: 1, mic: $("setMic").checked, d: Date.now() }));
+$("consentYes").addEventListener("click", () => { if (adultOK()) closeConsent("cloud"); });
+$("consentNo").addEventListener("click", () => closeConsent("off"));
+async function fillSpeechSetting() {
+  const sel = $("setSpeech"), mode = speechMode(), st = canListen ? await localStatus() : "unavailable";
+  sel.disabled = !canListen;
+  sel.querySelector("option[value=device]").disabled = st === "unavailable";
+  sel.value = mode || "ask";
+  $("speechNote").textContent = !canListen ? "This browser has no speech recognition (e.g. Firefox): you tap misread words yourself."
+    : "Online provider in this browser: " + PROVIDER + ". On-device recognition: " + ({ available: "ready", downloadable: "can be installed (one-time download)", downloading: "downloading", unavailable: "not supported by this browser" })[st] + ".";
+}
+$("setSpeech").addEventListener("change", async () => {
+  const v = $("setSpeech").value;
+  if (v === "ask") { store.del("lf_consent"); return fillSpeechSetting(); }
+  if (v === "device" && (await localStatus()) !== "available") {
+    $("speechNote").textContent = "Installing German on-device recognition…";
+    if (!(await installLocal()) || (await localStatus()) !== "available") { $("speechNote").textContent = "Installation failed. Please choose another option."; return fillSpeechSetting(); }
+  }
+  setSpeechMode(v); fillSpeechSetting();
+});
 
 /* backup: save / load progress as a file (the API key is never included) */
 const BACKUP_KEYS = ["lf_hist", "lf_bank", "lf_trusted", "lf_stars", "lf_time", "lf_settings", "lf_texts", "lf_syl"];
@@ -1048,6 +1106,6 @@ function validateText(r) {
 /* ---------------- start ---------------- */
 if (canSpeak) { try { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => {}; } catch (e) {} }
 // testing hook: lets automated tests drive the app with simulated speech results
-window.__lesefuchs = { R, L, settings, hist, M };
+window.__lesefuchs = { R, L, settings, hist, M, evaluateLevel, speechMode, PROVIDER };
 show("home");
 })();

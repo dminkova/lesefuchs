@@ -272,8 +272,64 @@ def main():
         check(not overflow, "info page fits on a phone")
         if SHOTS: page.screenshot(path=f"{SHOTS}/info_phone.png", full_page=True)
 
+        print("Fair level changes")
+        page.goto(url); page.wait_for_selector("#cardsLevel .textcard")
+        def level_after(reads):
+            page.evaluate("""(reads)=>{localStorage.setItem('lf_settings', JSON.stringify({level:2, levelSince:0, autoLevel:true, slow:true}));
+              localStorage.setItem('lf_hist', JSON.stringify(reads.map((r,i)=>Object.assign({v:2,d:Date.now()-1000*(10-i),kind:'read',mode:'genau',level:2,words:60,tid:'x',title:'x'},r))));
+              __lesefuchs.evaluateLevel();}""", reads)
+            return page.evaluate("JSON.parse(localStorage.getItem('lf_settings')).level")
+        check(level_after([{"acc":0.7,"unsureRate":0.1}]*2) == 2, "two weak readings: level stays")
+        check(level_after([{"acc":0.7,"unsureRate":0.3}]*3) == 2, "weak readings with many uncertain words: level stays")
+        check(level_after([{"acc":0.7,"unsureRate":0.1}]*3) == 1, "three clearly weak readings: level goes down")
+        check(level_after([{"acc":0.7,"unsureRate":0.5,"manual":True}]*3) == 1, "parent-marked readings count")
+
         real_errors = [e for e in errors if "favicon" not in e]
         check(not real_errors, "no console errors or CSP violations" + (": " + " | ".join(real_errors[:3]) if real_errors else ""))
+        # ---------- on-device speech recognition (mocked Chrome with language pack) ----------
+        print("On-device speech recognition")
+        ctx2 = b.new_context(viewport={"width": 800, "height": 1100})
+        ctx2.add_init_script(MOCK + """
+          window.__installed = false;
+          MockSR.available = async (o) => (o && o.processLocally && o.langs[0]==='de-DE') ? (window.__installed ? 'available' : 'downloadable') : 'unavailable';
+          MockSR.install = async () => { window.__installed = true; return true; };
+          MockSR.prototype.processLocally = false;""")
+        p2 = ctx2.new_page(); errs2 = []
+        p2.on("pageerror", lambda e: errs2.append(str(e)))
+        p2.goto(url); p2.wait_for_selector("#cardsLevel .textcard")
+        p2.locator("#cardsLevel .textcard").first.click(); p2.click("[data-mode=genau]"); p2.click("#startBtn"); p2.wait_for_timeout(100)
+        check(p2.locator("#consentLocal").is_visible(), "consent offers 'on this device' when Chrome supports it")
+        check(p2.locator("#consent .prov").first.inner_text() == "Google", "online provider named: Google (Chrome)")
+        q = p2.locator("#consentQ").inner_text().split(":")[1].replace("= ?", ""); qa, qb = [int(x) for x in q.split("×")]
+        p2.fill("#consentA", str(qa * qb)); p2.click("#consentLocal"); p2.wait_for_timeout(200)
+        check(p2.evaluate("window.__installed") and p2.evaluate("__lesefuchs.speechMode()") == "device", "German language pack installed, mode 'on this device'")
+        check(p2.evaluate("__mock.inst.length") == 1 and p2.evaluate("__mock.cur.processLocally") is True, "recogniser started with processLocally = true")
+        check(not errs2, "no errors in on-device flow")
+        ctx2.close()
+
+        # ---------- devices: iPhone, Android tablet, desktop ----------
+        print("Devices")
+        devices = {
+          "iPhone": dict(viewport={"width": 390, "height": 844}, user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1", is_mobile=True, has_touch=True),
+          "Android tablet": dict(viewport={"width": 800, "height": 1280}, user_agent="Mozilla/5.0 (Linux; Android 14; Tab) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36", is_mobile=True, has_touch=True),
+          "Desktop Edge": dict(viewport={"width": 1366, "height": 800}, user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0"),
+        }
+        expect = {"iPhone": "Apple", "Android tablet": "Google", "Desktop Edge": "Microsoft"}
+        for name, opts in devices.items():
+            c3 = b.new_context(**opts); c3.add_init_script(MOCK); p3 = c3.new_page(); e3 = []
+            p3.on("pageerror", lambda e: e3.append(str(e)))
+            p3.goto(url); p3.wait_for_selector("#cardsLevel .textcard")
+            ok_home = not p3.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1")
+            p3.locator("#cardsLevel .textcard").first.click(); p3.click("[data-mode=genau]")
+            ok_read = not p3.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1")
+            p3.click("#startBtn"); p3.wait_for_timeout(100)
+            prov = p3.locator("#consent .prov").first.inner_text()
+            p3.click("#consentNo"); p3.wait_for_timeout(50)   # reading starts right away
+            p3.evaluate("__lesefuchs.L.tFirst -= 20000"); p3.click("#startBtn")
+            p3.wait_for_selector("#result:not([hidden]) .praise", timeout=4000)
+            check(ok_home and ok_read and prov == expect[name] and not e3, f"{name}: layout fits, provider '{prov}', no-microphone reading works")
+            if SHOTS: p3.screenshot(path=f"{SHOTS}/device_{name.replace(' ','_')}.png")
+            c3.close()
         b.close()
     srv.shutdown()
     print("\n" + ("ALL PASSED" if not failures else f"{len(failures)} FAILED"))
