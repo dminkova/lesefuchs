@@ -208,6 +208,210 @@
   ]
  },
  {
+  "id": "drache",
+  "title": "Der Drache",
+  "type": "Geschichte",
+  "level": 1,
+  "text": "Es ist Herbst. Draußen weht ein starker Wind. Tim und Opa gehen auf den Hügel. Tim hat einen roten Drachen. Opa hält die Schnur fest. Tim rennt los. Der Drache steigt hoch in den Himmel. Er tanzt im Wind.\n\nPlötzlich reißt die Schnur! Der Drache fliegt weg. Tim ist traurig. Aber Opa lacht: „Morgen bauen wir einen neuen.“",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer geht mit Tim auf den Hügel?",
+    "options": [
+     "Papa",
+     "Opa",
+     "Mama",
+     "Lea"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welche Farbe hat der Drache?",
+    "options": [
+     "Blau",
+     "Grün",
+     "Rot",
+     "Gelb"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist der Drache in dieser Geschichte?",
+    "options": [
+     "Ein Tier, das Feuer spuckt",
+     "Ein Spielzeug, das im Wind fliegt",
+     "Ein Vogel",
+     "Ein Flugzeug"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum ist Tim traurig?",
+    "answer": "Weil die Schnur reißt und sein Drache wegfliegt."
+   }
+  ]
+ },
+ {
+  "id": "hamster",
+  "title": "Der Hamster Krümel",
+  "type": "Geschichte",
+  "level": 1,
+  "text": "Lena hat einen Hamster. Er heißt Krümel. Am Tag schläft Krümel in seinem Häuschen. Am Abend wacht er auf. Dann rennt er in seinem Laufrad.\n\nKrümel liebt Körner und kleine Stücke Apfel. Er steckt das Futter in seine Backen. Seine Backen werden ganz dick. Lena lacht: „Du siehst aus wie ein Ballon!“",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann schläft Krümel?",
+    "options": [
+     "Am Tag",
+     "In der Nacht",
+     "Nie",
+     "Am Abend"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was frisst Krümel gern?",
+    "options": [
+     "Fleisch",
+     "Körner und Apfel",
+     "Schokolade",
+     "Fisch"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum werden Krümels Backen dick?",
+    "options": [
+     "Er ist krank.",
+     "Er steckt Futter hinein.",
+     "Er ist wütend.",
+     "Er bläst Luft hinein."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum sagt Lena: „Du siehst aus wie ein Ballon“?",
+    "answer": "Weil Krümels Backen ganz dick und rund sind."
+   }
+  ]
+ },
+ {
+  "id": "zahnarzt",
+  "title": "Beim Zahnarzt",
+  "type": "Geschichte",
+  "level": 1,
+  "text": "Heute geht Mia zum Zahnarzt. Sie hat ein bisschen Angst. Dann ruft der Zahnarzt: „Mia, bitte!“ Mia setzt sich auf einen großen Stuhl. Sie macht den Mund weit auf. Der Zahnarzt schaut jeden Zahn genau an.\n\n„Alles gesund!“, sagt er. Mia bekommt einen Sticker mit einem Löwen. Jetzt hat sie keine Angst mehr.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wohin geht Mia heute?",
+    "options": [
+     "Zur Schule",
+     "Zum Zahnarzt",
+     "In den Zoo",
+     "Zur Oma"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was bekommt Mia am Ende?",
+    "options": [
+     "Ein Eis",
+     "Einen Sticker",
+     "Ein Buch",
+     "Einen Ball"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Der Zahnarzt sagt: „Alles gesund!“ Was meint er?",
+    "options": [
+     "Die Zähne sind in Ordnung.",
+     "Mia ist krank.",
+     "Mia muss morgen wiederkommen.",
+     "Ein Zahn tut weh."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Wie fühlt sich Mia am Anfang und wie am Ende?",
+    "answer": "Am Anfang hat sie ein bisschen Angst. Am Ende hat sie keine Angst mehr."
+   }
+  ]
+ },
+ {
+  "id": "pinguine",
+  "title": "Pinguine",
+  "type": "Sachtext",
+  "level": 1,
+  "text": "Pinguine sind Vögel. Aber sie können nicht fliegen. Dafür schwimmen sie sehr gut. Ihre Flügel sind wie Paddel. Pinguine fressen Fische.\n\nViele Pinguine leben in der Antarktis. Dort ist es sehr kalt. Ihr Fett und ihre dichten Federn halten sie warm. An Land watscheln sie langsam. Auf dem Bauch rutschen sie schnell über das Eis.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was können Pinguine nicht?",
+    "options": [
+     "Schwimmen",
+     "Fliegen",
+     "Fressen",
+     "Rutschen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„An Land watscheln sie.“ Wie gehen Pinguine?",
+    "options": [
+     "Sehr schnell und gerade",
+     "Langsam und wackelig",
+     "Auf einem Bein",
+     "Rückwärts"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum rutschen Pinguine auf dem Bauch?",
+    "options": [
+     "Weil sie müde sind.",
+     "Weil sie so schneller sind.",
+     "Weil sie fliegen wollen.",
+     "Weil das Eis warm ist."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Was hält die Pinguine warm?",
+    "answer": "Ihr Fett und ihre dichten Federn."
+   }
+  ]
+ },
+ {
   "id": "shake",
   "title": "Bananen-Milchshake",
   "type": "Rezept",
@@ -320,6 +524,62 @@
     "skill": "Finden",
     "q": "Bis wann soll Lea anrufen?",
     "answer": "Bis Mittwoch."
+   }
+  ]
+ },
+ {
+  "id": "stundenplan",
+  "title": "Noahs Stundenplan",
+  "type": "Stundenplan",
+  "level": 1,
+  "format": "doc",
+  "modes": [
+   "woerter",
+   "verstehen"
+  ],
+  "text": "Das ist der Stundenplan von Noah. Am Mittwoch ist die Schule schon um zwölf Uhr aus.\n\nZeit | Montag | Dienstag | Mittwoch\n8:00 | Deutsch | Mathe | Sport\n9:00 | Mathe | Deutsch | Musik\n10:00 | Pause | Pause | Pause\n10:15 | Kunst | Französisch | Deutsch",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was hat Noah am Montag um 8:00?",
+    "options": [
+     "Mathe",
+     "Deutsch",
+     "Sport",
+     "Kunst"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "An welchem Tag hat Noah Sport?",
+    "options": [
+     "Montag",
+     "Dienstag",
+     "Mittwoch",
+     "Nie"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Noah vergisst am Dienstag sein Französischbuch. Wann fehlt es ihm?",
+    "options": [
+     "Um 8:00",
+     "Um 9:00",
+     "Um 10:15",
+     "In der Pause"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wann ist am Mittwoch die Schule aus?",
+    "answer": "Um zwölf Uhr."
    }
   ]
  },
@@ -564,6 +824,258 @@
   ]
  },
  {
+  "id": "teddy",
+  "title": "Wo ist Brummi?",
+  "type": "Geschichte",
+  "level": 2,
+  "text": "Ben hat seinen Teddy immer dabei. Er heißt Brummi. Am Samstag fährt Ben mit Papa in den Supermarkt. Als sie wieder zu Hause sind, ist Brummi weg! Ben sucht im Auto, unter dem Bett und im Garten. Nichts!\n\nBen weint. Papa ruft im Supermarkt an. Eine Verkäuferin hat Brummi bei den Bananen gefunden. Sofort fahren sie zurück. Ben drückt seinen Teddy ganz fest. „Ab jetzt passe ich besser auf dich auf“, flüstert er.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie heißt der Teddy?",
+    "options": [
+     "Bobo",
+     "Brummi",
+     "Bär",
+     "Max"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo hat die Verkäuferin den Teddy gefunden?",
+    "options": [
+     "Im Auto",
+     "Bei den Bananen",
+     "Unter dem Bett",
+     "An der Kasse"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was macht Papa, nachdem Ben überall gesucht hat?",
+    "options": [
+     "Er kauft einen neuen Teddy.",
+     "Er ruft im Supermarkt an.",
+     "Er fährt zur Oma.",
+     "Er sucht im Garten."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„flüstert er“: Wie spricht Ben?",
+    "options": [
+     "Sehr laut",
+     "Ganz leise",
+     "Wütend",
+     "Singend"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum drückt Ben seinen Teddy ganz fest?",
+    "answer": "Weil er froh ist, dass Brummi wieder da ist."
+   }
+  ]
+ },
+ {
+  "id": "kastanien",
+  "title": "Kastanien",
+  "type": "Sachtext",
+  "level": 2,
+  "text": "Im Herbst fallen Kastanien von den Bäumen. Sie stecken in einer grünen Hülle mit Stacheln. Wenn die Hülle auf den Boden fällt, platzt sie oft auf. Dann sieht man die glänzende braune Kastanie.\n\nViele Kinder sammeln Kastanien. Sie basteln daraus Tiere und Männchen. Dafür brauchen sie nur Zahnstocher. Aber Vorsicht: Diese Kastanien darf man nicht essen! Sie heißen Rosskastanien. Rehe und Wildschweine fressen sie aber gern.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welche Farbe hat die Hülle?",
+    "options": [
+     "Braun",
+     "Grün",
+     "Rot",
+     "Gelb"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was brauchen die Kinder zum Basteln?",
+    "options": [
+     "Kleber",
+     "Zahnstocher",
+     "Eine Schere",
+     "Papier"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Die Hülle platzt auf.“ Was passiert?",
+    "options": [
+     "Sie geht plötzlich auf.",
+     "Sie wird größer.",
+     "Sie wird grün.",
+     "Sie fliegt weg."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer frisst Rosskastanien gern?",
+    "options": [
+     "Kinder",
+     "Rehe und Wildschweine",
+     "Katzen",
+     "Fische"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum steht im Text „Aber Vorsicht“?",
+    "answer": "Weil man diese Kastanien nicht essen darf."
+   }
+  ]
+ },
+ {
+  "id": "fussball",
+  "title": "Das Fußballspiel",
+  "type": "Geschichte",
+  "level": 2,
+  "text": "Heute spielt Samis Mannschaft gegen die Blauen. Es regnet und der Platz ist nass. Nach zehn Minuten steht es null zu eins für die Blauen. Sami ist enttäuscht.\n\nDoch dann bekommt er den Ball. Er läuft an zwei Spielern vorbei und passt zu Nora. Nora schießt. Tor! Jetzt steht es eins zu eins. Kurz vor dem Ende rutscht Sami im Matsch aus. Alle lachen, auch Sami. Das Spiel endet unentschieden.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie ist das Wetter?",
+    "options": [
+     "Sonnig",
+     "Es regnet.",
+     "Es schneit.",
+     "Es ist heiß."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer schießt das Tor für Samis Mannschaft?",
+    "options": [
+     "Sami",
+     "Nora",
+     "Die Blauen",
+     "Der Trainer"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Das Spiel endet „unentschieden“. Was bedeutet das?",
+    "options": [
+     "Samis Mannschaft gewinnt.",
+     "Beide Mannschaften haben gleich viele Tore.",
+     "Die Blauen gewinnen.",
+     "Das Spiel hört zu früh auf."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was passiert zuerst?",
+    "options": [
+     "Nora schießt ein Tor.",
+     "Die Blauen schießen ein Tor.",
+     "Sami rutscht aus.",
+     "Alle lachen."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum ist Sami nach zehn Minuten enttäuscht?",
+    "answer": "Weil die Blauen ein Tor geschossen haben und seine Mannschaft verliert."
+   }
+  ]
+ },
+ {
+  "id": "regenbogen",
+  "title": "Der Regenbogen",
+  "type": "Sachtext",
+  "level": 2,
+  "text": "Manchmal scheint die Sonne, während es noch regnet. Dann kannst du einen Regenbogen sehen. Das Sonnenlicht sieht weiß aus. Aber es besteht aus vielen Farben.\n\nWenn das Licht durch die Regentropfen geht, teilt es sich in diese Farben auf. So entsteht ein bunter Bogen am Himmel. Oben ist er rot, unten ist er violett. Dazwischen siehst du Orange, Gelb, Grün und Blau. Wichtig: Die Sonne muss hinter dir stehen.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann kannst du einen Regenbogen sehen?",
+    "options": [
+     "Wenn es dunkel ist",
+     "Wenn die Sonne scheint und es regnet",
+     "Wenn es schneit",
+     "Wenn es windig ist"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welche Farbe ist ganz oben?",
+    "options": [
+     "Blau",
+     "Violett",
+     "Rot",
+     "Grün"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Woraus besteht das Sonnenlicht?",
+    "answer": "Aus vielen Farben."
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„So entsteht ein bunter Bogen.“ Was bedeutet „entsteht“?",
+    "options": [
+     "Er geht weg.",
+     "Er kommt zustande und ist dann da.",
+     "Er fällt herunter.",
+     "Er wird kleiner."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Lea sieht einen Regenbogen. Wo steht die Sonne?",
+    "options": [
+     "Vor ihr",
+     "Hinter ihr",
+     "Unter ihr",
+     "Es gibt keine Sonne."
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
   "id": "kresse",
   "title": "Kresse wächst auf Watte",
   "type": "Anleitung",
@@ -688,6 +1200,70 @@
     "skill": "Finden",
     "q": "Bei wem meldest du dich an?",
     "answer": "Bei Frau Weber im Sekretariat."
+   }
+  ]
+ },
+ {
+  "id": "stopptanz",
+  "title": "Spielregeln: Stopptanz",
+  "type": "Spielregeln",
+  "level": 2,
+  "format": "doc",
+  "text": "## Das braucht ihr\n- Musik\n- mindestens drei Kinder\n- eine Person, die die Musik macht\n\n## So wird gespielt\n1. Die Musik läuft. Alle Kinder tanzen.\n2. Plötzlich stoppt die Musik.\n3. Jetzt müssen alle sofort still stehen wie eine Statue.\n4. Wer sich noch bewegt oder lacht, scheidet aus.\n5. Dann geht die Musik weiter.\n\nWer am Ende übrig bleibt, hat gewonnen. Er darf in der nächsten Runde die Musik machen.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie viele Kinder braucht man mindestens?",
+    "options": [
+     "Eins",
+     "Zwei",
+     "Drei",
+     "Zehn"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was müssen alle tun, wenn die Musik stoppt?",
+    "options": [
+     "Weitertanzen",
+     "Still stehen",
+     "Singen",
+     "Weglaufen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Wer sich bewegt, scheidet aus.“ Was bedeutet das?",
+    "options": [
+     "Er gewinnt.",
+     "Er darf nicht mehr mitspielen.",
+     "Er macht die Musik.",
+     "Er bekommt einen Preis."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Lea kichert, als die Musik stoppt. Was passiert?",
+    "options": [
+     "Sie gewinnt.",
+     "Sie scheidet aus.",
+     "Sie macht die Musik.",
+     "Nichts."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Was darf der Gewinner in der nächsten Runde machen?",
+    "answer": "Er darf die Musik machen."
    }
   ]
  },
@@ -964,6 +1540,156 @@
     "skill": "Schließen",
     "q": "Warum ruft Ben: „Ich habe es gewusst!“?",
     "answer": "Weil er geglaubt hat, dass der Kleeschen kommt, und jetzt liegen wirklich Geschenke in den Schuhen."
+   }
+  ]
+ },
+ {
+  "id": "zelt",
+  "title": "Die Nacht im Zelt",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "In den Sommerferien darf Jonas zum ersten Mal mit seiner Schwester Clara im Garten zelten. Sie nehmen Schlafsäcke, Taschenlampen und Kekse mit. Zuerst ist alles spannend. Sie erzählen sich Witze und schauen die Sterne an.\n\nDoch dann hören sie ein Rascheln vor dem Zelt. Jonas hält die Luft an. „Was ist das?“, flüstert er. Clara nimmt ihre Taschenlampe und öffnet langsam den Reißverschluss. Vor dem Zelt sitzt ein kleiner Igel und schnüffelt im Gras.\n\nDie Kinder müssen lachen. Der Igel schaut sie kurz an und verschwindet dann in der Hecke. Danach schläft Jonas ganz ruhig ein.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo zelten Jonas und Clara?",
+    "options": [
+     "Im Wald",
+     "Im Garten",
+     "Am See",
+     "Auf einem Campingplatz"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was nehmen sie mit?",
+    "options": [
+     "Schlafsäcke, Taschenlampen und Kekse",
+     "Ein Radio und Bücher",
+     "Einen Hund und eine Decke",
+     "Pizza und Saft"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist ein „Rascheln“?",
+    "options": [
+     "Ein leises Geräusch, zum Beispiel von Blättern",
+     "Ein helles Licht",
+     "Ein lauter Knall",
+     "Ein Lied"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Wie fühlt sich Jonas, als er das Rascheln hört?",
+    "answer": "Er hat Angst. Er ist erschrocken."
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was passiert, nachdem Clara den Reißverschluss öffnet?",
+    "options": [
+     "Sie erzählen Witze.",
+     "Sie sehen einen Igel.",
+     "Sie schauen die Sterne an.",
+     "Sie essen Kekse."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum müssen die Kinder lachen?",
+    "options": [
+     "Weil ein Witz lustig ist.",
+     "Weil sie nur ein kleiner Igel erschreckt hat.",
+     "Weil Mama lacht.",
+     "Weil die Taschenlampe kaputt ist."
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "dinos",
+  "title": "Dinosaurier",
+  "type": "Sachtext",
+  "level": 3,
+  "text": "Vor sehr langer Zeit lebten auf der Erde Dinosaurier. Das war vor vielen Millionen Jahren, lange bevor es Menschen gab.\n\nManche Dinosaurier waren riesig. Der Brachiosaurus war so hoch wie ein Haus mit vier Stockwerken. Er fraß nur Pflanzen. Mit seinem langen Hals erreichte er die Blätter oben in den Bäumen. Andere Dinosaurier jagten Tiere. Der bekannteste ist der Tyrannosaurus Rex. Er hatte große, scharfe Zähne, aber ganz kurze Arme.\n\nHeute gibt es keine Dinosaurier mehr. Forscher finden aber ihre Knochen in der Erde. So wissen wir, wie sie ausgesehen haben.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann lebten die Dinosaurier?",
+    "options": [
+     "Vor hundert Jahren",
+     "Vor vielen Millionen Jahren",
+     "Heute",
+     "Zur Zeit der Ritter"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was fraß der Brachiosaurus?",
+    "options": [
+     "Fische",
+     "Andere Dinosaurier",
+     "Pflanzen",
+     "Insekten"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was war beim Tyrannosaurus Rex ganz kurz?",
+    "options": [
+     "Die Zähne",
+     "Die Arme",
+     "Der Schwanz",
+     "Die Beine"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Haben Menschen einen lebenden Tyrannosaurus gesehen?",
+    "options": [
+     "Ja, sehr oft.",
+     "Nein, die Dinosaurier lebten, bevor es Menschen gab.",
+     "Ja, im Zoo.",
+     "Ja, aber nur nachts."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was machen „Forscher“?",
+    "options": [
+     "Sie bauen Häuser.",
+     "Sie suchen und untersuchen Dinge, um Neues zu lernen.",
+     "Sie verkaufen Knochen.",
+     "Sie fahren Bus."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Woher wissen wir, wie Dinosaurier ausgesehen haben?",
+    "answer": "Forscher finden ihre Knochen in der Erde."
    }
   ]
  },
