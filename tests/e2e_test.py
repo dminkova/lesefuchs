@@ -299,7 +299,7 @@ def main():
         p2.goto(url); p2.wait_for_selector("#cardsLevel .textcard")
         p2.locator("#cardsLevel .textcard").first.click(); p2.click("[data-mode=genau]"); p2.click("#startBtn"); p2.wait_for_timeout(100)
         check(p2.locator("#consentLocal").is_visible(), "consent offers 'on this device' when Chrome supports it")
-        check(p2.locator("#consent .prov").first.inner_text() == "Google", "online provider named: Google (Chrome)")
+        check("device" in p2.locator("#consentText").inner_text() and "Google" in p2.locator("#consentYes").inner_text(), "on-device message first, online via Google as the alternative")
         q = p2.locator("#consentQ").inner_text().split(":")[1].replace("= ?", ""); qa, qb = [int(x) for x in q.split("×")]
         p2.fill("#consentA", str(qa * qb)); p2.click("#consentLocal"); p2.wait_for_timeout(200)
         check(p2.evaluate("window.__installed") and p2.evaluate("__lesefuchs.speechMode()") == "device", "German language pack installed, mode 'on this device'")
@@ -323,7 +323,7 @@ def main():
             p3.locator("#cardsLevel .textcard").first.click(); p3.click("[data-mode=genau]")
             ok_read = not p3.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1")
             p3.click("#startBtn"); p3.wait_for_timeout(100)
-            prov = p3.locator("#consent .prov").first.inner_text()
+            prov = next((x for x in ["Apple", "Google", "Microsoft"] if x in p3.locator("#consentText").inner_text()), "?")
             p3.click("#consentNo"); p3.wait_for_timeout(50)   # reading starts right away
             p3.evaluate("__lesefuchs.L.tFirst -= 20000"); p3.click("#startBtn")
             p3.wait_for_selector("#result:not([hidden]) .praise", timeout=4000)

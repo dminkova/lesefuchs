@@ -175,19 +175,17 @@
 </div>
 <div class="overlay" id="consent" hidden>
   <div class="panel dialog" role="dialog" aria-modal="true" aria-labelledby="consentTitle">
-    <h2 id="consentTitle">Für Eltern · Pour les parents · For parents</h2>
-    <p><b>DE</b> Leseflitzi kann beim Vorlesen zuhören. Bevor Sie zustimmen, wird das Mikrofon nicht benutzt und nichts gesendet. <span class="c-local">Auf diesem Gerät kann die Sprache <b>direkt auf dem Gerät</b> erkannt werden: Die Stimme verlässt das Gerät nicht.</span> Bei der <b>Online-Erkennung</b> sendet der Browser die Stimme Ihres Kindes an <b class="prov">Google</b>. Leseflitzi selbst erhält und speichert keine Aufnahmen. Ohne Mikrofon tippen Sie falsch gelesene Wörter selbst an.</p>
-    <p><b>FR</b> Leseflitzi peut écouter la lecture. Avant votre accord, le micro n’est pas utilisé et rien n’est envoyé. <span class="c-local">Sur cet appareil, la voix peut être reconnue <b>directement sur l’appareil</b> : elle ne quitte pas l’appareil.</span> Avec la <b>reconnaissance en ligne</b>, le navigateur envoie la voix de votre enfant à <b class="prov">Google</b>. Leseflitzi ne reçoit et n’enregistre aucun enregistrement. Sans micro, vous touchez vous-même les mots mal lus.</p>
-    <p><b>EN</b> Leseflitzi can listen while your child reads. Until you agree, the microphone is not used and nothing is sent. <span class="c-local">On this device, speech can be recognised <b>on the device itself</b>: the voice never leaves it.</span> With <b>online recognition</b>, the browser sends your child’s voice to <b class="prov">Google</b>. Leseflitzi itself never receives or stores recordings. Without the microphone, you tap the misread words yourself.</p>
-    <p class="small"><a href="info.html" target="_blank" rel="noopener">Datenschutz · Protection des données · Privacy</a></p>
+    <div class="row spread"><h2 id="consentTitle"></h2><span class="dlang"><button data-cl="de">DE</button><button data-cl="fr">FR</button><button data-cl="en">EN</button></span></div>
+    <p id="consentText" class="ctext"></p>
     <label class="field"><span id="consentQ"></span><input type="number" id="consentA" inputmode="numeric"></label>
     <div class="row">
-      <button class="btn c-local" id="consentLocal">Auf dem Gerät · Sur l’appareil · On this device</button>
-      <button class="btn" id="consentYes">Online (<span class="prov">Google</span>)</button>
-      <button class="btn ghost" id="consentNo">Ohne Mikrofon · Sans micro · No microphone</button>
+      <button class="btn" id="consentLocal"></button>
+      <button class="btn" id="consentYes"></button>
+      <button class="btn ghost" id="consentNo"></button>
     </div>
     <p class="note" id="consentStatus"></p>
     <p class="err-note" id="consentErr"></p>
+    <p class="small"><a href="info.html" target="_blank" rel="noopener" id="consentMore"></a></p>
   </div>
 </div>
 <div class="toast" id="toast" hidden></div>

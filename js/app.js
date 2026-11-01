@@ -993,23 +993,56 @@ $("testKey").addEventListener("click", async () => {
   try { await callClaude('Reply with only this JSON: {"ok":true}', undefined, 50); $("keyNote").className = "ok-note"; $("keyNote").textContent = "Works."; }
   catch (e) { $("keyNote").className = "err-note"; $("keyNote").textContent = errCopy(e); }
 });
-/* parent consent for the microphone */
-let consentThen = null, consentAns = 0, consentLocal = "unavailable";
-document.querySelectorAll(".prov").forEach(e => (e.textContent = PROVIDER));
+/* parent consent for the microphone: short, friendly, in the parent's language; details on info.html */
+const CT = {
+  de: { title: "Darf Leseflitzi zuhören?",
+        local: "Leseflitzi hört beim Vorlesen zu und zeigt, welche Wörter schon gut klappen. Die Spracherkennung läuft direkt auf diesem Gerät: Die Stimme bleibt hier. Wir speichern keine Aufnahmen.",
+        cloud: "Leseflitzi hört beim Vorlesen zu und zeigt, welche Wörter schon gut klappen. Dafür wandelt {P} die Stimme in Text um. Wir speichern keine Aufnahmen.",
+        q: "Kurze Frage für Erwachsene: {a} × {b} = ?", yes: "Ja, zuhören", online: "Lieber online über {P}", no: "Ohne Mikrofon",
+        more: "Mehr zum Datenschutz", dl: "Beim ersten Mal wird die deutsche Spracherkennung einmal geladen.", wait: "Einen Moment…",
+        err: "Bitte die Rechenaufgabe lösen.", fail: "Das hat nicht geklappt. Bitte online oder „Ohne Mikrofon“ wählen." },
+  fr: { title: "Leseflitzi peut-il écouter ?",
+        local: "Leseflitzi écoute la lecture et montre quels mots sont déjà réussis. La reconnaissance vocale fonctionne directement sur cet appareil : la voix reste ici. Nous n’enregistrons rien.",
+        cloud: "Leseflitzi écoute la lecture et montre quels mots sont déjà réussis. Pour cela, {P} transforme la voix en texte. Nous n’enregistrons rien.",
+        q: "Petite question pour les adultes : {a} × {b} = ?", yes: "Oui, écouter", online: "Plutôt en ligne via {P}", no: "Sans micro",
+        more: "En savoir plus sur la protection des données", dl: "La première fois, la reconnaissance allemande est téléchargée une seule fois.", wait: "Un instant…",
+        err: "Merci de faire le calcul.", fail: "Cela n’a pas marché. Choisissez en ligne ou « Sans micro »." },
+  en: { title: "May Leseflitzi listen?",
+        local: "Leseflitzi listens while your child reads and shows which words went well. Speech recognition runs right on this device: the voice stays here. We don’t store any recordings.",
+        cloud: "Leseflitzi listens while your child reads and shows which words went well. To do this, {P} turns the voice into text. We don’t store any recordings.",
+        q: "Quick question for adults: {a} × {b} = ?", yes: "Yes, listen", online: "Use online via {P} instead", no: "No microphone",
+        more: "More about privacy", dl: "The first time, German speech recognition is downloaded once.", wait: "One moment…",
+        err: "Please solve the sum.", fail: "That didn’t work. Please choose online or “No microphone”." },
+};
+let consentThen = null, consentAns = 0, consentNums = [7, 8], consentLocal = "unavailable";
+let cLang = (() => { const n = (navigator.language || "de").slice(0, 2); return CT[n] ? n : "de"; })();
+const ct = k => CT[cLang][k].replace(/\{P\}/g, PROVIDER).replace("{a}", consentNums[0]).replace("{b}", consentNums[1]);
+function renderConsent() {
+  const local = consentLocal !== "unavailable";
+  $("consentTitle").textContent = ct("title");
+  $("consentText").textContent = ct(local ? "local" : "cloud");
+  $("consentQ").textContent = ct("q");
+  $("consentLocal").hidden = !local; $("consentLocal").textContent = ct("yes");
+  $("consentYes").textContent = local ? ct("online") : ct("yes");
+  $("consentYes").className = local ? "linkbtn" : "btn";
+  $("consentNo").textContent = ct("no");
+  $("consentMore").textContent = ct("more"); $("consentMore").href = "info.html#" + cLang;
+  $("consentStatus").textContent = consentLocal === "downloadable" ? ct("dl") : "";
+  document.querySelectorAll("[data-cl]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.cl === cLang)));
+}
+document.querySelectorAll("[data-cl]").forEach(b => b.addEventListener("click", () => { cLang = b.dataset.cl; $("consentErr").textContent = ""; renderConsent(); }));
 async function askConsent(then) {
   consentThen = then;
-  const a = 6 + Math.floor(Math.random() * 4), b = 6 + Math.floor(Math.random() * 4);
-  consentAns = a * b;
-  $("consentQ").textContent = "Erwachsene · Adultes · Adults: " + a + " × " + b + " = ?";
-  $("consentA").value = ""; $("consentErr").textContent = ""; $("consentStatus").textContent = "";
+  consentNums = [6 + Math.floor(Math.random() * 4), 6 + Math.floor(Math.random() * 4)];
+  consentAns = consentNums[0] * consentNums[1];
+  $("consentA").value = ""; $("consentErr").textContent = "";
   consentLocal = await localStatus();
-  document.querySelectorAll("#consent .c-local").forEach(e => (e.hidden = consentLocal === "unavailable"));
-  if (consentLocal === "downloadable") $("consentStatus").textContent = "„Auf dem Gerät“ lädt einmalig die deutsche Spracherkennung herunter. · Télécharge une fois la reconnaissance allemande. · Downloads German recognition once.";
+  renderConsent();
   $("consent").hidden = false;
 }
 function adultOK() {
   if (+$("consentA").value === consentAns) return true;
-  $("consentErr").textContent = "Bitte die Rechenaufgabe lösen. · Merci de faire le calcul. · Please solve the sum.";
+  $("consentErr").textContent = ct("err");
   return false;
 }
 function closeConsent(mode) {
@@ -1021,9 +1054,9 @@ function closeConsent(mode) {
 $("consentLocal").addEventListener("click", async () => {
   if (!adultOK()) return;
   if (consentLocal !== "available") {
-    $("consentStatus").textContent = "Wird installiert… · Installation… · Installing…";
+    $("consentStatus").textContent = ct("wait");
     const ok = await installLocal();
-    if (!ok || (await localStatus()) !== "available") { $("consentErr").textContent = "Die Installation hat nicht geklappt. Bitte „Online“ oder „Ohne Mikrofon“ wählen. · L’installation a échoué. · Installation failed: please choose Online or No microphone."; $("consentStatus").textContent = ""; return; }
+    if (!ok || (await localStatus()) !== "available") { $("consentErr").textContent = ct("fail"); $("consentStatus").textContent = ""; return; }
   }
   closeConsent("device");
 });
