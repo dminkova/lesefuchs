@@ -12,6 +12,10 @@ const store = {
 };
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 const canListen = !!SR, canSpeak = "speechSynthesis" in window;
+/* The microphone is only used after a parent agrees: Chrome sends the voice to Google for speech recognition.
+   consent(): true = agreed, false = declined (parent marks words by hand), null = not asked yet. */
+const consent = () => { const c = store.get("lf_consent", null); return c && c.v === 1 ? !!c.mic : null; };
+const useMic = () => canListen && consent() === true;
 const ICON = {
   spk: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>',
   mic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>',
@@ -195,7 +199,8 @@ function setupAttempt() {
   $("readHint").textContent = m === "genau" ? "Lies laut, langsam und genau. Fang mit der Überschrift an. Du hast Zeit."
     : m === "fluessig" ? (R.attempts.length ? "Lies das Stück noch einmal. Versuch, ein bisschen flüssiger zu lesen." : "Lies dieses kurze Stück laut. Du liest es dreimal.")
     : "Lies den Text in Ruhe. Laut oder leise. Danach kommen Fragen.";
-  const listening = canListen && m !== "verstehen";
+  const listening = useMic() && m !== "verstehen";
+  if (m !== "verstehen" && canListen && consent() === false) $("readHint").textContent += " (Eltern: Nach „Fertig“ die falsch gelesenen Wörter antippen.)";
   $("startBtn").textContent = m === "verstehen" ? "Fertig gelesen" : "Start";
   $("startBtn").classList.remove("stop");
   $("clock").hidden = m !== "fluessig"; $("clock").textContent = "0:00";
@@ -410,7 +415,9 @@ function stopTimers() {
 $("startBtn").addEventListener("click", () => {
   if (R.mode === "verstehen") { startQuiz(); return; }
   if (R.stopping) return;
-  if (R.running) finishReading(); else startReading();
+  if (R.running) { finishReading(); return; }
+  if (canListen && consent() === null) { askConsent(() => { setupAttempt(); startReading(); }); return; }
+  startReading();
 });
 function startReading() {
   if (!R.committed) commitResult();
@@ -423,8 +430,8 @@ function startReading() {
   tickT = setInterval(tick, 250);
   if (R.mode === "fluessig" && $("paceOn").checked) startPacer();
   try { navigator.wakeLock && navigator.wakeLock.request("screen").then(w => (wake = w)).catch(() => {}); } catch (e) {}
-  if (canListen) { try { rec = newSession(); } catch (e) { problem("Speech recognition could not start. Reload the page and try again."); } }
-  else setListen(false, "kein Zuhören");
+  if (useMic()) { try { rec = newSession(); } catch (e) { problem("Speech recognition could not start. Reload the page and try again."); } }
+  else { L.tFirst = performance.now(); setListen(false, "ohne Mikrofon"); }
 }
 function stopListening(silent) {
   if (rec) { const r = rec; rec = null; try { r.onend = null; r.abort(); } catch (e) {} }
@@ -443,9 +450,17 @@ function finalize() {
   if (!R.stopping) return;
   R.running = false; R.stopping = false;
   $("startBtn").textContent = "Start"; $("startBtn").classList.remove("stop");
+  if (!useMic()) { // no microphone: every word counts as read; the parent taps the misread ones
+    const secs = Math.max(1, (performance.now() - L.tFirst) / 1000);
+    if (secs < 5) { problem("Das war noch zu kurz. Drück Start, lies den Text und dann Fertig."); $("readHint").hidden = false; return; }
+    R.res = { items: R.tNorm.map(() => ({ s: "ok", r: "manual", heard: "", notes: [] })), last: R.tNorm.length - 1, secs, total: R.tNorm.length, restarts: 0, manual: true };
+    R.committed = false; paint(); renderResult();
+    $("controls").hidden = true; $("result").scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
   const toks = M.buildTokens(L.sessions.map(s => s.filter(Boolean)), new Set(R.tNorm));
   if (!L.tFirst || !toks.length) {
-    problem(canListen ? "Ich habe nichts gehört. Ist das Mikrofon an? Halte das Tablet näher und drück noch einmal Start." : "Without speech recognition, open Leseflitzi in Chrome.");
+    problem(useMic() ? "Ich habe nichts gehört. Ist das Mikrofon an? Halte das Tablet näher und drück noch einmal Start." : "Without speech recognition, open Leseflitzi in Chrome.");
     $("readHint").hidden = false;
     return;
   }
@@ -506,6 +521,7 @@ function renderResult() {
     }
   }
 
+  if (R.res.manual) P.append(el("p", "note", "For parents: tap every word that was read wrongly. It turns red, and a speaker button appears so he can hear it. Tap again to change it."));
   // parent review
   const review = [];
   for (let j = 0; j <= R.res.last; j++) {
@@ -643,9 +659,11 @@ function practiceCard(word) {
     };
     row.append(b1, b2);
   }
-  if (canListen) {
+  const manualDone = () => { const y = el("button", "btn small ghost", "Geschafft"); y.onclick = () => markMastered(word, card); return y; };
+  if (canListen && consent() !== false) {
     const b3 = el("button", "icon-btn"); b3.innerHTML = ICON.mic; const lbl = el("span", null, "Jetzt du!"); b3.append(lbl);
     b3.onclick = () => {
+      if (!useMic()) { askConsent(() => { if (useMic()) b3.click(); else b3.replaceWith(manualDone()); }); return; }
       if (oneShot) { stopOneShot(); return; }
       stopSpeaking();
       fb.textContent = ""; fb.className = "pfb";
@@ -665,7 +683,7 @@ function practiceCard(word) {
       }, () => { b3.classList.remove("live"); lbl.textContent = "Jetzt du!"; });
     };
     row.append(b3);
-  }
+  } else row.append(manualDone());
   const pb = el("span", "row");
   function parentBtns() {
     pb.innerHTML = "";
@@ -673,7 +691,6 @@ function practiceCard(word) {
     const n = el("button", "btn ghost small", "Nochmal üben"); n.onclick = () => { tries = 0; fb.textContent = ""; pb.innerHTML = ""; };
     pb.append(y, n);
   }
-  if (!canListen) { const y = el("button", "btn small ghost", "Geschafft"); y.onclick = () => markMastered(word, card); row.append(y); }
   card.append(row, fb, pb);
   return card;
 }
@@ -716,9 +733,10 @@ function renderQ() {
     P.append(o);
   } else {
     const ta = el("textarea", "answer"); ta.id = "ans" + Q.qi; ta.placeholder = "Sag oder schreib deine Antwort…"; ta.value = Q.answers[Q.qi] || ""; ta.oninput = () => { Q.answers[Q.qi] = ta.value; };
-    if (canListen) {
+    if (canListen && consent() !== false) {
       const mb = el("button", "icon-btn"); mb.innerHTML = ICON.mic; const lbl = el("span", null, "Antwort sagen"); mb.append(lbl);
       mb.onclick = () => {
+        if (!useMic()) { askConsent(() => { if (useMic()) mb.click(); else mb.remove(); }); return; }
         if (oneShot) { stopOneShot(); return; }
         stopSpeaking();
         const before = ta.value.trim();
@@ -927,6 +945,7 @@ $("gateGo").addEventListener("click", () => {
 function fillParent() {
   document.querySelectorAll(".ai-only").forEach(e => (e.hidden = !AI_FEATURES));
   const st = settings();
+  $("setMic").checked = consent() === true; $("setMic").disabled = !canListen;
   $("setSlow").checked = st.slow; $("setAuto").checked = st.autoLevel; $("setLevel").value = String(st.level);
   $("apiKey").value = getKey(); $("keyNote").textContent = "";
   $("genNote").textContent = getKey() ? "Level " + st.level + " (" + LEVELS[st.level].w + " words). Takes about 15–30 seconds." : "Needs a Claude API key (below).";
@@ -947,6 +966,29 @@ $("testKey").addEventListener("click", async () => {
   try { await callClaude('Reply with only this JSON: {"ok":true}', undefined, 50); $("keyNote").className = "ok-note"; $("keyNote").textContent = "Works."; }
   catch (e) { $("keyNote").className = "err-note"; $("keyNote").textContent = errCopy(e); }
 });
+/* parent consent for the microphone */
+let consentThen = null, consentAns = 0;
+function askConsent(then) {
+  consentThen = then;
+  const a = 6 + Math.floor(Math.random() * 4), b = 6 + Math.floor(Math.random() * 4);
+  consentAns = a * b;
+  $("consentQ").textContent = "Erwachsene · Adultes · Adults: " + a + " × " + b + " = ?";
+  $("consentA").value = ""; $("consentErr").textContent = "";
+  $("consent").hidden = false;
+}
+function closeConsent(mic) {
+  store.set("lf_consent", { v: 1, mic, d: Date.now() });
+  $("consent").hidden = true;
+  const f = consentThen; consentThen = null;
+  if (f) f();
+}
+$("consentYes").addEventListener("click", () => {
+  if (+$("consentA").value !== consentAns) { $("consentErr").textContent = "Bitte die Rechenaufgabe lösen. · Merci de faire le calcul. · Please solve the sum."; return; }
+  closeConsent(true);
+});
+$("consentNo").addEventListener("click", () => closeConsent(false));
+$("setMic").addEventListener("change", () => store.set("lf_consent", { v: 1, mic: $("setMic").checked, d: Date.now() }));
+
 /* backup: save / load progress as a file (the API key is never included) */
 const BACKUP_KEYS = ["lf_hist", "lf_bank", "lf_trusted", "lf_stars", "lf_time", "lf_settings", "lf_texts", "lf_syl"];
 $("exportBtn").addEventListener("click", () => {
@@ -972,7 +1014,7 @@ $("importFile").addEventListener("change", async () => {
 });
 $("wipeBtn").addEventListener("click", () => {
   if ($("wipeBtn").dataset.armed !== "1") { $("wipeBtn").dataset.armed = "1"; $("wipeBtn").textContent = "Tap again to delete everything"; return; }
-  ["lf_hist", "lf_bank", "lf_trusted", "lf_stars", "lf_time", "lf_settings", "lf_texts", "lf_key", "lf_syl", "lf_levelmsg"].forEach(k => store.del(k));
+  ["lf_hist", "lf_bank", "lf_trusted", "lf_stars", "lf_time", "lf_settings", "lf_texts", "lf_key", "lf_syl", "lf_levelmsg", "lf_consent"].forEach(k => store.del(k));
   $("wipeBtn").dataset.armed = ""; $("wipeBtn").textContent = "Delete all Leseflitzi data on this device"; $("wipeNote").textContent = "Deleted.";
   fillParent();
 });

@@ -110,6 +110,8 @@
   <div id="parentArea" hidden>
     <div class="panel">
       <h3>Reading settings</h3>
+      <label class="toggle"><input type="checkbox" id="setMic"> Use the microphone (Chrome sends the voice to Google for speech recognition)</label>
+      <p class="note">Off: you tap the misread words yourself after each reading. You can change this at any time.</p>
       <label class="toggle"><input type="checkbox" id="setSlow"> Slow-reader mode (recommended under ~50 words per minute)</label>
       <p class="note">Waits longer before finishing, accepts up to five syllable pieces per word, and treats one to two unheard words as "please check" instead of "skipped".</p>
       <label class="toggle"><input type="checkbox" id="setAuto"> Adjust the level automatically</label>
@@ -162,6 +164,18 @@
     </div>
   </div>
 </section>
+</div>
+<div class="overlay" id="consent" hidden>
+  <div class="panel dialog" role="dialog" aria-modal="true" aria-labelledby="consentTitle">
+    <h2 id="consentTitle">Für Eltern · Pour les parents · For parents</h2>
+    <p><b>DE</b> Damit Leseflitzi beim Vorlesen zuhören kann, nutzt Google Chrome seine Spracherkennung. Dabei wird die Stimme Ihres Kindes an Google gesendet und in Text umgewandelt. Leseflitzi selbst erhält und speichert keine Aufnahmen. Ohne Mikrofon tippen Sie falsch gelesene Wörter selbst an.</p>
+    <p><b>FR</b> Pour que Leseflitzi puisse écouter la lecture, Google Chrome utilise sa reconnaissance vocale. La voix de votre enfant est alors envoyée à Google et transformée en texte. Leseflitzi ne reçoit et n’enregistre aucun enregistrement. Sans micro, vous touchez vous-même les mots mal lus.</p>
+    <p><b>EN</b> To listen while your child reads, Leseflitzi uses Google Chrome’s speech recognition. Your child’s voice is sent to Google and turned into text. Leseflitzi itself never receives or stores recordings. Without the microphone, you tap the misread words yourself.</p>
+    <p class="small"><a href="info.html" target="_blank" rel="noopener">Datenschutz · Protection des données · Privacy</a></p>
+    <label class="field"><span id="consentQ"></span><input type="number" id="consentA" inputmode="numeric"></label>
+    <div class="row"><button class="btn" id="consentYes">Einverstanden · J’accepte · I agree</button><button class="btn ghost" id="consentNo">Ohne Mikrofon · Sans micro · No microphone</button></div>
+    <p class="err-note" id="consentErr"></p>
+  </div>
 </div>
 <div class="toast" id="toast" hidden></div>
 
