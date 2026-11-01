@@ -177,6 +177,16 @@ def main():
         page.fill("#gateA", str(a * bnum)); page.click("#gateGo")
         check(page.locator("#parentArea").is_visible(), "right answer opens the parent area")
         check(page.locator("#trustedList button", has_text="hund").count() == 1, "misheard-word list shows 'hund'")
+        stars_before = page.evaluate("+localStorage.getItem('lf_stars')")
+        with page.expect_download() as dl:
+            page.click("#exportBtn")
+        path = dl.value.path()
+        backup = json.load(open(path))
+        check(backup["app"] == "leseflitzi" and "lf_hist" in backup["data"] and "lf_key" not in backup["data"], "progress saved to a file (without the API key)")
+        page.evaluate("localStorage.clear()")
+        page.set_input_files("#importFile", path)
+        page.wait_for_timeout(300)
+        check(page.evaluate("+localStorage.getItem('lf_stars')") == stars_before and "Loaded" in page.locator("#backupNote").inner_text(), "progress loaded back from the file")
 
         print("Phone width layout")
         page.set_viewport_size({"width": 390, "height": 844})

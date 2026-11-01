@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src https://api.anthropic.com; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<title>Lesefuchs</title>
+<meta name="description" content="Leseflitzi – kostenlose Lese-App für Kinder in Luxemburg (Zyklus 3): laut vorlesen, Silben üben, Fragen beantworten. Läuft im Browser, ohne Anmeldung.">
+<title>Leseflitzi</title>
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -14,10 +15,10 @@
 <!-- HOME -->
 <section id="home">
   <div class="top">
-    <h1>Lesefuchs</h1>
+    <div><h1>Leseflitzi</h1><p class="tagline">Silbe für Silbe zum Leseprofi</p></div>
     <div class="badges" id="badges"></div>
   </div>
-  <p class="banner" id="srBanner" hidden>Dieses Gerät kann nicht zuhören. Öffne Lesefuchs in <b>Google Chrome</b>. <span class="small">(For parents: speech recognition needs Chrome. Without it, you tap misread words yourself.)</span></p>
+  <p class="banner" id="srBanner" hidden>Dieses Gerät kann nicht zuhören. Öffne Leseflitzi in <b>Google Chrome</b>. <span class="small">(For parents: speech recognition needs Chrome. Without it, you tap misread words yourself.)</span></p>
   <p class="banner good" id="levelMsg" hidden></p>
   <p class="banner info" id="timeMsg" hidden></p>
   <div class="panel" id="nextUp" hidden></div>
@@ -141,15 +142,22 @@
     </div>
 
     <div class="panel">
+      <h3>Save or load progress</h3>
+      <p class="note">Saves his readings, stars, level, practised words and settings to a small file on this device (the API key is not included). Use it as a backup, or to move to a new web address or a new tablet. Loading a file replaces the progress on this device.</p>
+      <div class="row"><button class="btn small" id="exportBtn">Save progress to a file</button><label class="btn ghost small" for="importFile">Load progress from a file</label><input type="file" id="importFile" class="vh" accept=".json,application/json"></div>
+      <p class="note" id="backupNote"></p>
+    </div>
+
+    <div class="panel">
       <h3>Privacy</h3>
       <ul class="small">
-        <li>Chrome's speech recognition sends the microphone audio to Google to turn it into text. Lesefuchs does not record or store audio.</li>
+        <li>Chrome's speech recognition sends the microphone audio to Google to turn it into text. Leseflitzi does not record or store audio.</li>
         <li>Progress, settings and the API key stay in this browser on this device. Nothing is sent to GitHub.</li>
         <li>With an API key, the text, his answers and the list of misread words go to Anthropic for feedback. No name is sent.</li>
         <li>The reading results come from automatic speech recognition. They show trends, not a diagnosis of his reading.</li>
       </ul>
       <p class="note" id="voiceNote"></p>
-      <div class="row"><button class="btn ghost small" id="wipeBtn">Delete all Lesefuchs data on this device</button><span class="note" id="wipeNote"></span></div>
+      <div class="row"><button class="btn ghost small" id="wipeBtn">Delete all Leseflitzi data on this device</button><span class="note" id="wipeNote"></span></div>
     </div>
   </div>
 </section>

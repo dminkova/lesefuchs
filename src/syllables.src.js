@@ -1,5 +1,5 @@
 /*
- * German reading syllables (Lesesilben) for Lesefuchs.
+ * German reading syllables (Lesesilben) for Leseflitzi.
  * Source file: bundled into js/syllables.js with `npm run build`.
  * Uses the TeX hyphenation patterns for new German orthography (de-1996)
  * from the "hyphen" package, then applies two reading-syllable rules that

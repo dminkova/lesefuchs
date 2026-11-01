@@ -1,4 +1,4 @@
-/* Lesefuchs app. Uses LFMatch (matcher.js), LFSyl (syllables.js) and LF_TEXTS (texts.js). */
+/* Leseflitzi app. Uses LFMatch (matcher.js), LFSyl (syllables.js) and LF_TEXTS (texts.js). */
 (function () {
 "use strict";
 const M = window.LFMatch, SY = window.LFSyl;
@@ -361,7 +361,7 @@ function newSession() {
     if (e.error === "not-allowed" || e.error === "service-not-allowed") {
       R.running = false; stopTimers();
       setListen(false, "Mikrofon blockiert");
-      problem(location.protocol === "https:" ? "The microphone is blocked. Tap the icon left of the web address, allow the microphone, then press Start again." : "Chrome blocks the microphone when the page is opened from a file. Open Lesefuchs from its https:// address.");
+      problem(location.protocol === "https:" ? "The microphone is blocked. Tap the icon left of the web address, allow the microphone, then press Start again." : "Chrome blocks the microphone when the page is opened from a file. Open Leseflitzi from its https:// address.");
       $("startBtn").textContent = "Start"; $("startBtn").classList.remove("stop");
     } else if (e.error === "network") { setListen(false, "keine Verbindung"); $("heard").textContent = "Die Spracherkennung braucht Internet."; }
   };
@@ -442,7 +442,7 @@ function finalize() {
   $("startBtn").textContent = "Start"; $("startBtn").classList.remove("stop");
   const toks = M.buildTokens(L.sessions.map(s => s.filter(Boolean)), new Set(R.tNorm));
   if (!L.tFirst || !toks.length) {
-    problem(canListen ? "Ich habe nichts gehört. Ist das Mikrofon an? Halte das Tablet näher und drück noch einmal Start." : "Without speech recognition, open Lesefuchs in Chrome.");
+    problem(canListen ? "Ich habe nichts gehört. Ist das Mikrofon an? Halte das Tablet näher und drück noch einmal Start." : "Without speech recognition, open Leseflitzi in Chrome.");
     $("readHint").hidden = false;
     return;
   }
@@ -943,10 +943,33 @@ $("testKey").addEventListener("click", async () => {
   try { await callClaude('Reply with only this JSON: {"ok":true}', undefined, 50); $("keyNote").className = "ok-note"; $("keyNote").textContent = "Works."; }
   catch (e) { $("keyNote").className = "err-note"; $("keyNote").textContent = errCopy(e); }
 });
+/* backup: save / load progress as a file (the API key is never included) */
+const BACKUP_KEYS = ["lf_hist", "lf_bank", "lf_trusted", "lf_stars", "lf_time", "lf_settings", "lf_texts", "lf_syl"];
+$("exportBtn").addEventListener("click", () => {
+  const out = { app: "leseflitzi", v: 1, saved: new Date().toISOString(), data: {} };
+  for (const k of BACKUP_KEYS) { const v = store.get(k, null); if (v != null) out.data[k] = v; }
+  const url = URL.createObjectURL(new Blob([JSON.stringify(out)], { type: "application/json" }));
+  const a = document.createElement("a"); a.href = url; a.download = "leseflitzi-fortschritt-" + today() + ".json";
+  document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 10000);
+  const n = (out.data.lf_hist || []).filter(h => h && h.kind === "read").length;
+  $("backupNote").className = "ok-note"; $("backupNote").textContent = "Saved: " + n + " readings and " + (out.data.lf_stars || 0) + " stars. The file is in your Downloads folder.";
+});
+$("importFile").addEventListener("change", async () => {
+  const f = $("importFile").files[0]; if (!f) return;
+  try {
+    const j = JSON.parse(await f.text());
+    if (!j || typeof j.data !== "object" || !["leseflitzi", "lesefuchs"].includes(j.app)) throw new Error("not a Leseflitzi file");
+    for (const k of BACKUP_KEYS) if (k in j.data) store.set(k, j.data[k]);
+    const n = (j.data.lf_hist || []).filter(h => h && h.kind === "read").length;
+    $("backupNote").className = "ok-note"; $("backupNote").textContent = "Loaded: " + n + " readings and " + (j.data.lf_stars || 0) + " stars.";
+    fillParent(); renderBadges();
+  } catch (e) { $("backupNote").className = "err-note"; $("backupNote").textContent = "This file could not be loaded. Choose a file saved with “Save progress to a file”."; }
+  finally { $("importFile").value = ""; }
+});
 $("wipeBtn").addEventListener("click", () => {
   if ($("wipeBtn").dataset.armed !== "1") { $("wipeBtn").dataset.armed = "1"; $("wipeBtn").textContent = "Tap again to delete everything"; return; }
   ["lf_hist", "lf_bank", "lf_trusted", "lf_stars", "lf_time", "lf_settings", "lf_texts", "lf_key", "lf_syl", "lf_levelmsg"].forEach(k => store.del(k));
-  $("wipeBtn").dataset.armed = ""; $("wipeBtn").textContent = "Delete all Lesefuchs data on this device"; $("wipeNote").textContent = "Deleted.";
+  $("wipeBtn").dataset.armed = ""; $("wipeBtn").textContent = "Delete all Leseflitzi data on this device"; $("wipeNote").textContent = "Deleted.";
   fillParent();
 });
 let genCtl = null;

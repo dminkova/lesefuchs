@@ -1,5 +1,5 @@
 /*
- * Lesefuchs matcher: turns Chrome speech-recognition output into word-level
+ * Leseflitzi matcher: turns Chrome speech-recognition output into word-level
  * reading results. Pure functions, no DOM, so they can be tested in Node.
  *
  * Three result states per text word:

@@ -1,8 +1,8 @@
-# Lesefuchs
+# Leseflitzi
 
-German read-aloud coach for primary school (Luxembourg, Zyklus 3). Runs as a static site on GitHub Pages – no server.
+German read-aloud coach (formerly "Lesefuchs") for primary school (Luxembourg, Zyklus 3). Runs as a static site on GitHub Pages – no server.
 
-**Live:** https://dminkova.github.io/lesefuchs/ (open in Google Chrome, allow the microphone)
+**Live:** https://leseflitzi.eu/ (open in Google Chrome, allow the microphone)
 
 ## What it does
 - **Genau lesen** – careful reading without a clock. Chrome listens; each word ends up *confirmed*, *please check* or *likely wrong*. Parents can correct any word.

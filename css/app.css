@@ -1,4 +1,4 @@
-/* Lesefuchs — one narrow column like a school exercise book; reading text on a ruled "Heft" page. */
+/* Leseflitzi — one narrow column like a school exercise book; reading text on a ruled "Heft" page. */
 @font-face{font-family:"Andika";src:url(../fonts/andika-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Andika";src:url(../fonts/andika-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"Bricolage Grotesque";src:url(../fonts/bricolage-grotesque-latin-700-normal.woff2) format("woff2");font-weight:500 700;font-display:swap}
@@ -60,6 +60,9 @@ details summary{cursor:pointer;color:var(--blue);font-weight:600}
 
 /* header */
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tagline{font-family:var(--read);color:var(--muted);font-size:1.05rem;margin-top:2px}
+label.btn{display:inline-flex;align-items:center;cursor:pointer}
+.vh{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
 .badges{display:flex;gap:8px;flex-wrap:wrap}
 .badge{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:650;font-size:.95rem;font-variant-numeric:tabular-nums}
 .badge svg{width:18px;height:18px}

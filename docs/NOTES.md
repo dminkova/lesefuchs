@@ -1,4 +1,4 @@
-# Lesefuchs – review notes (October 2026)
+# Leseflitzi – review notes (October 2026)
 
 ## 1. Why correct slow reading was marked wrong (old version)
 
@@ -38,11 +38,11 @@ Recommendation: keep Chrome for now (free, works), improve the matching (done), 
 
 ## 4. Privacy and API key
 
-- **Audio**: Chrome sends microphone audio to Google for transcription. Lesefuchs never records or stores audio.
-- **Progress data** stays in the tablet's browser storage. Nothing goes to GitHub. "Delete all Lesefuchs data" in the parent area wipes it.
+- **Audio**: Chrome sends microphone audio to Google for transcription. Leseflitzi never records or stores audio.
+- **Progress data** stays in the tablet's browser storage. Nothing goes to GitHub. "Delete all Leseflitzi data" in the parent area wipes it.
 - **Claude API key** (optional): stored in the browser's localStorage on this device only and sent only to `api.anthropic.com`.
-  - Risk: localStorage is shared by every page on `dminkova.github.io` – any other GitHub Pages site in this account could read it. Keep other Pages sites trustworthy, or move Lesefuchs to its own domain later.
-  - Set a monthly **spend limit** in the Anthropic console and use a key made only for Lesefuchs, so a leak costs little and can be revoked.
+  - Risk: localStorage is shared by every page on `dminkova.github.io` – any other GitHub Pages site in this account could read it. Keep other Pages sites trustworthy, or move Leseflitzi to its own domain later.
+  - Set a monthly **spend limit** in the Anthropic console and use a key made only for Leseflitzi, so a leak costs little and can be revoked.
   - Text generation and the key are in the **parent area** behind a small maths check, so the child cannot spend credit or see the key by accident (it is a child gate, not security).
 - **Content Security Policy**: the page may only load its own files and only talk to `api.anthropic.com`. Fonts are self-hosted (no Google Fonts request).
 - **What is sent to Anthropic** when checking answers: the text, the questions and his answers. No name.
