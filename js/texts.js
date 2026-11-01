@@ -412,6 +412,165 @@
   ]
  },
  {
+  "id": "susi",
+  "title": "Die Schnecke Susi",
+  "type": "Geschichte",
+  "level": 1,
+  "text": "Susi ist eine kleine Schnecke. Sie ist sehr langsam. Die Ameisen lachen über sie. „Du kommst nie an!“, rufen sie.\n\nSusi kriecht trotzdem weiter. Stück für Stück. Am Abend ist sie am Ende des Gartens. Dort wächst der beste Salat. Susi frisst und frisst. Sie ist glücklich. Langsam ist auch gut!",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was für ein Tier ist Susi?",
+    "options": [
+     "Eine Ameise",
+     "Eine Schnecke",
+     "Ein Käfer",
+     "Eine Maus"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer lacht über Susi?",
+    "options": [
+     "Die Vögel",
+     "Die Ameisen",
+     "Die Kinder",
+     "Die Katzen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Susi kriecht weiter.“ Wie bewegt sie sich?",
+    "options": [
+     "Sie fliegt.",
+     "Sie bewegt sich langsam am Boden.",
+     "Sie springt.",
+     "Sie schwimmt."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Was will uns die Geschichte sagen?",
+    "answer": "Auch wer langsam ist, kommt ans Ziel."
+   }
+  ]
+ },
+ {
+  "id": "zoo",
+  "title": "Im Zoo",
+  "type": "Geschichte",
+  "level": 1,
+  "text": "Heute macht die Klasse einen Ausflug in den Zoo. Zuerst sehen die Kinder die Giraffen. Sie fressen Blätter von hohen Bäumen. Dann gehen sie zu den Affen. Ein Affe schneidet Grimassen. Alle lachen.\n\nAm Ende sehen sie den Elefanten. Er spritzt mit seinem Rüssel Wasser. Lisa wird ganz nass! Zum Glück scheint die Sonne.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Welche Tiere sehen die Kinder zuerst?",
+    "options": [
+     "Die Affen",
+     "Die Giraffen",
+     "Den Elefanten",
+     "Die Löwen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was macht der Elefant?",
+    "options": [
+     "Er schläft.",
+     "Er spritzt Wasser.",
+     "Er frisst Bananen.",
+     "Er läuft weg."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist ein Rüssel?",
+    "options": [
+     "Die lange Nase des Elefanten",
+     "Der Schwanz des Affen",
+     "Ein Baum",
+     "Ein Futter"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum ist es gut, dass die Sonne scheint?",
+    "answer": "Weil Lisa nass ist. In der Sonne wird sie schnell wieder trocken."
+   }
+  ]
+ },
+ {
+  "id": "katzen",
+  "title": "Katzen",
+  "type": "Sachtext",
+  "level": 1,
+  "text": "Katzen sind beliebte Haustiere. Sie haben ein weiches Fell und lange Schnurrhaare. Mit den Schnurrhaaren können sie im Dunkeln fühlen. In der Nacht sehen Katzen sehr gut.\n\nKatzen schlafen viel, oft mehr als zwölf Stunden am Tag. Wenn eine Katze zufrieden ist, schnurrt sie. Wenn sie Angst hat, macht sie einen Buckel.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wofür brauchen Katzen ihre Schnurrhaare?",
+    "options": [
+     "Zum Fressen",
+     "Zum Fühlen im Dunkeln",
+     "Zum Schwimmen",
+     "Zum Spielen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie lange schlafen Katzen oft?",
+    "options": [
+     "Eine Stunde",
+     "Mehr als zwölf Stunden am Tag",
+     "Gar nicht",
+     "Nur am Morgen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was macht eine Katze, wenn sie schnurrt?",
+    "options": [
+     "Sie macht ein leises, brummendes Geräusch.",
+     "Sie bellt.",
+     "Sie springt hoch.",
+     "Sie weint."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Eine Katze macht einen Buckel. Wie fühlt sie sich?",
+    "options": [
+     "Sie ist froh.",
+     "Sie hat Angst.",
+     "Sie ist müde.",
+     "Sie hat Hunger."
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
   "id": "shake",
   "title": "Bananen-Milchshake",
   "type": "Rezept",
@@ -580,6 +739,62 @@
     "skill": "Finden",
     "q": "Wann ist am Mittwoch die Schule aus?",
     "answer": "Um zwölf Uhr."
+   }
+  ]
+ },
+ {
+  "id": "eisdiele",
+  "title": "Eisdiele Bella",
+  "type": "Preisliste",
+  "level": 1,
+  "format": "doc",
+  "modes": [
+   "woerter",
+   "verstehen"
+  ],
+  "text": "Geöffnet: Dienstag bis Sonntag, von 12 bis 19 Uhr. Am Montag ist die Eisdiele geschlossen.\n\nEissorte | Eine Kugel | Zwei Kugeln\nVanille | 1 Euro | 2 Euro\nSchokolade | 1 Euro | 2 Euro\nErdbeere | 1 Euro | 2 Euro\nMango | 2 Euro | 3 Euro\n\nSahne gibt es kostenlos dazu!",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie viel kostet eine Kugel Mango?",
+    "options": [
+     "1 Euro",
+     "2 Euro",
+     "3 Euro",
+     "Nichts"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "An welchem Tag ist die Eisdiele geschlossen?",
+    "options": [
+     "Montag",
+     "Mittwoch",
+     "Samstag",
+     "Sonntag"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Tom möchte eine Kugel Vanille und eine Kugel Erdbeere. Wie viel bezahlt er?",
+    "options": [
+     "1 Euro",
+     "2 Euro",
+     "3 Euro",
+     "4 Euro"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Was kostet die Sahne?",
+    "answer": "Nichts. Sie ist kostenlos."
    }
   ]
  },
@@ -1076,6 +1291,195 @@
   ]
  },
  {
+  "id": "brief",
+  "title": "Ein Brief an Oma",
+  "type": "Brief",
+  "level": 2,
+  "text": "Liebe Oma,\nwie geht es dir? Mir geht es gut. In der Schule lernen wir gerade, wie man Briefe schreibt. Darum schreibe ich dir heute.\n\nLetzte Woche hatte ich Fieber. Ich musste drei Tage im Bett bleiben. Das war langweilig. Jetzt bin ich wieder gesund und kann am Samstag zum Fußball gehen.\n\nMama sagt, du kommst in den Ferien zu uns. Ich freue mich schon sehr! Bringst du deinen leckeren Apfelkuchen mit?\n\nViele Grüße\ndein Elias",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Warum schreibt Elias den Brief?",
+    "options": [
+     "Weil Oma Geburtstag hat.",
+     "Weil sie in der Schule lernen, Briefe zu schreiben.",
+     "Weil er krank ist.",
+     "Weil Mama es sagt."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie lange musste Elias im Bett bleiben?",
+    "options": [
+     "Einen Tag",
+     "Drei Tage",
+     "Eine Woche",
+     "Zwei Wochen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Das war langweilig.“ Was bedeutet das?",
+    "options": [
+     "Es war spannend.",
+     "Es war nicht interessant und die Zeit ging langsam vorbei.",
+     "Es war lustig.",
+     "Es war gefährlich."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was soll Oma mitbringen?",
+    "options": [
+     "Schokolade",
+     "Ihren Apfelkuchen",
+     "Ein Buch",
+     "Einen Ball"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Woran merkst du, dass Elias seine Oma lieb hat?",
+    "answer": "Er fragt, wie es ihr geht, und freut sich sehr auf ihren Besuch."
+   }
+  ]
+ },
+ {
+  "id": "eichhoernchen",
+  "title": "Eichhörnchen",
+  "type": "Sachtext",
+  "level": 2,
+  "text": "Eichhörnchen leben in Wäldern und Parks. Sie haben rotbraunes Fell und einen buschigen Schwanz. Mit dem Schwanz halten sie beim Springen das Gleichgewicht.\n\nIm Herbst sammeln Eichhörnchen Nüsse und Samen. Sie vergraben sie an vielen Stellen im Boden. Im Winter suchen sie ihre Vorräte wieder. Aber sie finden nicht alle. Aus den vergessenen Nüssen wachsen manchmal neue Bäume.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo leben Eichhörnchen?",
+    "options": [
+     "Im Meer",
+     "In Wäldern und Parks",
+     "In der Wüste",
+     "Unter der Erde"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wofür brauchen sie ihren Schwanz beim Springen?",
+    "options": [
+     "Zum Bremsen",
+     "Für das Gleichgewicht",
+     "Zum Festhalten",
+     "Zum Wärmen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was sind „Vorräte“?",
+    "options": [
+     "Essen, das man für später aufhebt",
+     "Freunde",
+     "Spielzeug",
+     "Nester"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was machen Eichhörnchen im Herbst?",
+    "options": [
+     "Sie schlafen.",
+     "Sie sammeln und vergraben Nüsse.",
+     "Sie suchen ihre Vorräte.",
+     "Sie fliegen weg."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Wie helfen Eichhörnchen dem Wald?",
+    "answer": "Aus den Nüssen, die sie vergessen, wachsen neue Bäume."
+   }
+  ]
+ },
+ {
+  "id": "gewitter",
+  "title": "Das Gewitter",
+  "type": "Geschichte",
+  "level": 2,
+  "text": "In der Nacht wacht Emma auf. Draußen blitzt es hell, dann kracht es laut. Emma zieht die Decke über den Kopf und ruft nach Papa.\n\nPapa setzt sich zu ihr ans Bett. „Wir zählen zusammen“, sagt er. „Nach dem Blitz zählen wir, bis der Donner kommt.“ Beim nächsten Blitz zählen sie bis fünf. Dann donnert es. Beim nächsten Mal kommen sie bis zehn. „Das Gewitter zieht weg“, erklärt Papa. Bald schläft Emma wieder ein.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was macht Emma, als es kracht?",
+    "options": [
+     "Sie lacht.",
+     "Sie zieht die Decke über den Kopf.",
+     "Sie geht nach draußen.",
+     "Sie singt."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Bis wie viel zählen sie beim ersten Mal?",
+    "options": [
+     "Drei",
+     "Fünf",
+     "Zehn",
+     "Zwanzig"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Es donnert.“ Was hört man?",
+    "options": [
+     "Ein lautes Krachen am Himmel",
+     "Regen",
+     "Vögel",
+     "Musik"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum zählen sie beim zweiten Mal bis zehn?",
+    "options": [
+     "Weil Emma besser zählen kann.",
+     "Weil das Gewitter weiter weg ist.",
+     "Weil Papa müde ist.",
+     "Weil es nicht mehr regnet."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum kann Emma am Ende wieder einschlafen?",
+    "answer": "Weil das Gewitter wegzieht und sie keine Angst mehr hat."
+   }
+  ]
+ },
+ {
   "id": "kresse",
   "title": "Kresse wächst auf Watte",
   "type": "Anleitung",
@@ -1264,6 +1668,138 @@
     "skill": "Finden",
     "q": "Was darf der Gewinner in der nächsten Runde machen?",
     "answer": "Er darf die Musik machen."
+   }
+  ]
+ },
+ {
+  "id": "wetter",
+  "title": "Der Wetterbericht",
+  "type": "Wetterbericht",
+  "level": 2,
+  "format": "doc",
+  "modes": [
+   "woerter",
+   "verstehen"
+  ],
+  "text": "So wird das Wetter in Luxemburg in den nächsten vier Tagen:\n\nTag | Wetter | Temperatur\nMontag | Regen | 8 Grad\nDienstag | Wolken | 6 Grad\nMittwoch | Sonne | 9 Grad\nDonnerstag | Schnee | 1 Grad",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie wird das Wetter am Mittwoch?",
+    "options": [
+     "Regen",
+     "Wolken",
+     "Sonne",
+     "Schnee"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie warm wird es am Montag?",
+    "options": [
+     "1 Grad",
+     "6 Grad",
+     "8 Grad",
+     "9 Grad"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "An welchem Tag ist es am kältesten?",
+    "options": [
+     "Montag",
+     "Dienstag",
+     "Mittwoch",
+     "Donnerstag"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Lea will einen Schneemann bauen. Welcher Tag passt am besten?",
+    "options": [
+     "Montag",
+     "Dienstag",
+     "Mittwoch",
+     "Donnerstag"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "An welchem Tag brauchst du einen Regenschirm?",
+    "answer": "Am Montag."
+   }
+  ]
+ },
+ {
+  "id": "bibliothek",
+  "title": "Die Schulbibliothek",
+  "type": "Plakat",
+  "level": 2,
+  "format": "doc",
+  "text": "Willkommen in der Schulbibliothek! Hier kannst du Bücher lesen und ausleihen.\n\n## Öffnungszeiten\nMontag bis Donnerstag, von 12:30 bis 14 Uhr\n\n## Unsere Regeln\n- Sprich bitte leise.\n- Essen und Trinken sind verboten.\n- Du darfst drei Bücher für zwei Wochen ausleihen.\n- Bring die Bücher pünktlich zurück.\n- Ist ein Buch kaputt? Sag es Frau Klein.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie viele Bücher darfst du ausleihen?",
+    "options": [
+     "Eins",
+     "Zwei",
+     "Drei",
+     "Zehn"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Ist die Bibliothek am Freitag offen?",
+    "options": [
+     "Ja, von 12:30 bis 14 Uhr.",
+     "Nein, nur von Montag bis Donnerstag.",
+     "Ja, den ganzen Tag.",
+     "Nur am Morgen."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „ausleihen“?",
+    "options": [
+     "Etwas für eine Zeit mitnehmen und dann zurückbringen",
+     "Etwas kaufen",
+     "Etwas verschenken",
+     "Etwas wegwerfen"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Paul hat sein Pausenbrot dabei. Darf er es in der Bibliothek essen?",
+    "options": [
+     "Ja.",
+     "Nein, Essen ist verboten.",
+     "Ja, wenn er leise ist.",
+     "Nur am Montag."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wem sagst du, dass ein Buch kaputt ist?",
+    "answer": "Frau Klein."
    }
   ]
  },
@@ -1690,6 +2226,231 @@
     "skill": "Finden",
     "q": "Woher wissen wir, wie Dinosaurier ausgesehen haben?",
     "answer": "Forscher finden ihre Knochen in der Erde."
+   }
+  ]
+ },
+ {
+  "id": "liichtmess",
+  "title": "Liichtmëss",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "Am zweiten Februar feiern die Kinder in Luxemburg Liichtmëss. Am Nachmittag ziehen sie mit bunten Laternen von Haus zu Haus. An jeder Tür singen sie ein altes Lied auf Luxemburgisch. Darin bitten sie um Speck und Erbsen. Heute bekommen sie aber Süßigkeiten oder ein paar Münzen.\n\nAnna hat ihre Laterne selbst gebastelt. Sie ist rot und hat einen gelben Mond. Zusammen mit ihrem Freund Luca klingelt sie an vielen Türen. Bei einem Haus öffnet ein alter Mann. Er hört lange zu und klatscht dann laut. „So schön hat in diesem Jahr noch niemand gesungen!“, sagt er und gibt jedem einen großen Apfel.\n\nAm Ende teilen Anna und Luca alle Süßigkeiten gerecht. Den Apfel isst Anna zuerst.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann ist Liichtmëss?",
+    "options": [
+     "Am zweiten Februar",
+     "Am sechsten Dezember",
+     "Am ersten Mai",
+     "Am ersten Januar"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Worum bitten die Kinder im alten Lied?",
+    "options": [
+     "Um Speck und Erbsen",
+     "Um Kuchen",
+     "Um Spielzeug",
+     "Um Äpfel"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie sieht Annas Laterne aus?",
+    "options": [
+     "Blau mit Sternen",
+     "Rot mit einem gelben Mond",
+     "Grün mit einer Sonne",
+     "Ganz weiß"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Er klatscht.“ Was macht der Mann?",
+    "options": [
+     "Er schlägt die Hände zusammen.",
+     "Er weint.",
+     "Er schließt die Tür.",
+     "Er singt mit."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum bekommen Anna und Luca einen großen Apfel?",
+    "answer": "Weil sie besonders schön gesungen haben."
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Anna und Luca teilen „gerecht“. Was bedeutet das?",
+    "options": [
+     "Jeder bekommt gleich viel.",
+     "Einer bekommt alles.",
+     "Sie werfen alles weg.",
+     "Anna isst alles allein."
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "wasser",
+  "title": "Woher kommt unser Wasser?",
+  "type": "Sachtext",
+  "level": 3,
+  "text": "Jeden Tag brauchen wir Wasser: zum Trinken, zum Kochen und zum Duschen. Aber woher kommt das Wasser in Luxemburg eigentlich?\n\nDer größte Teil kommt aus Quellen und von tief unten aus dem Boden. Dort fließt das Wasser durch Steine und wird dabei sauber. Der Rest kommt aus einem großen Stausee im Norden des Landes. Dieses Wasser wird in einem Wasserwerk gereinigt.\n\nDann fließt das Wasser durch lange Rohre unter der Erde bis in die Häuser. Wenn du den Wasserhahn aufdrehst, kommt sauberes Wasser heraus. Sauberes Wasser ist sehr wertvoll. Darum solltest du den Hahn beim Zähneputzen zudrehen.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Woher kommt der größte Teil des Wassers in Luxemburg?",
+    "options": [
+     "Aus dem Meer",
+     "Aus Quellen und aus dem Boden",
+     "Aus dem Regen auf dem Dach",
+     "Aus Flaschen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo wird das Wasser aus dem Stausee gereinigt?",
+    "options": [
+     "Im Wasserhahn",
+     "In einem Wasserwerk",
+     "Im Garten",
+     "In der Schule"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo liegen die Rohre?",
+    "options": [
+     "Auf dem Dach",
+     "Unter der Erde",
+     "Im Wald",
+     "Im Stausee"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Wasser ist wertvoll.“ Was bedeutet das?",
+    "options": [
+     "Es ist sehr wichtig und man soll es nicht verschwenden.",
+     "Es ist im Supermarkt teuer.",
+     "Es ist schmutzig.",
+     "Es ist immer kalt."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was passiert mit dem Wasser aus dem Stausee, bevor es in die Häuser fließt?",
+    "options": [
+     "Es wird im Wasserwerk gereinigt.",
+     "Es wird gekocht.",
+     "Es wird in Flaschen gefüllt.",
+     "Nichts."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum sollst du den Hahn beim Zähneputzen zudrehen?",
+    "answer": "Damit man kein sauberes Wasser verschwendet."
+   }
+  ]
+ },
+ {
+  "id": "leo",
+  "title": "Leo liest vor",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "Leo findet Lesen schwer. Lange Wörter mag er gar nicht. Wenn er in der Klasse vorlesen muss, wird sein Gesicht ganz rot.\n\nSeine Lehrerin gibt ihm einen Tipp: „Lies jeden Tag zehn Minuten. Lange Wörter kannst du in Silben teilen: Scho-ko-la-de.“ Leo übt jeden Abend. Zuerst liest er kurze Geschichten, dann längere.\n\nNach einem Monat passiert etwas Besonderes. Seine kleine Schwester Ella kommt mit einem Buch zu ihm. „Liest du mir vor?“, fragt sie. Leo setzt sich zu ihr aufs Sofa und liest die ganze Geschichte vor. Ella hört gespannt zu. Leo ist stolz.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was findet Leo am Anfang schwer?",
+    "options": [
+     "Rechnen",
+     "Lesen",
+     "Malen",
+     "Fußball"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie lange soll Leo jeden Tag lesen?",
+    "options": [
+     "Eine Stunde",
+     "Zehn Minuten",
+     "Zwei Minuten",
+     "Gar nicht"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was liest Leo zuerst?",
+    "options": [
+     "Lange Bücher",
+     "Kurze Geschichten",
+     "Zeitungen",
+     "Briefe"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum wird Leos Gesicht in der Klasse rot?",
+    "answer": "Weil ihm das Vorlesen schwerfällt und er sich unsicher fühlt."
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Leo ist stolz.“ Wie fühlt er sich?",
+    "options": [
+     "Er freut sich, weil er etwas geschafft hat.",
+     "Er ist traurig.",
+     "Er ist müde.",
+     "Er hat Angst."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Was hat Leo geholfen?",
+    "options": [
+     "Jeden Tag üben und lange Wörter in Silben teilen",
+     "Viel fernsehen",
+     "Nicht mehr lesen",
+     "Schneller sprechen"
+    ],
+    "answer": 0
    }
   ]
  },

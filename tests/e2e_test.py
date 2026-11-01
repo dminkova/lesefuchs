@@ -54,7 +54,7 @@ def main():
         page.wait_for_selector("#cardsLevel .textcard")
 
         print("Home")
-        check(page.locator("#cardsLevel .textcard").count() == 11, "level 1 shows all 11 level-1 texts")
+        check(page.locator("#cardsLevel .textcard").count() == 15, "level 1 shows all 15 level-1 texts")
         if SHOTS: page.screenshot(path=f"{SHOTS}/home.png", full_page=True)
 
         print("Accuracy mode: slow syllable reading with a pause/restart")
