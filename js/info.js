@@ -15,5 +15,7 @@
   }
   document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => { history.replaceState(null, "", "#" + b.dataset.lang); show(b.dataset.lang); }));
   window.addEventListener("hashchange", () => show(pick()));
+  // the address is assembled here so that simple spam robots reading the HTML don't find it
+  document.querySelectorAll(".mail").forEach(e => { e.textContent = e.dataset.u + "@" + e.dataset.d; });
   show(pick());
 })();

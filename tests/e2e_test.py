@@ -267,7 +267,7 @@ def main():
         check(len(visible) == 1, f"info page shows one language ({visible})")
         page.click("[data-lang=fr]")
         check(page.locator("#fr").is_visible() and page.locator("#de").is_hidden(), "language switch to French works")
-        check("minkova.desislava@aol.com" in page.locator("#fr").inner_text(), "contact email shown")
+        check("hallo@leseflitzi.eu" in page.locator("#fr").inner_text() and "aol.com" not in page.content(), "contact email hallo@leseflitzi.eu shown, AOL address gone")
         overflow = page.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1")
         check(not overflow, "info page fits on a phone")
         if SHOTS: page.screenshot(path=f"{SHOTS}/info_phone.png", full_page=True)
