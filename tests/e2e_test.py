@@ -272,6 +272,22 @@ def main():
         check(not overflow, "info page fits on a phone")
         if SHOTS: page.screenshot(path=f"{SHOTS}/info_phone.png", full_page=True)
 
+        print("Parent pages and search-engine labels")
+        import json as _json
+        for fn, lang, word in [("eltern.html", "de", "ÉpStan"), ("parents-fr.html", "fr", "ÉpStan"), ("parents.html", "en", "ÉpStan")]:
+            page.goto(url.replace("index.html", fn)); page.wait_for_selector("h1")
+            ld = _json.loads(page.locator('script[type="application/ld+json"]').inner_text())
+            hl = page.evaluate("[...document.querySelectorAll('link[rel=alternate]')].map(l=>l.hreflang).sort().join(',')")
+            ok_fit = not page.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1")
+            check(page.evaluate("document.documentElement.lang") == lang and word in page.content() and hl == "de,en,fr,x-default" and ld["@graph"][1]["isAccessibleForFree"] is True and ok_fit,
+                  f"{fn}: right language, language links, structured data, fits the screen")
+        page.goto(url); page.wait_for_selector("#cardsLevel .textcard")
+        ld = _json.loads(page.locator('script[type="application/ld+json"]').inner_text())
+        check(ld["@type"] == "WebApplication" and ld["offers"]["price"] == "0", "home page has structured data (free web app)")
+        page.click("text=Für Eltern"); page.wait_for_selector("h1")
+        check("eltern.html" in page.url, "home footer links to the parent page")
+        page.click("text=Leseflitzi starten"); page.wait_for_selector("#cardsLevel .textcard")
+
         print("Fair level changes")
         page.goto(url); page.wait_for_selector("#cardsLevel .textcard")
         def level_after(reads):
