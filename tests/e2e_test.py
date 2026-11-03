@@ -54,7 +54,8 @@ def main():
         page.wait_for_selector("#cardsLevel .textcard")
 
         print("Home")
-        check(page.locator("#cardsLevel .textcard").count() == 15, "level 1 shows all 15 level-1 texts")
+        n1 = page.evaluate("LF_TEXTS.filter(t=>t.level===1).length")
+        check(page.locator("#cardsLevel .textcard").count() == n1, f"level 1 shows all {n1} level-1 texts")
         if SHOTS: page.screenshot(path=f"{SHOTS}/home.png", full_page=True)
 
         print("Accuracy mode: slow syllable reading with a pause/restart")
@@ -135,7 +136,8 @@ def main():
         page.wait_for_selector("#quiz:not([hidden])")
         for i in range(4):
             if page.locator(".opt").count():
-                page.locator(".opt").nth(1).click()
+                ans = page.evaluate(f"LF_TEXTS.find(t=>t.id==='bobo').questions[{i}].answer")
+                page.locator(".opt").nth(ans).click()
             else:
                 page.fill("textarea.answer", "Weil er müde ist")
             page.click("#qNext")

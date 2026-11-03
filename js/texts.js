@@ -16,11 +16,11 @@
     "q": "Wie heißt der Hund?",
     "options": [
      "Bello",
-     "Bobo",
      "Max",
+     "Bobo",
      "Rex"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -40,11 +40,11 @@
     "q": "„Er bellt laut.“ Was macht Bobo?",
     "options": [
      "Er schläft.",
-     "Er macht „Wau, wau!“",
      "Er frisst.",
+     "Er macht „Wau, wau!“",
      "Er schwimmt."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "open",
@@ -67,11 +67,11 @@
     "q": "Warum ist draußen alles weiß?",
     "options": [
      "Es hat geregnet.",
-     "Es hat geschneit.",
+     "Die Sonne scheint.",
      "Es ist Nacht.",
-     "Die Sonne scheint."
+     "Es hat geschneit."
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -79,11 +79,11 @@
     "q": "Mit wem baut Emma den Schneemann?",
     "options": [
      "Mit Mama",
-     "Mit Papa",
      "Mit Oma",
+     "Mit Papa",
      "Allein"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -91,11 +91,11 @@
     "q": "Was bekommt der Schneemann als Nase?",
     "options": [
      "Einen Apfel",
-     "Eine Karotte",
      "Einen Stein",
+     "Eine Karotte",
      "Eine Nuss"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "open",
@@ -118,11 +118,11 @@
     "q": "Was spielen Leo und Sara?",
     "options": [
      "Tennis",
-     "Fußball",
+     "Basketball",
      "Verstecken",
-     "Basketball"
+     "Fußball"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -130,11 +130,11 @@
     "q": "Wo bleibt der Ball hängen?",
     "options": [
      "Auf dem Dach",
-     "In einem Baum",
+     "Im Fenster",
      "Im Zaun",
-     "Im Fenster"
+     "In einem Baum"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -168,12 +168,12 @@
     "skill": "Finden",
     "q": "Wie sieht ein Marienkäfer meistens aus?",
     "options": [
-     "Blau mit weißen Streifen",
      "Rot mit schwarzen Punkten",
+     "Blau mit weißen Streifen",
      "Ganz grün",
      "Gelb mit roten Punkten"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -181,23 +181,23 @@
     "q": "Was fressen Marienkäfer?",
     "options": [
      "Blätter",
-     "Blattläuse",
+     "Steine",
      "Blumen",
-     "Steine"
+     "Blattläuse"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
     "skill": "Wortschatz",
     "q": "Was bedeutet „winzig“?",
     "options": [
-     "Sehr groß",
      "Sehr klein",
+     "Sehr groß",
      "Sehr schnell",
      "Sehr laut"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "open",
@@ -219,12 +219,12 @@
     "skill": "Finden",
     "q": "Wer geht mit Tim auf den Hügel?",
     "options": [
-     "Papa",
      "Opa",
+     "Papa",
      "Mama",
      "Lea"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -244,11 +244,11 @@
     "q": "Was ist der Drache in dieser Geschichte?",
     "options": [
      "Ein Tier, das Feuer spuckt",
-     "Ein Spielzeug, das im Wind fliegt",
+     "Ein Flugzeug",
      "Ein Vogel",
-     "Ein Flugzeug"
+     "Ein Spielzeug, das im Wind fliegt"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "open",
@@ -282,12 +282,12 @@
     "skill": "Finden",
     "q": "Was frisst Krümel gern?",
     "options": [
-     "Fleisch",
      "Körner und Apfel",
+     "Fleisch",
      "Schokolade",
      "Fisch"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -321,24 +321,24 @@
     "skill": "Finden",
     "q": "Wohin geht Mia heute?",
     "options": [
-     "Zur Schule",
      "Zum Zahnarzt",
+     "Zur Schule",
      "In den Zoo",
      "Zur Oma"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
     "skill": "Finden",
     "q": "Was bekommt Mia am Ende?",
     "options": [
-     "Ein Eis",
      "Einen Sticker",
+     "Ein Eis",
      "Ein Buch",
      "Einen Ball"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -373,11 +373,11 @@
     "q": "Was können Pinguine nicht?",
     "options": [
      "Schwimmen",
-     "Fliegen",
      "Fressen",
+     "Fliegen",
      "Rutschen"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -385,11 +385,11 @@
     "q": "„An Land watscheln sie.“ Wie gehen Pinguine?",
     "options": [
      "Sehr schnell und gerade",
-     "Langsam und wackelig",
+     "Rückwärts",
      "Auf einem Bein",
-     "Rückwärts"
+     "Langsam und wackelig"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -397,11 +397,11 @@
     "q": "Warum rutschen Pinguine auf dem Bauch?",
     "options": [
      "Weil sie müde sind.",
-     "Weil sie so schneller sind.",
+     "Weil das Eis warm ist.",
      "Weil sie fliegen wollen.",
-     "Weil das Eis warm ist."
+     "Weil sie so schneller sind."
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "open",
@@ -424,23 +424,23 @@
     "q": "Was für ein Tier ist Susi?",
     "options": [
      "Eine Ameise",
-     "Eine Schnecke",
      "Ein Käfer",
+     "Eine Schnecke",
      "Eine Maus"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
     "skill": "Finden",
     "q": "Wer lacht über Susi?",
     "options": [
-     "Die Vögel",
      "Die Ameisen",
+     "Die Vögel",
      "Die Kinder",
      "Die Katzen"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -448,11 +448,11 @@
     "q": "„Susi kriecht weiter.“ Wie bewegt sie sich?",
     "options": [
      "Sie fliegt.",
-     "Sie bewegt sich langsam am Boden.",
      "Sie springt.",
+     "Sie bewegt sich langsam am Boden.",
      "Sie schwimmt."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "open",
@@ -486,12 +486,12 @@
     "skill": "Finden",
     "q": "Was macht der Elefant?",
     "options": [
-     "Er schläft.",
      "Er spritzt Wasser.",
+     "Er schläft.",
      "Er frisst Bananen.",
      "Er läuft weg."
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -526,23 +526,23 @@
     "q": "Wofür brauchen Katzen ihre Schnurrhaare?",
     "options": [
      "Zum Fressen",
-     "Zum Fühlen im Dunkeln",
+     "Zum Spielen",
      "Zum Schwimmen",
-     "Zum Spielen"
+     "Zum Fühlen im Dunkeln"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
     "skill": "Finden",
     "q": "Wie lange schlafen Katzen oft?",
     "options": [
-     "Eine Stunde",
      "Mehr als zwölf Stunden am Tag",
+     "Eine Stunde",
      "Gar nicht",
      "Nur am Morgen"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -562,11 +562,11 @@
     "q": "Eine Katze macht einen Buckel. Wie fühlt sie sich?",
     "options": [
      "Sie ist froh.",
-     "Sie hat Angst.",
+     "Sie hat Hunger.",
      "Sie ist müde.",
-     "Sie hat Hunger."
+     "Sie hat Angst."
     ],
-    "answer": 1
+    "answer": 3
    }
   ]
  },
@@ -595,24 +595,24 @@
     "skill": "Reihenfolge",
     "q": "Was machst du, nachdem du die Banane geschält hast?",
     "options": [
-     "Du mixt alles.",
      "Du schneidest sie in kleine Stücke.",
+     "Du mixt alles.",
      "Du trinkst den Shake.",
      "Du holst die Milch."
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
     "skill": "Finden",
     "q": "Wie lange mixt du alles?",
     "options": [
-     "Eine Sekunde",
      "Eine Minute",
+     "Eine Sekunde",
      "Eine Stunde",
      "Zehn Minuten"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "open",
@@ -636,11 +636,11 @@
     "q": "Wer hat Geburtstag?",
     "options": [
      "Lea",
-     "Paul",
      "Rosa",
+     "Paul",
      "Esch"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -648,11 +648,11 @@
     "q": "Wann beginnt die Party?",
     "options": [
      "Um 14 Uhr",
-     "Um 15 Uhr",
      "Um 18 Uhr",
+     "Um 15 Uhr",
      "Am Mittwoch"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -672,11 +672,11 @@
     "q": "Warum soll Lea warme Schuhe mitbringen?",
     "options": [
      "Weil sie tanzen.",
-     "Weil sie viel draußen sind.",
+     "Weil Paul das so mag.",
      "Weil es ein Geschenk ist.",
-     "Weil Paul das so mag."
+     "Weil sie viel draußen sind."
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "open",
@@ -704,11 +704,11 @@
     "q": "Was hat Noah am Montag um 8:00?",
     "options": [
      "Mathe",
-     "Deutsch",
+     "Kunst",
      "Sport",
-     "Kunst"
+     "Deutsch"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -760,11 +760,11 @@
     "q": "Wie viel kostet eine Kugel Mango?",
     "options": [
      "1 Euro",
-     "2 Euro",
+     "Nichts",
      "3 Euro",
-     "Nichts"
+     "2 Euro"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -799,6 +799,159 @@
   ]
  },
  {
+  "id": "regenschirm",
+  "title": "Der rote Regenschirm",
+  "type": "Geschichte",
+  "level": 1,
+  "text": "Es regnet. Nina nimmt ihren roten Regenschirm mit in die Schule. Auf dem Weg kommt ein starker Wind. Hui! Der Schirm fliegt aus ihrer Hand und rollt über die Straße.\n\nNina rennt hinterher. Ein Junge hält den Schirm fest. Es ist Ben aus ihrer Klasse. „Danke, Ben!“, sagt Nina. Jetzt gehen die beiden zusammen unter einem Schirm weiter.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welche Farbe hat der Regenschirm?",
+    "options": [
+     "Blau",
+     "Gelb",
+     "Rot",
+     "Grün"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was passiert mit dem Schirm?",
+    "options": [
+     "Er fliegt weg.",
+     "Er geht kaputt.",
+     "Nina vergisst ihn zu Hause.",
+     "Ben nimmt ihn mit nach Hause."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Nina rennt hinterher.“ Was macht sie?",
+    "options": [
+     "Sie läuft schnell nach Hause.",
+     "Sie bleibt stehen.",
+     "Sie läuft dem Schirm nach.",
+     "Sie ruft laut."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum gehen Nina und Ben am Ende zusammen weiter?",
+    "answer": "Weil sie in dieselbe Klasse gehen und den gleichen Schulweg haben. Unter dem Schirm werden beide nicht nass."
+   }
+  ]
+ },
+ {
+  "id": "froesche",
+  "title": "Frösche",
+  "type": "Sachtext",
+  "level": 1,
+  "text": "Frösche leben am Wasser. Sie haben eine glatte, feuchte Haut. Mit ihren langen Hinterbeinen können sie weit springen und gut schwimmen.\n\nFrösche fressen Fliegen und Mücken. Sie fangen sie mit ihrer langen, klebrigen Zunge. Im Frühling legen Frösche viele Eier ins Wasser. Daraus schlüpfen Kaulquappen. Sie haben einen Schwanz und noch keine Beine.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo leben Frösche?",
+    "options": [
+     "Im Wald",
+     "In der Wüste",
+     "Am Wasser",
+     "Im Schnee"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Womit fangen Frösche Fliegen?",
+    "options": [
+     "Mit der Zunge",
+     "Mit den Beinen",
+     "Mit den Zähnen",
+     "Mit einem Netz"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist eine Kaulquappe?",
+    "options": [
+     "Ein großer Fisch",
+     "Ein junger Frosch",
+     "Eine Fliege",
+     "Ein Stein im Wasser"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum können Frösche so weit springen?",
+    "answer": "Weil sie lange Hinterbeine haben."
+   }
+  ]
+ },
+ {
+  "id": "fahrrad",
+  "title": "Tim fährt allein",
+  "type": "Geschichte",
+  "level": 1,
+  "text": "Tim bekommt ein neues Fahrrad. Es ist blau und hat eine Klingel. Aber Tim kann noch nicht allein fahren. Mama hält hinten den Sattel fest. Tim tritt in die Pedale.\n\n„Halt mich gut fest!“, ruft er. Nach einer Weile dreht er sich um. Mama steht weit hinten und winkt. Tim fährt ganz allein! Vor Freude klingelt er dreimal.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was bekommt Tim?",
+    "options": [
+     "Einen Roller",
+     "Einen Ball",
+     "Ein Skateboard",
+     "Ein Fahrrad"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer hilft Tim?",
+    "options": [
+     "Papa",
+     "Oma",
+     "Mama",
+     "Sein Bruder"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum steht Mama am Ende weit hinten?",
+    "options": [
+     "Sie geht nach Hause.",
+     "Sie hat losgelassen, und Tim fährt allein.",
+     "Sie hat Angst vor dem Fahrrad.",
+     "Sie sucht ihren Schlüssel."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Wie fühlt sich Tim am Ende? Woran merkst du das?",
+    "answer": "Er freut sich und ist stolz. Er klingelt vor Freude dreimal."
+   }
+  ]
+ },
+ {
   "id": "pizza",
   "title": "Pizza backen",
   "type": "Geschichte",
@@ -823,23 +976,23 @@
     "q": "Was machen sie, während der Teig ruht?",
     "options": [
      "Sie spielen draußen.",
-     "Sie schneiden Gemüse.",
      "Sie essen Pizza.",
+     "Sie schneiden Gemüse.",
      "Sie gehen einkaufen."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
     "skill": "Wortschatz",
     "q": "„Der Teig muss ruhen.“ Was bedeutet das hier?",
     "options": [
-     "Der Teig schläft im Bett.",
      "Man lässt den Teig eine Zeit lang liegen.",
+     "Der Teig schläft im Bett.",
      "Man isst den Teig.",
      "Man wirft den Teig weg."
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -948,12 +1101,12 @@
     "skill": "Finden",
     "q": "Was bekommt Max geschenkt?",
     "options": [
-     "Ein Buch",
      "Ein Fahrrad",
+     "Ein Buch",
      "Einen Ball",
      "Ein Spiel"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -961,11 +1114,11 @@
     "q": "Was passiert zuerst?",
     "options": [
      "Max packt sein Geschenk aus.",
-     "Max pustet die Kerzen aus.",
      "Die Freunde kommen.",
+     "Max pustet die Kerzen aus.",
      "Sie spielen Verstecken."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -1051,11 +1204,11 @@
     "q": "Wie heißt der Teddy?",
     "options": [
      "Bobo",
-     "Brummi",
+     "Max",
      "Bär",
-     "Max"
+     "Brummi"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -1075,11 +1228,11 @@
     "q": "Was macht Papa, nachdem Ben überall gesucht hat?",
     "options": [
      "Er kauft einen neuen Teddy.",
-     "Er ruft im Supermarkt an.",
+     "Er sucht im Garten.",
      "Er fährt zur Oma.",
-     "Er sucht im Garten."
+     "Er ruft im Supermarkt an."
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -1087,11 +1240,11 @@
     "q": "„flüstert er“: Wie spricht Ben?",
     "options": [
      "Sehr laut",
-     "Ganz leise",
      "Wütend",
+     "Ganz leise",
      "Singend"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "open",
@@ -1113,12 +1266,12 @@
     "skill": "Finden",
     "q": "Welche Farbe hat die Hülle?",
     "options": [
-     "Braun",
      "Grün",
+     "Braun",
      "Rot",
      "Gelb"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -1150,11 +1303,11 @@
     "q": "Wer frisst Rosskastanien gern?",
     "options": [
      "Kinder",
-     "Rehe und Wildschweine",
      "Katzen",
+     "Rehe und Wildschweine",
      "Fische"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "open",
@@ -1201,11 +1354,11 @@
     "q": "Das Spiel endet „unentschieden“. Was bedeutet das?",
     "options": [
      "Samis Mannschaft gewinnt.",
-     "Beide Mannschaften haben gleich viele Tore.",
+     "Das Spiel hört zu früh auf.",
      "Die Blauen gewinnen.",
-     "Das Spiel hört zu früh auf."
+     "Beide Mannschaften haben gleich viele Tore."
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -1213,11 +1366,11 @@
     "q": "Was passiert zuerst?",
     "options": [
      "Nora schießt ein Tor.",
-     "Die Blauen schießen ein Tor.",
      "Sami rutscht aus.",
+     "Die Blauen schießen ein Tor.",
      "Alle lachen."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "open",
@@ -1270,11 +1423,11 @@
     "q": "„So entsteht ein bunter Bogen.“ Was bedeutet „entsteht“?",
     "options": [
      "Er geht weg.",
-     "Er kommt zustande und ist dann da.",
      "Er fällt herunter.",
+     "Er kommt zustande und ist dann da.",
      "Er wird kleiner."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -1282,11 +1435,11 @@
     "q": "Lea sieht einen Regenbogen. Wo steht die Sonne?",
     "options": [
      "Vor ihr",
-     "Hinter ihr",
      "Unter ihr",
+     "Hinter ihr",
      "Es gibt keine Sonne."
     ],
-    "answer": 1
+    "answer": 2
    }
   ]
  },
@@ -1315,35 +1468,35 @@
     "q": "Wie lange musste Elias im Bett bleiben?",
     "options": [
      "Einen Tag",
-     "Drei Tage",
      "Eine Woche",
+     "Drei Tage",
      "Zwei Wochen"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
     "skill": "Wortschatz",
     "q": "„Das war langweilig.“ Was bedeutet das?",
     "options": [
-     "Es war spannend.",
      "Es war nicht interessant und die Zeit ging langsam vorbei.",
+     "Es war spannend.",
      "Es war lustig.",
      "Es war gefährlich."
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
     "skill": "Finden",
     "q": "Was soll Oma mitbringen?",
     "options": [
-     "Schokolade",
      "Ihren Apfelkuchen",
+     "Schokolade",
      "Ein Buch",
      "Einen Ball"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "open",
@@ -1366,11 +1519,11 @@
     "q": "Wo leben Eichhörnchen?",
     "options": [
      "Im Meer",
-     "In Wäldern und Parks",
      "In der Wüste",
+     "In Wäldern und Parks",
      "Unter der Erde"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -1378,11 +1531,11 @@
     "q": "Wofür brauchen sie ihren Schwanz beim Springen?",
     "options": [
      "Zum Bremsen",
-     "Für das Gleichgewicht",
      "Zum Festhalten",
+     "Für das Gleichgewicht",
      "Zum Wärmen"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -1464,12 +1617,12 @@
     "skill": "Schließen",
     "q": "Warum zählen sie beim zweiten Mal bis zehn?",
     "options": [
-     "Weil Emma besser zählen kann.",
      "Weil das Gewitter weiter weg ist.",
+     "Weil Emma besser zählen kann.",
      "Weil Papa müde ist.",
      "Weil es nicht mehr regnet."
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "open",
@@ -1505,11 +1658,11 @@
     "q": "Die Watte soll „feucht“ sein. Was bedeutet das?",
     "options": [
      "Ganz trocken",
-     "Ein bisschen nass",
+     "Ganz voll mit Wasser",
      "Sehr heiß",
-     "Ganz voll mit Wasser"
+     "Ein bisschen nass"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -1556,12 +1709,12 @@
     "skill": "Finden",
     "q": "Wo ist der Flohmarkt, wenn es regnet?",
     "options": [
-     "Im Schulhof",
      "In der Turnhalle",
+     "Im Schulhof",
      "Im Park",
      "Im Sekretariat"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -1580,12 +1733,12 @@
     "skill": "Wortschatz",
     "q": "Was macht man auf einem Flohmarkt?",
     "options": [
-     "Man fängt Flöhe.",
      "Man verkauft und kauft gebrauchte Sachen.",
+     "Man fängt Flöhe.",
      "Man spielt Fußball.",
      "Man lernt Mathe."
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -1593,11 +1746,11 @@
     "q": "Toms Papa möchte auch alte Bücher verkaufen. Darf er das?",
     "options": [
      "Ja, wenn er zwei Euro bezahlt.",
-     "Nein, nur Kinder dürfen verkaufen.",
+     "Ja, wenn er sich bis Freitag anmeldet.",
      "Ja, aber nur im Schulhof.",
-     "Ja, wenn er sich bis Freitag anmeldet."
+     "Nein, nur Kinder dürfen verkaufen."
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "open",
@@ -1633,11 +1786,11 @@
     "q": "Was müssen alle tun, wenn die Musik stoppt?",
     "options": [
      "Weitertanzen",
-     "Still stehen",
      "Singen",
+     "Still stehen",
      "Weglaufen"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -1645,11 +1798,11 @@
     "q": "„Wer sich bewegt, scheidet aus.“ Was bedeutet das?",
     "options": [
      "Er gewinnt.",
-     "Er darf nicht mehr mitspielen.",
      "Er macht die Musik.",
+     "Er darf nicht mehr mitspielen.",
      "Er bekommt einen Preis."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -1657,11 +1810,11 @@
     "q": "Lea kichert, als die Musik stoppt. Was passiert?",
     "options": [
      "Sie gewinnt.",
-     "Sie scheidet aus.",
+     "Nichts.",
      "Sie macht die Musik.",
-     "Nichts."
+     "Sie scheidet aus."
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "open",
@@ -1764,12 +1917,12 @@
     "skill": "Schließen",
     "q": "Ist die Bibliothek am Freitag offen?",
     "options": [
-     "Ja, von 12:30 bis 14 Uhr.",
      "Nein, nur von Montag bis Donnerstag.",
+     "Ja, von 12:30 bis 14 Uhr.",
      "Ja, den ganzen Tag.",
      "Nur am Morgen."
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -1800,6 +1953,465 @@
     "skill": "Finden",
     "q": "Wem sagst du, dass ein Buch kaputt ist?",
     "answer": "Frau Klein."
+   }
+  ]
+ },
+ {
+  "id": "schluessel",
+  "title": "Wo ist der Schlüssel?",
+  "type": "Geschichte",
+  "level": 2,
+  "text": "Nach der Schule will Lina die Haustür aufschließen. Aber der Schlüssel ist nicht in ihrer Tasche! Sie sucht im Rucksack, in der Jacke und sogar in den Schuhen. Nichts.\n\nLina denkt nach. Wo war sie heute? Im Klassenzimmer, auf dem Schulhof und beim Bäcker. Sie läuft zurück zum Bäcker. Die Verkäuferin lächelt. „Suchst du vielleicht das hier?“, fragt sie und hält einen Schlüssel mit einem kleinen Stern hoch. Lina ist sehr erleichtert.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was sucht Lina?",
+    "options": [
+     "Ihren Schlüssel",
+     "Ihr Heft",
+     "Ihre Mütze",
+     "Ihr Geld"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo war Lina heute NICHT?",
+    "options": [
+     "Im Klassenzimmer",
+     "Auf dem Schulhof",
+     "Beim Bäcker",
+     "Im Schwimmbad"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Woran erkennt man Linas Schlüssel?",
+    "options": [
+     "An einer roten Schnur",
+     "An einem Herz",
+     "An einem kleinen Stern",
+     "An einer Glocke"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Lina ist sehr erleichtert.“ Wie fühlt sie sich?",
+    "options": [
+     "Froh, weil die Sorge weg ist",
+     "Wütend",
+     "Traurig",
+     "Müde"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum läuft Lina zurück zum Bäcker?",
+    "answer": "Weil sie heute beim Bäcker war und denkt, dass sie den Schlüssel dort verloren hat."
+   }
+  ]
+ },
+ {
+  "id": "eulen",
+  "title": "Eulen",
+  "type": "Sachtext",
+  "level": 2,
+  "text": "Eulen sind Vögel der Nacht. Am Tag schlafen sie in Baumhöhlen, in alten Scheunen oder in Kirchtürmen. Wenn es dunkel wird, gehen sie auf die Jagd.\n\nEulen können im Dunkeln sehr gut sehen und hören. Ihren Kopf können sie weit nach hinten drehen. Ihre Federn sind weich, deshalb fliegen sie fast lautlos. So hört die Maus die Eule nicht kommen. Eulen fressen Mäuse, Käfer und kleine Vögel.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann gehen Eulen auf die Jagd?",
+    "options": [
+     "Am Morgen",
+     "Am Mittag",
+     "Wenn es dunkel wird",
+     "Nur im Winter"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wo schlafen Eulen am Tag? Nenne zwei Orte.",
+    "answer": "In Baumhöhlen, in alten Scheunen oder in Kirchtürmen."
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„lautlos“ bedeutet …",
+    "options": [
+     "sehr laut",
+     "ohne Geräusch",
+     "sehr schnell",
+     "sehr hoch"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum hört die Maus die Eule nicht kommen?",
+    "options": [
+     "Weil die Maus schläft.",
+     "Weil es regnet.",
+     "Weil die Eule singt.",
+     "Weil die Eule weiche Federn hat."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was fressen Eulen NICHT?",
+    "options": [
+     "Gras",
+     "Mäuse",
+     "Käfer",
+     "Kleine Vögel"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "laterne",
+  "title": "Eine Laterne basteln",
+  "type": "Anleitung",
+  "level": 2,
+  "format": "doc",
+  "text": "## Eine Laterne basteln\nDu brauchst:\n- ein leeres Glas\n- buntes Transparentpapier\n- Kleber und einen Pinsel\n- eine Schnur\n- ein Teelicht mit Batterie\n\n1. Reiße das Papier in kleine Stücke.\n2. Streiche Kleber auf das Glas.\n3. Klebe die Papierstücke auf das Glas.\n4. Lass alles eine Stunde trocknen.\n5. Binde die Schnur fest um den Rand.\n6. Stelle das Teelicht in das Glas.\n\nTipp: Nimm keine echte Kerze. Ein Licht mit Batterie ist sicherer.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was brauchst du NICHT?",
+    "options": [
+     "Ein leeres Glas",
+     "Eine Schere",
+     "Kleber",
+     "Eine Schnur"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was machst du direkt nach dem Kleben der Papierstücke?",
+    "options": [
+     "Das Teelicht hineinstellen",
+     "Die Schnur festbinden",
+     "Das Papier zerreißen",
+     "Alles trocknen lassen"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie lange muss die Laterne trocknen?",
+    "options": [
+     "Fünf Minuten",
+     "Eine Stunde",
+     "Einen Tag",
+     "Eine Woche"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Reiße das Papier in Stücke.“ Was machst du?",
+    "options": [
+     "Du ziehst es mit den Händen auseinander.",
+     "Du schneidest es mit der Schere.",
+     "Du faltest es.",
+     "Du malst es an."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum soll man keine echte Kerze nehmen?",
+    "answer": "Weil das Papier Feuer fangen kann. Ein Licht mit Batterie ist sicherer."
+   }
+  ]
+ },
+ {
+  "id": "einkaufen",
+  "title": "Einkaufen mit Opa",
+  "type": "Geschichte",
+  "level": 2,
+  "text": "Am Samstag geht Max mit Opa einkaufen. Opa hat einen Zettel geschrieben: Milch, Brot, Äpfel und Käse. Max darf den Wagen schieben.\n\nZuerst holen sie das Brot. Dann legt Max sechs grüne Äpfel in eine Tüte. Bei der Milch merkt Opa: „Ich habe meine Brille vergessen!“ Max liest den Zettel laut vor. An der Kasse bezahlt Opa zwölf Euro. Als Dank bekommt Max eine Banane für den Heimweg.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann gehen Max und Opa einkaufen?",
+    "options": [
+     "Am Montag",
+     "Am Mittwoch",
+     "Am Samstag",
+     "Am Sonntag"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was steht NICHT auf dem Zettel?",
+    "options": [
+     "Milch",
+     "Bananen",
+     "Äpfel",
+     "Käse"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was holen sie zuerst?",
+    "options": [
+     "Das Brot",
+     "Die Äpfel",
+     "Die Milch",
+     "Den Käse"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum liest Max den Zettel vor?",
+    "options": [
+     "Weil Max gern singt.",
+     "Weil der Zettel weg ist.",
+     "Weil Opa müde ist.",
+     "Weil Opa seine Brille vergessen hat."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum bekommt Max am Ende eine Banane?",
+    "answer": "Als Dank, weil er Opa geholfen hat: Er hat den Wagen geschoben und den Zettel vorgelesen."
+   }
+  ]
+ },
+ {
+  "id": "mateo",
+  "title": "Der neue Mitschüler",
+  "type": "Geschichte",
+  "level": 2,
+  "text": "Heute kommt ein neuer Junge in die Klasse. Er heißt Mateo und kommt aus Portugal. Er spricht noch kein Deutsch. In der Pause steht er allein am Zaun.\n\nNoah geht zu ihm und zeigt auf den Ball. Mateo nickt und lacht. Beim Fußball braucht man nicht viele Wörter. Nach dem Spiel sagt Mateo „Danke“. Noah bringt ihm noch ein Wort bei: „Freund“.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Woher kommt Mateo?",
+    "options": [
+     "Aus Spanien",
+     "Aus Italien",
+     "Aus Frankreich",
+     "Aus Portugal"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo steht Mateo in der Pause?",
+    "options": [
+     "Am Zaun",
+     "Am Tor",
+     "In der Klasse",
+     "Bei der Lehrerin"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Mateo nickt.“ Was macht er?",
+    "options": [
+     "Er sagt Nein mit dem Kopf.",
+     "Er sagt Ja mit dem Kopf.",
+     "Er schläft ein.",
+     "Er weint."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum braucht man beim Fußball nicht viele Wörter?",
+    "options": [
+     "Weil Fußball verboten ist.",
+     "Weil nur der Lehrer spricht.",
+     "Weil man zusammen spielt und sich Zeichen geben kann.",
+     "Weil es regnet."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Was lernt Mateo mit dem Wort „Freund“?",
+    "answer": "Dass Noah sein Freund sein will. Mateo ist nicht mehr allein."
+   }
+  ]
+ },
+ {
+  "id": "pferde",
+  "title": "Pferde",
+  "type": "Sachtext",
+  "level": 2,
+  "text": "Pferde sind große und starke Tiere. Sie fressen Gras, Heu und gern auch Äpfel oder Karotten. Pferde schlafen oft im Stehen. So können sie schnell weglaufen, wenn Gefahr droht.\n\nEin junges Pferd heißt Fohlen. Schon kurz nach der Geburt kann es stehen und laufen. Pferde leben gern in einer Herde. Allein fühlen sie sich nicht wohl. Ein kleines Pferd nennt man Pony.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was fressen Pferde gern?",
+    "options": [
+     "Fleisch",
+     "Fisch",
+     "Äpfel und Karotten",
+     "Schokolade"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie heißt ein junges Pferd?",
+    "options": [
+     "Fohlen",
+     "Kalb",
+     "Ferkel",
+     "Lamm"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist eine Herde?",
+    "options": [
+     "Ein Stall",
+     "Eine Gruppe von Tieren",
+     "Ein Futter",
+     "Ein Sattel"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum schlafen Pferde oft im Stehen?",
+    "options": [
+     "Weil sie keinen Platz haben.",
+     "Weil der Boden kalt ist.",
+     "Weil sie nie müde sind.",
+     "Weil sie bei Gefahr schnell weglaufen können."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wann kann ein Fohlen stehen und laufen?",
+    "answer": "Schon kurz nach der Geburt."
+   }
+  ]
+ },
+ {
+  "id": "sportfest",
+  "title": "Das Sportfest",
+  "type": "Programm",
+  "level": 2,
+  "format": "doc",
+  "modes": [
+   "woerter",
+   "verstehen"
+  ],
+  "text": "## Sportfest der Grundschule\nFreitag, 12. Juni\nOrt: Sportplatz hinter der Schule\n\nZeit | Was?\n9:00 | Begrüßung\n9:30 | Wettlauf\n10:30 | Weitsprung\n11:30 | Pause mit Obst\n12:00 | Sackhüpfen\n13:00 | Siegerehrung\n\nBringt Turnschuhe und eine Trinkflasche mit!\nBei Regen findet das Fest in der Turnhalle statt.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "An welchem Tag ist das Sportfest?",
+    "options": [
+     "Montag",
+     "Mittwoch",
+     "Freitag",
+     "Samstag"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was passiert um 10:30 Uhr?",
+    "options": [
+     "Wettlauf",
+     "Weitsprung",
+     "Sackhüpfen",
+     "Siegerehrung"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was kommt direkt nach der Pause?",
+    "options": [
+     "Sackhüpfen",
+     "Weitsprung",
+     "Begrüßung",
+     "Siegerehrung"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Am Freitag regnet es. Wo findet das Fest statt?",
+    "options": [
+     "Auf dem Sportplatz",
+     "Es fällt aus.",
+     "In der Turnhalle",
+     "Im Schwimmbad"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Wie lange dauert der Weitsprung?",
+    "options": [
+     "Zwei Stunden",
+     "30 Minuten",
+     "10 Minuten",
+     "Eine Stunde"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Was sollen die Kinder mitbringen?",
+    "answer": "Turnschuhe und eine Trinkflasche."
    }
   ]
  },
@@ -1846,11 +2458,11 @@
     "q": "Im Text steht: „So spart er Energie.“ Was bedeutet das?",
     "options": [
      "Er kauft sich Futter.",
-     "Er braucht nur wenig Kraft.",
      "Er rennt ganz schnell.",
+     "Er braucht nur wenig Kraft.",
      "Er wacht auf."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -1885,23 +2497,23 @@
     "q": "Welche Farbe haben die Flügel von Flix?",
     "options": [
      "Rot",
-     "Grün",
      "Blau",
+     "Grün",
      "Gelb"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
     "skill": "Finden",
     "q": "Was passiert, wenn Flix vom Stein springt?",
     "options": [
-     "Er fliegt hoch.",
      "Er fällt ins Gras.",
+     "Er fliegt hoch.",
      "Er landet im See.",
      "Er schläft ein."
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "open",
@@ -1914,12 +2526,12 @@
     "skill": "Wortschatz",
     "q": "„Plötzlich sind seine Füße nicht mehr auf dem Boden.“ Was bedeutet „plötzlich“?",
     "options": [
-     "Ganz langsam",
      "Auf einmal",
+     "Ganz langsam",
      "Am Abend",
      "Nie"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -1927,11 +2539,11 @@
     "q": "Was macht Flix, bevor er die Flügel öffnet?",
     "options": [
      "Er springt vom Stein.",
-     "Er läuft schnell über die Wiese.",
      "Er fliegt über den See.",
+     "Er läuft schnell über die Wiese.",
      "Er schläft im Gras."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "open",
@@ -1953,12 +2565,12 @@
     "skill": "Finden",
     "q": "Mit wem fährt Sami in die Stadt?",
     "options": [
-     "Mit Mama",
      "Mit Papa",
+     "Mit Mama",
      "Mit Oma",
      "Mit seiner Klasse"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -1996,11 +2608,11 @@
     "q": "Was machen sie in der Stadt zuerst?",
     "options": [
      "Sie essen ein Eis.",
-     "Sie gehen in ein Museum.",
+     "Sie kaufen eine Fahrkarte.",
      "Sie fahren nach Hause.",
-     "Sie kaufen eine Fahrkarte."
+     "Sie gehen in ein Museum."
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "open",
@@ -2035,11 +2647,11 @@
     "q": "Was liegt am Morgen in den Schuhen?",
     "options": [
      "Äpfel und Brot",
-     "Mandarinen, Nüsse und Schokolade",
+     "Blumen",
      "Spielzeugautos",
-     "Blumen"
+     "Mandarinen, Nüsse und Schokolade"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "open",
@@ -2092,11 +2704,11 @@
     "q": "Wo zelten Jonas und Clara?",
     "options": [
      "Im Wald",
-     "Im Garten",
      "Am See",
+     "Im Garten",
      "Auf einem Campingplatz"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -2167,11 +2779,11 @@
     "q": "Wann lebten die Dinosaurier?",
     "options": [
      "Vor hundert Jahren",
-     "Vor vielen Millionen Jahren",
+     "Zur Zeit der Ritter",
      "Heute",
-     "Zur Zeit der Ritter"
+     "Vor vielen Millionen Jahren"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -2203,23 +2815,23 @@
     "q": "Haben Menschen einen lebenden Tyrannosaurus gesehen?",
     "options": [
      "Ja, sehr oft.",
-     "Nein, die Dinosaurier lebten, bevor es Menschen gab.",
      "Ja, im Zoo.",
+     "Nein, die Dinosaurier lebten, bevor es Menschen gab.",
      "Ja, aber nur nachts."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
     "skill": "Wortschatz",
     "q": "Was machen „Forscher“?",
     "options": [
-     "Sie bauen Häuser.",
      "Sie suchen und untersuchen Dinge, um Neues zu lernen.",
+     "Sie bauen Häuser.",
      "Sie verkaufen Knochen.",
      "Sie fahren Bus."
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "open",
@@ -2266,11 +2878,11 @@
     "q": "Wie sieht Annas Laterne aus?",
     "options": [
      "Blau mit Sternen",
-     "Rot mit einem gelben Mond",
+     "Ganz weiß",
      "Grün mit einer Sonne",
-     "Ganz weiß"
+     "Rot mit einem gelben Mond"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -2317,11 +2929,11 @@
     "q": "Woher kommt der größte Teil des Wassers in Luxemburg?",
     "options": [
      "Aus dem Meer",
-     "Aus Quellen und aus dem Boden",
      "Aus dem Regen auf dem Dach",
+     "Aus Quellen und aus dem Boden",
      "Aus Flaschen"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -2340,12 +2952,12 @@
     "skill": "Finden",
     "q": "Wo liegen die Rohre?",
     "options": [
-     "Auf dem Dach",
      "Unter der Erde",
+     "Auf dem Dach",
      "Im Wald",
      "Im Stausee"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "mc",
@@ -2392,11 +3004,11 @@
     "q": "Was findet Leo am Anfang schwer?",
     "options": [
      "Rechnen",
-     "Lesen",
+     "Fußball",
      "Malen",
-     "Fußball"
+     "Lesen"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -2415,12 +3027,12 @@
     "skill": "Reihenfolge",
     "q": "Was liest Leo zuerst?",
     "options": [
-     "Lange Bücher",
      "Kurze Geschichten",
+     "Lange Bücher",
      "Zeitungen",
      "Briefe"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "open",
@@ -2508,11 +3120,11 @@
     "q": "Wie lange fährt der Bus von der Kirche bis zum Schwimmbad?",
     "options": [
      "8 Minuten",
-     "18 Minuten",
+     "Eine Stunde",
      "30 Minuten",
-     "Eine Stunde"
+     "18 Minuten"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "open",
@@ -2531,6 +3143,537 @@
      "Ja, jeden Tag."
     ],
     "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "schatzsuche",
+  "title": "Die Schatzsuche",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "Am Sonntag findet Elif im Garten einen alten Zettel unter einem Stein. Darauf steht: „Geh zehn Schritte zum Apfelbaum. Dann schau in das Vogelhaus.“ Elif holt sofort ihren kleinen Bruder Can.\n\nZusammen zählen sie die Schritte. Im Vogelhaus liegt ein zweiter Zettel: „Jetzt suche dort, wo Papa die Fahrräder abstellt.“ Die Kinder laufen zur Garage. Hinter dem Rad liegt eine Schachtel mit einem Schloss. Aber wo ist der Schlüssel?\n\nCan entdeckt auf dem Deckel eine kleine Zeichnung von einer Gießkanne. Elif hebt die grüne Gießkanne hoch. Darunter klebt der Schlüssel! In der Schachtel finden sie Schokoladentaler und eine Karte: „Gut gemacht, ihr Schatzsucher! Liebe Grüße, Opa.“",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo findet Elif den ersten Zettel?",
+    "options": [
+     "Im Vogelhaus",
+     "Unter einem Stein",
+     "In der Garage",
+     "Unter der Gießkanne"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "In welcher Reihenfolge suchen die Kinder?",
+    "options": [
+     "Garage – Vogelhaus – Gießkanne",
+     "Gießkanne – Garage – Vogelhaus",
+     "Vogelhaus – Gießkanne – Garage",
+     "Vogelhaus – Garage – Gießkanne"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was ist in der Schachtel?",
+    "options": [
+     "Schokoladentaler und eine Karte",
+     "Spielzeugautos",
+     "Ein Buch",
+     "Ein Schlüssel"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Can entdeckt eine Zeichnung.“ Was bedeutet „entdecken“?",
+    "options": [
+     "Etwas malen",
+     "Etwas verstecken",
+     "Etwas finden, das man vorher nicht gesehen hat",
+     "Etwas kaputt machen"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Wer hat die Schatzsuche vorbereitet?",
+    "options": [
+     "Opa",
+     "Papa",
+     "Can",
+     "Die Nachbarin"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum war die Zeichnung auf dem Deckel wichtig?",
+    "answer": "Sie hat gezeigt, wo der Schlüssel versteckt war: unter der Gießkanne."
+   }
+  ]
+ },
+ {
+  "id": "mond",
+  "title": "Der Mond",
+  "type": "Sachtext",
+  "level": 3,
+  "text": "Der Mond ist der Nachbar der Erde im Weltall. Er ist viel kleiner als die Erde und hat kein eigenes Licht. Er leuchtet nur, weil die Sonne ihn anstrahlt.\n\nManchmal sehen wir einen runden Vollmond, manchmal nur eine schmale Sichel. Das liegt daran, dass der Mond um die Erde wandert. Für eine Runde braucht er ungefähr einen Monat. Je nachdem, wo er gerade steht, sehen wir einen größeren oder kleineren Teil seiner hellen Seite.\n\nAuf dem Mond gibt es keine Luft und kein Wasser. Deshalb können dort keine Pflanzen und Tiere leben. Vor mehr als fünfzig Jahren sind zum ersten Mal Menschen auf dem Mond gelandet. Ihre Fußspuren sind immer noch da, denn auf dem Mond gibt es keinen Wind.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Warum leuchtet der Mond?",
+    "options": [
+     "Er hat eigenes Licht.",
+     "Die Sonne strahlt ihn an.",
+     "Er ist aus Feuer.",
+     "Die Sterne strahlen ihn an."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie lange braucht der Mond für eine Runde um die Erde?",
+    "options": [
+     "Einen Tag",
+     "Eine Woche",
+     "Ungefähr einen Monat",
+     "Ein Jahr"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist eine „Sichel“ beim Mond?",
+    "options": [
+     "Ein ganz runder Mond",
+     "Ein Stern",
+     "Eine Wolke",
+     "Ein schmaler, gebogener Mond"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was gibt es auf dem Mond NICHT?",
+    "options": [
+     "Fußspuren",
+     "Luft",
+     "Licht von der Sonne",
+     "Eine helle Seite"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum sind die Fußspuren noch da?",
+    "options": [
+     "Weil es dort keinen Wind gibt.",
+     "Weil sie aus Stein sind.",
+     "Weil Astronauten sie putzen.",
+     "Weil es dort oft regnet."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum können auf dem Mond keine Tiere leben?",
+    "answer": "Weil es dort keine Luft und kein Wasser gibt."
+   }
+  ]
+ },
+ {
+  "id": "muell",
+  "title": "Müll trennen",
+  "type": "Sachtext",
+  "level": 3,
+  "text": "In vielen Familien gibt es zu Hause mehrere Mülleimer. Das ist kein Zufall: Wir trennen den Müll, damit man vieles wiederverwerten kann. Das nennt man Recycling.\n\nAltpapier, zum Beispiel alte Zeitungen und Kartons, kommt in die Papiertonne. Daraus macht man neues Papier. Leere Glasflaschen bringt man zum Glascontainer. Plastikflaschen, Dosen und Getränkekartons gehören in einen besonderen Sack. Apfelreste, Bananenschalen und Kaffeesatz kommen in die Biotonne. Daraus wird Erde für den Garten.\n\nWer Müll trennt, schützt die Umwelt. Noch besser ist es aber, wenig Müll zu machen. Eine Trinkflasche und eine Brotdose kann man jeden Tag wieder benutzen.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wohin kommen alte Zeitungen?",
+    "options": [
+     "In die Biotonne",
+     "In die Papiertonne",
+     "In den Glascontainer",
+     "In den Sack für Plastik"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was wird aus den Resten in der Biotonne?",
+    "options": [
+     "Neues Papier",
+     "Neue Flaschen",
+     "Erde für den Garten",
+     "Plastik"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „wiederverwerten“?",
+    "options": [
+     "Aus Altem etwas Neues machen",
+     "Etwas wegwerfen",
+     "Etwas verstecken",
+     "Etwas kaufen"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Lea hat eine leere Saftdose. Wohin gehört sie?",
+    "options": [
+     "In die Papiertonne",
+     "In die Biotonne",
+     "In den Glascontainer",
+     "In den besonderen Sack"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was ist laut Text noch besser als Müll trennen?",
+    "options": [
+     "Mehr kaufen",
+     "Wenig Müll machen",
+     "Den Müll vergraben",
+     "Den Müll verstecken"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum sind eine Trinkflasche und eine Brotdose gut für die Umwelt?",
+    "answer": "Weil man sie jeden Tag wieder benutzen kann. So gibt es weniger Müll."
+   }
+  ]
+ },
+ {
+  "id": "pfannkuchen",
+  "title": "Pfannkuchen",
+  "type": "Rezept",
+  "level": 3,
+  "format": "doc",
+  "text": "## Pfannkuchen\nFür vier Pfannkuchen brauchst du:\n- 2 Eier\n- 250 Milliliter Milch\n- 125 Gramm Mehl\n- eine Prise Salz\n- etwas Butter für die Pfanne\n\n1. Schlage die Eier in eine Schüssel.\n2. Gib die Milch dazu und verrühre alles.\n3. Rühre das Mehl und das Salz unter, bis keine Klümpchen mehr da sind.\n4. Lass einen Erwachsenen die Butter in der Pfanne heiß machen.\n5. Gieße eine kleine Kelle Teig in die Pfanne.\n6. Wende den Pfannkuchen, wenn die Unterseite goldbraun ist.\n\nTipp: Mit Apfelmus oder etwas Zucker schmecken Pfannkuchen besonders gut.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie viele Eier brauchst du?",
+    "options": [
+     "Eins",
+     "Zwei",
+     "Drei",
+     "Vier"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was machst du direkt nach den Eiern?",
+    "options": [
+     "Die Butter heiß machen",
+     "Das Mehl unterrühren",
+     "Den Pfannkuchen wenden",
+     "Die Milch dazugeben"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Wende den Pfannkuchen.“ Was machst du?",
+    "options": [
+     "Du schneidest ihn klein.",
+     "Du isst ihn auf.",
+     "Du drehst ihn auf die andere Seite.",
+     "Du stellst ihn in den Kühlschrank."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum soll ein Erwachsener die Pfanne heiß machen?",
+    "options": [
+     "Weil Butter teuer ist.",
+     "Weil eine heiße Pfanne gefährlich sein kann.",
+     "Weil es dann schneller geht.",
+     "Weil Kinder keine Pfannkuchen mögen."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie viel Mehl brauchst du?",
+    "options": [
+     "125 Gramm",
+     "250 Gramm",
+     "2 Kilo",
+     "4 Löffel"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Woran merkst du, dass du den Teig lange genug gerührt hast?",
+    "answer": "Wenn keine Klümpchen mehr im Teig sind."
+   }
+  ]
+ },
+ {
+  "id": "bauernhof",
+  "title": "Ferien auf dem Bauernhof",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "In den Ferien besucht Jonas seine Tante auf dem Bauernhof. Schon um sechs Uhr kräht der Hahn. Jonas reibt sich die Augen und zieht seine Gummistiefel an.\n\nZuerst helfen sie im Kuhstall. Die Kühe werden mit einer Maschine gemolken. „Jede Kuh gibt am Tag ungefähr fünfundzwanzig Liter Milch“, erklärt die Tante. Danach füttert Jonas die Hühner und sammelt die Eier ein. Ein Ei ist noch ganz warm.\n\nAm Nachmittag darf Jonas auf dem Traktor mitfahren. Er ist laut und wackelt, aber Jonas hält sich gut fest. Am Abend ist er so müde, dass er beim Essen fast einschläft. „Morgen will ich wieder helfen!“, murmelt er.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wen besucht Jonas?",
+    "options": [
+     "Seinen Onkel",
+     "Seine Oma",
+     "Seinen Freund",
+     "Seine Tante"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer weckt Jonas um sechs Uhr?",
+    "options": [
+     "Die Tante",
+     "Der Hahn",
+     "Der Traktor",
+     "Eine Kuh"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was macht Jonas zuerst?",
+    "options": [
+     "Er fährt Traktor.",
+     "Er sammelt Eier.",
+     "Er hilft im Kuhstall.",
+     "Er isst zu Abend."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Jonas murmelt.“ Wie spricht er?",
+    "options": [
+     "Leise und undeutlich",
+     "Sehr laut",
+     "Singend",
+     "Wütend"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum ist ein Ei noch ganz warm?",
+    "options": [
+     "Weil die Sonne darauf scheint.",
+     "Weil ein Huhn es gerade erst gelegt hat.",
+     "Weil es gekocht ist.",
+     "Weil der Traktor warm ist."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Hat Jonas der Tag auf dem Bauernhof gefallen? Woran erkennst du das?",
+    "answer": "Ja. Er sagt: „Morgen will ich wieder helfen!“"
+   }
+  ]
+ },
+ {
+  "id": "fouer",
+  "title": "Auf der Schueberfouer",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "Ende August ist es endlich so weit: Die Schueberfouer in der Stadt Luxemburg beginnt. Sofia geht mit ihren Eltern und ihrer Freundin Ana hin. Schon von Weitem hören sie Musik und sehen das große Riesenrad.\n\nZuerst fahren die Mädchen Autoscooter. Ana lenkt wild und lacht laut. Dann kaufen sie Zuckerwatte. Sie ist rosa und klebt an den Fingern. Papa möchte unbedingt Gromperekichelcher essen. Das sind knusprige Kartoffelpuffer.\n\nZum Schluss fahren alle zusammen mit dem Riesenrad. Ganz oben hält es kurz an. Sofia kann über die ganze Stadt schauen. Die Lichter glitzern wie Sterne. „Nächstes Jahr kommen wir wieder“, sagt Sofia.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann beginnt die Schueberfouer?",
+    "options": [
+     "Im Dezember",
+     "Ende August",
+     "Im Frühling",
+     "An Ostern"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was machen die Mädchen zuerst?",
+    "options": [
+     "Riesenrad fahren",
+     "Zuckerwatte kaufen",
+     "Autoscooter fahren",
+     "Kartoffelpuffer essen"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was sind Gromperekichelcher?",
+    "options": [
+     "Bratwürste",
+     "Süße Bonbons",
+     "Kleine Kuchen",
+     "Knusprige Kartoffelpuffer"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie ist die Zuckerwatte?",
+    "options": [
+     "Rosa und klebrig",
+     "Blau und hart",
+     "Gelb und salzig",
+     "Weiß und kalt"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum kann Sofia über die ganze Stadt schauen?",
+    "options": [
+     "Weil sie auf einem Turm steht.",
+     "Weil das Riesenrad ganz oben anhält.",
+     "Weil sie ein Fernglas hat.",
+     "Weil Papa sie trägt."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Hat Sofia der Abend gefallen? Woran merkst du das?",
+    "answer": "Ja. Sie sagt: „Nächstes Jahr kommen wir wieder.“"
+   }
+  ]
+ },
+ {
+  "id": "museum",
+  "title": "Tiere der Nacht im Museum",
+  "type": "Plakat",
+  "level": 3,
+  "format": "doc",
+  "modes": [
+   "woerter",
+   "verstehen"
+  ],
+  "text": "## Ausstellung: Tiere der Nacht\nKomm ins Museum und entdecke Eulen, Fledermäuse und Füchse!\n\nTag | Öffnungszeit\nDienstag bis Freitag | 10:00 – 18:00\nSamstag und Sonntag | 10:00 – 17:00\nMontag | geschlossen\n\nEintritt | Preis\nKinder unter 6 Jahren | gratis\nKinder ab 6 Jahren | 3 Euro\nErwachsene | 5 Euro\n\nJeden Mittwoch um 15 Uhr: Führung mit Taschenlampen für Kinder.\nBitte die Tiere nicht anfassen!",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "An welchem Tag ist das Museum geschlossen?",
+    "options": [
+     "Montag",
+     "Mittwoch",
+     "Samstag",
+     "Sonntag"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was kostet der Eintritt für ein Kind mit 8 Jahren?",
+    "options": [
+     "Nichts",
+     "3 Euro",
+     "5 Euro",
+     "8 Euro"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Mama, Lisa (8 Jahre) und Tom (4 Jahre) gehen ins Museum. Wie viel bezahlen sie zusammen?",
+    "options": [
+     "11 Euro",
+     "5 Euro",
+     "13 Euro",
+     "8 Euro"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Familie Weber kommt am Samstag um 17:30 Uhr. Was passiert?",
+    "options": [
+     "Sie können noch eine Stunde bleiben.",
+     "Das Museum ist schon geschlossen.",
+     "Sie bekommen eine Führung.",
+     "Der Eintritt ist gratis."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann gibt es die Führung mit Taschenlampen?",
+    "options": [
+     "Jeden Montag um 10 Uhr",
+     "Jeden Tag",
+     "Jeden Mittwoch um 15 Uhr",
+     "Jeden Sonntag um 17 Uhr"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Welche Tiere kann man in der Ausstellung entdecken?",
+    "answer": "Eulen, Fledermäuse und Füchse."
    }
   ]
  },
@@ -2558,12 +3701,12 @@
     "skill": "Finden",
     "q": "Wo steht die Burg?",
     "options": [
-     "Am Meer",
      "Hoch oben auf einem Berg",
+     "Am Meer",
      "Mitten im Wald",
      "Neben dem Bahnhof"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "open",
@@ -2615,12 +3758,12 @@
     "skill": "Finden",
     "q": "Woher kommt Luca?",
     "options": [
-     "Aus Spanien",
      "Aus Portugal",
+     "Aus Spanien",
      "Aus Italien",
      "Aus Frankreich"
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "open",
@@ -2634,11 +3777,11 @@
     "q": "Warum überlegt Noah zuerst, ob er zu Luca gehen soll?",
     "options": [
      "Weil er Luca nicht mag.",
-     "Weil er ihn noch gar nicht kennt.",
+     "Weil er müde ist.",
      "Weil die Pause vorbei ist.",
-     "Weil er müde ist."
+     "Weil er ihn noch gar nicht kennt."
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -2658,11 +3801,11 @@
     "q": "Was passiert nach dem Fußballspiel?",
     "options": [
      "Noah fragt Luca, ob er mitspielt.",
-     "Luca setzt sich neben Noah.",
      "Die Lehrerin stellt Luca vor.",
+     "Luca setzt sich neben Noah.",
      "Luca steht allein an der Wand."
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "open",
@@ -2685,11 +3828,11 @@
     "q": "Was ist die Sonne?",
     "options": [
      "Ein Planet",
-     "Ein Stern",
      "Ein Mond",
+     "Ein Stern",
      "Eine Wolke"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "mc",
@@ -2697,11 +3840,11 @@
     "q": "Warum sieht die Sonne so klein aus?",
     "options": [
      "Weil sie klein ist.",
-     "Weil sie sehr weit weg ist.",
+     "Weil es Nacht ist.",
      "Weil sie kalt ist.",
-     "Weil es Nacht ist."
+     "Weil sie sehr weit weg ist."
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "open",
@@ -2715,11 +3858,11 @@
     "q": "„In Wirklichkeit ist sie riesig.“ Was bedeutet „riesig“?",
     "options": [
      "Sehr klein",
-     "Sehr groß",
      "Sehr kalt",
+     "Sehr groß",
      "Sehr leise"
     ],
-    "answer": 1
+    "answer": 2
    },
    {
     "kind": "open",
@@ -2754,11 +3897,11 @@
     "q": "Wie viele Königinnen gibt es in einem Bienenstock?",
     "options": [
      "Keine",
-     "Eine",
+     "Fünfzigtausend",
      "Zehn",
-     "Fünfzigtausend"
+     "Eine"
     ],
-    "answer": 1
+    "answer": 3
    },
    {
     "kind": "mc",
@@ -2795,18 +3938,243 @@
     "skill": "Schließen",
     "q": "Warum ist jedes Glas Honig „etwas ganz Besonderes“?",
     "options": [
-     "Weil Honig teuer ist.",
      "Weil die Bienen sehr viel Arbeit dafür machen.",
+     "Weil Honig teuer ist.",
      "Weil Honig blau ist.",
      "Weil nur die Königin Honig macht."
     ],
-    "answer": 1
+    "answer": 0
    },
    {
     "kind": "open",
     "skill": "Finden",
     "q": "Wozu brauchen die Bienen ihre Flügel im Bienenstock?",
     "answer": "Sie fächeln damit Luft über den Honig, bis er fertig ist."
+   }
+  ]
+ },
+ {
+  "id": "wolf",
+  "title": "Der Wolf",
+  "type": "Sachtext",
+  "level": 4,
+  "text": "Wölfe leben in Rudeln. Ein Rudel ist eine Familie: Vater, Mutter und ihre Jungen aus den letzten zwei Jahren. Zusammen gehen sie auf die Jagd und versorgen die Welpen. Mit lautem Heulen halten die Wölfe Kontakt, auch wenn sie weit voneinander entfernt sind.\n\nWölfe haben eine sehr feine Nase. Sie riechen andere Tiere schon aus großer Entfernung. Meistens jagen sie Rehe und Wildschweine. Dabei fangen sie oft alte oder kranke Tiere, denn die sind langsamer. So bleibt der Wald gesund.\n\nVor langer Zeit gab es in vielen Ländern Europas keine Wölfe mehr. Die Menschen hatten sie gejagt, weil sie Angst um ihre Schafe hatten. Heute sind Wölfe geschützt und kommen langsam zurück. Für Menschen sind sie fast nie gefährlich. Meistens laufen sie weg, sobald sie einen Menschen bemerken.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer gehört zu einem Rudel?",
+    "options": [
+     "Viele fremde Wölfe",
+     "Nur die Männchen",
+     "Vater, Mutter und ihre Jungen",
+     "Nur die Welpen"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie halten Wölfe Kontakt?",
+    "options": [
+     "Mit Heulen",
+     "Mit Bellen",
+     "Mit Pfeifen",
+     "Gar nicht"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was sind Welpen?",
+    "options": [
+     "Alte Wölfe",
+     "Rehe",
+     "Schafe",
+     "Junge Wölfe"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum fangen Wölfe oft alte oder kranke Tiere?",
+    "options": [
+     "Weil sie besser schmecken.",
+     "Weil sie langsamer sind.",
+     "Weil sie größer sind.",
+     "Weil sie lauter sind."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum gab es früher in vielen Ländern keine Wölfe mehr?",
+    "options": [
+     "Weil es zu kalt war.",
+     "Weil sie kein Futter fanden.",
+     "Weil die Menschen sie gejagt hatten.",
+     "Weil sie ans Meer gezogen sind."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Was macht ein Wolf meistens, wenn er einen Menschen bemerkt?",
+    "answer": "Er läuft weg."
+   }
+  ]
+ },
+ {
+  "id": "pausenbrot",
+  "title": "Der Pausenbrot-Dieb",
+  "type": "Geschichte",
+  "level": 4,
+  "text": "Seit drei Tagen passiert in der Klasse von Frau Becker etwas Seltsames: Jeden Tag fehlt einem Kind etwas aus dem Rucksack. Am Montag war es Paulas Käsebrot, am Dienstag Omars Brezel und am Mittwoch Ellas Müsliriegel. Die Kinder sind ratlos.\n\n„Wir müssen den Dieb fangen!“, flüstert Omar. In der großen Pause verstecken sich Paula und er hinter dem Vorhang im Klassenzimmer. Alles ist still. Nur das Fenster steht einen Spalt offen.\n\nPlötzlich raschelt etwas. Eine Elster hüpft auf das Fensterbrett, schaut sich um und springt zu Ellas Rucksack. Mit ihrem Schnabel zieht sie geschickt eine Packung Kekse heraus. „Da ist der Dieb!“, ruft Paula. Die Elster erschrickt und fliegt ohne Beute davon.\n\nAb jetzt bleibt das Fenster in der Pause zu. Und die Kinder legen der Elster draußen ein paar Krümel hin.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was fehlte am Dienstag?",
+    "options": [
+     "Paulas Käsebrot",
+     "Omars Brezel",
+     "Ellas Müsliriegel",
+     "Ellas Kekse"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo verstecken sich Paula und Omar?",
+    "options": [
+     "Unter dem Tisch",
+     "Im Schrank",
+     "Auf dem Schulhof",
+     "Hinter dem Vorhang"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Die Kinder sind ratlos.“ Was bedeutet das?",
+    "options": [
+     "Sie wissen nicht, was sie tun sollen.",
+     "Sie sind sehr fröhlich.",
+     "Sie sind sehr müde.",
+     "Sie haben Hunger."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was passiert zuerst?",
+    "options": [
+     "Die Elster fliegt weg.",
+     "Paula ruft: „Da ist der Dieb!“",
+     "Die Elster hüpft auf das Fensterbrett.",
+     "Die Elster zieht Kekse heraus."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Wie ist die Elster ins Klassenzimmer gekommen?",
+    "options": [
+     "Durch die Tür",
+     "Durch das offene Fenster",
+     "Durch den Kamin",
+     "In einem Rucksack"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum bleibt das Fenster ab jetzt in der Pause zu?",
+    "answer": "Damit die Elster nicht mehr hereinkommt und kein Essen mehr stiehlt."
+   }
+  ]
+ },
+ {
+  "id": "muellerthal",
+  "title": "Wandern im Müllerthal",
+  "type": "Geschichte",
+  "level": 4,
+  "text": "An einem sonnigen Samstag wandert Familie Hoffmann im Müllerthal. Diese Gegend nennt man auch „Kleine Luxemburger Schweiz“. Überall stehen riesige Felsen aus Sandstein, und zwischen ihnen führen schmale Wege hindurch.\n\nMila und ihr Bruder Felix laufen voraus. An einer Stelle ist der Weg so eng, dass Papa seinen Rucksack abnehmen muss. Die Felsen sind feucht und mit grünem Moos bedeckt. Es riecht nach Erde und Wald. Felix ruft laut „Hallo!“, und das Echo antwortet.\n\nNach zwei Stunden erreichen sie einen kleinen Wasserfall. Das Wasser rauscht unter einer alten Brücke über die Steine. Hier machen sie Picknick mit belegten Broten und Äpfeln. Mila zieht die Schuhe aus und hält die Füße ins Wasser. „Brrr!“, ruft sie und lacht. Auf dem Rückweg sind alle müde, aber glücklich.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie nennt man das Müllerthal auch?",
+    "options": [
+     "Großes Tal",
+     "Luxemburger Alpen",
+     "Kleine Luxemburger Schweiz",
+     "Grüner Wald"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Woraus sind die Felsen?",
+    "options": [
+     "Aus Holz",
+     "Aus Sandstein",
+     "Aus Glas",
+     "Aus Eis"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum muss Papa seinen Rucksack abnehmen?",
+    "options": [
+     "Weil er zu schwer ist.",
+     "Weil sie Picknick machen.",
+     "Weil es regnet.",
+     "Weil der Weg sehr eng ist."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist ein Echo?",
+    "options": [
+     "Ein Tier im Wald",
+     "Ein Ruf, der zurückkommt",
+     "Ein Wasserfall",
+     "Ein großer Stein"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was passiert nach dem Echo?",
+    "options": [
+     "Sie erreichen den Wasserfall.",
+     "Papa nimmt den Rucksack ab.",
+     "Mila und Felix laufen voraus.",
+     "Sie fahren mit dem Bus los."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum ruft Mila „Brrr!“?",
+    "answer": "Weil das Wasser sehr kalt ist."
    }
   ]
  }
