@@ -247,3 +247,23 @@ test("a number written as digits matches the spoken number word", () => {
   assert.deepEqual(run("Ein Tisch kostet 2 Euro", sess("ein Tisch kostet zwei Euro")).s, ["ok", "ok", "ok", "ok", "ok"]);
   assert.deepEqual(run("bis 18 Uhr", sess("bis achtzehn Uhr")).s, ["ok", "ok", "ok"]);
 });
+
+test("fitAnswer: heard words snapped to similar words from the text", () => {
+  const ctx = "Am Tag schlafen Eulen in Baumhöhlen, in alten Scheunen oder in Kirchtürmen. Die Eule fliegt lautlos.";
+  let r = M.fitAnswer(["in baum höhlen und in alten Scheinen"], ctx);
+  assert.equal(r.text, "in Baumhöhlen und in alten Scheunen");
+  assert.equal(r.changed.length, 2);
+  r = M.fitAnswer(["weil die eile lautlos fliegt"], ctx);
+  assert.equal(r.text, "weil die Eule lautlos fliegt");
+});
+test("fitAnswer: the child's own words and other endings stay", () => {
+  const ctx = "Ihre Federn sind weich. Bobo ist müde.";
+  assert.equal(M.fitAnswer(["weil die Federn weiche sind"], ctx).text, "weil die Federn weiche sind");
+  assert.equal(M.fitAnswer(["weil er leise fliegt"], ctx).changed.length, 0);
+  assert.equal(M.fitAnswer(["weil er mude war"], ctx).text, "weil er müde war");
+});
+test("fitAnswer: picks the alternative that uses words from the text", () => {
+  const ctx = "Die Elster fliegt durch das offene Fenster.";
+  assert.equal(M.fitAnswer(["durch das offene Fenstern", "durch das offene Fenster"], ctx).text, "durch das offene Fenster");
+  assert.equal(M.fitAnswer([], ctx).text, "");
+});

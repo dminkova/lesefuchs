@@ -820,11 +820,23 @@ function renderQ() {
         stopSpeaking();
         const before = ta.value.trim();
         mb.classList.add("live"); lbl.textContent = "Ich höre zu… (tippen zum Stoppen)";
-        listenOnce(alts => { if (alts[0]) { ta.value = (before ? before + " " : "") + alts[0]; Q.answers[Q.qi] = ta.value; } }, () => { mb.classList.remove("live"); lbl.textContent = "Antwort sagen"; });
+        listenOnce(alts => {
+          if (!alts[0]) return;
+          const fit = M.fitAnswer(alts, CUR.text + " " + q.q), raw = alts.find(a => a.trim()) || "";
+          ta.value = (before ? before + " " : "") + fit.text; Q.answers[Q.qi] = ta.value;
+          fixNote.innerHTML = ""; fixNote.hidden = false;
+          fixNote.append(el("span", null, "Stimmt etwas nicht? Tippe ins Feld und verbessere es."));
+          if (fit.changed.length) {
+            const u = el("button", "linkbtn", "Rückgängig");
+            u.onclick = () => { ta.value = (before ? before + " " : "") + raw; Q.answers[Q.qi] = ta.value; fixNote.hidden = true; };
+            fixNote.append(el("span", null, " Angepasst an den Text: " + fit.changed.map(c => c[0] + " → " + c[1]).join(", ") + ". "), u);
+          }
+        }, () => { mb.classList.remove("live"); lbl.textContent = "Antwort sagen"; });
       };
       P.append(mb);
     }
-    P.append(ta);
+    const fixNote = el("p", "small fixnote"); fixNote.hidden = true;
+    P.append(ta, fixNote);
   }
   const pt = el("div", "peektext"); buildDoc(pt, "", CUR.text, tok => document.createTextNode(tok));
   const d = el("details", "peek"); d.append(el("summary", null, "Text anzeigen"), pt); P.append(d);

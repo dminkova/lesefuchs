@@ -139,6 +139,12 @@ def main():
                 ans = page.evaluate(f"LF_TEXTS.find(t=>t.id==='bobo').questions[{i}].answer")
                 page.locator(".opt").nth(ans).click()
             else:
+                page.locator("#qpanel .icon-btn", has_text="Antwort sagen").click(); page.wait_for_timeout(50)
+                page.evaluate("__say(['weil er mude war im park'])"); page.wait_for_timeout(50)
+                check(page.locator("textarea.answer").input_value() == "weil er müde war im park", "spoken answer: misheard word fitted to the text")
+                check("mude → müde" in page.locator(".fixnote").inner_text(), "spoken answer: change shown with undo")
+                page.locator(".fixnote .linkbtn", has_text="Rückgängig").click()
+                check(page.locator("textarea.answer").input_value() == "weil er mude war im park", "spoken answer: undo restores what was heard")
                 page.fill("textarea.answer", "Weil er müde ist")
             page.click("#qNext")
         page.wait_for_selector("#report:not([hidden])")

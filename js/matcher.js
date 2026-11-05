@@ -318,5 +318,55 @@
     return { reached, ok, unsure, wrong, accuracy: ok + wrong ? ok / (ok + wrong) : null, unsureRate: reached ? unsure / reached : 0 };
   }
 
-  return { norm, words, koeln, sim, lev, sameSound, dedupeSession, buildTokens, align, summarize, FILLERS };
+  /* everyday words a child may say in an answer: never "corrected" to a word from the text */
+  const COMMON = new Set(("und oder aber weil dass denn dann sind sein seine seinen seinem ihre ihren ihrem haben habe hatte hatten wird wurde werden " +
+    "nicht sehr auch noch schon mehr viel viele alle alles hier dort wenn wann warum wieso weshalb wie was wer wen wem " +
+    "einen einem einer eine dieser diese dieses kann können konnte muss will wollte gern gerne jetzt immer nach über unter " +
+    "mit ohne zum zur vom beim damit also weiß glaube denke vielleicht wieder selbst etwas nichts weil ganz bisschen").split(" "));
+  /**
+   * Speech-to-text often turns a child's word into a different, similar-sounding word.
+   * Pick the alternative that uses the most words from the text, then replace heard words
+   * that are not in the text by a text word that sounds the same or almost the same.
+   * Returns { text, changed: [[heard, replaced], ...] }.
+   */
+  function fitAnswer(alts, context) {
+    alts = (alts || []).map(a => String(a || "").trim()).filter(Boolean);
+    if (!alts.length) return { text: "", changed: [] };
+    const vocab = new Map();
+    for (const raw of words(context)) {
+      const w = raw.replace(/^[^\p{L}\d]+|[^\p{L}\d]+$/gu, ""), n = norm(w);
+      if (!n || /\d/.test(w)) continue;
+      const prev = vocab.get(n);
+      if (!prev || (prev !== prev.toLowerCase() && w === w.toLowerCase())) vocab.set(n, w);
+    }
+    const hits = a => words(a).filter(w => vocab.has(norm(w))).length;
+    let best = alts[0], bh = hits(best);
+    for (const a of alts.slice(1)) { const h = hits(a); if (h > bh) { best = a; bh = h; } }
+    const changed = [];
+    // "Baum höhlen" -> "Baumhöhlen" when the joined word is in the text
+    const toks = [];
+    for (const tok of words(best)) {
+      const prev = toks[toks.length - 1], j = prev && norm(prev) + norm(tok);
+      if (prev && !/[.,!?;:]$/.test(prev) && norm(prev) && !vocab.has(norm(tok)) && vocab.has(j)) { changed.push([prev + " " + tok, vocab.get(j)]); toks[toks.length - 1] = vocab.get(j) + tok.replace(/^.*?([^\p{L}\d]*)$/u, "$1"); }
+      else toks.push(tok);
+    }
+    const out = toks.map(tok => {
+      const m = tok.match(/^([^\p{L}\d]*)(.*?)([^\p{L}\d]*)$/u), w = m[2], n = norm(w);
+      if (!n || n.length < 4 || vocab.has(n) || COMMON.has(n) || /\d/.test(w)) return tok;
+      let pick = null, ps = 0;
+      for (const [v, orig] of vocab) {
+        if (v.length < 4) continue;
+        if ((n.startsWith(v) || v.startsWith(n)) && Math.abs(n.length - v.length) <= 3) { pick = null; break; } // same word, other ending (weich/weiche)
+        const s = simAtLeast(n, v, 0.6);
+        if (!s) continue;
+        if ((s >= 0.75 || (sameSound(n, v) && n[0] === v[0])) && s > ps) { pick = orig; ps = s; }
+      }
+      if (!pick) return tok;
+      changed.push([w, pick]);
+      return m[1] + pick + m[3];
+    });
+    return { text: out.join(" "), changed };
+  }
+
+  return { norm, words, koeln, sim, lev, sameSound, dedupeSession, buildTokens, align, summarize, fitAnswer, FILLERS };
 });
