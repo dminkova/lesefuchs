@@ -140,11 +140,18 @@ def main():
                 page.locator(".opt").nth(ans).click()
             else:
                 page.locator("#qpanel .icon-btn", has_text="Antwort sagen").click(); page.wait_for_timeout(50)
+                check("Jetzt sprechen" in page.locator("#qpanel .icon-btn.live").inner_text(), "answer microphone: 'speak now' only once the microphone is on")
                 page.evaluate("__say(['weil er mude war im park'])"); page.wait_for_timeout(50)
                 check(page.locator("textarea.answer").input_value() == "weil er müde war im park", "spoken answer: misheard word fitted to the text")
                 check("mude → müde" in page.locator(".fixnote").inner_text(), "spoken answer: change shown with undo")
                 page.locator(".fixnote .linkbtn", has_text="Rückgängig").click()
                 check(page.locator("textarea.answer").input_value() == "weil er mude war im park", "spoken answer: undo restores what was heard")
+                page.fill("textarea.answer", "")
+                page.locator("#qpanel .icon-btn", has_text="Antwort sagen").click(); page.wait_for_timeout(50)
+                page.evaluate("__emit([{t:'weil er', final:true}, {t:'im Park gerannt ist', final:true}])"); page.wait_for_timeout(100)
+                still = page.locator("#qpanel .icon-btn.live").count() == 1
+                page.locator("#qpanel .icon-btn.live").click(); page.wait_for_timeout(200)
+                check(still and page.locator("textarea.answer").input_value() == "weil er im Park gerannt ist", "spoken answer: a short pause does not cut the answer off")
                 page.fill("textarea.answer", "Weil er müde ist")
             page.click("#qNext")
         page.wait_for_selector("#report:not([hidden])")

@@ -246,3 +246,4 @@ details.peek{border-top:1px dashed var(--line);padding-top:10px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 .banner.iab{display:flex;flex-direction:column;gap:8px}.banner.iab p{margin:0}.banner.iab .iab-where{font-weight:700}.banner.iab .row{display:flex;flex-wrap:wrap;gap:8px}.banner.iab .btn{flex:none}
 .fixnote{margin:6px 0 0}.fixnote .linkbtn{display:inline;padding:0 2px;min-height:0;font-size:inherit}
+.icon-btn.wait{background:var(--amber-soft);color:var(--ink)}

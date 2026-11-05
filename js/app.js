@@ -745,7 +745,7 @@ function practiceCard(word) {
       if (oneShot) { stopOneShot(); return; }
       stopSpeaking();
       fb.textContent = ""; fb.className = "pfb";
-      b3.classList.add("live"); lbl.textContent = "Sag das Wort…";
+      b3.classList.add("wait"); lbl.textContent = "Moment…";
       listenOnce(alts => {
         const target = M.norm(word);
         let best = "none";
@@ -758,7 +758,8 @@ function practiceCard(word) {
         if (best === "ok" || best === "close") { fb.textContent = "Super! ✓"; fb.className = "pfb ok"; markMastered(word, card); }
         else if (tries < 2) { fb.textContent = "Gut geübt! Hör noch einmal genau hin und sag es noch einmal."; fb.className = "pfb half"; }
         else { fb.textContent = "Das Mikrofon versteht es schwer. Mama/Papa, war es richtig?"; fb.className = "pfb half"; parentBtns(); }
-      }, () => { b3.classList.remove("live"); lbl.textContent = "Jetzt du!"; });
+      }, () => { b3.classList.remove("live", "wait"); lbl.textContent = "Jetzt du!"; },
+      () => { b3.classList.remove("wait"); b3.classList.add("live"); lbl.textContent = "Jetzt! Sag das Wort…"; });
     };
     row.append(b3);
   } else row.append(manualDone());
@@ -781,14 +782,51 @@ function markMastered(word, card) {
   addHist({ kind: "practice", tid: CUR && CUR.id, word });
   addStars(1, "Wort geübt");
 }
-function listenOnce(onAlts, onEnd) {
+/* short "you can speak now" tone, played once the microphone is really on */
+let actx = null;
+function readyBeep() {
   try {
-    const r = new SR(); r.lang = "de-DE"; r.interimResults = false; r.continuous = false; r.maxAlternatives = 5;
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    const o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime;
+    o.frequency.value = 880; g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.15, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.15);
+    o.connect(g).connect(actx.destination); o.start(t); o.stop(t + 0.16);
+  } catch (e) {}
+}
+/* Listen once. onReady fires when the microphone is really on (with a short tone),
+   so the child knows when to start. opts.long (answers): keep listening through short
+   pauses, stop ~2.5 s after the child stops talking, or when the button is tapped again. */
+function listenOnce(onAlts, onEnd, onReady, opts) {
+  opts = opts || {};
+  try {
+    const r = new SR(); r.lang = "de-DE"; r.interimResults = !!opts.long; r.continuous = !!opts.long; r.maxAlternatives = 5;
     applySpeechMode(r);
-    let got = false;
-    r.onresult = e => { got = true; const res = e.results[0]; const alts = []; for (let a = 0; a < res.length; a++) alts.push(res[a].transcript); onAlts(alts); };
+    let got = false, quietT = null, idleT = null;
+    const finals = [];
+    const stopSoon = ms => { clearTimeout(quietT); quietT = setTimeout(() => { try { r.stop(); } catch (e) {} }, ms); };
+    r.onstart = () => { readyBeep(); onReady && onReady(); if (opts.long) idleT = setTimeout(() => { if (!finals.length) try { r.stop(); } catch (e) {} }, 10000); };
+    r.onresult = e => {
+      if (!opts.long) { got = true; const res = e.results[0]; const alts = []; for (let a = 0; a < res.length; a++) alts.push(res[a].transcript); onAlts(alts); return; }
+      for (let k = e.resultIndex; k < e.results.length; k++) {
+        const res = e.results[k];
+        if (res.isFinal) { const alts = []; for (let a = 0; a < res.length; a++) alts.push(res[a].transcript); finals[k] = alts; }
+      }
+      clearTimeout(idleT); stopSoon(2500);
+    };
     r.onerror = () => {};
-    r.onend = () => { oneShot = null; if (!got) onAlts([]); onEnd && onEnd(); };
+    r.onend = () => {
+      clearTimeout(quietT); clearTimeout(idleT); oneShot = null;
+      if (opts.long) {
+        const parts = finals.filter(Boolean);
+        if (parts.length) {
+          got = true;
+          const n = Math.max(...parts.map(x => x.length)), alts = [];
+          for (let a = 0; a < n; a++) alts.push(parts.map(x => (x[a] || x[0]).trim()).join(" "));
+          onAlts(alts);
+        }
+      }
+      if (!got) onAlts([]);
+      onEnd && onEnd();
+    };
     oneShot = r; r.start();
   } catch (e) { oneShot = null; onEnd && onEnd(); }
 }
@@ -819,7 +857,7 @@ function renderQ() {
         if (oneShot) { stopOneShot(); return; }
         stopSpeaking();
         const before = ta.value.trim();
-        mb.classList.add("live"); lbl.textContent = "Ich höre zu… (tippen zum Stoppen)";
+        mb.classList.add("wait"); lbl.textContent = "Moment… gleich geht's los";
         listenOnce(alts => {
           if (!alts[0]) return;
           const fit = M.fitAnswer(alts, CUR.text + " " + q.q), raw = alts.find(a => a.trim()) || "";
@@ -831,7 +869,8 @@ function renderQ() {
             u.onclick = () => { ta.value = (before ? before + " " : "") + raw; Q.answers[Q.qi] = ta.value; fixNote.hidden = true; };
             fixNote.append(el("span", null, " Angepasst an den Text: " + fit.changed.map(c => c[0] + " → " + c[1]).join(", ") + ". "), u);
           }
-        }, () => { mb.classList.remove("live"); lbl.textContent = "Antwort sagen"; });
+        }, () => { mb.classList.remove("live", "wait"); lbl.textContent = "Antwort sagen"; },
+        () => { mb.classList.remove("wait"); mb.classList.add("live"); lbl.textContent = "Jetzt sprechen! (Fertig? Antippen)"; }, { long: true });
       };
       P.append(mb);
     }
