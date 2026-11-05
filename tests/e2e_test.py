@@ -348,6 +348,38 @@ def main():
             check(ok_home and ok_read and prov == expect[name] and not e3, f"{name}: layout fits, provider '{prov}', no-microphone reading works")
             if SHOTS: p3.screenshot(path=f"{SHOTS}/device_{name.replace(' ','_')}.png")
             c3.close()
+
+        print("Browser inside the Facebook app")
+        fb = {
+          "Facebook Android": ("Mozilla/5.0 (Linux; Android 14; SM-X200 Build/UP1A; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/150.0.0.0 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/480.0.0.0;]", "intent"),
+          "Facebook iPhone": ("Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/FBIOS;FBAV/480.0.0;FBBV/1;FBDV/iPhone15,2;FBMD/iPhone;FBSN/iOS;FBSV/18.0;FBSS/3;FBCR/;FBID/phone;FBLC/en_GB;FBOP/5]", "Safari"),
+        }
+        for name, (ua, want) in fb.items():
+            c4 = b.new_context(viewport={"width": 390, "height": 844}, user_agent=ua, is_mobile=True, has_touch=True, locale="en-GB")
+            c4.add_init_script(MOCK); p4 = c4.new_page(); e4 = []
+            p4.on("pageerror", lambda e: e4.append(str(e)))
+            p4.goto(url); p4.wait_for_selector("#cardsLevel .textcard")
+            ban = p4.locator("#iabBanner")
+            vis = ban.is_visible() and "Facebook" in ban.inner_text() and p4.locator("#srBanner").is_hidden()
+            hint = (p4.locator("#iabBanner a.btn").get_attribute("href") or "").startswith("intent://") if want == "intent" else "Safari" in ban.inner_text()
+            fits = not p4.evaluate("document.documentElement.scrollWidth > window.innerWidth + 1")
+            p4.locator("#cardsLevel .textcard").first.click(); p4.click("[data-mode=genau]")
+            p4.click("#startBtn"); p4.wait_for_timeout(100)
+            no_dialog = p4.locator("#consent").is_hidden()
+            p4.evaluate("__lesefuchs.L.tFirst -= 20000"); p4.click("#startBtn")
+            p4.wait_for_selector("#result:not([hidden]) .praise", timeout=4000)
+            check(vis and hint and fits and no_dialog and not e4, f"{name}: 'open in browser' help shown, reading works without microphone")
+            if SHOTS: p4.screenshot(path=f"{SHOTS}/inapp_{name.replace(' ','_')}.png")
+            c4.close()
+
+        print("Microphone that never starts")
+        c5 = b.new_context(); c5.add_init_script(MOCK + "\nMockSR.prototype.start = function(){};"); p5 = c5.new_page()
+        p5.goto(url); p5.wait_for_selector("#cardsLevel .textcard")
+        p5.evaluate("localStorage.setItem('lf_consent', JSON.stringify({v:2, mode:'cloud', d:Date.now()}))"); p5.reload(); p5.wait_for_selector("#cardsLevel .textcard")
+        p5.locator("#cardsLevel .textcard").first.click(); p5.click("[data-mode=genau]"); p5.click("#startBtn")
+        p5.wait_for_selector("#result:not([hidden]) .err-note", timeout=9000)
+        check("Mikrofon startet nicht" in p5.locator("#result").inner_text() and p5.locator("#startBtn").inner_text().strip() == "Start", "silent microphone: clear message after a few seconds, Start button reset")
+        c5.close()
         b.close()
     srv.shutdown()
     print("\n" + ("ALL PASSED" if not failures else f"{len(failures)} FAILED"))

@@ -11,7 +11,17 @@ const store = {
   del(k) { try { localStorage.removeItem(k); } catch (e) {} },
 };
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-const canListen = !!SR, canSpeak = "speechSynthesis" in window;
+/* Browsers built into Facebook, Instagram, Messenger etc. offer no working speech recognition or microphone. */
+const IN_APP = (() => {
+  const ua = navigator.userAgent || "";
+  if (/FBAN|FBAV|FB_IAB|FBIOS|FB4A/.test(ua)) return /Messenger/.test(ua) ? "Messenger" : "Facebook";
+  if (/Instagram/.test(ua)) return "Instagram";
+  if (/MicroMessenger|Line\/|TikTok|musical_ly|Snapchat|LinkedInApp|Pinterest/.test(ua)) return "app";
+  if (/Android/.test(ua) && /; wv\)/.test(ua)) return "app";
+  return null;
+})();
+const IS_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent || "") || (/Macintosh/.test(navigator.userAgent || "") && navigator.maxTouchPoints > 1);
+const canListen = !!SR && !IN_APP, canSpeak = "speechSynthesis" in window;
 /* The microphone is only used after a parent chooses how:
    "device" = recognised on this device (newer Chrome; the voice never leaves the device),
    "cloud"  = the browser's online service (Google in Chrome, Apple on iPhone/iPad/Safari, Microsoft in Edge),
@@ -137,10 +147,45 @@ function renderBadges() {
   const s1 = el("span", "badge"); s1.innerHTML = '<span class="star">' + ICON.star + "</span>"; s1.append(el("span", null, String(store.get("lf_stars", 0) || 0)));
   b.append(s1, el("span", "badge", "Stufe " + st.level), el("span", "badge", "Heute: " + minutesToday() + " Min."));
 }
+const IAB_T = {
+  de: { where: a => "Leseflitzi ist im Browser von " + a + " geöffnet. Hier funktioniert das Mikrofon nicht.", app: "einer App",
+        chrome: "In Chrome öffnen", ios: "Tippe oben rechts auf ••• und wähle „In Safari öffnen“ oder „Im Browser öffnen“.", copy: "Link kopieren", copied: "Link kopiert ✓ – jetzt in Safari oder Chrome einfügen.",
+        still: "Du kannst hier trotzdem üben: Ein Erwachsener tippt die falsch gelesenen Wörter an." },
+  fr: { where: a => "Leseflitzi est ouvert dans le navigateur de " + a + ". Le micro ne fonctionne pas ici.", app: "une application",
+        chrome: "Ouvrir dans Chrome", ios: "Touchez ••• en haut à droite, puis « Ouvrir dans Safari » ou « Ouvrir dans le navigateur ».", copy: "Copier le lien", copied: "Lien copié ✓ – collez-le dans Safari ou Chrome.",
+        still: "Vous pouvez quand même pratiquer ici : un adulte touche les mots mal lus." },
+  en: { where: a => "Leseflitzi is open inside " + a + "'s browser. The microphone doesn't work here.", app: "an app",
+        chrome: "Open in Chrome", ios: "Tap ••• at the top right, then “Open in Safari” or “Open in browser”.", copy: "Copy link", copied: "Link copied ✓ – paste it into Safari or Chrome.",
+        still: "You can still practise here: an adult taps the misread words." },
+};
+function renderInAppBanner() {
+  const B = $("iabBanner"); if (!IN_APP) { B.hidden = true; return; }
+  const lang = (navigator.language || "en").slice(0, 2), T = IAB_T[lang] || IAB_T.en;
+  const app = IN_APP === "app" ? T.app : IN_APP;
+  B.hidden = false; B.innerHTML = "";
+  B.append(el("p", "iab-where", T.where(app)));
+  const row = el("div", "row");
+  const url = location.href.split("#")[0];
+  if (!IS_IOS && /Android/.test(navigator.userAgent || "")) {
+    const a = el("a", "btn", T.chrome);
+    a.href = "intent://" + location.host + location.pathname + location.search + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(url) + ";end";
+    row.append(a);
+  } else B.append(el("p", null, T.ios));
+  const c = el("button", "btn ghost", T.copy);
+  c.onclick = async () => {
+    let ok = false;
+    try { await navigator.clipboard.writeText(url); ok = true; } catch (e) {
+      try { const i = document.createElement("textarea"); i.value = url; document.body.append(i); i.select(); ok = document.execCommand("copy"); i.remove(); } catch (e2) {}
+    }
+    c.textContent = ok ? T.copied : url;
+  };
+  row.append(c); B.append(row, el("p", "small", T.still));
+}
 function renderHome() {
   renderBadges();
   const st = settings();
-  $("srBanner").hidden = canListen;
+  $("srBanner").hidden = canListen || !!IN_APP;
+  renderInAppBanner();
   const msg = store.get("lf_levelmsg", null);
   $("levelMsg").hidden = !msg;
   if (msg) { $("levelMsg").textContent = msg; store.del("lf_levelmsg"); }
@@ -401,8 +446,18 @@ function newSession() {
     if (R.running && !R.stopping) { L.restarts++; try { rec = newSession(); } catch (err) {} }
     else { rec = null; if (L.onStopped) { const f = L.onStopped; L.onStopped = null; f(); } }
   };
-  r.start();
+  let started = false;
+  const on0 = r.onstart; r.onstart = () => { started = true; on0(); };
+  try { r.start(); } catch (err) { setTimeout(micNotStarting, 0); return r; }
+  if (idx === 0) setTimeout(() => { if (!started && rec === r && R.running) micNotStarting(); }, 6000);
   return r;
+}
+/* the recogniser never started (e.g. a browser inside another app): stop and explain instead of waiting silently */
+function micNotStarting() {
+  R.running = false; stopTimers(); try { rec && rec.abort(); } catch (e) {} rec = null;
+  setListen(false, "Mikrofon startet nicht");
+  problem("Das Mikrofon startet nicht. Öffne Leseflitzi in " + (IS_IOS ? "Safari" : "Google Chrome") + ". (Parents: the microphone did not start. Open leseflitzi.eu in " + (IS_IOS ? "Safari" : "Chrome") + ", or choose “No microphone” in the parent area.)");
+  $("startBtn").textContent = "Start"; $("startBtn").classList.remove("stop");
 }
 function scheduleLive() {
   if (L.pending) return; L.pending = true;
@@ -1139,6 +1194,6 @@ function validateText(r) {
 /* ---------------- start ---------------- */
 if (canSpeak) { try { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = () => {}; } catch (e) {} }
 // testing hook: lets automated tests drive the app with simulated speech results
-window.__lesefuchs = { R, L, settings, hist, M, evaluateLevel, speechMode, PROVIDER };
+window.__lesefuchs = { R, L, settings, hist, M, evaluateLevel, speechMode, PROVIDER, IN_APP };
 show("home");
 })();

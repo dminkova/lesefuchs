@@ -244,3 +244,4 @@ details.peek{border-top:1px dashed var(--line);padding-top:10px}
 .toast svg{width:18px;height:18px;color:var(--star)}
 @media (max-width:520px){:is(.sheet,.peektext) table{font-size:.72em}:is(.sheet,.peektext) th,:is(.sheet,.peektext) td{padding:.15em .4em}.sheet{font-size:1.4rem;padding-left:38px}.sheet::before{left:24px}.stat b{font-size:1.6rem}.qtext{font-size:1.3rem}.pword{font-size:2rem}.tiles,.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.banner.iab{display:flex;flex-direction:column;gap:8px}.banner.iab p{margin:0}.banner.iab .iab-where{font-weight:700}.banner.iab .row{display:flex;flex-wrap:wrap;gap:8px}.banner.iab .btn{flex:none}
