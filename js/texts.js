@@ -952,6 +952,108 @@
   ]
  },
  {
+  "id": "pfuetze",
+  "title": "Die große Pfütze",
+  "type": "Geschichte",
+  "level": 1,
+  "text": "Es hat geregnet. Auf dem Weg ist eine große Pfütze. Mia hat ihre gelben Gummistiefel an. Sie springt mitten hinein. Platsch! Das Wasser spritzt hoch.\n\nIhr kleiner Bruder Jan lacht und springt auch. Jetzt sind beide nass bis zu den Knien. Mama schüttelt den Kopf, aber dann lacht sie auch. Zu Hause gibt es warmen Kakao.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welche Farbe haben Mias Gummistiefel?",
+    "options": [
+     "Rot",
+     "Blau",
+     "Grün",
+     "Gelb"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer springt auch in die Pfütze?",
+    "options": [
+     "Mama",
+     "Jan",
+     "Papa",
+     "Ein Hund"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Das Wasser spritzt hoch.“ Was passiert?",
+    "options": [
+     "Das Wasser fliegt in die Luft.",
+     "Das Wasser wird kalt.",
+     "Das Wasser ist weg.",
+     "Das Wasser wird zu Eis."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Ist Mama böse? Woran erkennst du das?",
+    "answer": "Nein. Sie schüttelt zuerst den Kopf, aber dann lacht sie auch."
+   }
+  ]
+ },
+ {
+  "id": "schnecke",
+  "title": "Die Schnecke",
+  "type": "Sachtext",
+  "level": 1,
+  "text": "Schnecken sind langsam. Viele Schnecken tragen ein Haus auf dem Rücken. Wenn Gefahr droht, ziehen sie sich hinein. Das Haus wächst mit der Schnecke mit.\n\nAm Kopf hat die Schnecke vier Fühler. An den zwei langen Fühlern sitzen die Augen. Schnecken fressen gern Blätter und Salat. Sie mögen es feucht. Deshalb sieht man sie oft nach dem Regen.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was tragen viele Schnecken auf dem Rücken?",
+    "options": [
+     "Ein Haus",
+     "Ein Blatt",
+     "Einen Stein",
+     "Eine Feder"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo sitzen die Augen der Schnecke?",
+    "options": [
+     "Am Bauch",
+     "Am Haus",
+     "An den langen Fühlern",
+     "An den kurzen Fühlern"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum sieht man Schnecken oft nach dem Regen?",
+    "options": [
+     "Weil sie es feucht mögen.",
+     "Weil sie dann schneller sind.",
+     "Weil die Sonne scheint.",
+     "Weil sie Angst haben."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Was macht eine Schnecke, wenn Gefahr droht?",
+    "answer": "Sie zieht sich in ihr Haus zurück."
+   }
+  ]
+ },
+ {
   "id": "pizza",
   "title": "Pizza backen",
   "type": "Geschichte",
@@ -2416,6 +2518,403 @@
   ]
  },
  {
+  "id": "wackelzahn",
+  "title": "Der Wackelzahn",
+  "type": "Geschichte",
+  "level": 2,
+  "text": "Paul hat einen Wackelzahn. Beim Essen tut es ein bisschen weh. Er wackelt mit der Zunge daran, immer wieder.\n\nAm Abend beißt Paul in einen Apfel. Knack! Plötzlich hat er etwas Hartes im Mund. Es ist sein Zahn! Vorne hat Paul jetzt eine Lücke. Er schaut in den Spiegel und grinst. Mama legt den Zahn in eine kleine Dose. „Da wächst bald ein neuer Zahn“, sagt sie. „Dein erster großer Zahn!“",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was hat Paul?",
+    "options": [
+     "Bauchweh",
+     "Eine Erkältung",
+     "Einen Wackelzahn",
+     "Ein neues Fahrrad"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann fällt der Zahn heraus?",
+    "options": [
+     "Beim Zähneputzen",
+     "Beim Schlafen",
+     "Beim Fußballspielen",
+     "Als er in einen Apfel beißt"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist eine „Lücke“?",
+    "options": [
+     "Eine leere Stelle",
+     "Ein neuer Zahn",
+     "Ein Spiegel",
+     "Eine Dose"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wohin legt Mama den Zahn?",
+    "options": [
+     "In eine kleine Dose",
+     "In den Müll",
+     "Unter das Kissen",
+     "In den Apfel"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Was meint Mama mit „Dein erster großer Zahn“?",
+    "answer": "Dass dort bald ein neuer, bleibender Zahn wächst. Der Milchzahn ist ausgefallen."
+   }
+  ]
+ },
+ {
+  "id": "papierflieger",
+  "title": "Einen Papierflieger falten",
+  "type": "Anleitung",
+  "level": 2,
+  "format": "doc",
+  "text": "## Einen Papierflieger falten\nDu brauchst nur ein Blatt Papier.\n\n1. Falte das Blatt der Länge nach in der Mitte und öffne es wieder.\n2. Falte die zwei oberen Ecken zur Mittellinie.\n3. Falte die neuen schrägen Kanten noch einmal zur Mitte.\n4. Klappe den Flieger an der Mittellinie zusammen.\n5. Falte beide Flügel nach unten, sodass sie flach liegen.\n6. Halte den Flieger unten fest und wirf ihn gerade nach vorne.\n\nTipp: Wirf nie in Richtung von Menschen oder Tieren.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was brauchst du?",
+    "options": [
+     "Schere und Kleber",
+     "Holz und Nägel",
+     "Farbe und Pinsel",
+     "Nur ein Blatt Papier"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was machst du direkt nach dem ersten Falten in der Mitte?",
+    "options": [
+     "Die Flügel nach unten falten",
+     "Die oberen Ecken zur Mitte falten",
+     "Den Flieger werfen",
+     "Den Flieger zusammenklappen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie viele Schritte hat die Anleitung?",
+    "options": [
+     "Vier",
+     "Fünf",
+     "Sechs",
+     "Sieben"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „zusammenklappen“?",
+    "options": [
+     "Etwas so falten, dass die zwei Hälften aufeinanderliegen",
+     "Etwas zerreißen",
+     "Etwas anmalen",
+     "Etwas wegwerfen"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum soll man nie in Richtung von Menschen oder Tieren werfen?",
+    "answer": "Weil die Spitze wehtun kann, zum Beispiel im Auge."
+   }
+  ]
+ },
+ {
+  "id": "fuchs",
+  "title": "Steckbrief: Der Rotfuchs",
+  "type": "Steckbrief",
+  "level": 2,
+  "format": "doc",
+  "modes": [
+   "woerter",
+   "verstehen"
+  ],
+  "text": "## Steckbrief: Der Rotfuchs\nWas? | Wie?\nAussehen | rotbraunes Fell, weiße Brust, langer buschiger Schwanz\nGröße | ungefähr so groß wie ein mittelgroßer Hund\nGewicht | 5 bis 8 Kilogramm\nNahrung | Mäuse, Käfer, Regenwürmer, Beeren und Obst\nWohnung | ein Bau unter der Erde\nAktiv | vor allem in der Dämmerung und nachts\nJunge | im Frühling 4 bis 6 Welpen\n\nFüchse leben im Wald, auf Feldern und manchmal sogar in der Stadt.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welche Farbe hat das Fell des Rotfuchses?",
+    "options": [
+     "Grau",
+     "Schwarz",
+     "Rotbraun",
+     "Weiß"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann ist der Fuchs vor allem unterwegs?",
+    "options": [
+     "Am Mittag",
+     "Nur im Winter",
+     "Am frühen Nachmittag",
+     "In der Dämmerung und nachts"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist ein „Bau“?",
+    "options": [
+     "Ein Nest im Baum",
+     "Eine Wohnung unter der Erde",
+     "Ein Futterplatz",
+     "Ein Stall"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was frisst der Fuchs laut Steckbrief NICHT?",
+    "options": [
+     "Gras",
+     "Mäuse",
+     "Beeren",
+     "Käfer"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wo leben Füchse? Nenne zwei Orte.",
+    "answer": "Im Wald, auf Feldern und manchmal in der Stadt."
+   }
+  ]
+ },
+ {
+  "id": "herbst",
+  "title": "Der Herbst",
+  "type": "Sachtext",
+  "level": 2,
+  "text": "Im Herbst werden die Tage kürzer und die Nächte länger. Es wird kühler, und oft weht ein starker Wind. Die Blätter an den Bäumen werden gelb, orange und rot. Dann fallen sie zu Boden.\n\nAuch die Tiere bereiten sich auf den Winter vor. Eichhörnchen verstecken Nüsse im Boden. Viele Vögel, zum Beispiel Störche und Schwalben, fliegen in den warmen Süden. Der Igel frisst sich ein dickes Fettpolster an. Später schläft er den ganzen Winter.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was passiert im Herbst mit den Tagen?",
+    "options": [
+     "Sie werden kürzer.",
+     "Sie werden länger.",
+     "Sie bleiben gleich.",
+     "Sie werden heißer."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was machen Eichhörnchen im Herbst?",
+    "options": [
+     "Sie fliegen in den Süden.",
+     "Sie verstecken Nüsse.",
+     "Sie bauen ein Nest im Wasser.",
+     "Sie schlafen sofort ein."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist ein „Fettpolster“?",
+    "options": [
+     "Ein weiches Kissen",
+     "Ein Nest aus Blättern",
+     "Eine Fettschicht unter der Haut",
+     "Ein warmer Mantel"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum fliegen Störche im Herbst in den Süden?",
+    "options": [
+     "Weil sie Nüsse suchen.",
+     "Weil sie den Wind mögen.",
+     "Weil sie schlafen wollen.",
+     "Weil es dort im Winter wärmer ist."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum frisst sich der Igel ein Fettpolster an?",
+    "answer": "Damit er im Winterschlaf genug Kraft hat und nicht verhungert."
+   }
+  ]
+ },
+ {
+  "id": "schwimmbad",
+  "title": "Im Schwimmbad",
+  "type": "Geschichte",
+  "level": 2,
+  "text": "Heute ist Schwimmunterricht. Zuerst duschen alle Kinder. Dann gehen sie ins flache Becken. Ella hat ein bisschen Angst vor dem tiefen Wasser.\n\nDie Trainerin gibt ihr eine Schwimmnudel. „Halte dich gut fest und mach Froschbeine“, sagt sie. Ella strampelt los. Sie kommt bis zur anderen Seite! Beim zweiten Mal schwimmt sie schon ohne Nudel ein kleines Stück. Am Ende darf sie vom Rand springen. „Nächste Woche schaffe ich noch mehr“, sagt Ella stolz.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was machen die Kinder zuerst?",
+    "options": [
+     "Sie springen vom Rand.",
+     "Sie duschen.",
+     "Sie schwimmen im tiefen Becken.",
+     "Sie essen etwas."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wovor hat Ella ein bisschen Angst?",
+    "options": [
+     "Vor dem tiefen Wasser",
+     "Vor der Trainerin",
+     "Vor der Dusche",
+     "Vor den anderen Kindern"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was gibt die Trainerin Ella?",
+    "options": [
+     "Einen Ball",
+     "Eine Brille",
+     "Eine Schwimmnudel",
+     "Ein Handtuch"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Ella strampelt los.“ Was macht sie?",
+    "options": [
+     "Sie ruft laut.",
+     "Sie bleibt ruhig liegen.",
+     "Sie taucht unter.",
+     "Sie bewegt Arme und Beine schnell."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Wie fühlt sich Ella am Ende? Warum?",
+    "answer": "Stolz, weil sie bis zur anderen Seite geschwommen ist und sogar ein Stück ohne Nudel geschafft hat."
+   }
+  ]
+ },
+ {
+  "id": "memory",
+  "title": "Spielregeln: Memory",
+  "type": "Spielregeln",
+  "level": 2,
+  "format": "doc",
+  "text": "## Spielregeln: Memory\nFür zwei bis vier Kinder\n\n1. Mischt alle Karten und legt sie verdeckt auf den Tisch.\n2. Das jüngste Kind beginnt.\n3. Wer dran ist, dreht zwei Karten um.\n4. Sind die Bilder gleich, darf man das Paar behalten und noch einmal spielen.\n5. Sind die Bilder verschieden, dreht man sie wieder um. Dann ist das nächste Kind dran.\n6. Das Spiel ist vorbei, wenn alle Paare gefunden sind.\n\nWer die meisten Paare hat, gewinnt.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie viele Kinder können mitspielen?",
+    "options": [
+     "Nur eins",
+     "Zwei bis vier",
+     "Fünf bis acht",
+     "So viele, wie wollen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer beginnt?",
+    "options": [
+     "Das älteste Kind",
+     "Der Erwachsene",
+     "Das jüngste Kind",
+     "Wer zuerst ruft"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Tom dreht zwei Karten mit einem Hund um. Was passiert?",
+    "options": [
+     "Er muss die Karten wieder umdrehen.",
+     "Er darf das Paar behalten und noch einmal spielen.",
+     "Das Spiel ist vorbei.",
+     "Das nächste Kind ist dran."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „verdeckt“?",
+    "options": [
+     "Mit dem Bild nach oben",
+     "In einer Schachtel",
+     "Unter dem Tisch",
+     "Mit dem Bild nach unten"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann ist das Spiel vorbei?",
+    "options": [
+     "Wenn alle Paare gefunden sind",
+     "Nach zehn Minuten",
+     "Wenn ein Kind keine Lust mehr hat",
+     "Nach drei Runden"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wer gewinnt?",
+    "answer": "Wer die meisten Paare hat."
+   }
+  ]
+ },
+ {
   "id": "igel",
   "title": "Der Igel im Herbst",
   "type": "Sachtext",
@@ -3678,6 +4177,612 @@
   ]
  },
  {
+  "id": "kantine",
+  "title": "Der Speiseplan",
+  "type": "Speiseplan",
+  "level": 3,
+  "format": "doc",
+  "modes": [
+   "woerter",
+   "verstehen"
+  ],
+  "text": "## Speiseplan der Schulkantine\nWoche vom 16. bis 20. November\n\nTag | Hauptgericht | Nachtisch\nMontag | Nudeln mit Tomatensoße | Apfel\nDienstag | Hähnchen mit Reis und Erbsen | Joghurt\nMittwoch | Gemüsesuppe mit Brot | Pudding\nDonnerstag | Fisch mit Kartoffeln und Spinat | Birne\nFreitag | Pizza mit Gemüse | Obstsalat\n\nPreis pro Mittagessen: 2 Euro\nOhne Fleisch und Fisch: Montag, Mittwoch und Freitag\nBitte meldet euch bis Donnerstag für die nächste Woche an.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was gibt es am Dienstag?",
+    "options": [
+     "Fisch mit Kartoffeln",
+     "Gemüsesuppe",
+     "Pizza mit Gemüse",
+     "Hähnchen mit Reis und Erbsen"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "An welchem Tag gibt es Pudding?",
+    "options": [
+     "Montag",
+     "Dienstag",
+     "Mittwoch",
+     "Freitag"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Lina isst kein Fleisch und keinen Fisch. An welchen Tagen findet sie ein Hauptgericht?",
+    "options": [
+     "Montag, Mittwoch und Freitag",
+     "Dienstag und Donnerstag",
+     "Nur am Freitag",
+     "Jeden Tag"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Ben isst von Montag bis Freitag in der Kantine. Wie viel kostet das zusammen?",
+    "options": [
+     "2 Euro",
+     "5 Euro",
+     "8 Euro",
+     "10 Euro"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Bis wann muss man sich für die nächste Woche anmelden?",
+    "options": [
+     "Bis Montag",
+     "Bis Donnerstag",
+     "Bis Mittwoch",
+     "Bis Sonntag"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Welchen Nachtisch gibt es am Freitag?",
+    "answer": "Obstsalat."
+   }
+  ]
+ },
+ {
+  "id": "baumhaus",
+  "title": "Das Baumhaus",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "In den Sommerferien wollen Leon und seine Cousine Amira ein Baumhaus bauen. Opa hat alte Bretter in der Garage. Er sägt sie zurecht, und die Kinder dürfen die Schrauben festdrehen.\n\nZuerst bauen sie den Boden zwischen zwei dicke Äste. Danach kommen die Wände. Für das Dach nehmen sie eine grüne Plane, damit es drinnen trocken bleibt. Amira malt ein Schild: „Nur für Freunde!“\n\nAm letzten Tag fehlt noch die Leiter. Opa schüttelt den Kopf: „Ohne Leiter kommt keiner hinauf.“ Da hat Leon eine Idee. Er knotet ein dickes Seil und viele Holzstücke zusammen. So entsteht eine Strickleiter. Am Abend sitzen alle drei im Baumhaus und essen Kirschen.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer hilft den Kindern?",
+    "options": [
+     "Papa",
+     "Die Nachbarin",
+     "Opa",
+     "Mama"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was bauen sie zuerst?",
+    "options": [
+     "Das Dach",
+     "Die Wände",
+     "Den Boden",
+     "Die Leiter"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Warum nehmen sie eine Plane für das Dach?",
+    "options": [
+     "Weil sie schön grün ist.",
+     "Weil Opa keine Bretter mehr hat.",
+     "Damit niemand hineinschaut.",
+     "Damit es drinnen trocken bleibt."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist eine „Strickleiter“?",
+    "options": [
+     "Eine Leiter aus Seil und Holzstücken",
+     "Eine Leiter aus Metall",
+     "Eine Treppe aus Stein",
+     "Ein Seil zum Springen"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Was bedeutet das Schild „Nur für Freunde!“?",
+    "options": [
+     "Erwachsene müssen draußen bleiben.",
+     "Nur Freunde dürfen ins Baumhaus.",
+     "Man kann dort Freunde kaufen.",
+     "Das Baumhaus ist kaputt."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Wie löst Leon das Problem mit der fehlenden Leiter?",
+    "answer": "Er knotet ein Seil und Holzstücke zu einer Strickleiter zusammen."
+   }
+  ]
+ },
+ {
+  "id": "fledermaus",
+  "title": "Fledermäuse",
+  "type": "Sachtext",
+  "level": 3,
+  "text": "Fledermäuse sind keine Vögel, sondern Säugetiere. Ihre Jungen trinken Milch bei der Mutter. Statt Federn haben Fledermäuse eine dünne Haut zwischen ihren langen Fingern. Damit können sie sehr geschickt fliegen.\n\nAm Tag schlafen Fledermäuse kopfüber in Höhlen, auf Dachböden oder in hohlen Bäumen. Nachts jagen sie Mücken, Motten und Käfer. Im Dunkeln finden sie sich mit ihren Ohren zurecht: Sie stoßen sehr hohe Rufe aus, die wir Menschen nicht hören. Das Echo verrät ihnen, wo ein Hindernis oder ein Insekt ist.\n\nIm Winter gibt es kaum Insekten. Deshalb halten Fledermäuse Winterschlaf. In Europa stehen alle Fledermäuse unter Schutz.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was sind Fledermäuse?",
+    "options": [
+     "Säugetiere",
+     "Vögel",
+     "Insekten",
+     "Fische"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie schlafen Fledermäuse am Tag?",
+    "options": [
+     "In einem Nest",
+     "Kopfüber",
+     "Im Wasser",
+     "Auf dem Rücken"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist ein „Hindernis“?",
+    "options": [
+     "Ein leckeres Insekt",
+     "Ein Schlafplatz",
+     "Etwas, das im Weg ist",
+     "Ein lauter Ruf"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum halten Fledermäuse Winterschlaf?",
+    "options": [
+     "Weil sie im Winter nicht fliegen können.",
+     "Weil es im Winter zu laut ist.",
+     "Weil sie keine Höhle finden.",
+     "Weil es im Winter kaum Insekten gibt."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie finden sich Fledermäuse im Dunkeln zurecht?",
+    "options": [
+     "Mit einer kleinen Lampe",
+     "Mit ihren Ohren und dem Echo",
+     "Mit ihrer Nase",
+     "Gar nicht"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Was fressen Fledermäuse? Nenne zwei Tiere.",
+    "answer": "Mücken, Motten und Käfer."
+   }
+  ]
+ },
+ {
+  "id": "waldtag",
+  "title": "Elternbrief: Waldtag",
+  "type": "Brief",
+  "level": 3,
+  "format": "doc",
+  "text": "## Elternbrief: Waldtag\nLiebe Eltern,\nam Donnerstag verbringt die Klasse den ganzen Schultag im Wald.\n\n- Treffpunkt: 8 Uhr am Schultor\n- Rückkehr: halb vier an der Schule\n- Bitte mitgeben: wetterfeste Kleidung, feste Schuhe, ein Pausenbrot und eine Trinkflasche\n- Bitte nicht mitgeben: Süßigkeiten und Handys\n\nWir gehen bei jedem Wetter. Nur bei Sturm bleiben wir in der Schule.\nBitte unterschreiben Sie den Abschnitt unten bis Montag.\n\nViele Grüße\nFrau Schmit",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann ist der Waldtag?",
+    "options": [
+     "Am Montag",
+     "Am Donnerstag",
+     "Am Freitag",
+     "Am Samstag"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo treffen sich die Kinder?",
+    "options": [
+     "Am Waldrand",
+     "Am Bahnhof",
+     "Am Schultor",
+     "In der Turnhalle"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was sollen die Kinder NICHT mitbringen?",
+    "options": [
+     "Süßigkeiten",
+     "Ein Pausenbrot",
+     "Feste Schuhe",
+     "Eine Trinkflasche"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Am Donnerstag regnet es stark, aber es gibt keinen Sturm. Was passiert?",
+    "options": [
+     "Die Klasse bleibt in der Schule.",
+     "Der Waldtag ist am Freitag.",
+     "Die Kinder bleiben zu Hause.",
+     "Die Klasse geht trotzdem in den Wald."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „wetterfeste Kleidung“?",
+    "options": [
+     "Kleidung für den Sport",
+     "Kleidung, die vor Regen und Kälte schützt",
+     "Schöne Kleidung für ein Fest",
+     "Kleidung für den Sommer"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wer hat den Brief geschrieben, und was sollen die Eltern bis Montag tun?",
+    "answer": "Frau Schmit. Die Eltern sollen den Abschnitt unten unterschreiben."
+   }
+  ]
+ },
+ {
+  "id": "burg",
+  "title": "Auf der Burg Bourscheid",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "Am Sonntag fährt Familie Kremer zur Burg Bourscheid. Die alte Burg steht hoch auf einem Felsen über dem Fluss Sauer. Der Weg nach oben ist steil, und Nora muss ein paar Mal stehen bleiben.\n\nOben gehen sie durch ein großes Tor. Von der Burg sind nur noch dicke Mauern und Türme übrig. Ein Schild erklärt: Früher wohnten hier Ritter mit ihren Familien. Nora klettert die Wendeltreppe in einem Turm hinauf. Von oben sieht sie den Fluss, Wälder und kleine Dörfer.\n\nIm Burghof stellt sich Nora vor, wie die Menschen hier gelebt haben. „Ob die Kinder damals auch Verstecken gespielt haben?“, fragt sie. Papa lacht: „Bestimmt. In so vielen Ecken kann man sich gut verstecken.“",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo steht die Burg Bourscheid?",
+    "options": [
+     "Mitten in der Stadt",
+     "Am Meer",
+     "Hoch auf einem Felsen über der Sauer",
+     "Auf einer Insel"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum muss Nora ein paar Mal stehen bleiben?",
+    "options": [
+     "Weil der Weg steil ist.",
+     "Weil sie Angst hat.",
+     "Weil sie ein Schild liest.",
+     "Weil es regnet."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was ist von der Burg noch übrig?",
+    "options": [
+     "Nur das Dach",
+     "Dicke Mauern und Türme",
+     "Gar nichts",
+     "Die Möbel der Ritter"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist eine „Wendeltreppe“?",
+    "options": [
+     "Eine sehr kurze Treppe",
+     "Eine Treppe, die sich im Kreis nach oben dreht",
+     "Eine Leiter",
+     "Ein Aufzug"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was sieht Nora von oben?",
+    "options": [
+     "Das Meer und Schiffe",
+     "Hohe Berge mit Schnee",
+     "Eine große Stadt",
+     "Den Fluss, Wälder und kleine Dörfer"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum glaubt Papa, dass die Kinder damals auch Verstecken gespielt haben?",
+    "answer": "Weil es in der Burg so viele Ecken gibt, in denen man sich verstecken kann."
+   }
+  ]
+ },
+ {
+  "id": "kartoffel",
+  "title": "Die Kartoffel",
+  "type": "Sachtext",
+  "level": 3,
+  "text": "Die Kartoffel ist eine Pflanze, deren Knollen unter der Erde wachsen. Die Knollen sind der Teil, den wir essen. Über der Erde sieht man nur grüne Blätter und manchmal kleine weiße oder lila Blüten.\n\nUrsprünglich kommt die Kartoffel aus Südamerika. Erst vor einigen hundert Jahren brachten Seefahrer sie nach Europa. Heute wird sie fast überall angebaut, auch in Luxemburg.\n\nAus Kartoffeln kann man viele Gerichte machen: Pommes, Kartoffelbrei, Bratkartoffeln oder Kartoffelsuppe. Aber Vorsicht: Rohe Kartoffeln isst man nicht. Grüne Stellen und die Blätter der Pflanze sind sogar giftig. Deshalb schneidet man grüne Stellen großzügig weg.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo wachsen die Kartoffelknollen?",
+    "options": [
+     "Am Baum",
+     "An den Blüten",
+     "Im Wasser",
+     "Unter der Erde"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Woher kommt die Kartoffel ursprünglich?",
+    "options": [
+     "Aus Asien",
+     "Aus Afrika",
+     "Aus Südamerika",
+     "Aus Luxemburg"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „ursprünglich“?",
+    "options": [
+     "Am Anfang",
+     "Heute",
+     "Später",
+     "Niemals"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welche Teile der Pflanze sind giftig?",
+    "options": [
+     "Die Knollen ohne grüne Stellen",
+     "Nur die Blüten",
+     "Gar keine",
+     "Die Blätter und grüne Stellen"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Oma findet eine Kartoffel mit einer grünen Stelle. Was soll sie tun?",
+    "options": [
+     "Die Kartoffel roh essen.",
+     "Die grüne Stelle großzügig wegschneiden.",
+     "Die Kartoffel anmalen.",
+     "Die grüne Stelle mitkochen."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Nenne zwei Gerichte aus Kartoffeln.",
+    "answer": "Zum Beispiel Pommes, Kartoffelbrei, Bratkartoffeln oder Kartoffelsuppe."
+   }
+  ]
+ },
+ {
+  "id": "regenwurm",
+  "title": "Der Regenwurm",
+  "type": "Sachtext",
+  "level": 3,
+  "text": "Regenwürmer leben in der Erde. Sie haben keine Augen, keine Ohren und keine Beine. Trotzdem spüren sie mit ihrer Haut, ob es hell oder dunkel ist. Sie atmen sogar durch die Haut. Deshalb muss ihre Haut immer feucht sein.\n\nRegenwürmer graben lange Gänge. Dabei fressen sie Erde und alte Blätter. Was hinten wieder herauskommt, ist besonders gute Erde für Pflanzen. Durch die Gänge kommen außerdem Luft und Wasser tief in den Boden.\n\nNach einem starken Regen kriechen oft viele Regenwürmer aus der Erde. Wenn du einen auf dem Weg findest, kannst du ihn vorsichtig zurück auf die Wiese legen. Gärtner freuen sich über jeden Regenwurm.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was hat ein Regenwurm NICHT?",
+    "options": [
+     "Eine Haut",
+     "Augen",
+     "Gänge in der Erde",
+     "Einen langen Körper"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Womit atmet der Regenwurm?",
+    "options": [
+     "Mit der Haut",
+     "Mit der Nase",
+     "Mit den Ohren",
+     "Mit dem Mund"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum muss die Haut des Regenwurms feucht sein?",
+    "options": [
+     "Weil er gern badet.",
+     "Weil er sonst friert.",
+     "Weil er durch die Haut atmet.",
+     "Weil er sonst nichts sieht."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Warum sind Regenwürmer gut für den Garten?",
+    "options": [
+     "Sie fressen die Blumen.",
+     "Sie verjagen die Vögel.",
+     "Sie gießen die Pflanzen.",
+     "Sie machen gute Erde und bringen Luft in den Boden."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „kriechen“?",
+    "options": [
+     "Schnell fliegen",
+     "Sich langsam am Boden bewegen",
+     "Hoch springen",
+     "Laut rufen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Was kannst du tun, wenn du einen Regenwurm auf dem Weg findest?",
+    "answer": "Ihn vorsichtig zurück auf die Wiese legen."
+   }
+  ]
+ },
+ {
+  "id": "klassensprecher",
+  "title": "Die Wahl",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "Heute wählt die Klasse einen Klassensprecher. Wer möchte, darf sich vorstellen. Jonas sagt: „Ich will, dass wir in der Pause mehr Fußball spielen.“ Sara sagt: „Ich höre allen zu. Und wenn es Streit gibt, helfe ich, eine Lösung zu finden.“\n\nDann bekommt jedes Kind einen kleinen Zettel. Darauf schreibt es geheim einen Namen. Die Lehrerin sammelt die Zettel in einer Box. Zwei Kinder zählen an der Tafel: Jonas bekommt acht Stimmen, Sara bekommt zwölf.\n\nSara ist jetzt Klassensprecherin. Jonas ist zuerst ein bisschen enttäuscht. Doch Sara sagt: „Jonas, willst du mein Stellvertreter sein? Dann können wir zusammen fragen, ob es einen Fußballtag gibt.“ Jonas grinst und nickt.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was möchte Jonas?",
+    "options": [
+     "Mehr Fußball in der Pause",
+     "Mehr Hausaufgaben",
+     "Eine neue Lehrerin",
+     "Längere Ferien"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie viele Stimmen bekommt Sara?",
+    "options": [
+     "Acht",
+     "Zehn",
+     "Zwölf",
+     "Zwanzig"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „geheim“?",
+    "options": [
+     "Sehr schnell",
+     "Laut für alle",
+     "Mit bunten Stiften",
+     "So, dass die anderen es nicht sehen"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Wie viele Kinder haben gewählt?",
+    "options": [
+     "Zwanzig",
+     "Acht",
+     "Zwölf",
+     "Vierundzwanzig"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum fragt Sara Jonas, ob er ihr Stellvertreter sein will?",
+    "options": [
+     "Weil sie keine Lust hat.",
+     "Damit er nicht traurig ist und sie zusammenarbeiten können.",
+     "Weil die Lehrerin es so will.",
+     "Weil sie Fußball nicht mag."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Was hat Sara versprochen, und wie zeigt sie das am Ende?",
+    "answer": "Sie wollte allen zuhören und bei Streit helfen. Am Ende findet sie mit Jonas eine gemeinsame Lösung."
+   }
+  ]
+ },
+ {
   "id": "vianden",
   "title": "Ausflug zur Burg Vianden",
   "type": "Geschichte",
@@ -4175,6 +5280,306 @@
     "skill": "Schließen",
     "q": "Warum ruft Mila „Brrr!“?",
     "answer": "Weil das Wasser sehr kalt ist."
+   }
+  ]
+ },
+ {
+  "id": "blaetter",
+  "title": "Warum werden Blätter bunt?",
+  "type": "Sachtext",
+  "level": 4,
+  "text": "Im Sommer sind die Blätter der Bäume grün. Das liegt an einem Farbstoff namens Chlorophyll. Mit seiner Hilfe machen Pflanzen aus Sonnenlicht, Wasser und Luft ihre Nahrung.\n\nIm Herbst wird es kälter, und die Tage werden kürzer. Für den Baum lohnt es sich nicht mehr, in den Blättern Nahrung herzustellen. Deshalb baut er das grüne Chlorophyll ab und speichert wertvolle Stoffe in Ästen und Wurzeln. Jetzt kommen gelbe und orange Farben zum Vorschein, die schon den ganzen Sommer in den Blättern versteckt waren. Manche Bäume, zum Beispiel der Ahorn, bilden zusätzlich einen roten Farbstoff.\n\nZum Schluss wächst zwischen Blatt und Zweig eine dünne Trennschicht, und das Blatt fällt ab. So verliert der Baum im Winter kein Wasser über die Blätter. Aus dem gefrorenen Boden könnte er nämlich kaum neues Wasser holen.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie heißt der grüne Farbstoff in den Blättern?",
+    "options": [
+     "Ahorn",
+     "Trennschicht",
+     "Chlorophyll",
+     "Sonnenlicht"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Woraus machen Pflanzen ihre Nahrung?",
+    "options": [
+     "Aus Erde und Steinen",
+     "Aus Sonnenlicht, Wasser und Luft",
+     "Aus Regenwürmern",
+     "Aus Schnee"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Woher kommen die gelben und orangen Farben im Herbst?",
+    "options": [
+     "Sie waren schon den ganzen Sommer da, aber versteckt.",
+     "Sie werden im Herbst neu gemalt.",
+     "Der Regen färbt die Blätter.",
+     "Die Sonne verbrennt die Blätter."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „zum Vorschein kommen“?",
+    "options": [
+     "Verschwinden",
+     "Herunterfallen",
+     "Wachsen",
+     "Sichtbar werden"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum wirft der Baum im Herbst seine Blätter ab?",
+    "options": [
+     "Weil die Blätter zu schwer sind.",
+     "Damit er im Winter kein Wasser über die Blätter verliert.",
+     "Weil die Vögel sie brauchen.",
+     "Damit er schneller wächst."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Welcher Baum bildet zusätzlich einen roten Farbstoff?",
+    "answer": "Der Ahorn."
+   }
+  ]
+ },
+ {
+  "id": "insektenhotel",
+  "title": "Das Insektenhotel",
+  "type": "Geschichte",
+  "level": 4,
+  "text": "In der Klasse von Herrn Weber gibt es ein neues Projekt: Die Kinder wollen ein Insektenhotel für den Schulgarten bauen. „Viele Wildbienen finden keinen Platz mehr für ihre Eier“, erklärt Herr Weber. „Wir können ihnen helfen.“\n\nAm Montag bringt jeder etwas mit. Malik hat Bambusstäbe, Lotta bringt Tannenzapfen und Ziegelsteine mit Löchern. Zusammen füllen sie einen Holzkasten mit vielen kleinen Fächern. Herr Weber bohrt Löcher in einen dicken Holzklotz. „Das Holz muss innen ganz glatt sein“, sagt er, „sonst verletzen sich die Bienen an den Flügeln.“\n\nDas Insektenhotel bekommt einen sonnigen Platz an der Mauer, geschützt vor Regen. Einige Wochen später ruft Lotta aufgeregt: „Schaut mal!“ Mehrere Löcher sind mit Lehm verschlossen. Herr Weber lächelt: „Dahinter liegen Bieneneier. Unser Hotel hat seine ersten Gäste.“",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Warum wollen die Kinder ein Insektenhotel bauen?",
+    "options": [
+     "Weil sie Insekten fangen wollen.",
+     "Weil es eine Hausaufgabe ist.",
+     "Weil sie Honig wollen.",
+     "Weil viele Wildbienen keinen Platz für ihre Eier finden."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was bringt Malik mit?",
+    "options": [
+     "Tannenzapfen",
+     "Ziegelsteine",
+     "Bambusstäbe",
+     "Einen Holzklotz"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum muss das Holz innen ganz glatt sein?",
+    "options": [
+     "Damit es schön aussieht.",
+     "Damit sich die Bienen nicht an den Flügeln verletzen.",
+     "Damit es nicht nass wird.",
+     "Damit keine Vögel hineinkommen."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo steht das Insektenhotel?",
+    "options": [
+     "An einem sonnigen Platz an der Mauer",
+     "Im Klassenzimmer",
+     "Im Schatten unter einem Baum",
+     "Auf dem Dach"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Lotta ruft aufgeregt.“ Wie ist Lotta?",
+    "options": [
+     "Müde und gelangweilt",
+     "Traurig",
+     "Wütend",
+     "Sehr gespannt und voller Freude"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Woran merken die Kinder, dass das Hotel „erste Gäste“ hat?",
+    "answer": "Mehrere Löcher sind mit Lehm verschlossen. Dahinter liegen Bieneneier."
+   }
+  ]
+ },
+ {
+  "id": "mosel",
+  "title": "Die Mosel",
+  "type": "Sachtext",
+  "level": 4,
+  "text": "Die Mosel ist ein langer Fluss. Sie entspringt in den Vogesen in Frankreich, fließt dann durch Luxemburg und Deutschland und mündet bei Koblenz in den Rhein. Auf einem langen Stück bildet sie die Grenze zwischen Luxemburg und Deutschland.\n\nAn den steilen Hängen am Fluss wachsen viele Weinreben. Sonne und Wärme lassen die Trauben gut reifen. Im Herbst werden sie gelesen, das heißt geerntet.\n\nAuf der Mosel fahren große Schiffe. Damit sie die Höhenunterschiede überwinden können, gibt es Schleusen. Das sind Kammern, in denen das Wasser steigt oder sinkt, bis das Schiff auf der richtigen Höhe ist.\n\nBeim kleinen Moseldorf Schengen treffen sich Luxemburg, Deutschland und Frankreich. Hier wurde ein berühmter Vertrag unterschrieben. Seitdem können Menschen in vielen Ländern Europas ohne Passkontrolle über die Grenze fahren.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo entspringt die Mosel?",
+    "options": [
+     "In den Vogesen in Frankreich",
+     "In Luxemburg",
+     "In Koblenz",
+     "In der Schweiz"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "In welchen Fluss mündet die Mosel?",
+    "options": [
+     "In die Sauer",
+     "In die Donau",
+     "In den Rhein",
+     "Direkt ins Meer"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet hier „Trauben lesen“?",
+    "options": [
+     "Ein Buch über Trauben lesen",
+     "Trauben ernten",
+     "Trauben zählen",
+     "Trauben waschen"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was ist eine Schleuse?",
+    "options": [
+     "Eine Brücke für Autos",
+     "Ein Hafen für Fischer",
+     "Ein Weinberg",
+     "Eine Kammer, in der das Wasser steigt oder sinkt"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum ist Schengen berühmt?",
+    "options": [
+     "Weil dort die Mosel beginnt.",
+     "Weil dort die meisten Schiffe fahren.",
+     "Weil dort ein Vertrag über Reisen ohne Passkontrolle unterschrieben wurde.",
+     "Weil dort der Rhein beginnt."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Welche drei Länder treffen sich bei Schengen?",
+    "answer": "Luxemburg, Deutschland und Frankreich."
+   }
+  ]
+ },
+ {
+  "id": "streit",
+  "title": "Der Streit",
+  "type": "Geschichte",
+  "level": 4,
+  "text": "Emma und Zoe sind beste Freundinnen. Doch an diesem Morgen gibt es Streit. Emma hat Zoes neuen Glitzerstift ausgeliehen und ihn aus Versehen zerbrochen. „Du machst immer alles kaputt!“, ruft Zoe wütend. „Das stimmt gar nicht!“, ruft Emma zurück. In der Pause spielen die beiden nicht zusammen.\n\nAm Nachmittag sitzt Emma allein auf der Bank. Eigentlich hat Zoe recht: Der Stift ist kaputt. Aber „immer“ stimmt nicht. Emma nimmt ein Blatt und malt eine Karte mit zwei Mädchen, die sich an den Händen halten. Darunter schreibt sie: „Es tut mir leid wegen deines Stiftes. Ich kaufe dir von meinem Taschengeld einen neuen.“\n\nAm nächsten Morgen legt sie die Karte auf Zoes Platz. Zoe liest sie lange. Dann dreht sie sich um und sagt leise: „Und mir tut es leid, dass ich ‚immer‘ gesagt habe.“ In der Pause spielen die beiden wieder Fangen, als wäre nichts gewesen.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Warum gibt es Streit?",
+    "options": [
+     "Zoe hat Emmas Pausenbrot gegessen.",
+     "Emma hat aus Versehen Zoes Stift zerbrochen.",
+     "Emma ist zu spät gekommen.",
+     "Zoe hat gelogen."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was malt Emma auf die Karte?",
+    "options": [
+     "Einen Stift",
+     "Ein Herz und Sterne",
+     "Zwei Mädchen, die sich an den Händen halten",
+     "Eine Schule"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „aus Versehen“?",
+    "options": [
+     "Ohne es zu wollen",
+     "Mit Absicht",
+     "Sehr schnell",
+     "Mit Freude"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Was an Zoes Satz findet Emma ungerecht?",
+    "options": [
+     "Dass der Stift kaputt sein soll.",
+     "Dass Zoe so leise spricht.",
+     "Dass Zoe den Stift nicht mag.",
+     "Das Wort „immer“."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Was zeigt das Ende der Geschichte?",
+    "options": [
+     "Die beiden bleiben böse aufeinander.",
+     "Die beiden haben sich wieder vertragen.",
+     "Zoe hat selbst einen neuen Stift gekauft.",
+     "Emma spielt jetzt mit anderen Kindern."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Wofür entschuldigt sich Zoe?",
+    "answer": "Dass sie gesagt hat, Emma mache „immer“ alles kaputt."
    }
   ]
  }
