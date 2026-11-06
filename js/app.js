@@ -816,11 +816,12 @@ function listenOnce(onAlts, onEnd, onReady, opts) {
     r.onend = () => {
       clearTimeout(quietT); clearTimeout(idleT); oneShot = null;
       if (opts.long) {
-        const parts = finals.filter(Boolean);
+        // Android may send the same words again in later results: drop repeats before joining
+        const parts = M.dedupeSession(finals.filter(Boolean).map(x => ({ text: x[0], alts: x })));
         if (parts.length) {
           got = true;
-          const n = Math.max(...parts.map(x => x.length)), alts = [];
-          for (let a = 0; a < n; a++) alts.push(parts.map(x => (x[a] || x[0]).trim()).join(" "));
+          const n = Math.max(...parts.map(x => x.alts.length)), alts = [];
+          for (let a = 0; a < n; a++) alts.push(M.collapseRepeats(parts.map(x => (x.alts[a] || x.alts[0]).trim()).join(" ")));
           onAlts(alts);
         }
       }

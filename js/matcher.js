@@ -99,6 +99,24 @@
    * result's full text replaces it. Across a restart, the first result is only
    * collapsed when it repeats at least 3 words of the previous session's end.
    */
+  /* "weil er weil er weil er müde" -> "weil er müde": Android sometimes repeats the start of an answer */
+  function collapseRepeats(text) {
+    let w = String(text || "").trim().split(/\s+/).filter(Boolean);
+    const key = x => norm(x);
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (let n = Math.min(6, Math.floor(w.length / 2)); n >= 1 && !changed; n--) {
+        for (let i = 0; i + 2 * n <= w.length; i++) {
+          let same = true;
+          for (let k = 0; k < n; k++) if (key(w[i + k]) !== key(w[i + n + k])) { same = false; break; }
+          if (same) { w.splice(i, n); changed = true; break; }
+        }
+      }
+    }
+    return w.join(" ");
+  }
+
   function dedupeSession(results) {
     const out = [];
     for (const r of results) {
@@ -368,5 +386,5 @@
     return { text: out.join(" "), changed };
   }
 
-  return { norm, words, koeln, sim, lev, sameSound, dedupeSession, buildTokens, align, summarize, fitAnswer, FILLERS };
+  return { norm, words, koeln, sim, lev, sameSound, dedupeSession, buildTokens, align, summarize, fitAnswer, collapseRepeats, FILLERS };
 });

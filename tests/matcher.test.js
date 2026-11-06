@@ -267,3 +267,9 @@ test("fitAnswer: picks the alternative that uses words from the text", () => {
   assert.equal(M.fitAnswer(["durch das offene Fenstern", "durch das offene Fenster"], ctx).text, "durch das offene Fenster");
   assert.equal(M.fitAnswer([], ctx).text, "");
 });
+
+test("collapseRepeats: repeated starts from Android are removed", () => {
+  assert.equal(M.collapseRepeats("Lea Lea Lea muss bis Mittwoch anrufen"), "Lea muss bis Mittwoch anrufen");
+  assert.equal(M.collapseRepeats("weil er weil er weil er müde ist"), "weil er müde ist");
+  assert.equal(M.collapseRepeats("Bis Mittwoch"), "Bis Mittwoch");
+});

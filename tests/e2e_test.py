@@ -152,6 +152,11 @@ def main():
                 still = page.locator("#qpanel .icon-btn.live").count() == 1
                 page.locator("#qpanel .icon-btn.live").click(); page.wait_for_timeout(200)
                 check(still and page.locator("textarea.answer").input_value() == "weil er im Park gerannt ist", "spoken answer: a short pause does not cut the answer off")
+                page.fill("textarea.answer", "")
+                page.locator("#qpanel .icon-btn", has_text="Antwort sagen").click(); page.wait_for_timeout(50)
+                page.evaluate("__emit([{t:'weil', final:true}, {t:'weil er', final:true}, {t:'weil er weil er müde ist', final:true}])"); page.wait_for_timeout(50)
+                page.locator("#qpanel .icon-btn.live").click(); page.wait_for_timeout(200)
+                check(page.locator("textarea.answer").input_value() == "weil er müde ist", "spoken answer: Android repeats of the first words removed")
                 page.fill("textarea.answer", "Weil er müde ist")
             page.click("#qNext")
         page.wait_for_selector("#report:not([hidden])")
