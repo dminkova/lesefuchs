@@ -2840,11 +2840,11 @@
  },
  {
   "id": "memory",
-  "title": "Spielregeln: Memory",
+  "title": "Spielregeln: Paare finden",
   "type": "Spielregeln",
   "level": 2,
   "format": "doc",
-  "text": "## Spielregeln: Memory\nFür zwei bis vier Kinder\n\n1. Mischt alle Karten und legt sie verdeckt auf den Tisch.\n2. Das jüngste Kind beginnt.\n3. Wer dran ist, dreht zwei Karten um.\n4. Sind die Bilder gleich, darf man das Paar behalten und noch einmal spielen.\n5. Sind die Bilder verschieden, dreht man sie wieder um. Dann ist das nächste Kind dran.\n6. Das Spiel ist vorbei, wenn alle Paare gefunden sind.\n\nWer die meisten Paare hat, gewinnt.",
+  "text": "## Spielregeln: Paare finden\nFür zwei bis vier Kinder\n\n1. Mischt alle Karten und legt sie verdeckt auf den Tisch.\n2. Das jüngste Kind beginnt.\n3. Wer dran ist, dreht zwei Karten um.\n4. Sind die Bilder gleich, darf man das Paar behalten und noch einmal spielen.\n5. Sind die Bilder verschieden, dreht man sie wieder um. Dann ist das nächste Kind dran.\n6. Das Spiel ist vorbei, wenn alle Paare gefunden sind.\n\nWer die meisten Paare hat, gewinnt.",
   "questions": [
    {
     "kind": "mc",
@@ -2911,6 +2911,195 @@
     "skill": "Finden",
     "q": "Wer gewinnt?",
     "answer": "Wer die meisten Paare hat."
+   }
+  ]
+ },
+ {
+  "id": "schulweg",
+  "title": "Sicher zur Schule",
+  "type": "Sachtext",
+  "level": 2,
+  "text": "Jeden Morgen gehen viele Kinder zu Fuß zur Schule. Damit der Schulweg sicher ist, gibt es wichtige Regeln.\n\nAm Zebrastreifen bleibst du zuerst am Rand stehen. Du schaust nach links, nach rechts und noch einmal nach links. Erst wenn die Autos halten, gehst du hinüber. An der Ampel gehst du nur bei Grün. Bei Rot wartest du, auch wenn kein Auto kommt.\n\nIm Herbst und im Winter ist es morgens oft dunkel. Helle Kleidung und Leuchtstreifen helfen, dass die Autofahrer dich gut sehen.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo bleibst du am Zebrastreifen zuerst stehen?",
+    "options": [
+     "Mitten auf der Straße",
+     "Hinter einem Auto",
+     "Am Rand",
+     "Auf dem Radweg"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "In welche Richtungen schaust du, bevor du gehst?",
+    "options": [
+     "Links – rechts – links",
+     "Rechts – rechts – links",
+     "Nur nach vorne",
+     "Nach oben und nach unten"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Die Ampel ist rot, aber kein Auto kommt. Was tust du?",
+    "options": [
+     "Ich renne schnell hinüber.",
+     "Ich gehe langsam hinüber.",
+     "Ich rufe laut.",
+     "Ich warte, bis die Ampel grün ist."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was sind „Leuchtstreifen“?",
+    "options": [
+     "Bunte Bilder",
+     "Schnürsenkel",
+     "Streifen, die im Licht hell leuchten",
+     "Kleine Taschenlampen"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum ist helle Kleidung im Winter wichtig?",
+    "answer": "Weil es morgens dunkel ist und die Autofahrer dich dann besser sehen."
+   }
+  ]
+ },
+ {
+  "id": "sonnenblume",
+  "title": "Die Sonnenblume",
+  "type": "Sachtext",
+  "level": 2,
+  "text": "Die Sonnenblume kann größer werden als ein Erwachsener. Manche werden sogar über drei Meter hoch. Ihre große gelbe Blüte sieht aus wie eine einzige Blume. In Wirklichkeit besteht sie aus vielen hundert kleinen Blüten.\n\nAus den kleinen Blüten werden später Kerne. Vögel picken sie gern heraus. Menschen machen aus den Kernen Öl oder essen sie geröstet. Junge Sonnenblumen drehen ihre Knospe mit der Sonne mit: am Morgen nach Osten, am Abend nach Westen.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie hoch können manche Sonnenblumen werden?",
+    "options": [
+     "Über drei Meter",
+     "Einen halben Meter",
+     "Zehn Meter",
+     "Zwanzig Meter"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Woraus besteht die große gelbe Blüte?",
+    "options": [
+     "Aus einem einzigen Blatt",
+     "Aus Papier",
+     "Aus Kernen und Wasser",
+     "Aus vielen hundert kleinen Blüten"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was machen Menschen aus den Kernen?",
+    "options": [
+     "Saft",
+     "Zucker",
+     "Mehl",
+     "Öl"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist eine „Knospe“?",
+    "options": [
+     "Ein Kern",
+     "Eine Wurzel",
+     "Eine Blüte, die noch geschlossen ist",
+     "Ein Vogel"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Wohin zeigt die Knospe einer jungen Sonnenblume am Abend? Warum?",
+    "answer": "Nach Westen, weil sie der Sonne folgt und die Sonne am Abend im Westen steht."
+   }
+  ]
+ },
+ {
+  "id": "zirkus",
+  "title": "Im Zirkus",
+  "type": "Geschichte",
+  "level": 2,
+  "text": "Heute geht Lara mit ihrer Oma in den Zirkus. Das große Zelt ist rot und gelb gestreift. Drinnen riecht es nach Popcorn.\n\nZuerst kommen die Akrobaten. Sie fliegen hoch oben durch die Luft und fangen sich an den Händen. Lara hält den Atem an. Dann jongliert ein Mann mit sieben Bällen, ohne dass einer herunterfällt. Zum Schluss kommt der Clown. Er stolpert über seine riesigen Schuhe und spritzt Wasser aus einer Blume. Alle lachen. Auf dem Heimweg übt Lara mit zwei Äpfeln das Jonglieren.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Mit wem geht Lara in den Zirkus?",
+    "options": [
+     "Mit Mama",
+     "Mit Papa",
+     "Mit ihrer Oma",
+     "Mit der Klasse"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Wer kommt zuerst?",
+    "options": [
+     "Der Clown",
+     "Die Akrobaten",
+     "Der Jongleur",
+     "Ein Elefant"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Mit wie vielen Bällen jongliert der Mann?",
+    "options": [
+     "Sieben",
+     "Drei",
+     "Fünf",
+     "Zehn"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "„Lara hält den Atem an.“ Wie fühlt sie sich?",
+    "options": [
+     "Gelangweilt",
+     "Müde",
+     "Wütend",
+     "Sehr gespannt"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum übt Lara auf dem Heimweg mit zwei Äpfeln?",
+    "answer": "Weil ihr das Jonglieren gefallen hat und sie es selbst lernen möchte."
    }
   ]
  },
@@ -4783,6 +4972,462 @@
   ]
  },
  {
+  "id": "delfine",
+  "title": "Delfine",
+  "type": "Sachtext",
+  "level": 3,
+  "text": "Delfine leben im Meer und sehen ein bisschen aus wie Fische. Trotzdem sind sie Säugetiere. Sie atmen Luft und müssen dafür immer wieder an die Wasseroberfläche. Das Atemloch liegt oben auf ihrem Kopf.\n\nDelfine leben in Gruppen, die man Schulen nennt. Sie verständigen sich mit Pfiffen und Klicklauten. Jeder Delfin hat sogar einen eigenen Pfiff, fast wie einen Namen. Mit den Klicklauten finden sie auch Fische im trüben Wasser: Das Echo zeigt ihnen, wo die Beute ist.\n\nWie schlafen Delfine, wenn sie doch atmen müssen? Sie lassen immer nur eine Hälfte ihres Gehirns schlafen. Die andere Hälfte bleibt wach und passt auf.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Warum müssen Delfine immer wieder an die Wasseroberfläche?",
+    "options": [
+     "Um Fische zu fangen",
+     "Um zu schlafen",
+     "Um sich zu sonnen",
+     "Um Luft zu atmen"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo liegt das Atemloch?",
+    "options": [
+     "Am Bauch",
+     "An der Schwanzflosse",
+     "Oben auf dem Kopf",
+     "Neben den Augen"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet hier das Wort „Schule“?",
+    "options": [
+     "Ein Haus zum Lernen",
+     "Eine Gruppe von Delfinen",
+     "Ein Schwarm Fische",
+     "Ein Boot"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Womit verständigen sich Delfine?",
+    "options": [
+     "Mit Pfiffen und Klicklauten",
+     "Mit Farben",
+     "Mit Bellen",
+     "Gar nicht"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum lassen Delfine nur eine Hälfte des Gehirns schlafen?",
+    "options": [
+     "Weil sie keine Zeit haben.",
+     "Weil das Wasser zu kalt ist.",
+     "Weil sie auch im Schlaf atmen und aufpassen müssen.",
+     "Weil sie nachts singen."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Woran erkennt man, dass Delfine keine Fische sind?",
+    "answer": "Sie atmen Luft durch ein Atemloch. Sie sind Säugetiere."
+   }
+  ]
+ },
+ {
+  "id": "kino",
+  "title": "Das Kinoprogramm",
+  "type": "Programm",
+  "level": 3,
+  "format": "doc",
+  "modes": [
+   "woerter",
+   "verstehen"
+  ],
+  "text": "## Kino am Markt – Filme für Kinder\nSamstag und Sonntag\n\nFilm | Beginn | Dauer | Alter\nPip und das Wolkenschaf | 14:00 | 80 Minuten | ab 0 Jahren\nAbenteuer im Eisland | 15:30 | 95 Minuten | ab 6 Jahren\nDie Weltraum-Katzen | 17:15 | 90 Minuten | ab 6 Jahren\nDas Geheimnis im Moor | 18:00 | 105 Minuten | ab 12 Jahren\n\nEintritt: Kinder 6 Euro, Erwachsene 9 Euro\nPopcorn: klein 3 Euro, groß 5 Euro",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann beginnt „Abenteuer im Eisland“?",
+    "options": [
+     "Um 14:00 Uhr",
+     "Um 15:30 Uhr",
+     "Um 17:15 Uhr",
+     "Um 18:00 Uhr"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Tim ist 8 Jahre alt. Welchen Film darf er NICHT sehen?",
+    "options": [
+     "Pip und das Wolkenschaf",
+     "Abenteuer im Eisland",
+     "Die Weltraum-Katzen",
+     "Das Geheimnis im Moor"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welcher Film dauert am längsten?",
+    "options": [
+     "Das Geheimnis im Moor",
+     "Pip und das Wolkenschaf",
+     "Abenteuer im Eisland",
+     "Die Weltraum-Katzen"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Papa geht mit zwei Kindern ins Kino. Was kostet der Eintritt zusammen?",
+    "options": [
+     "15 Euro",
+     "18 Euro",
+     "21 Euro",
+     "27 Euro"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "„Pip und das Wolkenschaf“ beginnt um 14:00 Uhr und dauert 80 Minuten. Wann ist der Film zu Ende?",
+    "options": [
+     "Um 14:40 Uhr",
+     "Um 15:20 Uhr",
+     "Um 15:00 Uhr",
+     "Um 16:20 Uhr"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wie viel kostet ein großes Popcorn?",
+    "answer": "5 Euro."
+   }
+  ]
+ },
+ {
+  "id": "hanna",
+  "title": "Hanna",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "Nach den Ferien kommt ein neues Mädchen in die Klasse. Sie heißt Hanna und sitzt im Rollstuhl. Am ersten Tag sind alle ein bisschen schüchtern. Niemand weiß so recht, was er sagen soll.\n\nIn der Pause fragt Ben: „Tut dir das weh?“ Hanna lacht. „Nein. Meine Beine können nicht laufen, aber sonst bin ich wie du. Und mit dem Rollstuhl bin ich schneller als du!“ Sie flitzt los, und Ben rennt hinterher.\n\nBald merkt die Klasse, dass es an der Schule ein Problem gibt: Zur Bibliothek führen nur Treppen. Die Kinder schreiben zusammen einen Brief an den Bürgermeister. Ein paar Wochen später wird eine Rampe gebaut. Jetzt kann Hanna allein in die Bibliothek fahren.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Warum sitzt Hanna im Rollstuhl?",
+    "options": [
+     "Weil sie müde ist.",
+     "Weil ihre Beine nicht laufen können.",
+     "Weil sie sich den Fuß gebrochen hat.",
+     "Weil sie gern fährt."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „schüchtern“?",
+    "options": [
+     "Vorsichtig und ein bisschen unsicher",
+     "Laut und frech",
+     "Sehr müde",
+     "Sehr wütend"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welches Problem gibt es an der Schule?",
+    "options": [
+     "Der Schulhof ist zu klein.",
+     "Es gibt keine Bücher.",
+     "Die Tür ist kaputt.",
+     "Zur Bibliothek führen nur Treppen."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "An wen schreiben die Kinder einen Brief?",
+    "options": [
+     "An die Lehrerin",
+     "An Hannas Eltern",
+     "An den Bürgermeister",
+     "An die Zeitung"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Was zeigt Hannas Antwort auf Bens Frage?",
+    "options": [
+     "Dass sie traurig ist.",
+     "Dass sie Ben nicht mag.",
+     "Dass sie nicht reden will.",
+     "Dass sie fröhlich und selbstbewusst ist."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Was haben die Kinder mit ihrem Brief erreicht?",
+    "answer": "Es wurde eine Rampe gebaut. Hanna kann jetzt allein in die Bibliothek fahren."
+   }
+  ]
+ },
+ {
+  "id": "erstehilfe",
+  "title": "Erste Hilfe bei einer kleinen Wunde",
+  "type": "Anleitung",
+  "level": 3,
+  "format": "doc",
+  "text": "## Erste Hilfe bei einer kleinen Wunde\nDu bist hingefallen und hast dir das Knie aufgeschürft? So hilfst du dir:\n\n1. Bleib ruhig und sag einem Erwachsenen Bescheid.\n2. Wasch dir die Hände mit Seife.\n3. Spüle die Wunde vorsichtig mit sauberem Wasser ab.\n4. Tupfe die Haut rund um die Wunde trocken.\n5. Klebe ein Pflaster darauf.\n\nWichtig: Wenn eine Wunde stark blutet, drück ein sauberes Tuch darauf und hol sofort einen Erwachsenen. Im Notfall ruft man die Nummer 112 an.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was machst du zuerst?",
+    "options": [
+     "Ein Pflaster aufkleben",
+     "Die Wunde abspülen",
+     "Ruhig bleiben und einem Erwachsenen Bescheid sagen",
+     "Die Haut trocken tupfen"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Womit spülst du die Wunde ab?",
+    "options": [
+     "Mit Saft",
+     "Mit sauberem Wasser",
+     "Mit Seife und Sand",
+     "Mit Milch"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welche Nummer ruft man im Notfall an?",
+    "options": [
+     "110",
+     "911",
+     "123",
+     "112"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „tupfen“?",
+    "options": [
+     "Ganz leicht und kurz drücken",
+     "Fest reiben",
+     "Kräftig schlagen",
+     "Kratzen"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Eine Wunde blutet stark. Was tust du?",
+    "options": [
+     "Ein kleines Pflaster aufkleben.",
+     "Ein sauberes Tuch darauf drücken und sofort einen Erwachsenen holen.",
+     "Einfach weiterspielen.",
+     "Die Wunde mit Erde abdecken."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum wäschst du dir vorher die Hände?",
+    "answer": "Damit kein Schmutz und keine Keime in die Wunde kommen."
+   }
+  ]
+ },
+ {
+  "id": "tierheim",
+  "title": "Ein Hund aus dem Tierheim",
+  "type": "Geschichte",
+  "level": 3,
+  "text": "Familie Becker möchte einen Hund. Mama sagt: „Wir schauen zuerst im Tierheim. Dort warten viele Tiere auf ein neues Zuhause.“ Am Samstag fahren alle hin.\n\nIm Tierheim bellt es von überall. Ein großer schwarzer Hund springt wild am Gitter hoch. Ein kleiner brauner Hund liegt still in der Ecke. „Das ist Kiko“, sagt die Pflegerin. „Er ist schüchtern, weil er lange allein auf der Straße gelebt hat.“\n\nMilan setzt sich vor das Gitter und wartet. Nach einer Weile kommt Kiko langsam näher und schnuppert an seiner Hand. Dann wedelt er vorsichtig mit dem Schwanz. Milan schaut seine Eltern an. Die nicken. Zwei Wochen später darf Kiko einziehen. Er bekommt ein Körbchen neben Milans Bett.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo sucht Familie Becker einen Hund?",
+    "options": [
+     "Im Tierheim",
+     "Im Zoo",
+     "Bei den Nachbarn",
+     "Auf dem Bauernhof"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie heißt der kleine braune Hund?",
+    "options": [
+     "Bello",
+     "Kiko",
+     "Bobo",
+     "Milan"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum ist Kiko schüchtern?",
+    "options": [
+     "Weil er krank ist.",
+     "Weil er Milan nicht mag.",
+     "Weil er müde ist.",
+     "Weil er lange allein auf der Straße gelebt hat."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was macht ein Hund, wenn er „schnuppert“?",
+    "options": [
+     "Er bellt laut.",
+     "Er beißt.",
+     "Er riecht an etwas.",
+     "Er schläft."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum setzt sich Milan vor das Gitter und wartet?",
+    "options": [
+     "Weil er müde ist.",
+     "Damit Kiko keine Angst hat und selbst kommen kann.",
+     "Weil die Pflegerin es befiehlt.",
+     "Weil er den großen Hund mag."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Woran merkt Milan, dass Kiko ihm langsam vertraut?",
+    "answer": "Kiko kommt näher, schnuppert an seiner Hand und wedelt mit dem Schwanz."
+   }
+  ]
+ },
+ {
+  "id": "brot",
+  "title": "Vom Korn zum Brot",
+  "type": "Sachtext",
+  "level": 3,
+  "text": "Vom Korn zum Brot ist es ein langer Weg. Im Herbst säen die Bauern Getreide, zum Beispiel Weizen oder Roggen. Im Sommer sind die Ähren reif und goldgelb. Dann fährt der Mähdrescher über das Feld. Er schneidet die Halme ab und trennt die Körner vom Stroh.\n\nDie Körner kommen in die Mühle. Dort werden sie zwischen schweren Walzen zu Mehl gemahlen. Der Bäcker mischt das Mehl mit Wasser, Salz und Hefe zu einem Teig. Die Hefe sorgt dafür, dass der Teig aufgeht und schön locker wird.\n\nIn der Nacht, wenn alle schlafen, backt der Bäcker die Brote im heißen Ofen. Am Morgen duftet es dann in der Bäckerei nach frischem Brot.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann sind die Ähren reif?",
+    "options": [
+     "Im Frühling",
+     "Im Sommer",
+     "Im Herbst",
+     "Im Winter"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was macht der Mähdrescher?",
+    "options": [
+     "Er backt das Brot.",
+     "Er mahlt das Mehl.",
+     "Er sät das Getreide.",
+     "Er schneidet die Halme ab und trennt die Körner vom Stroh."
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Wohin kommen die Körner nach der Ernte?",
+    "options": [
+     "In die Mühle",
+     "In den Ofen",
+     "Zurück auf das Feld",
+     "Direkt in den Teig"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „Der Teig geht auf“?",
+    "options": [
+     "Der Teig fällt herunter.",
+     "Der Teig wird hart.",
+     "Der Teig wird größer und lockerer.",
+     "Der Teig wird kalt."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was mischt der Bäcker mit dem Mehl?",
+    "options": [
+     "Milch, Zucker und Eier",
+     "Wasser, Salz und Hefe",
+     "Öl und Essig",
+     "Nur Wasser"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum duftet es am Morgen in der Bäckerei so gut?",
+    "answer": "Weil der Bäcker in der Nacht frisches Brot gebacken hat."
+   }
+  ]
+ },
+ {
   "id": "vianden",
   "title": "Ausflug zur Burg Vianden",
   "type": "Geschichte",
@@ -5580,6 +6225,457 @@
     "skill": "Schließen",
     "q": "Wofür entschuldigt sich Zoe?",
     "answer": "Dass sie gesagt hat, Emma mache „immer“ alles kaputt."
+   }
+  ]
+ },
+ {
+  "id": "roemer",
+  "title": "Die Römer",
+  "type": "Sachtext",
+  "level": 4,
+  "text": "Vor ungefähr zweitausend Jahren herrschten die Römer über große Teile Europas. Auch das Gebiet, in dem heute Luxemburg liegt, gehörte zu ihrem Reich. Die Römer kamen aus Italien und sprachen Latein.\n\nSie bauten gerade, gepflasterte Straßen, damit Soldaten und Händler schnell reisen konnten. Reiche Römer wohnten in großen Landhäusern, die man Villen nennt. Manche Häuser hatten sogar eine Fußbodenheizung: Warme Luft strömte unter dem Boden hindurch. In Echternach kann man heute noch die Reste einer großen römischen Villa besichtigen.\n\nDie Römer haben auch unsere Sprache beeinflusst. Viele deutsche Wörter stammen aus dem Lateinischen, zum Beispiel Mauer, Fenster, Straße und Wein. Wenn du also das Wort „Fenster“ sagst, sprichst du ein kleines bisschen Latein.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann herrschten die Römer über große Teile Europas?",
+    "options": [
+     "Vor ungefähr hundert Jahren",
+     "Vor einer Million Jahren",
+     "Vor ungefähr zweitausend Jahren",
+     "Im letzten Jahr"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welche Sprache sprachen die Römer?",
+    "options": [
+     "Latein",
+     "Französisch",
+     "Deutsch",
+     "Englisch"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum bauten die Römer gerade, gepflasterte Straßen?",
+    "options": [
+     "Damit Soldaten und Händler schnell reisen konnten.",
+     "Weil sie gern spazieren gingen.",
+     "Damit Kinder darauf spielen konnten.",
+     "Weil es keine Wälder gab."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist eine „Fußbodenheizung“?",
+    "options": [
+     "Ein warmer Teppich",
+     "Ein Ofen in der Küche",
+     "Warme Socken",
+     "Eine Heizung unter dem Boden"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welches dieser Wörter stammt laut Text aus dem Lateinischen?",
+    "options": [
+     "Hund",
+     "Baum",
+     "Fenster",
+     "Brot"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wo in Luxemburg kann man die Reste einer römischen Villa sehen?",
+    "answer": "In Echternach."
+   }
+  ]
+ },
+ {
+  "id": "vulkane",
+  "title": "Vulkane",
+  "type": "Sachtext",
+  "level": 4,
+  "text": "Tief unter der Erde ist es so heiß, dass Gestein schmilzt. Dieses flüssige Gestein heißt Magma. An manchen Stellen drückt das Magma nach oben, bis es durch die Erdkruste bricht. Dann bricht ein Vulkan aus. Sobald das Magma an der Oberfläche herausfließt, nennt man es Lava. Sie kann über tausend Grad heiß sein und glüht rot.\n\nWenn die Lava abkühlt, wird sie wieder hart. Bei jedem Ausbruch kommt eine neue Schicht dazu. So wächst der Vulkan zu einem Berg.\n\nAuch in der Nähe von Luxemburg gab es Vulkane: in der Eifel in Deutschland. Sie sind schon sehr lange ruhig. Bei manchen Ausbrüchen gab es gewaltige Explosionen. Zurück blieben runde Krater, die sich mit Wasser gefüllt haben. Diese Seen heißen Maare. Ein Vulkan, der heute noch oft ausbricht, ist der Ätna in Italien.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie heißt das flüssige Gestein unter der Erde?",
+    "options": [
+     "Magma",
+     "Lava",
+     "Krater",
+     "Maar"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann nennt man das flüssige Gestein Lava?",
+    "options": [
+     "Wenn es tief unter der Erde ist",
+     "Wenn es kalt und hart ist",
+     "Wenn es in einem See liegt",
+     "Wenn es an der Oberfläche herausfließt"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Wie wird ein Vulkan zu einem Berg?",
+    "options": [
+     "Menschen schütten Erde auf.",
+     "Bei jedem Ausbruch kommt eine neue Schicht harter Lava dazu.",
+     "Der Wind trägt Sand herbei.",
+     "Bäume wachsen darauf."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist ein „Maar“?",
+    "options": [
+     "Ein hoher Berg",
+     "Ein Fluss aus Lava",
+     "Ein runder See in einem alten Vulkankrater",
+     "Ein heißer Stein"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welcher Vulkan bricht heute noch oft aus?",
+    "options": [
+     "Ein Vulkan in der Eifel",
+     "Der Ätna in Italien",
+     "Ein Vulkan in Luxemburg",
+     "Gar keiner"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wo in der Nähe von Luxemburg gab es Vulkane?",
+    "answer": "In der Eifel in Deutschland."
+   }
+  ]
+ },
+ {
+  "id": "detektive",
+  "title": "Die verschwundenen Bücher",
+  "type": "Geschichte",
+  "level": 4,
+  "text": "In der Schulbibliothek verschwinden Bücher. Jeden Freitag fehlen zwei oder drei, aber am Montag stehen sie wieder im Regal. Frau Lentz, die Bibliothekarin, ist ratlos.\n\nAyla und Tim gründen einen Detektivclub. Sie schreiben auf, welche Bücher fehlen: ein Buch über Pferde, eines über Dinosaurier und ein Kochbuch für Kinder. „Komisch“, sagt Tim. „Die haben nichts miteinander zu tun.“ Ayla blättert im Ausleihheft. Am Freitag wurde nichts eingetragen.\n\nAm nächsten Freitag verstecken sich die beiden hinter dem großen Globus. Kurz vor Schulschluss kommt der Hausmeister herein. Er steckt drei Bücher in seine Tasche. Dann sieht er die Kinder und erklärt: „Mein Enkel liegt im Krankenhaus. Ich lese ihm am Wochenende vor und bringe die Bücher am Montag zurück. Ich habe vergessen, sie einzutragen.“ Frau Lentz lacht erleichtert und schenkt ihm ein eigenes Ausleihheft.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wann verschwinden die Bücher?",
+    "options": [
+     "Jeden Montag",
+     "Jeden Tag",
+     "In den Ferien",
+     "Jeden Freitag"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wo verstecken sich Ayla und Tim?",
+    "options": [
+     "Unter dem Tisch",
+     "Hinter dem großen Globus",
+     "Im Schrank",
+     "Hinter dem Regal"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was ist ein „Ausleihheft“?",
+    "options": [
+     "Ein Malheft",
+     "Ein Kochbuch",
+     "Ein Heft, in das man einträgt, wer welches Buch mitnimmt",
+     "Ein Tagebuch"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum findet Tim die verschwundenen Bücher „komisch“?",
+    "options": [
+     "Weil sie nichts miteinander zu tun haben.",
+     "Weil sie alle über Pferde sind.",
+     "Weil sie ganz neu sind.",
+     "Weil sie sehr dick sind."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Wofür braucht der Hausmeister die Bücher?",
+    "options": [
+     "Er liest seinem kranken Enkel daraus vor.",
+     "Er will sie verkaufen.",
+     "Er will sie reparieren.",
+     "Er will kochen lernen."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum schenkt Frau Lentz dem Hausmeister ein eigenes Ausleihheft?",
+    "answer": "Damit er die Bücher in Zukunft einträgt und niemand mehr suchen muss."
+   }
+  ]
+ },
+ {
+  "id": "briefportugal",
+  "title": "Ein Brief nach Portugal",
+  "type": "Brief",
+  "level": 4,
+  "format": "doc",
+  "text": "## Ein Brief nach Portugal\nLuxemburg, den 10. November\n\nLiebe Oma,\n\nich vermisse dich! Jetzt wohne ich schon ein Jahr in Luxemburg. Am Anfang war alles fremd. Hier spricht man gleich mehrere Sprachen: Mit meinen Freunden rede ich Luxemburgisch, lesen und schreiben lerne ich auf Deutsch, und Französisch lernen wir auch.\n\nDeutsch ist für mich am schwersten. Aber ich übe jeden Tag zehn Minuten Lesen, und es wird immer besser. Letzte Woche hatte ich im Diktat nur zwei Fehler!\n\nIm Dezember besuchen wir dich endlich. Bitte back wieder deinen leckeren Kuchen mit Zimt!\n\nViele Küsse\ndein Mateo",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wem schreibt Mateo?",
+    "options": [
+     "Seinem Lehrer",
+     "Seiner Oma",
+     "Seinem Freund Noah",
+     "Seiner Mama"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie lange wohnt Mateo schon in Luxemburg?",
+    "options": [
+     "Ein Jahr",
+     "Einen Monat",
+     "Zwei Jahre",
+     "Zehn Jahre"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Welche Sprache spricht Mateo mit seinen Freunden?",
+    "options": [
+     "Deutsch",
+     "Französisch",
+     "Portugiesisch",
+     "Luxemburgisch"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „fremd“?",
+    "options": [
+     "Sehr lustig",
+     "Ganz einfach",
+     "Neu und unbekannt",
+     "Sehr laut"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum wird Mateos Deutsch immer besser?",
+    "options": [
+     "Weil seine Oma Deutsch spricht.",
+     "Weil er jeden Tag übt.",
+     "Weil er keine Diktate schreibt.",
+     "Weil er nur Französisch spricht."
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Finden",
+    "q": "Wann besucht Mateo seine Oma, und was wünscht er sich?",
+    "answer": "Im Dezember. Er wünscht sich, dass sie wieder ihren Kuchen mit Zimt backt."
+   }
+  ]
+ },
+ {
+  "id": "draisine",
+  "title": "Wie das Fahrrad erfunden wurde",
+  "type": "Sachtext",
+  "level": 4,
+  "text": "Das Fahrrad ist eine erstaunliche Erfindung. Vor über zweihundert Jahren baute Karl Drais in Mannheim eine Laufmaschine aus Holz. Sie hatte zwei Räder und einen Lenker, aber keine Pedale. Man saß darauf und stieß sich mit den Füßen vom Boden ab, ähnlich wie bei einem Laufrad für kleine Kinder.\n\nSpäter befestigte man Pedale direkt am Vorderrad. Um schneller zu fahren, wurde das Vorderrad immer größer. So entstand das Hochrad. Sein Vorderrad war manchmal so hoch wie ein Erwachsener. Wer zu stark bremste, fiel leicht kopfüber herunter.\n\nErst als man die Pedale mit einer Kette mit dem Hinterrad verband, konnten beide Räder wieder gleich groß sein. Mit Reifen voller Luft wurde das Fahren endlich bequem. So sieht das Fahrrad im Grunde bis heute aus.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Woraus war die Laufmaschine von Karl Drais?",
+    "options": [
+     "Aus Metall",
+     "Aus Plastik",
+     "Aus Holz",
+     "Aus Stein"
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Was fehlte der Laufmaschine?",
+    "options": [
+     "Der Lenker",
+     "Die Räder",
+     "Der Sitz",
+     "Die Pedale"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Warum wurde das Vorderrad beim Hochrad immer größer?",
+    "options": [
+     "Um schneller zu fahren.",
+     "Damit es schöner aussieht.",
+     "Damit Kinder es fahren können.",
+     "Weil Holz billig war."
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „kopfüber“?",
+    "options": [
+     "Mit dem Kopf zuerst nach vorne",
+     "Rückwärts",
+     "Ganz langsam",
+     "Auf den Füßen"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was ist die richtige Reihenfolge?",
+    "options": [
+     "Hochrad – Laufmaschine – heutiges Fahrrad",
+     "Laufmaschine – Hochrad – heutiges Fahrrad",
+     "Heutiges Fahrrad – Hochrad – Laufmaschine",
+     "Laufmaschine – heutiges Fahrrad – Hochrad"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Warum konnten die Räder später wieder gleich groß sein?",
+    "answer": "Weil die Pedale über eine Kette das Hinterrad antrieben."
+   }
+  ]
+ },
+ {
+  "id": "wettrennen",
+  "title": "Das Wettrennen",
+  "type": "Geschichte",
+  "level": 4,
+  "text": "Beim Sportfest der Schule ist das Wettrennen über fünfzig Meter das Wichtigste für Samir. Er hat wochenlang geübt. Neben ihm am Start steht Luis, der schnellste Läufer der Klasse.\n\nDer Startpfiff ertönt. Samir rennt los, so schnell er kann. Nach der Hälfte liegt er knapp vorne. Doch plötzlich stolpert Luis neben ihm und fällt hin. Samir hört ihn aufschreien. Er zögert eine Sekunde. Dann dreht er um, hilft Luis hoch und stützt ihn. Zusammen humpeln sie ins Ziel, als Letzte.\n\nSamir ist enttäuscht, dass er keine Medaille bekommt. Doch bei der Siegerehrung ruft die Direktorin plötzlich seinen Namen. „Samir bekommt heute einen besonderen Preis“, sagt sie, „für Fairness.“ Alle klatschen, und Luis klatscht am lautesten.",
+  "questions": [
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wie lang ist das Wettrennen?",
+    "options": [
+     "Zehn Meter",
+     "Fünfzig Meter",
+     "Hundert Meter",
+     "Einen Kilometer"
+    ],
+    "answer": 1
+   },
+   {
+    "kind": "mc",
+    "skill": "Finden",
+    "q": "Wer ist der schnellste Läufer der Klasse?",
+    "options": [
+     "Luis",
+     "Samir",
+     "Tim",
+     "Die Direktorin"
+    ],
+    "answer": 0
+   },
+   {
+    "kind": "mc",
+    "skill": "Wortschatz",
+    "q": "Was bedeutet „zögern“?",
+    "options": [
+     "Schnell rennen",
+     "Laut schreien",
+     "Aufgeben",
+     "Kurz warten, weil man unsicher ist"
+    ],
+    "answer": 3
+   },
+   {
+    "kind": "mc",
+    "skill": "Reihenfolge",
+    "q": "Was macht Samir, nachdem Luis hingefallen ist?",
+    "options": [
+     "Er läuft schnell weiter ins Ziel.",
+     "Er ruft die Lehrerin.",
+     "Er zögert kurz und hilft Luis dann hoch.",
+     "Er setzt sich hin."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "mc",
+    "skill": "Schließen",
+    "q": "Wofür bekommt Samir den besonderen Preis?",
+    "options": [
+     "Weil er am schnellsten war.",
+     "Weil er am meisten geübt hat.",
+     "Weil er Luis geholfen hat, statt zu gewinnen.",
+     "Weil er als Erster im Ziel war."
+    ],
+    "answer": 2
+   },
+   {
+    "kind": "open",
+    "skill": "Schließen",
+    "q": "Was zeigt es, dass Luis „am lautesten“ klatscht?",
+    "answer": "Dass er Samir sehr dankbar ist und sich für ihn freut."
    }
   ]
  }

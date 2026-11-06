@@ -15,7 +15,7 @@ German read-aloud coach (formerly "Lesefuchs") for primary school (Luxembourg, Z
 - `index.html`, `css/app.css`, `js/app.js` – the app
 - `js/matcher.js` – speech-to-text alignment and word classification (pure, tested)
 - `js/syllables.js` – German reading syllables (built from `src/syllables.src.js`, uses TeX de-1996 hyphenation patterns)
-- `js/texts.js` – 85 built-in texts (levels 1–4) with questions
+- `js/texts.js` – 100 built-in texts (levels 1–4) with questions
 - `docs/NOTES.md` – review findings, speech-service comparison, privacy notes
 
 ## Development
