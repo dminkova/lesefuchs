@@ -108,6 +108,8 @@ const stopSpeaking = () => { try { canSpeak && speechSynthesis.cancel(); } catch
 /* ---------------- navigation ---------------- */
 const SCREENS = ["home", "menu", "read", "practice", "quiz", "report", "parent"];
 let screen = "home";
+/* anonymous counter only: a fixed event name, no content (see js/stats.js) */
+const stat = name => { try { window.LFStats && window.LFStats.event(name); } catch (e) {} };
 function show(id) {
   if (screen === "read" && id !== "read") leaveRead();
   stopSpeaking(); stopOneShot();
@@ -501,6 +503,7 @@ function startReading() {
   if (!R.committed) commitResult();
   R.res = null; R.over = {}; L.reset();
   R.running = true;
+  stat("lesen-start-" + R.mode);
   R.tStart = performance.now();
   $("startBtn").textContent = "Fertig"; $("startBtn").classList.add("stop");
   $("result").hidden = true; $("readHint").hidden = true;
@@ -527,6 +530,7 @@ function finishReading() {
 function finalize() {
   if (!R.stopping) return;
   R.running = false; R.stopping = false;
+  stat("lesen-fertig-" + R.mode);
   $("startBtn").textContent = "Start"; $("startBtn").classList.remove("stop");
   if (!useMic()) { // no microphone: every word counts as read; the parent taps the misread ones
     const secs = Math.max(1, (performance.now() - L.tFirst) / 1000);
@@ -706,7 +710,7 @@ function practiceWordsFromResult() {
 }
 let practiceReturn = "menu";
 function openPractice(words, from) {
-  practiceReturn = from;
+  practiceReturn = from; stat("woerter-start");
   const list = $("practiceList"); list.innerHTML = "";
   if (!words.length) list.append(el("p", "hint", "In diesem Text gibt es keine besonders schweren Wörter. Super!"));
   words.forEach(w => list.append(practiceCard(w)));
@@ -886,7 +890,7 @@ function renderQ() {
 $("qPrev").addEventListener("click", () => { if (Q.qi > 0) { Q.qi--; renderQ(); } });
 $("qNext").addEventListener("click", () => { if (Q.qi < CUR.questions.length - 1) { Q.qi++; renderQ(); } else finishQuiz(); });
 function finishQuiz() {
-  stopOneShot();
+  stopOneShot(); stat("quiz-fertig");
   const qs = CUR.questions;
   Q.rep = { res: qs.map((q, i) => q.kind === "mc" ? { v: Q.answers[i] === q.answer ? "richtig" : "falsch", fb: "" } : { v: (Q.answers[i] || "").trim() ? "wait" : "falsch", fb: "" }), kid: "", parent: "", ai: "pending", saved: false };
   show("report"); renderReport(); analyze();

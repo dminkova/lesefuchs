@@ -24,6 +24,7 @@ npm install        # only needed to rebuild syllables.js or run tests
 npm run build      # rebuild js/syllables.js
 npm test           # unit tests
 python3 tests/e2e_test.py   # browser test (needs playwright + chromium)
+python3 tests/stats_test.py  # privacy test for the visitor counter
 ```
 
 Speech recognition cannot judge pronunciation reliably. The numbers show trends; they are not a reading assessment.
