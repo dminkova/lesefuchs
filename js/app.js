@@ -794,7 +794,7 @@ function readyBeep() {
 }
 /* Listen once. onReady fires when the microphone is really on (with a short tone),
    so the child knows when to start. opts.long (answers): keep listening through short
-   pauses, stop ~2.5 s after the child stops talking, or when the button is tapped again. */
+   pauses, stop ~1.2 s after the child stops talking, or when the button is tapped again. */
 function listenOnce(onAlts, onEnd, onReady, opts) {
   opts = opts || {};
   try {
@@ -803,14 +803,14 @@ function listenOnce(onAlts, onEnd, onReady, opts) {
     let got = false, quietT = null, idleT = null;
     const finals = [];
     const stopSoon = ms => { clearTimeout(quietT); quietT = setTimeout(() => { try { r.stop(); } catch (e) {} }, ms); };
-    r.onstart = () => { readyBeep(); onReady && onReady(); if (opts.long) idleT = setTimeout(() => { if (!finals.length) try { r.stop(); } catch (e) {} }, 10000); };
+    r.onstart = () => { readyBeep(); onReady && onReady(); if (opts.long) idleT = setTimeout(() => { if (!finals.length) try { r.stop(); } catch (e) {} }, 7000); };
     r.onresult = e => {
       if (!opts.long) { got = true; const res = e.results[0]; const alts = []; for (let a = 0; a < res.length; a++) alts.push(res[a].transcript); onAlts(alts); return; }
       for (let k = e.resultIndex; k < e.results.length; k++) {
         const res = e.results[k];
         if (res.isFinal) { const alts = []; for (let a = 0; a < res.length; a++) alts.push(res[a].transcript); finals[k] = alts; }
       }
-      clearTimeout(idleT); stopSoon(2500);
+      clearTimeout(idleT); stopSoon(1200);
     };
     r.onerror = () => {};
     r.onend = () => {
