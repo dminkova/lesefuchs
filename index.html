@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<title>Lesen üben</title>
+<link rel="stylesheet" href="css/app.css?v=88b81fe0">
+</head>
+<body>
+<div class="wrap">
+
+<!-- HOME -->
+<section id="home">
+  <div class="top">
+    <div><h1>Lesen üben</h1><p class="tagline">Silbe für Silbe zum Leseprofi</p></div>
+    <div class="badges" id="badges"></div>
+  </div>
+  <p class="intro">Kostenlose Lese-App für Kinder in Luxemburg (Zyklus 3): laut vorlesen, schwere Wörter in Silben üben, flüssiger lesen und Fragen zum Text beantworten. Ohne Anmeldung, ohne Werbung.</p>
+  <p class="banner" id="srBanner" hidden>Dieses Gerät kann nicht zuhören. Öffne diese Seite in <b>Google Chrome</b>. <span class="small">(For parents: speech recognition needs Chrome. Without it, you tap misread words yourself.)</span></p>
+  <div class="banner iab" id="iabBanner" hidden></div>
+  <p class="banner good" id="levelMsg" hidden></p>
+  <p class="banner info" id="timeMsg" hidden></p>
+  <div class="panel" id="nextUp" hidden></div>
+
+  <h2 id="forYouTitle">Texte für dich</h2>
+  <div class="cards" id="cardsLevel"></div>
+  <details>
+    <summary>Alle Texte</summary>
+    <div class="cards" id="cardsAll"></div>
+  </details>
+
+  <h2>So gut wirst du</h2>
+  <div class="panel" id="progress"></div>
+
+  <button class="btn ghost" id="parentBtn">Elternbereich</button>
+</section>
+
+<!-- TEXT MENU -->
+<section id="menu" hidden>
+  <button class="back" data-go="home">← Alle Texte</button>
+  <div>
+    <span class="label" id="menuMeta"></span>
+    <h2 id="menuTitle"></h2>
+  </div>
+  <p class="hint">Was möchtest du üben?</p>
+  <div class="modes">
+    <button class="mode" data-mode="genau"><span class="step">1</span><span class="mt">Genau lesen</span><span class="md">Lies langsam und genau. Keine Uhr. Du hast Zeit.</span></button>
+    <button class="mode" data-mode="woerter"><span class="step">2</span><span class="mt">Schwere Wörter üben</span><span class="md">Hör die langen Wörter an und lies sie in Silben.</span></button>
+    <button class="mode" data-mode="fluessig"><span class="step">3</span><span class="mt">Flüssig lesen</span><span class="md">Lies ein kurzes Stück dreimal. Wird es jedes Mal leichter?</span></button>
+    <button class="mode" data-mode="verstehen"><span class="step">4</span><span class="mt">Verstehen</span><span class="md">Lies den Text und beantworte Fragen.</span></button>
+  </div>
+  <p class="note">For parents: 1 → 2 → 3 → 4 is a good order and takes about 10–15 minutes. One or two modes per day are also fine.</p>
+</section>
+
+<!-- READ -->
+<section id="read" hidden>
+  <div class="top"><button class="back" id="readBack">← Zurück</button><span class="label" id="readLbl"></span></div>
+  <p class="banner info" id="timeMsg2" hidden></p>
+  <p class="hint" id="readHint"></p>
+  <div class="row">
+    <label class="toggle"><input type="checkbox" id="sylOn"> Silben färben</label>
+  </div>
+  <div class="legend" id="legend"><span><i class="lg-cur"></i>jetzt</span><span><i class="lg-ok"></i>gelesen</span><span><i class="lg-un"></i>bitte prüfen</span><span><i class="lg-wr"></i>wahrscheinlich falsch</span></div>
+  <article class="sheet" id="sheet"></article>
+  <p class="heard" id="heard"></p>
+  <div class="panel" id="result" hidden></div>
+  <div class="controls" id="controls">
+    <button class="btn big" id="startBtn">Start</button>
+    <span class="clock" id="clock" hidden>0:00</span>
+    <span class="listen" id="listenState"><span class="mic" id="micDot"></span><span id="listenTxt">bereit</span></span>
+    <label class="toggle pacer" id="pacerBox" hidden><input type="checkbox" id="paceOn"> Tempo-Hilfe <input type="range" id="paceWpm" min="10" max="80" step="1" value="25"> <b id="paceVal">25</b> W/min</label>
+  </div>
+</section>
+
+<!-- WORD PRACTICE -->
+<section id="practice" hidden>
+  <div class="top"><button class="back" id="practiceBack">← Zurück</button><span class="label" id="practiceLbl">Wörter üben</span></div>
+  <p class="hint">Hör das Wort an. Lies es in Silben. Dann sag es laut.</p>
+  <div class="practice" id="practiceList"></div>
+  <div class="row"><button class="btn" id="practiceDone">Fertig geübt</button></div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" hidden>
+  <div class="top"><button class="back" id="quizBack">← Zum Text</button><div class="dots" id="dots"></div></div>
+  <div class="panel" id="qpanel"></div>
+  <div class="row spread"><button class="btn ghost" id="qPrev">Zurück</button><button class="btn" id="qNext">Weiter</button></div>
+</section>
+
+<!-- REPORT -->
+<section id="report" hidden>
+  <button class="back" data-go="home">← Alle Texte</button>
+  <div class="panel" id="repTop"></div>
+  <div class="panel" id="repList"></div>
+  <div class="panel parent" id="repParent"></div>
+  <div class="row"><button class="btn" data-go="home">Fertig</button></div>
+</section>
+
+<!-- PARENT AREA -->
+<section id="parent" hidden>
+  <button class="back" data-go="home">← Zurück</button>
+  <div class="panel" id="gate">
+    <h3>Elternbereich</h3>
+    <p class="note">A small check so children don't change settings by accident.</p>
+    <label class="field"><span id="gateQ"></span><input type="number" id="gateA" inputmode="numeric"></label>
+    <div class="row"><button class="btn" id="gateGo">Open</button><span class="err-note" id="gateErr"></span></div>
+  </div>
+  <div id="parentArea" hidden>
+    <div class="panel">
+      <h3>Reading settings</h3>
+      <label class="field"><span class="label">Speech recognition (microphone)</span>
+        <select id="setSpeech">
+          <option value="device">On this device only – the voice does not leave the device</option>
+          <option value="cloud">Online – the browser sends the voice to its provider</option>
+          <option value="off">Off – I tap misread words myself</option>
+          <option value="ask">Ask me again</option>
+        </select></label>
+      <p class="note" id="speechNote"></p>
+      <label class="toggle"><input type="checkbox" id="setSlow"> Slow-reader mode (recommended under ~50 words per minute)</label>
+      <p class="note">Waits longer before finishing, accepts up to five syllable pieces per word, and treats one to two unheard words as "please check" instead of "skipped".</p>
+      <label class="toggle"><input type="checkbox" id="setAuto"> Adjust the level automatically</label>
+      <div class="row"><label class="field"><span class="label">Level</span>
+        <select id="setLevel"><option value="1">1 · 40–60 words</option><option value="2">2 · 60–85 words</option><option value="3">3 · 85–120 words</option><option value="4">4 · 120–150 words</option></select></label></div>
+      <p class="note">Automatic: moves up after two careful readings with 95 % or more confirmed accuracy plus a comprehension score of 75 % or more at the current level. Moves down after two readings below 85 % or two quizzes below 50 %.</p>
+    </div>
+
+    <!-- AI features are switched off in the public version (no running costs). Set AI_FEATURES = true in js/app.js to turn them on. -->
+    <div class="panel ai-only" id="gen" hidden>
+      <h3>Write a new text with Claude</h3>
+      <div class="row">
+        <label class="field"><span class="label">Type</span><select id="ttype"><option value="Geschichte">Geschichte (story)</option><option value="Sachtext">Sachtext (non-fiction)</option></select></label>
+        <label class="field"><span class="label">Topic</span><input type="text" id="topic" placeholder="e.g. Fußball, Dinosaurier, Pferde"></label>
+      </div>
+      <div class="row"><button class="btn" id="genBtn">Write a text at the current level</button><button class="btn ghost" id="genStop" hidden>Cancel</button></div>
+      <p class="note" id="genNote"></p>
+    </div>
+
+    <div class="panel ai-only" id="aiKeyPanel" hidden>
+      <h3>Claude API key (optional)</h3>
+      <p class="note">Used for new texts and for checking open answers. Without it, everything else works. Create a key at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer">console.anthropic.com</a> and set a monthly spend limit there. The key is saved only in this browser and sent only to Anthropic.</p>
+      <label class="field"><span class="label">API key</span><input type="password" id="apiKey" placeholder="sk-ant-…" autocomplete="off"></label>
+      <div class="row"><button class="btn small" id="saveKey">Save</button><button class="btn ghost small" id="testKey">Test</button><button class="btn ghost small" id="clearKey">Remove</button></div>
+      <p class="note" id="keyNote"></p>
+    </div>
+
+    <div class="panel">
+      <h3>Words often misheard by the microphone</h3>
+      <p class="note">When you mark a word as correct after the microphone doubted it, it goes on this list and won't be marked "likely wrong" again.</p>
+      <div class="row" id="trustedList"></div>
+    </div>
+
+    <div class="panel">
+      <h3>Save or load progress</h3>
+      <p class="note">Saves his readings, stars, level, practised words and settings to a small file on this device (no API key is ever included). Use it as a backup, or to move to a new web address or a new tablet. Loading a file replaces the progress on this device.</p>
+      <div class="row"><button class="btn small" id="exportBtn">Save progress to a file</button><label class="btn ghost small" for="importFile">Load progress from a file</label><input type="file" id="importFile" class="vh" accept=".json,application/json"></div>
+      <p class="note" id="backupNote"></p>
+    </div>
+
+    <div class="panel">
+      <h3>Privacy</h3>
+      <ul class="small">
+        <li>Chrome's speech recognition sends the microphone audio to Google to turn it into text. This app does not record or store audio.</li>
+        <li>Progress and settings stay in this browser on this device. Nothing is sent to us, to GitHub or to any other service. There are no accounts, no tracking and no ads.</li>
+        <li>The reading results come from automatic speech recognition. They show trends, not a diagnosis of his reading.</li>
+      </ul>
+      <p class="note" id="voiceNote"></p>
+      <div class="row"><button class="btn ghost small" id="wipeBtn">Delete all app data on this device</button><span class="note" id="wipeNote"></span></div>
+    </div>
+  </div>
+</section>
+</div>
+<div class="overlay" id="consent" hidden>
+  <div class="panel dialog" role="dialog" aria-modal="true" aria-labelledby="consentTitle">
+    <div class="row spread"><h2 id="consentTitle"></h2><span class="dlang"><button data-cl="de">DE</button><button data-cl="fr">FR</button><button data-cl="en">EN</button></span></div>
+    <p id="consentText" class="ctext"></p>
+    <label class="field"><span id="consentQ"></span><input type="number" id="consentA" inputmode="numeric"></label>
+    <div class="row">
+      <button class="btn" id="consentLocal"></button>
+      <button class="btn" id="consentYes"></button>
+      <button class="btn ghost" id="consentNo"></button>
+    </div>
+    <p class="note" id="consentStatus"></p>
+    <p class="err-note" id="consentErr"></p>
+    <p class="small"><a href="#" id="consentMore" hidden></a></p>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="js/texts.js?v=f2ff12e3"></script>
+<script src="js/matcher.js?v=e1d85688"></script>
+<script src="js/syllables.js?v=5cce3a39"></script>
+<script src="js/app.js?v=afad9409"></script>
+</body>
+</html>
