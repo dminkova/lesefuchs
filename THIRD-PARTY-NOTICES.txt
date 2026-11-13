@@ -1,4 +1,4 @@
-THIRD-PARTY NOTICES – Leseflitzi
+THIRD-PARTY NOTICES – Lesen üben
 ================================
 
 1. German hyphenation patterns (de-1996), bundled in js/syllables.js

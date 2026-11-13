@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<meta name="description" content="Leseflitzi – kostenlose Lese-App für Kinder in Luxemburg (Zyklus 3): laut vorlesen, Silben üben, Fragen beantworten. Läuft im Browser, ohne Anmeldung, ohne Werbung.">
-<link rel="canonical" href="https://leseflitzi.eu/">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "@id": "https://leseflitzi.eu/#app", "name": "Leseflitzi", "url": "https://leseflitzi.eu/", "description": "Kostenlose Lese-App für Kinder in Luxemburg (Zyklus 2–3): laut vorlesen, schwere Wörter in Silben üben, flüssiger lesen und Fragen zum Text beantworten.", "applicationCategory": "EducationalApplication", "operatingSystem": "Web browser", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "inLanguage": "de", "audience": {"@type": "EducationalAudience", "educationalRole": "student", "audienceType": "Children 7–10"}, "educationalLevel": "Primary school, cycles 2–3 (Luxembourg)", "learningResourceType": "Reading practice"}</script>
-<title>Leseflitzi – Lese-App für Kinder in Luxemburg</title>
-<link rel="stylesheet" href="css/app.css?v=2ef228de">
+<meta name="robots" content="noindex, nofollow">
+<title>Lesen üben</title>
+<link rel="stylesheet" href="css/app.css?v=88b81fe0">
 </head>
 <body>
 <div class="wrap">
@@ -17,11 +15,11 @@
 <!-- HOME -->
 <section id="home">
   <div class="top">
-    <div><h1>Leseflitzi</h1><p class="tagline">Silbe für Silbe zum Leseprofi</p></div>
+    <div><h1>Lesen üben</h1><p class="tagline">Silbe für Silbe zum Leseprofi</p></div>
     <div class="badges" id="badges"></div>
   </div>
   <p class="intro">Kostenlose Lese-App für Kinder in Luxemburg (Zyklus 3): laut vorlesen, schwere Wörter in Silben üben, flüssiger lesen und Fragen zum Text beantworten. Ohne Anmeldung, ohne Werbung.</p>
-  <p class="banner" id="srBanner" hidden>Dieses Gerät kann nicht zuhören. Öffne Leseflitzi in <b>Google Chrome</b>. <span class="small">(For parents: speech recognition needs Chrome. Without it, you tap misread words yourself.)</span></p>
+  <p class="banner" id="srBanner" hidden>Dieses Gerät kann nicht zuhören. Öffne diese Seite in <b>Google Chrome</b>. <span class="small">(For parents: speech recognition needs Chrome. Without it, you tap misread words yourself.)</span></p>
   <div class="banner iab" id="iabBanner" hidden></div>
   <p class="banner good" id="levelMsg" hidden></p>
   <p class="banner info" id="timeMsg" hidden></p>
@@ -38,8 +36,6 @@
   <div class="panel" id="progress"></div>
 
   <button class="btn ghost" id="parentBtn">Elternbereich</button>
-  <p class="footer"><a href="eltern.html" hreflang="de">Für Eltern</a> · <a href="parents-fr.html" hreflang="fr" lang="fr">Pour les parents</a> · <a href="parents.html" hreflang="en" lang="en">For parents</a></p>
-  <p class="footer"><a href="info.html">Impressum · Datenschutz · Lizenzen</a></p>
 </section>
 
 <!-- TEXT MENU -->
@@ -166,12 +162,12 @@
     <div class="panel">
       <h3>Privacy</h3>
       <ul class="small">
-        <li>Chrome's speech recognition sends the microphone audio to Google to turn it into text. Leseflitzi does not record or store audio.</li>
+        <li>Chrome's speech recognition sends the microphone audio to Google to turn it into text. This app does not record or store audio.</li>
         <li>Progress and settings stay in this browser on this device. Nothing is sent to us, to GitHub or to any other service. There are no accounts, no tracking and no ads.</li>
         <li>The reading results come from automatic speech recognition. They show trends, not a diagnosis of his reading.</li>
       </ul>
       <p class="note" id="voiceNote"></p>
-      <div class="row"><button class="btn ghost small" id="wipeBtn">Delete all Leseflitzi data on this device</button><span class="note" id="wipeNote"></span></div>
+      <div class="row"><button class="btn ghost small" id="wipeBtn">Delete all app data on this device</button><span class="note" id="wipeNote"></span></div>
     </div>
   </div>
 </section>
@@ -188,14 +184,14 @@
     </div>
     <p class="note" id="consentStatus"></p>
     <p class="err-note" id="consentErr"></p>
-    <p class="small"><a href="info.html" target="_blank" rel="noopener" id="consentMore"></a></p>
+    <p class="small"><a href="#" id="consentMore" hidden></a></p>
   </div>
 </div>
 <div class="toast" id="toast" hidden></div>
 
 <script src="js/texts.js?v=f2ff12e3"></script>
-<script src="js/matcher.js?v=f821c9ec"></script>
-<script src="js/syllables.js?v=97702f41"></script>
-<script src="js/app.js?v=43cd5fe2"></script>
+<script src="js/matcher.js?v=e1d85688"></script>
+<script src="js/syllables.js?v=5cce3a39"></script>
+<script src="js/app.js?v=afad9409"></script>
 </body>
 </html>

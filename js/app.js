@@ -1,4 +1,4 @@
-/* Leseflitzi app. Uses LFMatch (matcher.js), LFSyl (syllables.js) and LF_TEXTS (texts.js). */
+/* Lesen üben app. Uses LFMatch (matcher.js), LFSyl (syllables.js) and LF_TEXTS (texts.js). */
 (function () {
 "use strict";
 const M = window.LFMatch, SY = window.LFSyl;
@@ -148,13 +148,13 @@ function renderBadges() {
   b.append(s1, el("span", "badge", "Stufe " + st.level), el("span", "badge", "Heute: " + minutesToday() + " Min."));
 }
 const IAB_T = {
-  de: { where: a => "Leseflitzi ist im Browser von " + a + " geöffnet. Hier funktioniert das Mikrofon nicht.", app: "einer App",
+  de: { where: a => "Die App ist im Browser von " + a + " geöffnet. Hier funktioniert das Mikrofon nicht.", app: "einer App",
         chrome: "In Chrome öffnen", ios: "Tippe oben rechts auf ••• und wähle „In Safari öffnen“ oder „Im Browser öffnen“.", copy: "Link kopieren", copied: "Link kopiert ✓ – jetzt in Safari oder Chrome einfügen.",
         still: "Du kannst hier trotzdem üben: Ein Erwachsener tippt die falsch gelesenen Wörter an." },
-  fr: { where: a => "Leseflitzi est ouvert dans le navigateur de " + a + ". Le micro ne fonctionne pas ici.", app: "une application",
+  fr: { where: a => "L’application est ouverte dans le navigateur de " + a + ". Le micro ne fonctionne pas ici.", app: "une application",
         chrome: "Ouvrir dans Chrome", ios: "Touchez ••• en haut à droite, puis « Ouvrir dans Safari » ou « Ouvrir dans le navigateur ».", copy: "Copier le lien", copied: "Lien copié ✓ – collez-le dans Safari ou Chrome.",
         still: "Vous pouvez quand même pratiquer ici : un adulte touche les mots mal lus." },
-  en: { where: a => "Leseflitzi is open inside " + a + "'s browser. The microphone doesn't work here.", app: "an app",
+  en: { where: a => "The app is open inside " + a + "'s browser. The microphone doesn't work here.", app: "an app",
         chrome: "Open in Chrome", ios: "Tap ••• at the top right, then “Open in Safari” or “Open in browser”.", copy: "Copy link", copied: "Link copied ✓ – paste it into Safari or Chrome.",
         still: "You can still practise here: an adult taps the misread words." },
 };
@@ -433,7 +433,7 @@ function newSession() {
     if (e.error === "not-allowed" || e.error === "service-not-allowed") {
       R.running = false; stopTimers();
       setListen(false, "Mikrofon blockiert");
-      problem(location.protocol === "https:" ? "The microphone is blocked. Tap the icon left of the web address, allow the microphone, then press Start again." : "Chrome blocks the microphone when the page is opened from a file. Open Leseflitzi from its https:// address.");
+      problem(location.protocol === "https:" ? "The microphone is blocked. Tap the icon left of the web address, allow the microphone, then press Start again." : "Chrome blocks the microphone when the page is opened from a file. Open the app from its https:// address.");
       $("startBtn").textContent = "Start"; $("startBtn").classList.remove("stop");
     } else if (e.error === "language-not-supported" && speechMode() === "device") {
       R.running = false; stopTimers(); setListen(false, "nicht installiert");
@@ -456,7 +456,7 @@ function newSession() {
 function micNotStarting() {
   R.running = false; stopTimers(); try { rec && rec.abort(); } catch (e) {} rec = null;
   setListen(false, "Mikrofon startet nicht");
-  problem("Das Mikrofon startet nicht. Öffne Leseflitzi in " + (IS_IOS ? "Safari" : "Google Chrome") + ". (Parents: the microphone did not start. Open leseflitzi.eu in " + (IS_IOS ? "Safari" : "Chrome") + ", or choose “No microphone” in the parent area.)");
+  problem("Das Mikrofon startet nicht. Öffne diese Seite in " + (IS_IOS ? "Safari" : "Google Chrome") + ". (Parents: the microphone did not start. Open this page in " + (IS_IOS ? "Safari" : "Chrome") + ", or choose “No microphone” in the parent area.)");
   $("startBtn").textContent = "Start"; $("startBtn").classList.remove("stop");
 }
 function scheduleLive() {
@@ -538,7 +538,7 @@ function finalize() {
   }
   const toks = M.buildTokens(L.sessions.map(s => s.filter(Boolean)), new Set(R.tNorm));
   if (!L.tFirst || !toks.length) {
-    problem(useMic() ? "Ich habe nichts gehört. Ist das Mikrofon an? Halte das Tablet näher und drück noch einmal Start." : "Without speech recognition, open Leseflitzi in Chrome.");
+    problem(useMic() ? "Ich habe nichts gehört. Ist das Mikrofon an? Halte das Tablet näher und drück noch einmal Start." : "Without speech recognition, open this page in Chrome.");
     $("readHint").hidden = false;
     return;
   }
@@ -1102,21 +1102,21 @@ $("testKey").addEventListener("click", async () => {
 });
 /* parent consent for the microphone: short, friendly, in the parent's language; details on info.html */
 const CT = {
-  de: { title: "Darf Leseflitzi zuhören?",
-        local: "Leseflitzi hört beim Vorlesen zu und zeigt, welche Wörter schon gut klappen. Die Spracherkennung läuft direkt auf diesem Gerät: Die Stimme bleibt hier. Wir speichern keine Aufnahmen.",
-        cloud: "Leseflitzi hört beim Vorlesen zu und zeigt, welche Wörter schon gut klappen. Dafür wandelt {P} die Stimme in Text um. Wir speichern keine Aufnahmen.",
+  de: { title: "Darf die App zuhören?",
+        local: "Die App hört beim Vorlesen zu und zeigt, welche Wörter schon gut klappen. Die Spracherkennung läuft direkt auf diesem Gerät: Die Stimme bleibt hier. Wir speichern keine Aufnahmen.",
+        cloud: "Die App hört beim Vorlesen zu und zeigt, welche Wörter schon gut klappen. Dafür wandelt {P} die Stimme in Text um. Wir speichern keine Aufnahmen.",
         q: "Kurze Frage für Erwachsene: {a} × {b} = ?", yes: "Ja, zuhören", online: "Lieber online über {P}", no: "Ohne Mikrofon",
         more: "Mehr zum Datenschutz", dl: "Beim ersten Mal wird die deutsche Spracherkennung einmal geladen.", wait: "Einen Moment…",
         err: "Bitte die Rechenaufgabe lösen.", fail: "Das hat nicht geklappt. Bitte online oder „Ohne Mikrofon“ wählen." },
-  fr: { title: "Leseflitzi peut-il écouter ?",
-        local: "Leseflitzi écoute la lecture et montre quels mots sont déjà réussis. La reconnaissance vocale fonctionne directement sur cet appareil : la voix reste ici. Nous n’enregistrons rien.",
-        cloud: "Leseflitzi écoute la lecture et montre quels mots sont déjà réussis. Pour cela, {P} transforme la voix en texte. Nous n’enregistrons rien.",
+  fr: { title: "L’application peut-elle écouter ?",
+        local: "L’application écoute la lecture et montre quels mots sont déjà réussis. La reconnaissance vocale fonctionne directement sur cet appareil : la voix reste ici. Nous n’enregistrons rien.",
+        cloud: "L’application écoute la lecture et montre quels mots sont déjà réussis. Pour cela, {P} transforme la voix en texte. Nous n’enregistrons rien.",
         q: "Petite question pour les adultes : {a} × {b} = ?", yes: "Oui, écouter", online: "Plutôt en ligne via {P}", no: "Sans micro",
         more: "En savoir plus sur la protection des données", dl: "La première fois, la reconnaissance allemande est téléchargée une seule fois.", wait: "Un instant…",
         err: "Merci de faire le calcul.", fail: "Cela n’a pas marché. Choisissez en ligne ou « Sans micro »." },
-  en: { title: "May Leseflitzi listen?",
-        local: "Leseflitzi listens while your child reads and shows which words went well. Speech recognition runs right on this device: the voice stays here. We don’t store any recordings.",
-        cloud: "Leseflitzi listens while your child reads and shows which words went well. To do this, {P} turns the voice into text. We don’t store any recordings.",
+  en: { title: "May the app listen?",
+        local: "The app listens while your child reads and shows which words went well. Speech recognition runs right on this device: the voice stays here. We don’t store any recordings.",
+        cloud: "The app listens while your child reads and shows which words went well. To do this, {P} turns the voice into text. We don’t store any recordings.",
         q: "Quick question for adults: {a} × {b} = ?", yes: "Yes, listen", online: "Use online via {P} instead", no: "No microphone",
         more: "More about privacy", dl: "The first time, German speech recognition is downloaded once.", wait: "One moment…",
         err: "Please solve the sum.", fail: "That didn’t work. Please choose online or “No microphone”." },
@@ -1190,10 +1190,10 @@ $("setSpeech").addEventListener("change", async () => {
 /* backup: save / load progress as a file (the API key is never included) */
 const BACKUP_KEYS = ["lf_hist", "lf_bank", "lf_trusted", "lf_stars", "lf_time", "lf_settings", "lf_texts", "lf_syl"];
 $("exportBtn").addEventListener("click", () => {
-  const out = { app: "leseflitzi", v: 1, saved: new Date().toISOString(), data: {} };
+  const out = { app: "lesen-ueben", v: 1, saved: new Date().toISOString(), data: {} };
   for (const k of BACKUP_KEYS) { const v = store.get(k, null); if (v != null) out.data[k] = v; }
   const url = URL.createObjectURL(new Blob([JSON.stringify(out)], { type: "application/json" }));
-  const a = document.createElement("a"); a.href = url; a.download = "leseflitzi-fortschritt-" + today() + ".json";
+  const a = document.createElement("a"); a.href = url; a.download = "lesen-ueben-fortschritt-" + today() + ".json";
   document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 10000);
   const n = (out.data.lf_hist || []).filter(h => h && h.kind === "read").length;
   $("backupNote").className = "ok-note"; $("backupNote").textContent = "Saved: " + n + " readings and " + (out.data.lf_stars || 0) + " stars. The file is in your Downloads folder.";
@@ -1202,7 +1202,7 @@ $("importFile").addEventListener("change", async () => {
   const f = $("importFile").files[0]; if (!f) return;
   try {
     const j = JSON.parse(await f.text());
-    if (!j || typeof j.data !== "object" || !["leseflitzi", "lesefuchs"].includes(j.app)) throw new Error("not a Leseflitzi file");
+    if (!j || typeof j.data !== "object" || !["lesen-ueben", "leseflitzi", "lesefuchs"].includes(j.app)) throw new Error("not a progress file");
     for (const k of BACKUP_KEYS) if (k in j.data) store.set(k, j.data[k]);
     const n = (j.data.lf_hist || []).filter(h => h && h.kind === "read").length;
     $("backupNote").className = "ok-note"; $("backupNote").textContent = "Loaded: " + n + " readings and " + (j.data.lf_stars || 0) + " stars.";
@@ -1213,7 +1213,7 @@ $("importFile").addEventListener("change", async () => {
 $("wipeBtn").addEventListener("click", () => {
   if ($("wipeBtn").dataset.armed !== "1") { $("wipeBtn").dataset.armed = "1"; $("wipeBtn").textContent = "Tap again to delete everything"; return; }
   ["lf_hist", "lf_bank", "lf_trusted", "lf_stars", "lf_time", "lf_settings", "lf_texts", "lf_key", "lf_syl", "lf_levelmsg", "lf_consent"].forEach(k => store.del(k));
-  $("wipeBtn").dataset.armed = ""; $("wipeBtn").textContent = "Delete all Leseflitzi data on this device"; $("wipeNote").textContent = "Deleted.";
+  $("wipeBtn").dataset.armed = ""; $("wipeBtn").textContent = "Delete all app data on this device"; $("wipeNote").textContent = "Deleted.";
   fillParent();
 });
 let genCtl = null;
